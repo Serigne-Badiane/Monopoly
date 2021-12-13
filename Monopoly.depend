@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1638877206 source:c:\users\edouard\desktop\algorithme et programme c\codes\monopoly\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
