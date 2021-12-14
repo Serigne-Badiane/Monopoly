@@ -5,11 +5,14 @@
 #define NbJoueurMax 5
 #define TAILLE 100
 
+
+
 void Color(int couleurDuTexte,int couleurDeFond)
 {
     HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
 }
+
 typedef struct joueur
 {
     int numeroJoueur;
@@ -40,7 +43,7 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
         {
             Color(4,0);
             printf("\n\nBienvenu cher joueur !\n\nVotre but aujourd'hui est de devenir le joueur le plus riche\n\nBonne chance !\n\n");
-            printf("Indiquez votre prenom\n");
+            printf("Indiquez votre pr%cnom\n",0x82);
 
             scanf("%s", &player[i]->prenomJoueur);
             fflush(stdin);
@@ -57,7 +60,7 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
         {
             Color(6,0);
             printf("\n\nBienvenu cher joueur !\n\nVotre but aujourd'hui est de devenir le joueur le plus riche\n\nBonne chance !\n\n");
-            printf("Indiquez votre prenom\n");
+            printf("Indiquez votre pr%cnom\n",0x82);
 
             scanf("%s", &player[i]->prenomJoueur);
             fflush(stdin);
@@ -74,7 +77,7 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
         {
             Color(9,0);
             printf("\n\nBienvenu cher joueur !\n\nVotre but aujourd'hui est de devenir le joueur le plus riche\n\nBonne chance !\n\n");
-            printf("Indiquez votre prenom\n");
+            printf("Indiquez votre pr%cnom\n",0x82);
 
             scanf("%s", &player[i]->prenomJoueur);
             fflush(stdin);
@@ -93,7 +96,7 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
         {
             Color(11,0);
             printf("\n\nBienvenu cher joueur !\n\nVotre but aujourd'hui est de devenir le joueur le plus riche\n\nBonne chance !\n\n");
-            printf("Indiquez votre prenom\n");
+            printf("Indiquez votre pr%cnom\n",0x82);
 
             scanf("%s", &player[i]->prenomJoueur);
             fflush(stdin);
@@ -112,28 +115,28 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
 
     }
     Color(1,0);
-    printf("Les joueurs de cette partie sont les suivants : \n"); //affichage des joueurs de la partie
+    printf("\nLes joueurs de cette partie sont les suivants : \n"); //affichage des joueurs de la partie
     for(int j = 0; j<nombreDeJoueur; j++)
     {
         if(j==0)
         {
             Color(4,0);
-            printf("Joueur numero %d : %s  \n Porte Monnaie : %d\n", player[j]->numeroJoueur, player[j]->prenomJoueur, player[j]->argent);
+            printf("\nJoueur num%cro %d : %s  \n Porte Monnaie : %d\n",0x82, player[j]->numeroJoueur, player[j]->prenomJoueur, player[j]->argent);
         }
         else if (j==1)
         {
             Color(6,0);
-            printf("Joueur numero %d : %s \n Porte Monnaie : %d\n ", player[j]->numeroJoueur, player[j]->prenomJoueur, player[j]->argent);
+            printf("\nJoueur num%cro %d : %s \n Porte Monnaie : %d\n ",0x82, player[j]->numeroJoueur, player[j]->prenomJoueur, player[j]->argent);
         }
         else if (j==2)
         {
             Color(9,0);
-            printf("Joueur numero %d : %s \n Porte Monnaie : %d\n", player[j]->numeroJoueur, player[j]->prenomJoueur, player[j]->argent);
+            printf("\nJoueur num%cro %d : %s \n Porte Monnaie : %d\n",0x82, player[j]->numeroJoueur, player[j]->prenomJoueur, player[j]->argent);
         }
         else if (j==3)
         {
             Color(11,0);
-            printf("Joueur numero %d : %s \n Porte Monnaie : %d\n", player[j]->numeroJoueur, player[j]->prenomJoueur, player[j]->argent);
+            printf("\nJoueur numero %d : %s \n Porte Monnaie : %d\n", player[j]->numeroJoueur, player[j]->prenomJoueur, player[j]->argent);
         }
     }
 }
@@ -314,14 +317,10 @@ void soleil (){
     arrivetoi(soleil);
 }
 
-
-
-int main()
-{
-    srand(time(NULL));
+void menu (){
     int menu=0;
     int J=0;
-    printf("            MONOPOLY\n1.-Nouvelle Partie\n\n2.-Sauvegarder Partie en cours\n\n3.-Charger Partie\n\n4.-Regle\n\n5.-Credit\n\n");
+    printf("            MONOPOLY\n1.-Nouvelle Partie\n\n2.-Sauvegarder Partie en cours\n\n3.-Charger Partie\n\n4.-Regle\n\n5.-Cr%cdit\n\n",0x82);
     scanf("%d",&menu);
 
     t_joueur player[NbJoueurMax][TAILLE];
@@ -329,6 +328,7 @@ int main()
     while (menu!=1&&menu!=2&&menu!=3&&menu!=4&&menu!=5)
     {
         printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
+        getchar();
         scanf("%d",&menu);
     }
 
@@ -344,14 +344,16 @@ int main()
         Color(15,0);
         printf("Veuillez saisir le nombre de participants : \n");
         scanf("%d",&J);
+        while(J>=5 || J<2)
+        {
+             printf("IA : il ne peut y avoir que 2 a 4 joueurs ... vous croyez que notre fus%ce peut acceuillir plus de monde ?",0x82);
+             getchar();
+             scanf("%d", &J);
+        }
+
         Color(1,0);
         printf("IA : Pour qu'on puisse mieux se comprendre je m'allumerai d'une couleur differente a chaque fois que je voudrais parler a l'un d'entre vous en particulier, chaque joueur a sa couleur et vous garderez celle que vous avez eu toute la partie\n");
 
-        while(J>=5 || J<2)
-        {
-             printf("IA : il ne peut y avoir que 2 a 4 joueurs ... vous croyez que notre fusee peut acceuillir plus de monde ?");
-             scanf("%d", &J);
-        }
 
         saisie(player, J);
 
@@ -369,8 +371,13 @@ int main()
     int deplacementCase;
     numeroTour = choixDuPremier(J); //on choisit le premier utilisateur à jouer
     Color(1,0);
-    printf(" IA : Veuillez appuyer sur 1 pour lancer le de : ");
+    printf("\nIA : Veuillez appuyer sur 1 pour lancer le d%c : ",0x82);
     scanf("%d", &choix);
+    while(choix != 1){
+        printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
+        getchar();
+        scanf("%d",&choix);
+    }
 
 
 
@@ -381,5 +388,14 @@ int main()
         printf("%s avance de %d cases.", player[numeroTour]->prenomJoueur, deplacementCase);
 
     }
+
+}
+
+
+
+int main()
+{
+    srand(time(NULL));
+    menu();
     return 0;
 }
