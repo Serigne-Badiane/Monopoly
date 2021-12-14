@@ -9,3 +9,23 @@
 	<stdlib.h>
 	<windows.h>
 
+1639476940 source:c:\users\lenal\documents\github\monopoly\joueurs.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1639476933 source:c:\users\lenal\documents\github\monopoly\planetes.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1639476733 source:c:\users\lenal\documents\github\monopoly\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1639477051 c:\users\lenal\documents\github\monopoly\bib.h
+
