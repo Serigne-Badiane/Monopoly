@@ -29,3 +29,23 @@
 
 1639477051 c:\users\lenal\documents\github\monopoly\bib.h
 
+1639477360 source:c:\users\antan\documents\github\monopoly\joueurs.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1639772280 c:\users\antan\documents\github\monopoly\bib.h
+
+1639477360 source:c:\users\antan\documents\github\monopoly\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1639477360 source:c:\users\antan\documents\github\monopoly\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+

@@ -28,6 +28,34 @@ void menu ();
 ///PLANETES ET ETOILES
 
 //Structures planetes et etoiles
+//Structures planetes et etoiles
+typedef struct {
+    char proprio [TAILLE];
+    char nom [TAILLE];
+    char anecdote [TAILLE];
+    int couleur;
+    int prix;
+    int loyer;
+    int p_hypo;
+    int prixMaison;
+    int maison;
+    int hotel;
+}planete;
+
+typedef struct
+{
+    char proprio [TAILLE];
+    char nom [TAILLE];
+    char anecdote[TAILLE];
+    int couleur;
+    int prix;
+    int loyer;
+    int p_hypo;
+    int prixMaison;
+    int maison;
+    int hotel;
+}satellite;
+
 typedef struct {
     char proprio [TAILLE];
     char nom [TAILLE];
@@ -38,20 +66,12 @@ typedef struct {
     int p_hypo;
     int maison;
     int hotel;
-}planete;
 
-typedef struct {
-    char proprio [TAILLE];
-    char nom [TAILLE];
-    char anecdote [TAILLE];
-    int prix;
-    int loyer;
-    int p_hypo;
-}etoile;
+}galaxie;
 
 //Procedures planetes et etoiles
 void arrivplan (planete p);
-void arrivetoi (etoile e);
+void arrivgalax(galaxie g);
 void mars ();
 void terre ();
 void saturne ();
