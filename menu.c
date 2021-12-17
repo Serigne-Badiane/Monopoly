@@ -62,7 +62,11 @@ void menu (){
     int deplacementCase;
     numeroTour = choixDuPremier(J); //on choisit le premier utilisateur à jouer
     Color(1,0);
-    printf("\nIA : Veuillez appuyer sur 1 pour lancer le d%c : ",0x82);
+    printf("\nIA : Le premier joueur a debute la partie est : ");
+    Color(player[numeroTour]->couleur, 0);
+    printf("%s\n", player[numeroTour]->prenomJoueur);
+    Color(1,0);
+    printf(" IA : Veuillez appuyer sur 1 pour lancer le de : ");
     scanf("%d", &choix);
     while(choix != 1){
         printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
@@ -98,5 +102,5 @@ void menu (){
 
     }
 
-}
 
+}

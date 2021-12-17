@@ -11,6 +11,7 @@ typedef struct joueur
     int numeroJoueur;
     char prenomJoueur[50];
     int numeroCase;
+    int couleur;
     int argent;
 
 }t_joueur;
