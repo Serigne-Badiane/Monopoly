@@ -3,7 +3,7 @@
 #include <windows.h>
 #define Jr 20
 #define NbJoueurMax 5
-#define TAILLE 100
+#define TAILLE 300
 #include "bib.h"
 
 
@@ -76,7 +76,25 @@ void menu (){
     if (choix == 1)
     {
         deplacementCase = lancerDe(player, numeroDe, numeroTour);
-        printf("%s avance de %d cases.", player[numeroTour]->prenomJoueur, deplacementCase);
+        printf("%s avance de %d cases.\n", player[numeroTour]->prenomJoueur, deplacementCase);
+        if(numeroDe[1] == numeroDe[0])
+        {
+            deplacementCase = lancerDe(player, numeroDe, numeroTour);
+            printf("%s avance de %d cases.\n", player[numeroTour]->prenomJoueur, deplacementCase);
+
+            if(numeroDe[1] == numeroDe[0])
+            {
+                deplacementCase = lancerDe(player, numeroDe, numeroTour);
+                printf("%s avance de %d cases.\n", player[numeroTour]->prenomJoueur, deplacementCase);
+
+                if(numeroDe[1] == numeroDe[0])
+                {
+                    printf("IA : Vous allez en prison !");
+
+                }
+            }
+
+        }
 
     }
 

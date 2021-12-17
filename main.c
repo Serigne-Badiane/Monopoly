@@ -15,21 +15,15 @@ void Color(int couleurDuTexte,int couleurDeFond)
 
 
 
+
+
+
+
+
+
 int main()
 {
     srand(time(NULL));
     menu();
     return 0;
 }
-
-void pause()
-{
-    char pause=kbhit('p');
-    pause=getch();
-    if(pause=='p')
-    {
-        menu();
-    }
-}
-
-
