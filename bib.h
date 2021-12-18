@@ -14,6 +14,7 @@ typedef struct joueur
     char proprietes [TAILLE];
     int numeroCase;
     int prison;
+    int couleur;
     int argent;
 
 }t_joueur;
@@ -32,6 +33,7 @@ void menu ();
 ///PLANETES ET ETOILES
 
 //Structures planetes et etoiles
+//Structures planetes et etoiles
 typedef struct {
     int proprio;
     char nom [TAILLE];
@@ -40,23 +42,42 @@ typedef struct {
     int prix;
     int loyer;
     int p_hypo;
+    int prixMaison;
     int maison;
     int hotel;
 }planete;
+
+typedef struct
+{
+    char proprio [TAILLE];
+    char nom [TAILLE];
+    char anecdote[TAILLE];
+    int couleur;
+    int prix;
+    int loyer;
+    int p_hypo;
+    int prixMaison;
+    int maison;
+    int hotel;
+}satellite;
 
 typedef struct {
     char proprio [TAILLE];
     char nom [TAILLE];
     char anecdote [TAILLE];
+    int couleur;
     int prix;
     int loyer;
     int p_hypo;
-}etoile;
+    int maison;
+    int hotel;
+
+}galaxie;
 
 //Procedures planetes et etoiles
 void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur);
-void arrivetoi (etoile e);
-void mars (planete *p);
+void arrivgalax(galaxie g);
+void mars ();
 void terre ();
 void saturne ();
 void jupiter ();

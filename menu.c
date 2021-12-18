@@ -3,7 +3,7 @@
 #include <windows.h>
 #define Jr 20
 #define NbJoueurMax 5
-#define TAILLE 200
+#define TAILLE 300
 #include "bib.h"
 
 
@@ -59,9 +59,13 @@ void menu (t_joueur player[NbJoueurMax][TAILLE]){
     int numeroTour;
     int numeroDe[2];
     int deplacementCase;
-    numeroTour = choixDuPremier(J); //on choisit le premier utilisateur à jouer
+    numeroTour = choixDuPremier(J); //on choisit le premier utilisateur ï¿½ jouer
     Color(1,0);
-    printf("\nIA : Veuillez appuyer sur 1 pour lancer le d%c : ",0x82);
+    printf("\nIA : Le premier joueur a debute la partie est : ");
+    Color(player[numeroTour]->couleur, 0);
+    printf("%s\n", player[numeroTour]->prenomJoueur);
+    Color(1,0);
+    printf(" IA : Veuillez appuyer sur 1 pour lancer le de : ");
     scanf("%d", &choix);
     while(choix != 1){
         printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
@@ -75,10 +79,28 @@ void menu (t_joueur player[NbJoueurMax][TAILLE]){
     if (choix == 1)
     {
         deplacementCase = lancerDe(player, numeroDe, numeroTour);
-        printf("%s avance de %d cases.", player[numeroTour]->prenomJoueur, deplacementCase);
+        printf("%s avance de %d cases.\n", player[numeroTour]->prenomJoueur, deplacementCase);
+        if(numeroDe[1] == numeroDe[0])
+        {
+            deplacementCase = lancerDe(player, numeroDe, numeroTour);
+            printf("%s avance de %d cases.\n", player[numeroTour]->prenomJoueur, deplacementCase);
+
+            if(numeroDe[1] == numeroDe[0])
+            {
+                deplacementCase = lancerDe(player, numeroDe, numeroTour);
+                printf("%s avance de %d cases.\n", player[numeroTour]->prenomJoueur, deplacementCase);
+
+                if(numeroDe[1] == numeroDe[0])
+                {
+                    printf("IA : Vous allez en prison !");
+
+                }
+            }
+
+        }
 
 
     }
 
-}
 
+}

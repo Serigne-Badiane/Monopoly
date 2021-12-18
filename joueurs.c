@@ -3,12 +3,12 @@
 #include <windows.h>
 #define Jr 20
 #define NbJoueurMax 5
-#define TAILLE 200
+#define TAILLE 300
 #include "bib.h"
 
 
 
-///Sous-programme permettant de récupérer le nom et numéro des joueurs
+///Sous-programme permettant de rï¿½cupï¿½rer le nom et numï¿½ro des joueurs
 t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
 {
 
@@ -34,14 +34,16 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
 
             scanf("%s", &player[i]->prenomJoueur);
             fflush(stdin);
-            strcat(&player[i]->prenomJoueur, " "); //on ajoute un espace après le prénom
-            strcat(&player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au prénom de l'utilisateur
+            strcat(&player[i]->prenomJoueur, " "); //on ajoute un espace aprï¿½s le prï¿½nom
+            strcat(&player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au prï¿½nom de l'utilisateur
 
             player[i]->numeroJoueur = i+1;
             fflush(stdin);
 
             player[i]->argent = 1500;
             fflush(stdin);
+
+            player[i]->couleur = 4;
         }
         else if (i==1)
         {
@@ -52,14 +54,16 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
 
             scanf("%s", &player[i]->prenomJoueur);
             fflush(stdin);
-            strcat(&player[i]->prenomJoueur, " "); //on ajoute un espace après le prénom
-            strcat(&player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au prénom de l'utilisateur
+            strcat(&player[i]->prenomJoueur, " "); //on ajoute un espace aprï¿½s le prï¿½nom
+            strcat(&player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au prï¿½nom de l'utilisateur
 
             player[i]->numeroJoueur = i+1;
             fflush(stdin);
 
             player[i]->argent = 1500;
             fflush(stdin);
+
+            player[i]->couleur = 6;
         }
         else if (i==2)
         {
@@ -70,14 +74,16 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
 
             scanf("%s", &player[i]->prenomJoueur);
             fflush(stdin);
-            strcat(&player[i]->prenomJoueur, " "); //on ajoute un espace après le prénom
-            strcat(&player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au prénom de l'utilisateur
+            strcat(&player[i]->prenomJoueur, " "); //on ajoute un espace aprï¿½s le prï¿½nom
+            strcat(&player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au prï¿½nom de l'utilisateur
 
             player[i]->numeroJoueur = i+1;
             fflush(stdin);
 
             player[i]->argent = 1500;
             fflush(stdin);
+
+            player[i]->couleur = 9;
 
         }
 
@@ -90,14 +96,16 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
 
             scanf("%s", &player[i]->prenomJoueur);
             fflush(stdin);
-            strcat(&player[i]->prenomJoueur, " "); //on ajoute un espace après le prénom
-            strcat(&player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au prénom de l'utilisateur
+            strcat(&player[i]->prenomJoueur, " "); //on ajoute un espace aprï¿½s le prï¿½nom
+            strcat(&player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au prï¿½nom de l'utilisateur
 
             player[i]->numeroJoueur = i+1;
             fflush(stdin);
 
             player[i]->argent = 1500;
             fflush(stdin);
+
+            player[i]->couleur = 11;
 
         }
 
@@ -108,27 +116,11 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
     printf("\nIA : Les joueurs de cette partie sont les suivants : \n"); //affichage des joueurs de la partie
     for(int j = 0; j<nombreDeJoueur; j++)
     {
-        if(j==0)
-        {
-            Color(4,0);
-            printf("\nJoueur num%cro %d : %s  \n Porte Monnaie : %d\n",0x82, player[j]->numeroJoueur, player[j]->prenomJoueur, player[j]->argent);
-        }
-        else if (j==1)
-        {
-            Color(6,0);
-            printf("\nJoueur num%cro %d : %s \n Porte Monnaie : %d\n ",0x82, player[j]->numeroJoueur, player[j]->prenomJoueur, player[j]->argent);
-        }
-        else if (j==2)
-        {
-            Color(9,0);
-            printf("\nJoueur num%cro %d : %s \n Porte Monnaie : %d\n",0x82, player[j]->numeroJoueur, player[j]->prenomJoueur, player[j]->argent);
-        }
-        else if (j==3)
-        {
-            Color(11,0);
-            printf("\nJoueur numero %d : %s \n Porte Monnaie : %d\n", player[j]->numeroJoueur, player[j]->prenomJoueur, player[j]->argent);
-        }
+        Color(player[j]->couleur, 0);
+        printf("Joueur numero %d : %s  \n Porte Monnaie : %d\n", player[j]->numeroJoueur, player[j]->prenomJoueur, player[j]->argent);
+
     }
+
 }
 
 int choixDuPremier(int nbJoueur)
@@ -141,41 +133,15 @@ int lancerDe(t_joueur player[NbJoueurMax][TAILLE], int de[2], int joueur)
 {
     for (int i = 0; i<=1; i++)
     {
-        de[i] = 1 + rand()%6; //récuperer une valeur entre 0 et 6
-        if(joueur==0)
-        {
-            Color(4,0);
-            printf("%s a lance un %d\n", &player[joueur]->prenomJoueur, de[i]);
-        }
-        else if (joueur==1)
-        {
-            Color(6,0);
-            printf("%s a lance un %d\n", &player[joueur]->prenomJoueur, de[i]);
-        }
-        else if (joueur==2)
-        {
-            Color(9,0);
-            printf("%s a lance un %d\n", &player[joueur]->prenomJoueur, de[i]);
-        }
-        else if (joueur==3)
-        {
-            Color(11,0);
-            printf("%s a lance un %d\n", &player[joueur]->prenomJoueur, de[i]);
-        }
+        de[i] = 1 + rand()%6; //rï¿½cuperer une valeur entre 0 et 6
+        Color(player[joueur]->couleur, 0);
+        printf("%s a lance un %d\n", &player[joueur]->prenomJoueur, de[i]);
     }
 
     int nombreDeplacement = 0;
-    nombreDeplacement = de[0] + de[1]; //somme des 2 dés pour calcule le nombre de deplacements.
+    nombreDeplacement = de[0] + de[1]; //somme des 2 dï¿½s pour calcule le nombre de deplacements.
 
 
 
 
 }
-
-char * append(char * string1, char * string2)
-{
-    char * result = NULL;
-    asprintf(&result, "%s%s", string1, string2);
-    return result;
-}
-

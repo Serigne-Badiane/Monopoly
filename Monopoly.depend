@@ -54,7 +54,7 @@
 	<windows.h>
 	"bib.h"
 
-1639477523 c:\users\edouard\documents\github\monopoly\bib.h
+1639776136 c:\users\antan\documents\github\monopoly\bib.h
 
 1639477523 source:c:\users\edouard\documents\github\monopoly\joueurs.c
 
@@ -66,7 +66,7 @@
 	<windows.h>
 	"bib.h"
 
-1639477523 source:c:\users\edouard\documents\github\monopoly\menu.c
+1639777354 source:c:\users\antan\documents\github\monopoly\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
