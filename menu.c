@@ -3,34 +3,33 @@
 #include <windows.h>
 #define Jr 20
 #define NbJoueurMax 5
-#define TAILLE 100
+#define TAILLE 200
 #include "bib.h"
 
 
 ///PROCEDURE MENU
-void menu (){
+void menu (t_joueur player[NbJoueurMax][TAILLE]){
     int menu=0;
     int J=0;
     printf("            MONOPOLY\n1.-Nouvelle Partie\n\n2.-Sauvegarder Partie en cours\n\n3.-Charger Partie\n\n4.-Regle\n\n5.-Cr%cdit\n\n",0x82);
     scanf("%d",&menu);
 
-    t_joueur player[NbJoueurMax][TAILLE];
-
     while (menu!=1&&menu!=2&&menu!=3&&menu!=4&&menu!=5)
     {
+        Color(3,0);
         printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
-        getchar();
+        scanf("%s");
         scanf("%d",&menu);
     }
 
     if (menu==5)
     {
-        printf("Serigne BADIANE\nAntany JOHNOLY JUSTIN\nLena LECORNEC\nJames LEMAITRE");
+        printf("-Serigne BADIANE\n-Antany JOHNOLY JUSTIN\n-Lena LECORNEC\n-James LEMAITRE");
         return 0;
     }
     if(menu==1)
     {
-        Color(1,0);
+        Color(3,0);
         printf("IA : Bonjour humains, ca fait longtemps que je vous attendais, vous en avez mis du temps a me trouver ! je dois vous communiquer une information grave, l'Univers est en danger et vous etes les seuls etres vivants pouvant selon moi remettre les choses dans l'ordre ici, il y a enormement de choses encore que vous ne savez pas a propos du cosmos, suivez moi nous partons avec ma fusee\n\n");
         Color(15,0);
         printf("Veuillez saisir le nombre de participants : \n");
@@ -38,7 +37,7 @@ void menu (){
         while(J>=5 || J<2)
         {
              printf("IA : il ne peut y avoir que 2 a 4 joueurs ... vous croyez que notre fus%ce peut acceuillir plus de monde ?",0x82);
-             getchar();
+             scanf("%s");
              scanf("%d", &J);
         }
 
@@ -66,7 +65,7 @@ void menu (){
     scanf("%d", &choix);
     while(choix != 1){
         printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
-        getchar();
+        scanf("%s");
         scanf("%d",&choix);
     }
 
@@ -77,6 +76,7 @@ void menu (){
     {
         deplacementCase = lancerDe(player, numeroDe, numeroTour);
         printf("%s avance de %d cases.", player[numeroTour]->prenomJoueur, deplacementCase);
+
 
     }
 

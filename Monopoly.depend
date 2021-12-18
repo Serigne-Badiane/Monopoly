@@ -4,10 +4,11 @@
 	<stdlib.h>
 	<windows.h>
 
-1639471823 source:c:\users\badia\onedrive\documents\code c\monopoly\main.c
+1639759757 source:c:\users\badia\onedrive\documents\code c\monopoly\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
+	"bib.h"
 
 1639476940 source:c:\users\lenal\documents\github\monopoly\joueurs.c
 	<stdio.h>
@@ -29,7 +30,25 @@
 
 1639477051 c:\users\lenal\documents\github\monopoly\bib.h
 
+1639755059 ated upstream
+
 1639757900 source:c:\users\edouard\documents\github\monopoly\main.c
+
+1639758763 source:c:\users\badia\onedrive\documents\code c\monopoly\joueurs.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1639755359 shed changes
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -38,6 +57,10 @@
 1639477523 c:\users\edouard\documents\github\monopoly\bib.h
 
 1639477523 source:c:\users\edouard\documents\github\monopoly\joueurs.c
+
+1639760365 c:\users\badia\onedrive\documents\code c\monopoly\bib.h
+
+1639758750 source:c:\users\badia\onedrive\documents\code c\monopoly\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -50,6 +73,8 @@
 	"bib.h"
 
 1639477523 source:c:\users\edouard\documents\github\monopoly\planetes.c
+
+1639758750 source:c:\users\badia\onedrive\documents\code c\monopoly\planetes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>

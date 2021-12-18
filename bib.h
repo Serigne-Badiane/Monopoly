@@ -9,12 +9,16 @@
 typedef struct joueur
 {
     int numeroJoueur;
+    int couleurJoueur;
     char prenomJoueur[50];
+    char proprietes [TAILLE];
     int numeroCase;
+    int prison;
     int argent;
 
 }t_joueur;
 
+char * append(char * string1, char * string2);
 
 //Sous programmes joueurs
 t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur);
@@ -29,7 +33,7 @@ void menu ();
 
 //Structures planetes et etoiles
 typedef struct {
-    char proprio [TAILLE];
+    int proprio;
     char nom [TAILLE];
     char anecdote [TAILLE];
     int couleur;
@@ -50,9 +54,9 @@ typedef struct {
 }etoile;
 
 //Procedures planetes et etoiles
-void arrivplan (planete p);
+void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur);
 void arrivetoi (etoile e);
-void mars ();
+void mars (planete *p);
 void terre ();
 void saturne ();
 void jupiter ();

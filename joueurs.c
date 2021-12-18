@@ -3,7 +3,7 @@
 #include <windows.h>
 #define Jr 20
 #define NbJoueurMax 5
-#define TAILLE 100
+#define TAILLE 200
 #include "bib.h"
 
 
@@ -28,6 +28,7 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
         if (i == 0)
         {
             Color(4,0);
+            player[i]->couleurJoueur = 4;
             printf("\n\nBienvenu cher joueur !\n\nVotre but aujourd'hui est de devenir le joueur le plus riche\n\nBonne chance !\n\n");
             printf("Indiquez votre pr%cnom\n",0x82);
 
@@ -45,6 +46,7 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
         else if (i==1)
         {
             Color(6,0);
+            player[i]->couleurJoueur = 6;
             printf("\n\nBienvenu cher joueur !\n\nVotre but aujourd'hui est de devenir le joueur le plus riche\n\nBonne chance !\n\n");
             printf("Indiquez votre pr%cnom\n",0x82);
 
@@ -62,6 +64,7 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
         else if (i==2)
         {
             Color(9,0);
+            player[i]->couleurJoueur = 9;
             printf("\n\nBienvenu cher joueur !\n\nVotre but aujourd'hui est de devenir le joueur le plus riche\n\nBonne chance !\n\n");
             printf("Indiquez votre pr%cnom\n",0x82);
 
@@ -81,6 +84,7 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
         else if (i==3)
         {
             Color(11,0);
+            player[i]->couleurJoueur = 11;
             printf("\n\nBienvenu cher joueur !\n\nVotre but aujourd'hui est de devenir le joueur le plus riche\n\nBonne chance !\n\n");
             printf("Indiquez votre pr%cnom\n",0x82);
 
@@ -100,8 +104,8 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
 
 
     }
-    Color(1,0);
-    printf("\nLes joueurs de cette partie sont les suivants : \n"); //affichage des joueurs de la partie
+    Color(3,0);
+    printf("\nIA : Les joueurs de cette partie sont les suivants : \n"); //affichage des joueurs de la partie
     for(int j = 0; j<nombreDeJoueur; j++)
     {
         if(j==0)
@@ -168,4 +172,10 @@ int lancerDe(t_joueur player[NbJoueurMax][TAILLE], int de[2], int joueur)
 
 }
 
+char * append(char * string1, char * string2)
+{
+    char * result = NULL;
+    asprintf(&result, "%s%s", string1, string2);
+    return result;
+}
 
