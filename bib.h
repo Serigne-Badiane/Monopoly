@@ -19,8 +19,6 @@ typedef struct joueur
 
 }t_joueur;
 
-char * append(char * string1, char * string2);
-
 //Sous programmes joueurs
 t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur);
 int choixDuPremier(int nbJoueur);
@@ -28,7 +26,7 @@ int lancerDe(t_joueur player[NbJoueurMax][TAILLE], int de[2], int joueur);
 
 
 ///MENU
-void menu ();
+void menu (t_joueur player[NbJoueurMax] [TAILLE]);
 
 ///PLANETES ET ETOILES
 
@@ -49,7 +47,7 @@ typedef struct {
 
 typedef struct
 {
-    char proprio [TAILLE];
+    int proprio;
     char nom [TAILLE];
     char anecdote[TAILLE];
     int couleur;
@@ -62,7 +60,7 @@ typedef struct
 }satellite;
 
 typedef struct {
-    char proprio [TAILLE];
+    int proprio ;
     char nom [TAILLE];
     char anecdote [TAILLE];
     int couleur;
@@ -75,14 +73,9 @@ typedef struct {
 }galaxie;
 
 //Procedures planetes et etoiles
-void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur);
-void arrivgalax(galaxie g);
-void mars ();
-void terre ();
-void saturne ();
-void jupiter ();
-void venus ();
-void soleil ();
+void arrivplan (planete *p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur);
+void arrivgalax (galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur);
+void arrivsat (satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur);
 
 
 #endif // BIB_H_INCLUDED

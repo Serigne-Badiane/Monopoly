@@ -3,7 +3,8 @@
 #include <windows.h>
 #define Jr 20
 #define NbJoueurMax 5
-#define TAILLE 300
+#define TAILLE 200
+#define TAILLE2 21
 #include "bib.h"
 
 
