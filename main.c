@@ -59,8 +59,21 @@ int main()
     nuageDeMagellan(&nuageDeMagellan_);
     mercure(&mercure_);
     soleil(&soleil_);
+
     arrivplan(&mars_,player,0);
     arrivplan(&mars_,player,1);
+
+        //si vous voulez tester:
+    /*arrivsat(&lune_, player, 0);
+    arrivsat(&lune_, player, 1);
+
+    arrivplan(&terre_, player, 0);
+    terre_.maison = 3;
+    arrivplan(&terre_, player, 1);
+
+    arrivgalax(&voieLactee_, player, 0);
+    player[0]->nbDeGare = 3;
+    arrivgalax(&voieLactee_, player, 1);*/
 
     return 0;
 }

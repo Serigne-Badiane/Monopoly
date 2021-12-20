@@ -4,6 +4,7 @@
 #define Jr 20
 #define NbJoueurMax 5
 #define TAILLE 200
+
 #include "bib.h"
 
 
@@ -21,6 +22,10 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         Color(15,0);
         printf("\n                          Prix d'achat : %d",p->prix);
         printf("\n                          Prix loyer actuel : %d",p->loyer);
+        printf("\n                              Prix loyer avec 1 maison : %d",p->loyer1);
+        printf("\n                              Prix loyer avec 2 maisons : %d",p->loyer2);
+        printf("\n                              Prix loyer avec 3 maisons : %d",p->loyer3);
+        printf("\n                              Prix loyer avec 4 maisons : %d",p->loyer4);
         printf("\n                          Prix hypoth%cquaire : %d",0x82,p->p_hypo);
         if (p->p_hypo == 4){
             p->maison = 0;
@@ -49,9 +54,16 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
             p->proprio = player[tourjoueur]->numeroJoueur;
             strcat(player[tourjoueur]->proprietes,p->nom);
             strcat(player[tourjoueur]->proprietes,",");
-            printf("IA : BRAVO %s! Vous avez aquis une nouvelle planete ...",player[tourjoueur]->prenomJoueur);
+
+            player[tourjoueur]->argent -= p->prix;
+            printf("IA : BRAVO %s! Vous avez aquis une nouvelle planete ...\n",player[tourjoueur]->prenomJoueur);
+            Color(player[tourjoueur]->couleur, 0);
+            printf("%s, Porte Monnaie : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
+
 
         }
+
+
         else {
             printf("IA : Fin de tour ...");
         }
@@ -63,8 +75,6 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         printf("%s",player[p->proprio - 1]->prenomJoueur);
         Color(3,0);
         printf("... Vous devez lui payer son loyer !");
-        player[tourjoueur]->argent -= p->loyer;
-        player[p->proprio - 1]->argent += p->loyer;
         Color(player[tourjoueur]->couleur,0);
         printf("\n%s",player[tourjoueur]->prenomJoueur);
         Color(3,0);
@@ -72,7 +82,42 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         Color(player[p->proprio - 1]->couleur,0);
         printf("%s",player[p->proprio - 1]->prenomJoueur);
         Color(3,0);
-        printf(" %d euros...",p->loyer);
+        if(p->maison == 0){
+            player[tourjoueur]->argent -= p->loyer;
+            player[p->proprio - 1]->argent += p->loyer;
+            printf(" %d euros...",p->loyer);
+        }
+        else if (p->maison == 1){
+            player[tourjoueur]->argent -= p->loyer1;
+            player[p->proprio - 1]->argent += p->loyer1;
+            printf(" %d euros...",p->loyer1);
+        }
+        else if (p->maison == 2){
+            player[tourjoueur]->argent -= p->loyer2;
+            player[p->proprio - 1]->argent += p->loyer2;
+            printf(" %d euros...",p->loyer2);
+        }
+        else if (p->maison == 3){
+            player[tourjoueur]->argent -= p->loyer3;
+            player[p->proprio - 1]->argent += p->loyer3;
+            printf(" %d euros...",p->loyer3);
+        }
+        else if(p->maison == 4){
+            player[tourjoueur]->argent -= p->loyer4;
+            player[p->proprio - 1]->argent += p->loyer4;
+            printf(" %d euros...",p->loyer4);
+        }
+
+        Color(player[p->proprio-1]->couleur, 0);
+        printf("%s, Porte Monnaie : %d\n", player[p->proprio-1]->prenomJoueur, player[p->proprio - 1]->argent);
+
+        Color(player[tourjoueur]->couleur, 0);
+        printf("%s, Porte Monnaire : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
+
+
+
+
+
 
     }
 }
@@ -88,8 +133,6 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         printf("%s",player[g->proprio - 1]->prenomJoueur);
         Color(3,0);
         printf("... Vous devez lui payer son loyer !");
-        player[tourjoueur]->argent -= g->loyer;
-        player[g->proprio - 1]->argent += g->loyer;
         Color(player[tourjoueur]->couleur,0);
         printf("\n%s",player[tourjoueur]->prenomJoueur);
         Color(3,0);
@@ -97,7 +140,34 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         Color(player[g->proprio - 1]->couleur,0);
         printf("%s",player[g->proprio - 1]->prenomJoueur);
         Color(3,0);
-        printf(" %d euros...",g->loyer);
+
+
+        if(player[g->proprio - 1]->nbDeGare == 1){
+            player[tourjoueur]->argent -= g->loyer;
+            player[g->proprio - 1]->argent += g->loyer;
+            printf(" %d euros...",g->loyer);
+        }
+        else if (player[g->proprio - 1]->nbDeGare == 2){
+            player[tourjoueur]->argent -= g->loyer1;
+            player[g->proprio - 1]->argent += g->loyer1;
+            printf(" %d euros...",g->loyer1);
+        }
+        else if (player[g->proprio - 1]->nbDeGare == 3){
+            player[tourjoueur]->argent -= g->loyer2;
+            player[g->proprio - 1]->argent += g->loyer2;
+            printf(" %d euros...",g->loyer2);
+        }
+        else if (player[g->proprio - 1]->nbDeGare == 4){
+            player[tourjoueur]->argent -= g->loyer3;
+            player[g->proprio - 1]->argent += g->loyer3;
+            printf(" %d euros...",g->loyer3);
+        }
+
+        Color(player[g->proprio-1]->couleur, 0);
+        printf("%s, Porte Monnaie : %d\n", player[g->proprio-1]->prenomJoueur, player[g->proprio - 1]->argent);
+
+        Color(player[tourjoueur]->couleur, 0);
+        printf("%s, Porte Monnaire : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
 
     }
     else{
@@ -110,6 +180,9 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         Color(15,0);
         printf("\n                          Prix d'achat : %d",g->prix);
         printf("\n                          Prix loyer actuel : %d",g->loyer);
+        printf("\n                              Prix loyer avec 2 galaxie : %d",g->loyer1);
+        printf("\n                              Prix loyer avec 3 galaxie : %d",g->loyer2);
+        printf("\n                              Prix loyer avec 4 galaxie : %d",g->loyer3);
         printf("\n                          Prix hypoth%cquaire : %d",0x82,g->p_hypo);
         Color(3,0);
         printf("\nIA : La galaxie est libre d'achat, souhaitez-vous l'acheter ?\n ");
@@ -132,7 +205,13 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
             g->proprio = player[tourjoueur]->numeroJoueur;
             strcat(player[tourjoueur]->proprietes,g->nom);
             strcat(player[tourjoueur]->proprietes,",");
+            player[tourjoueur]->argent -= g->prix;
             printf("IA : BRAVO %s! Vous avez aquis une nouvelle galaxie ...",player[tourjoueur]->prenomJoueur);
+            player[tourjoueur]->nbDeGare += 1; //pour les gares, nous n'avons de maisons. Donc on compte les nombres de gares possédes;
+            Color(player[tourjoueur]->couleur, 0);
+            printf("%s, Porte Monnaie : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
+
+
 
         }
         else {
@@ -145,6 +224,7 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
 void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
 {
     Color(3,0);
+
     printf("\n\n%cIA : Nous sommes arriv%cs sur un nouveaux satellite ...  %s !",0x10,0x82,s->nom);
 
     if (s->proprio == player[0]->numeroJoueur || s->proprio == player[1]->numeroJoueur || s->proprio == player[2]->numeroJoueur || s->proprio == player[3]->numeroJoueur){
@@ -154,8 +234,6 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
         printf("%s",player[s->proprio - 1]->prenomJoueur);
         Color(3,0);
         printf("... Vous devez lui payer son loyer !");
-        player[tourjoueur]->argent -= s->loyer;
-        player[s->proprio - 1]->argent += s->loyer;
         Color(player[tourjoueur]->couleur,0);
         printf("\n%s",player[tourjoueur]->prenomJoueur);
         Color(3,0);
@@ -163,7 +241,38 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
         Color(player[s->proprio - 1]->couleur,0);
         printf("%s",player[s->proprio - 1]->prenomJoueur);
         Color(3,0);
-        printf(" %d euros...",s->loyer);
+        if(s->maison == 0){
+            player[tourjoueur]->argent -= s->loyer;
+            player[s->proprio - 1]->argent += s->loyer;
+            printf(" %d euros...",s->loyer);
+        }
+        else if (s->maison == 1){
+            player[tourjoueur]->argent -= s->loyer1;
+            player[s->proprio - 1]->argent += s->loyer1;
+            printf(" %d euros...",s->loyer1);
+        }
+        else if (s->maison == 2){
+            player[tourjoueur]->argent -= s->loyer2;
+            player[s->proprio - 1]->argent += s->loyer2;
+            printf(" %d euros...",s->loyer2);
+        }
+        else if (s->maison == 3){
+            player[tourjoueur]->argent -= s->loyer3;
+            player[s->proprio - 1]->argent += s->loyer3;
+            printf(" %d euros...",s->loyer3);
+        }
+        else if(s->maison == 4){
+            player[tourjoueur]->argent -= s->loyer4;
+            player[s->proprio- 1]->argent += s->loyer4;
+            printf(" %d euros...", s->loyer4);
+            printf("%d\n", player[s->proprio - 1]->argent);
+            printf("%d", player[tourjoueur]->argent);
+        }
+        Color(player[s->proprio-1]->couleur, 0);
+        printf("%s, Porte Monnaie : %d\n", player[s->proprio-1]->prenomJoueur, player[s->proprio - 1]->argent);
+
+        Color(player[tourjoueur]->couleur, 0);
+        printf("%s, Porte Monnaire : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
 
     }
     else{
@@ -178,6 +287,10 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
         printf("\n                          Prix d'achat : %d",s->prix);
         printf("\n                          Prix d'une maison : %d",s->prixMaison);
         printf("\n                          Prix loyer actuel : %d",s->loyer);
+        printf("\n                              Prix loyer avec 1 maison : %d",s->loyer1);
+        printf("\n                              Prix loyer avec 2 maisons : %d",s->loyer2);
+        printf("\n                              Prix loyer avec 3 maisons : %d",s->loyer3);
+        printf("\n                              Prix loyer avec 4 maisons : %d",s->loyer4);
         printf("\n                          Prix hypoth%cquaire : %d",0x82,s->p_hypo);
         if (s->maison == 4){
             s->hotel = 1;
@@ -205,7 +318,11 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
             s->proprio = player[tourjoueur]->numeroJoueur;
             strcat(player[tourjoueur]->proprietes,s->nom);
             strcat(player[tourjoueur]->proprietes,",");
+            player[tourjoueur]->argent -= s->prix;
             printf("IA : BRAVO %s! Vous avez aquis un nouveau satellite ...",player[tourjoueur]->prenomJoueur);
+            printf("IA : BRAVO %s! Vous avez aquis une nouvelle galaxie ...",player[tourjoueur]->prenomJoueur);
+            Color(player[tourjoueur]->couleur, 0);
+            printf("%s, Porte Monnaie : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
 
         }
         else {
@@ -226,6 +343,11 @@ void lune(satellite* lune)
     strcpy(lune->anecdote, anecdotes);
 
     lune->loyer = 2;
+    lune->loyer1 = 10;
+    lune->loyer2 = 30;
+    lune->loyer3 = 90;
+    lune->loyer4 = 160;
+
     lune->prixMaison = 50;
     lune->p_hypo = 30 ;
     lune->couleur = 5;
@@ -241,6 +363,10 @@ void terre (planete* terre){
     strcpy (terre->anecdote , anecdotes);
 
     terre->loyer = 4;
+    terre->loyer1 = 20;
+    terre->loyer2 = 60;
+    terre->loyer3 = 180;
+    terre->loyer4 = 320;
     terre->prixMaison = 50;
     terre->p_hypo = 30;
     terre->couleur = 5;
@@ -258,6 +384,9 @@ void voieLactee(galaxie* voieLactee)
     strcpy(voieLactee->anecdote, anecdotes);
 
     voieLactee->loyer = 25;
+    voieLactee->loyer1 = 50;
+    voieLactee->loyer2 = 100;
+    voieLactee->loyer3 = 200;
     voieLactee->p_hypo = 100;
     voieLactee->couleur = 8;
 
@@ -274,6 +403,10 @@ void phobos(satellite* phobos)
     strcpy(phobos->anecdote, anecdotes);
 
     phobos->loyer = 6;
+    phobos->loyer1 = 30;
+    phobos->loyer2 = 90;
+    phobos->loyer3 = 270;
+    phobos->loyer4 = 400;
     phobos->prixMaison = 50;
     phobos->p_hypo = 50;
     phobos->couleur = 3;
@@ -290,6 +423,10 @@ void mars (planete* mars){
     char anecdotes [] = "La 1re personne a avoir observe Mars au telescope fut l'astronome Galilee.Ce n'est qu'avec l'envoi de la premiere sonde autour de Mars, en 1965, qu on a su que les planete etait inhabitee." ;
     strcpy (mars->anecdote , anecdotes);
     mars->loyer = 8;
+    mars->loyer1 = 40;
+    mars->loyer2 = 100;
+    mars->loyer3 = 300;
+    mars->loyer4 = 450;
     mars->p_hypo = 50;
     mars->couleur = 3;
     mars->prixMaison = 50;
@@ -306,6 +443,10 @@ void ganymede(satellite* ganymede)
     strcpy(ganymede->anecdote, anecdotes);
 
     ganymede->loyer = 10;
+    ganymede->loyer1 = 50;
+    ganymede->loyer2 = 150;
+    ganymede->loyer3 = 450;
+    ganymede->loyer4 = 625;
     ganymede->prixMaison = 100;
     ganymede->p_hypo = 70;
     ganymede->couleur = 13;
@@ -322,10 +463,13 @@ void callisto(satellite* callisto)
     strcpy(callisto->anecdote, anecdotes);
 
     callisto->loyer = 12;
+    callisto->loyer1 = 60;
+    callisto->loyer2 = 180;
+    callisto->loyer3 = 500;
+    callisto->loyer4 = 700;
     callisto->prixMaison = 100;
     callisto->p_hypo = 80;
     callisto->couleur = 13;
-
 }
 
 void andromede(galaxie* andromede)
@@ -338,6 +482,9 @@ void andromede(galaxie* andromede)
     strcpy(andromede->anecdote, anecdotes);
 
     andromede->loyer = 25;
+    andromede->loyer1 = 50;
+    andromede->loyer2 = 100;
+    andromede->loyer3 = 200;
     andromede->p_hypo = 100;
     andromede->couleur = 8;
 
@@ -354,6 +501,10 @@ void io(satellite* io)
     strcpy(io->anecdote, anecdotes);
 
     io->loyer = 14;
+    io->loyer1 = 70;
+    io->loyer2 = 200;
+    io->loyer3 = 550;
+    io->loyer4 = 750;
     io->prixMaison = 100;
     io->p_hypo = 90;
     io->couleur = 6;
@@ -369,6 +520,10 @@ void jupiter (planete* jupiter){
     strcpy (jupiter->anecdote , anecdotes);
 
     jupiter->loyer = 16;
+    jupiter->loyer1 = 80;
+    jupiter->loyer2 = 220;
+    jupiter->loyer3 = 600;
+    jupiter->loyer4 = 800;
     jupiter->p_hypo = 100;
     jupiter->couleur = 6;
     jupiter->prixMaison = 100;
@@ -385,6 +540,10 @@ void titan(satellite* titan)
     strcpy(titan->anecdote, anecdotes);
 
     titan->loyer = 18;
+    titan->loyer1 = 90;
+    titan->loyer2 = 250;
+    titan->loyer3 = 700;
+    titan->loyer4 = 875;
     titan->prixMaison = 150;
     titan->p_hypo = 110;
     titan->couleur = 4;
@@ -399,7 +558,12 @@ void saturne (planete* saturne){
     strcpy (saturne->nom ,noms);
     char anecdotes [] = "Saturne, deuxieme plus grande planete du systeme solaire apres Jupiter, a une masse volumique moyenne bien inferieure a celle de l eau (0,69 g/cm3).\nCette particularite physique etonnante signifie que si l on disposait d'une immense baignoire sur laquelle on pouvait la poser, elle y flotterait.";
     strcpy (saturne->anecdote , anecdotes);
+
     saturne->loyer = 20;
+    saturne->loyer1 = 100;
+    saturne->loyer2 = 300;
+    saturne->loyer3 = 750;
+    saturne->loyer4 = 925;
     saturne->p_hypo = 120;
     saturne->couleur = 4;
     saturne->prixMaison = 150;
@@ -416,6 +580,9 @@ void tetard(galaxie* tetard)
     strcpy(tetard->anecdote, anecdotes);
 
     tetard->loyer = 25;
+    tetard->loyer1 = 50;
+    tetard->loyer2 = 100;
+    tetard->loyer3 = 200;
     tetard->p_hypo = 100;
     tetard->couleur = 8;
 
@@ -430,6 +597,10 @@ void pluton(planete* pluton)
     char anecdotes [] = "Pluton a ete decouverte en 1930 et a ete considere comme la 9e planete du Systeme Solaire. Mais a la fin du XXe, d'autres objets similaires ont ete decouvert, d'ou la creation de la categorie de planetes naines. Pluton est donc une planete naine.";
     strcpy (pluton->anecdote , anecdotes);
     pluton->loyer = 22;
+    pluton->loyer1 = 110;
+    pluton->loyer2 = 330;
+    pluton->loyer3 = 800;
+    pluton->loyer4 = 975;
     pluton->p_hypo = 130;
     pluton->couleur = 14;
     pluton->prixMaison = 150;
@@ -445,6 +616,10 @@ void neptune(planete* neptune)
     char anecdotes [] = "Neptune est la derniere planete de notre Systeme Solaire. Son nom vient du dieu romain des oceans, Neptune. Elle met 165 ans a realise un tour complet au tour du Soleil !";
     strcpy (neptune->anecdote , anecdotes);
     neptune->loyer = 24;
+    neptune->loyer1 = 120;
+    neptune->loyer2 = 360;
+    neptune->loyer3 = 850;
+    neptune->loyer4 = 1025;
     neptune->p_hypo = 140;
     neptune->couleur = 14;
     neptune->prixMaison = 150;
@@ -460,6 +635,10 @@ void venus (planete* venus){
     char anecdotes [] = "Avec une moyenne de 462 C, Venus possede en surface la temperature la plus elevee du Systeme solaire, alors qu'elle n est que la deuxieme planete la plus proche du Soleil.";
     strcpy (venus->anecdote , anecdotes);
     venus->loyer = 26;
+    venus->loyer1 = 130;
+    venus->loyer2 = 390;
+    venus->loyer3 = 900;
+    venus->loyer4 = 1100;
     venus->p_hypo = 150;
     venus->couleur = 2;
     venus->prixMaison = 200;
@@ -474,6 +653,10 @@ void uranus(planete* uranus){
     char anecdotes [] = "Uranus est la premiere planete decouverte a l'aide d'un telescope. Elle tient son nom du dieu du ciel, Ouranos, l'une des divinites primordiales de la mythologie grecque.";
     strcpy (uranus->anecdote , anecdotes);
     uranus->loyer = 28;
+    uranus->loyer1 = 150;
+    uranus->loyer2 = 450;
+    uranus->loyer3 = 1000;
+    uranus->loyer4 = 1200;
     uranus->p_hypo = 160;
     uranus->couleur = 2;
     uranus->prixMaison = 200;
@@ -490,6 +673,9 @@ void nuageDeMagellan(galaxie* nuageDeMagellan)
     strcpy(nuageDeMagellan->anecdote, anecdotes);
 
     nuageDeMagellan->loyer = 25;
+    nuageDeMagellan->loyer1 = 50;
+    nuageDeMagellan->loyer2 = 100;
+    nuageDeMagellan->loyer3 = 200;
     nuageDeMagellan->p_hypo = 100;
     nuageDeMagellan->couleur = 8;
 
@@ -505,6 +691,10 @@ void mercure(planete* mercure)
     char anecdotes [] = "Mercure est la planete la plus proche du systeme solaire, il y fait une temperature moyenne de 167 degres pouvant montant jusqu'a 427 degres ! Elle est 3 fois plus petite que notre Terre mais egalement 20 moins massive.";
     strcpy (mercure->anecdote , anecdotes);
     mercure->loyer = 35;
+    mercure->loyer1 = 175;
+    mercure->loyer2 = 500;
+    mercure->loyer3 = 1100;
+    mercure->loyer4 = 1300;
     mercure->p_hypo = 175;
     mercure->couleur = 1;
     mercure->prixMaison = 200;
@@ -521,6 +711,10 @@ void soleil (planete* soleil){
     char anecdotes [] = "Dans environ cinq milliards d'annees, le Soleil gonflera pour devenir une geante rouge, avalant du meme coup les planetes Mercure, Venus, la Terre et Mars.";
     strcpy (soleil->anecdote , anecdotes);
     soleil->loyer = 50;
+    soleil->loyer1 = 200;
+    soleil->loyer2 = 600;
+    soleil->loyer3 = 1400;
+    soleil->loyer4 = 1700;
     soleil->p_hypo = 200;
     soleil->couleur = 1;
     soleil->prixMaison = 200;

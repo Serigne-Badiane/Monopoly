@@ -16,6 +16,7 @@ typedef struct joueur
     int prison;
     int couleur;
     int argent;
+    int nbDeGare;
 
 }t_joueur;
 
@@ -35,10 +36,14 @@ void menu (t_joueur player[NbJoueurMax] [TAILLE]);
 typedef struct {
     int proprio;
     char nom [TAILLE];
-    char anecdote [TAILLE];
+    char anecdote [300];
     int couleur;
     int prix;
     int loyer;
+    int loyer1;
+    int loyer2;
+    int loyer3;
+    int loyer4;
     int p_hypo;
     int prixMaison;
     int maison;
@@ -49,10 +54,14 @@ typedef struct
 {
     int proprio;
     char nom [TAILLE];
-    char anecdote[TAILLE];
+    char anecdote[300];
     int couleur;
     int prix;
     int loyer;
+    int loyer1;
+    int loyer2;
+    int loyer3;
+    int loyer4;
     int p_hypo;
     int prixMaison;
     int maison;
@@ -62,10 +71,13 @@ typedef struct
 typedef struct {
     int proprio ;
     char nom [TAILLE];
-    char anecdote [TAILLE];
+    char anecdote [300];
     int couleur;
     int prix;
     int loyer;
+    int loyer1;
+    int loyer2;
+    int loyer3;
     int p_hypo;
     int maison;
     int hotel;
