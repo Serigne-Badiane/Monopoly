@@ -26,14 +26,12 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         printf("\n                              Prix loyer avec 2 maisons : %d",p->loyer2);
         printf("\n                              Prix loyer avec 3 maisons : %d",p->loyer3);
         printf("\n                              Prix loyer avec 4 maisons : %d",p->loyer4);
+        printf("\n                              Prix loyer avec 1 hotel : %d",p->loyerHotel);
+
         printf("\n                          Prix d'une maison : %d",p->prixMaison);
+        printf("\n                          Prix d'un hotel : %d",p->prixMaison);
         printf("\n                          Prix hypoth%cquaire : %d",0x82,p->p_hypo);
-        if (p->p_hypo == 4){
-            p->maison = 0;
-            p->hotel = 1;
-            printf("\n                          Nombre d'hotel : %d",p->hotel);
-        }
-        printf("\n                          Nombre de maisons : %d",p->maison);
+
         Color(3,0);
         printf("\nIA : La planete est libre d'achat, souhaitez-vous l'acheter ?\n ");
         printf("                                  ");
@@ -71,15 +69,19 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
 
     }
 
+    //achat des maisons
     else if(player[p->proprio - 1]->prenomJoueur == player[tourjoueur]->prenomJoueur){
         Color(15,0);
         printf("\n                          Nombre de maisons : %d",p->maison);
+        printf("\n                          Nombre d'hotels : %d",p->hotel);
         printf("\n                          Prix d'une maison : %d",p->prixMaison);
         printf("\n                          Prix loyer actuel : %d",p->loyer);
         printf("\n                              Prix loyer avec 1 maison : %d",p->loyer1);
         printf("\n                              Prix loyer avec 2 maisons : %d",p->loyer2);
         printf("\n                              Prix loyer avec 3 maisons : %d",p->loyer3);
         printf("\n                              Prix loyer avec 4 maisons : %d",p->loyer4);
+        printf("\n                              Prix loyer avec 1 hotel : %d",p->loyerHotel);
+
         printf("                                  ");
         Color(3,0);
         printf("\nIA : Re-bonjour ");
@@ -103,9 +105,38 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
             scanf("%d",&choix);
         }
         if(choix == 1){
-            printf("Vous avez achete une maison, felicitations !");
+            printf("Vous avez achete une maison, felicitations !\n");
             player[tourjoueur]->argent -= p->prixMaison;
             p->maison += 1;
+
+            //placement des hotels
+            if (p->maison == 4){
+                printf("Vous possedez 4 maisons. Voulez-vous les remplacer par un hotel ?\n ");
+                printf("                                  ");
+                Color(10,0);
+                printf("1.OUI");
+                printf("                                  ");
+                Color(12,0);
+                printf("2.NON\n");
+                Color(15,0);
+                int choix2;
+                scanf("%d", &choix2);
+                while( choix != 1 && choix != 2){
+                    printf("IA : Saisie incorrect\n");
+                    getchar();
+                    scanf("%d",&choix);
+                }
+                if(choix2 == 1){
+                    p->maison = 0;
+                    p->hotel = 1;
+                    Color(3,0);
+                    printf("Vous avez achete un hotel, felicitations !");
+                    player[tourjoueur]->argent -= p->prixMaison;
+                    printf("%d", player[tourjoueur]->argent);
+
+                }
+
+            }
         }
 
 
@@ -114,11 +145,15 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
     else{
         Color(15,0);
         printf("\n                          Nombre de maisons : %d",p->maison);
+        printf("\n                          Nombre d'hotels : %d",p->hotel);
         printf("\n                          Prix loyer actuel : %d",p->loyer);
         printf("\n                              Prix loyer avec 1 maison : %d",p->loyer1);
         printf("\n                              Prix loyer avec 2 maisons : %d",p->loyer2);
         printf("\n                              Prix loyer avec 3 maisons : %d",p->loyer3);
         printf("\n                              Prix loyer avec 4 maisons : %d",p->loyer4);
+        printf("\n                              Prix loyer avec 1 hotel : %d",p->loyerHotel);
+
+
         printf("                                  ");
         Color(3,0);
         printf("\nIA : La planete appartient a ");
@@ -133,7 +168,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         Color(player[p->proprio - 1]->couleur,0);
         printf("%s",player[p->proprio - 1]->prenomJoueur);
         Color(3,0);
-        if(p->maison == 0){
+        if(p->maison == 0 && p->hotel == 0){
             player[tourjoueur]->argent -= p->loyer;
             player[p->proprio - 1]->argent += p->loyer;
             printf(" %d euros...",p->loyer);
@@ -157,6 +192,11 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
             player[tourjoueur]->argent -= p->loyer4;
             player[p->proprio - 1]->argent += p->loyer4;
             printf(" %d euros...",p->loyer4);
+        }
+        else if(p->hotel == 1){
+            player[tourjoueur]->argent -= p->loyerHotel;
+            player[p->proprio - 1] ->argent += p->loyerHotel;
+            printf(" %d euros...", p->loyerHotel);
         }
 
         Color(player[p->proprio-1]->couleur, 0);
@@ -287,12 +327,15 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
     if(player[s->proprio - 1]->prenomJoueur == player[tourjoueur]->prenomJoueur){
         Color(15,0);
         printf("\n                          Nombre de maisons : %d",s->maison);
+        printf("\n                          Nombre d'hotels : %d",s->hotel);
         printf("\n                          Prix d'une maison : %d",s->prixMaison);
         printf("\n                          Prix loyer actuel : %d",s->loyer);
         printf("\n                              Prix loyer avec 1 maison : %d",s->loyer1);
         printf("\n                              Prix loyer avec 2 maisons : %d",s->loyer2);
         printf("\n                              Prix loyer avec 3 maisons : %d",s->loyer3);
         printf("\n                              Prix loyer avec 4 maisons : %d",s->loyer4);
+        printf("\n                              Prix loyer avec 1 hotel : %d",s->loyerHotel);
+
         printf("                                  ");
         Color(3,0);
         printf("\nIA : Re-bonjour ");
@@ -319,6 +362,34 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
             printf("Vous avez achete une maison, felicitations !");
             player[tourjoueur]->argent -= s->prixMaison;
             s->maison += 1;
+
+            //placement des hotels
+            if (s->maison == 4){
+                printf("Vous possedez 4 maisons. Voulez-vous les remplacer par un hotel ?\n ");
+                printf("                                  ");
+                Color(10,0);
+                printf("1.OUI");
+                printf("                                  ");
+                Color(12,0);
+                printf("2.NON\n");
+                Color(15,0);
+                int choix2;
+                scanf("%d", &choix2);
+                while( choix != 1 && choix != 2){
+                    printf("IA : Saisie incorrect\n");
+                    getchar();
+                    scanf("%d",&choix);
+                }
+                if(choix2 == 1){
+                    s->maison = 0;
+                    s->hotel = 1;
+                    Color(3,0);
+                    printf("Vous avez achete un hotel, felicitations !");
+                    player[tourjoueur]->argent -= s->prixMaison;
+
+
+                }
+            }
         }
     }
 
@@ -330,6 +401,8 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
         printf("\n                              Prix loyer avec 2 maisons : %d",s->loyer2);
         printf("\n                              Prix loyer avec 3 maisons : %d",s->loyer3);
         printf("\n                              Prix loyer avec 4 maisons : %d",s->loyer4);
+        printf("\n                              Prix loyer avec 1 hotel : %d",s->loyerHotel);
+
         printf("                                  ");
         Color(3,0);
         printf("\nIA : Le satellite appartient a ");
@@ -345,7 +418,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
         printf("%s",player[s->proprio - 1]->prenomJoueur);
         Color(3,0);
 
-        if(s->maison == 0){
+        if(s->maison == 0 && s->hotel == 0){
             player[tourjoueur]->argent -= s->loyer;
             player[s->proprio - 1]->argent += s->loyer;
             printf(" %d euros...",s->loyer);
@@ -369,8 +442,13 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
             player[tourjoueur]->argent -= s->loyer4;
             player[s->proprio- 1]->argent += s->loyer4;
             printf(" %d euros...", s->loyer4);
-            printf("%d\n", player[s->proprio - 1]->argent);
-            printf("%d", player[tourjoueur]->argent);
+
+        }
+        else if(s->hotel == 1){
+            player[tourjoueur]->argent -= s->loyerHotel;
+            player[s->proprio- 1]->argent += s->loyerHotel;
+            printf(" %d euros...", s->loyerHotel);
+
         }
         Color(player[s->proprio-1]->couleur, 0);
         printf("%s, Porte Monnaie : %d\n", player[s->proprio-1]->prenomJoueur, player[s->proprio - 1]->argent);
@@ -390,18 +468,16 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
         Color(15,0);
 
         printf("\n                          Prix d'achat : %d",s->prix);
-        printf("\n                          Prix d'une maison : %d",s->prixMaison);
         printf("\n                          Prix loyer actuel : %d",s->loyer);
         printf("\n                              Prix loyer avec 1 maison : %d",s->loyer1);
         printf("\n                              Prix loyer avec 2 maisons : %d",s->loyer2);
         printf("\n                              Prix loyer avec 3 maisons : %d",s->loyer3);
         printf("\n                              Prix loyer avec 4 maisons : %d",s->loyer4);
+        printf("\n                              Prix loyer avec 1 hotel : %d",s->loyerHotel);
+
+        printf("\n                          Prix d'une maison : %d",s->prixMaison);
+        printf("\n                          Prix d'un hotel : %d",s->prixMaison);
         printf("\n                          Prix hypoth%cquaire : %d",0x82,s->p_hypo);
-        if (s->maison == 4){
-            s->hotel = 1;
-            printf("\n                          Nombre d'hotel : %d",s->hotel);
-        }
-        printf("\n                          Nombre de maisons : %d",s->maison);
         Color(3,0);
         printf("\nIA : Le satellite est libre d'achat, souhaitez-vous l'acheter ?\n ");
         printf("                      ");
@@ -425,7 +501,6 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
             strcat(player[tourjoueur]->proprietes,",");
             player[tourjoueur]->argent -= s->prix;
             printf("IA : BRAVO %s! Vous avez aquis un nouveau satellite ...",player[tourjoueur]->prenomJoueur);
-            printf("IA : BRAVO %s! Vous avez aquis une nouvelle galaxie ...",player[tourjoueur]->prenomJoueur);
             Color(player[tourjoueur]->couleur, 0);
             printf("%s, Porte Monnaie : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
 
@@ -452,6 +527,8 @@ void lune(satellite* lune)
     lune->loyer2 = 30;
     lune->loyer3 = 90;
     lune->loyer4 = 160;
+    lune->loyerHotel = 250;
+    printf("%d", lune->loyerHotel);
 
     lune->prixMaison = 50;
     lune->p_hypo = 30 ;
@@ -472,6 +549,7 @@ void terre (planete* terre){
     terre->loyer2 = 60;
     terre->loyer3 = 180;
     terre->loyer4 = 320;
+    terre->loyerHotel = 450;
     terre->prixMaison = 50;
     terre->p_hypo = 30;
     terre->couleur = 5;
@@ -512,6 +590,7 @@ void phobos(satellite* phobos)
     phobos->loyer2 = 90;
     phobos->loyer3 = 270;
     phobos->loyer4 = 400;
+    phobos->loyerHotel = 550;
     phobos->prixMaison = 50;
     phobos->p_hypo = 50;
     phobos->couleur = 3;
@@ -532,6 +611,7 @@ void mars (planete* mars){
     mars->loyer2 = 100;
     mars->loyer3 = 300;
     mars->loyer4 = 450;
+    mars->loyerHotel = 600;
     mars->p_hypo = 50;
     mars->couleur = 3;
     mars->prixMaison = 50;
@@ -552,6 +632,7 @@ void ganymede(satellite* ganymede)
     ganymede->loyer2 = 150;
     ganymede->loyer3 = 450;
     ganymede->loyer4 = 625;
+    ganymede->loyerHotel = 750;
     ganymede->prixMaison = 100;
     ganymede->p_hypo = 70;
     ganymede->couleur = 13;
@@ -572,6 +653,7 @@ void callisto(satellite* callisto)
     callisto->loyer2 = 180;
     callisto->loyer3 = 500;
     callisto->loyer4 = 700;
+    callisto->loyerHotel = 900;
     callisto->prixMaison = 100;
     callisto->p_hypo = 80;
     callisto->couleur = 13;
@@ -610,6 +692,7 @@ void io(satellite* io)
     io->loyer2 = 200;
     io->loyer3 = 550;
     io->loyer4 = 750;
+    io->loyerHotel = 950;
     io->prixMaison = 100;
     io->p_hypo = 90;
     io->couleur = 6;
@@ -629,6 +712,7 @@ void jupiter (planete* jupiter){
     jupiter->loyer2 = 220;
     jupiter->loyer3 = 600;
     jupiter->loyer4 = 800;
+    jupiter->loyerHotel = 1000;
     jupiter->p_hypo = 100;
     jupiter->couleur = 6;
     jupiter->prixMaison = 100;
@@ -649,6 +733,7 @@ void titan(satellite* titan)
     titan->loyer2 = 250;
     titan->loyer3 = 700;
     titan->loyer4 = 875;
+    titan->loyerHotel = 1050;
     titan->prixMaison = 150;
     titan->p_hypo = 110;
     titan->couleur = 4;
@@ -669,6 +754,7 @@ void saturne (planete* saturne){
     saturne->loyer2 = 300;
     saturne->loyer3 = 750;
     saturne->loyer4 = 925;
+    saturne->loyerHotel = 1100;
     saturne->p_hypo = 120;
     saturne->couleur = 4;
     saturne->prixMaison = 150;
@@ -706,6 +792,7 @@ void pluton(planete* pluton)
     pluton->loyer2 = 330;
     pluton->loyer3 = 800;
     pluton->loyer4 = 975;
+    pluton->loyerHotel = 1150;
     pluton->p_hypo = 130;
     pluton->couleur = 14;
     pluton->prixMaison = 150;
@@ -725,6 +812,7 @@ void neptune(planete* neptune)
     neptune->loyer2 = 360;
     neptune->loyer3 = 850;
     neptune->loyer4 = 1025;
+    neptune->loyerHotel = 1200;
     neptune->p_hypo = 140;
     neptune->couleur = 14;
     neptune->prixMaison = 150;
@@ -744,6 +832,7 @@ void venus (planete* venus){
     venus->loyer2 = 390;
     venus->loyer3 = 900;
     venus->loyer4 = 1100;
+    venus->loyerHotel = 1275;
     venus->p_hypo = 150;
     venus->couleur = 2;
     venus->prixMaison = 200;
@@ -762,6 +851,7 @@ void uranus(planete* uranus){
     uranus->loyer2 = 450;
     uranus->loyer3 = 1000;
     uranus->loyer4 = 1200;
+    uranus->loyerHotel = 1400;
     uranus->p_hypo = 160;
     uranus->couleur = 2;
     uranus->prixMaison = 200;
@@ -800,6 +890,7 @@ void mercure(planete* mercure)
     mercure->loyer2 = 500;
     mercure->loyer3 = 1100;
     mercure->loyer4 = 1300;
+    mercure->loyerHotel = 1500;
     mercure->p_hypo = 175;
     mercure->couleur = 1;
     mercure->prixMaison = 200;
@@ -820,6 +911,7 @@ void soleil (planete* soleil){
     soleil->loyer2 = 600;
     soleil->loyer3 = 1400;
     soleil->loyer4 = 1700;
+    soleil->loyerHotel = 2000;
     soleil->p_hypo = 200;
     soleil->couleur = 1;
     soleil->prixMaison = 200;

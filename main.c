@@ -64,20 +64,17 @@ int main()
     //arrivplan(&mars_,player,1);
 
         //si vous voulez tester:
-    /*arrivsat(&lune_, player, 0);
-    arrivsat(&lune_, player, 0);
-    arrivsat(&lune_, player, 0);
-    arrivsat(&lune_, player, 1);
 
-    arrivplan(&terre_, player, 0);
-    arrivplan(&terre_, player, 0);
-    arrivplan(&terre_, player, 0);
-    arrivplan(&terre_, player, 1);
-
-    arrivgalax(&voieLactee_, player, 0);
+    /*arrivgalax(&voieLactee_, player, 0);
     arrivgalax(&nuageDeMagellan_, player, 0);
     arrivgalax(&tetard_, player, 0);
-    arrivgalax(&voieLactee_, player, 1);*/
+    arrivgalax(&voieLactee_, player, 1);
 
+    arrivplan(&jupiter_, player, 0);
+    arrivplan(&jupiter_, player, 0);
+    arrivplan(&jupiter_, player, 0);
+    arrivplan(&jupiter_, player, 0);
+    arrivplan(&jupiter_, player, 0);
+    arrivplan(&jupiter_, player, 1);*/
     return 0;
 }

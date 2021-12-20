@@ -44,6 +44,7 @@ typedef struct {
     int loyer2;
     int loyer3;
     int loyer4;
+    int loyerHotel;
     int p_hypo;
     int prixMaison;
     int maison;
@@ -62,6 +63,7 @@ typedef struct
     int loyer2;
     int loyer3;
     int loyer4;
+    int loyerHotel;
     int p_hypo;
     int prixMaison;
     int maison;
