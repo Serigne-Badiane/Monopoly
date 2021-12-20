@@ -26,6 +26,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         printf("\n                              Prix loyer avec 2 maisons : %d",p->loyer2);
         printf("\n                              Prix loyer avec 3 maisons : %d",p->loyer3);
         printf("\n                              Prix loyer avec 4 maisons : %d",p->loyer4);
+        printf("\n                          Prix d'une maison : %d",p->prixMaison);
         printf("\n                          Prix hypoth%cquaire : %d",0x82,p->p_hypo);
         if (p->p_hypo == 4){
             p->maison = 0;
@@ -69,7 +70,57 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         }
 
     }
+
+    else if(player[p->proprio - 1]->prenomJoueur == player[tourjoueur]->prenomJoueur){
+        Color(15,0);
+        printf("\n                          Nombre de maisons : %d",p->maison);
+        printf("\n                          Prix d'une maison : %d",p->prixMaison);
+        printf("\n                          Prix loyer actuel : %d",p->loyer);
+        printf("\n                              Prix loyer avec 1 maison : %d",p->loyer1);
+        printf("\n                              Prix loyer avec 2 maisons : %d",p->loyer2);
+        printf("\n                              Prix loyer avec 3 maisons : %d",p->loyer3);
+        printf("\n                              Prix loyer avec 4 maisons : %d",p->loyer4);
+        printf("                                  ");
+        Color(3,0);
+        printf("\nIA : Re-bonjour ");
+        Color(player[tourjoueur]->couleur);
+        printf("%s !\n", player[tourjoueur]->prenomJoueur);
+        printf("Voici votre Porte Monnaie : %d\n", player[tourjoueur]->argent);
+        printf("Voulez-vous acheter une nouvelle maison ?\n");
+        printf("                                  ");
+        Color(10,0);
+        printf("1.OUI");
+        printf("                                  ");
+        Color(12,0);
+        printf("2.NON\n");
+        Color(15,0);
+        int choix;
+        scanf("%d", &choix);
+        Color(3,0);
+        while( choix != 1 && choix != 2){
+            printf("IA : Saisie incorrect\n");
+            getchar();
+            scanf("%d",&choix);
+        }
+        if(choix == 1){
+            printf("Vous avez achete une maison, felicitations !");
+            player[tourjoueur]->argent -= p->prixMaison;
+            p->maison += 1;
+        }
+
+
+
+    }
     else{
+        Color(15,0);
+        printf("\n                          Nombre de maisons : %d",p->maison);
+        printf("\n                          Prix loyer actuel : %d",p->loyer);
+        printf("\n                              Prix loyer avec 1 maison : %d",p->loyer1);
+        printf("\n                              Prix loyer avec 2 maisons : %d",p->loyer2);
+        printf("\n                              Prix loyer avec 3 maisons : %d",p->loyer3);
+        printf("\n                              Prix loyer avec 4 maisons : %d",p->loyer4);
+        printf("                                  ");
+        Color(3,0);
         printf("\nIA : La planete appartient a ");
         Color(player[p->proprio - 1]->couleur,0);
         printf("%s",player[p->proprio - 1]->prenomJoueur);
@@ -127,6 +178,12 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
     Color(3,0);
     printf("\n\n%cIA : Nous sommes arriv%cs sur une nouvelle galaxie : ...%s !",0x10,0x82,g->nom);
     if (g->proprio == player[0]->numeroJoueur || g->proprio == player[1]->numeroJoueur || g->proprio == player[2]->numeroJoueur || g->proprio == player[3]->numeroJoueur){
+        Color(15,0);
+        printf("\n                          Nombre de galaxie possede par %s : %d",player[g->proprio - 1]->prenomJoueur, player[g->proprio-1]->nbDeGare);
+        printf("\n                          Prix loyer actuel : %d",g->loyer);
+        printf("\n                              Prix loyer avec 2 galaxie : %d",g->loyer1);
+        printf("\n                              Prix loyer avec 3 galaxie : %d",g->loyer2);
+        printf("\n                              Prix loyer avec 4 galaxie : %d",g->loyer3);
         Color(3,0);
         printf("\nIA : La galaxie appartient a ");
         Color(player[g->proprio - 1]->couleur,0);
@@ -227,7 +284,53 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
 
     printf("\n\n%cIA : Nous sommes arriv%cs sur un nouveaux satellite ...  %s !",0x10,0x82,s->nom);
 
-    if (s->proprio == player[0]->numeroJoueur || s->proprio == player[1]->numeroJoueur || s->proprio == player[2]->numeroJoueur || s->proprio == player[3]->numeroJoueur){
+    if(player[s->proprio - 1]->prenomJoueur == player[tourjoueur]->prenomJoueur){
+        Color(15,0);
+        printf("\n                          Nombre de maisons : %d",s->maison);
+        printf("\n                          Prix d'une maison : %d",s->prixMaison);
+        printf("\n                          Prix loyer actuel : %d",s->loyer);
+        printf("\n                              Prix loyer avec 1 maison : %d",s->loyer1);
+        printf("\n                              Prix loyer avec 2 maisons : %d",s->loyer2);
+        printf("\n                              Prix loyer avec 3 maisons : %d",s->loyer3);
+        printf("\n                              Prix loyer avec 4 maisons : %d",s->loyer4);
+        printf("                                  ");
+        Color(3,0);
+        printf("\nIA : Re-bonjour ");
+        Color(player[tourjoueur]->couleur);
+        printf("%s !\n", player[tourjoueur]->prenomJoueur);
+        printf("Voici votre Porte Monnaie : %d\n", player[tourjoueur]->argent);
+        printf("Voulez-vous acheter une nouvelle maison ?\n");
+        printf("                                  ");
+        Color(10,0);
+        printf("1.OUI");
+        printf("                                  ");
+        Color(12,0);
+        printf("2.NON\n");
+        Color(15,0);
+        int choix;
+        scanf("%d", &choix);
+        Color(3,0);
+        while( choix != 1 && choix != 2){
+            printf("IA : Saisie incorrect\n");
+            getchar();
+            scanf("%d",&choix);
+        }
+        if(choix == 1){
+            printf("Vous avez achete une maison, felicitations !");
+            player[tourjoueur]->argent -= s->prixMaison;
+            s->maison += 1;
+        }
+    }
+
+    else if (s->proprio == player[0]->numeroJoueur || s->proprio == player[1]->numeroJoueur || s->proprio == player[2]->numeroJoueur || s->proprio == player[3]->numeroJoueur){
+        Color(15,0);
+        printf("\n                          Nombre de maisons : %d",s->maison);
+        printf("\n                          Prix loyer actuel : %d",s->loyer);
+        printf("\n                              Prix loyer avec 1 maison : %d",s->loyer1);
+        printf("\n                              Prix loyer avec 2 maisons : %d",s->loyer2);
+        printf("\n                              Prix loyer avec 3 maisons : %d",s->loyer3);
+        printf("\n                              Prix loyer avec 4 maisons : %d",s->loyer4);
+        printf("                                  ");
         Color(3,0);
         printf("\nIA : Le satellite appartient a ");
         Color(player[s->proprio - 1]->couleur,0);
@@ -241,6 +344,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
         Color(player[s->proprio - 1]->couleur,0);
         printf("%s",player[s->proprio - 1]->prenomJoueur);
         Color(3,0);
+
         if(s->maison == 0){
             player[tourjoueur]->argent -= s->loyer;
             player[s->proprio - 1]->argent += s->loyer;
@@ -275,6 +379,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
         printf("%s, Porte Monnaire : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
 
     }
+
     else{
         Color(3,0);
         printf("\n%cIA : %s",0x10,s->anecdote);
@@ -720,6 +825,7 @@ void soleil (planete* soleil){
     soleil->prixMaison = 200;
 
 }
+
 
 
 
