@@ -177,35 +177,40 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         Color(player[p->proprio - 1]->couleur,0);
         printf("%s",player[p->proprio - 1]->prenomJoueur);
         Color(3,0);
-        if(p->maison == 0 && p->hotel == 0){
+
+        if(p->maison == 0 && p->hotel == 0 && player[tourjoueur]->argent >= p->loyer){
             player[tourjoueur]->argent -= p->loyer;
             player[p->proprio - 1]->argent += p->loyer;
             printf(" %d euros...",p->loyer);
         }
-        else if (p->maison == 1){
+        else if (p->maison == 1 && player[tourjoueur]->argent >= p->loyer1){
             player[tourjoueur]->argent -= p->loyer1;
             player[p->proprio - 1]->argent += p->loyer1;
             printf(" %d euros...",p->loyer1);
         }
-        else if (p->maison == 2){
+        else if (p->maison == 2 && player[tourjoueur]->argent >= p->loyer2){
             player[tourjoueur]->argent -= p->loyer2;
             player[p->proprio - 1]->argent += p->loyer2;
             printf(" %d euros...",p->loyer2);
         }
-        else if (p->maison == 3){
+        else if (p->maison == 3 && player[tourjoueur]->argent >= p->loyer3){
             player[tourjoueur]->argent -= p->loyer3;
             player[p->proprio - 1]->argent += p->loyer3;
             printf(" %d euros...",p->loyer3);
         }
-        else if(p->maison == 4){
+        else if(p->maison == 4 && player[tourjoueur]->argent >= p->loyer4){
             player[tourjoueur]->argent -= p->loyer4;
             player[p->proprio - 1]->argent += p->loyer4;
             printf(" %d euros...",p->loyer4);
         }
-        else if(p->hotel == 1){
+        else if(p->hotel == 1 && player[tourjoueur]->argent >= p->loyerHotel){
             player[tourjoueur]->argent -= p->loyerHotel;
             player[p->proprio - 1] ->argent += p->loyerHotel;
             printf(" %d euros...", p->loyerHotel);
+        }
+        else{
+            Color(player[tourjoueur]->couleur, 0);
+            printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
         }
 
         Color(player[p->proprio-1]->couleur, 0);
@@ -248,25 +253,29 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         Color(3,0);
 
 
-        if(player[g->proprio - 1]->nbDeGare == 1){
+        if(player[g->proprio - 1]->nbDeGare == 1 && player[tourjoueur]->argent >= g->loyer){
             player[tourjoueur]->argent -= g->loyer;
             player[g->proprio - 1]->argent += g->loyer;
             printf(" %d euros...",g->loyer);
         }
-        else if (player[g->proprio - 1]->nbDeGare == 2){
+        else if (player[g->proprio - 1]->nbDeGare == 2 && player[tourjoueur]->argent >= g->loyer1){
             player[tourjoueur]->argent -= g->loyer1;
             player[g->proprio - 1]->argent += g->loyer1;
             printf(" %d euros...",g->loyer1);
         }
-        else if (player[g->proprio - 1]->nbDeGare == 3){
+        else if (player[g->proprio - 1]->nbDeGare == 3 && player[tourjoueur]->argent >= g->loyer2){
             player[tourjoueur]->argent -= g->loyer2;
             player[g->proprio - 1]->argent += g->loyer2;
             printf(" %d euros...",g->loyer2);
         }
-        else if (player[g->proprio - 1]->nbDeGare == 4){
+        else if (player[g->proprio - 1]->nbDeGare == 4 && player[tourjoueur]->argent >= g->loyer3){
             player[tourjoueur]->argent -= g->loyer3;
             player[g->proprio - 1]->argent += g->loyer3;
             printf(" %d euros...",g->loyer3);
+        }
+        else{
+            Color(player[tourjoueur]->couleur, 0);
+            printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
         }
 
         Color(player[g->proprio-1]->couleur, 0);
@@ -437,38 +446,43 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
         printf("%s",player[s->proprio - 1]->prenomJoueur);
         Color(3,0);
 
-        if(s->maison == 0 && s->hotel == 0){
+        if(s->maison == 0 && s->hotel == 0 && player[tourjoueur]->argent >= s->loyer){
             player[tourjoueur]->argent -= s->loyer;
             player[s->proprio - 1]->argent += s->loyer;
             printf(" %d euros...",s->loyer);
         }
-        else if (s->maison == 1){
+        else if (s->maison == 1 && player[tourjoueur]->argent >= s->loyer1){
             player[tourjoueur]->argent -= s->loyer1;
             player[s->proprio - 1]->argent += s->loyer1;
             printf(" %d euros...",s->loyer1);
         }
-        else if (s->maison == 2){
+        else if (s->maison == 2 && player[tourjoueur]->argent >= s->loyer2){
             player[tourjoueur]->argent -= s->loyer2;
             player[s->proprio - 1]->argent += s->loyer2;
             printf(" %d euros...",s->loyer2);
         }
-        else if (s->maison == 3){
+        else if (s->maison == 3 && player[tourjoueur]->argent >= s->loyer3){
             player[tourjoueur]->argent -= s->loyer3;
             player[s->proprio - 1]->argent += s->loyer3;
             printf(" %d euros...",s->loyer3);
         }
-        else if(s->maison == 4){
+        else if(s->maison == 4 && player[tourjoueur]->argent >= s->loyer4){
             player[tourjoueur]->argent -= s->loyer4;
             player[s->proprio- 1]->argent += s->loyer4;
             printf(" %d euros...", s->loyer4);
 
         }
-        else if(s->hotel == 1){
+        else if(s->hotel == 1 && player[tourjoueur]->argent >= s->loyerHotel){
             player[tourjoueur]->argent -= s->loyerHotel;
             player[s->proprio- 1]->argent += s->loyerHotel;
             printf(" %d euros...", s->loyerHotel);
 
         }
+        else{
+            Color(player[tourjoueur]->couleur, 0);
+            printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
+        }
+
         Color(player[s->proprio-1]->couleur, 0);
         printf("%s, Porte Monnaie : %d\n", player[s->proprio-1]->prenomJoueur, player[s->proprio - 1]->argent);
 
