@@ -49,7 +49,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
             scanf("%d",&answer);
         }
         Color(3,0);
-        if ( answer == 1){
+        if ( answer == 1 && player[tourjoueur]->argent >= p->prix){
             p->proprio = player[tourjoueur]->numeroJoueur;
             strcat(player[tourjoueur]->proprietes,p->nom);
             strcat(player[tourjoueur]->proprietes,",");
@@ -60,6 +60,9 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
             printf("%s, Porte Monnaie : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
 
 
+        }
+        else if(player[tourjoueur]->argent< p->prix){
+            printf("IA : Vous n'avez pas assez d'argent pour acheter cette planete !");
         }
 
 
@@ -104,7 +107,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
             getchar();
             scanf("%d",&choix);
         }
-        if(choix == 1){
+        if(choix == 1 && player[tourjoueur]->argent >= p->prixMaison){
             printf("Vous avez achete une sonde spatiale, felicitations !\n");
             player[tourjoueur]->argent -= p->prixMaison;
             p->maison += 1;
@@ -126,7 +129,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
                     getchar();
                     scanf("%d",&choix);
                 }
-                if(choix2 == 1){
+                if(choix2 == 1 && player[tourjoueur]->argent >= p->prixMaison){
                     p->maison = 0;
                     p->hotel = 1;
                     Color(3,0);
@@ -135,8 +138,14 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
                     printf("%d", player[tourjoueur]->argent);
 
                 }
+                else if(player[tourjoueur]->argent < p->prixMaison){
+                    printf("\nIA : Vous n'avez pas assez d'argent pour acheter une station spatiale");
+                }
 
             }
+        }
+        else if (player[tourjoueur]->argent < p->prixMaison){
+            printf("\nIA : Vous n'avez pas assez d'argent pour acheter une sonde");
         }
 
 
@@ -298,7 +307,7 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
             scanf("%d",&answer);
         }
         Color(3,0);
-        if ( answer == 1){
+        if ( answer == 1 && player[tourjoueur]->argent >= g->prix){
             g->proprio = player[tourjoueur]->numeroJoueur;
             strcat(player[tourjoueur]->proprietes,g->nom);
             strcat(player[tourjoueur]->proprietes,",");
@@ -310,6 +319,9 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
 
 
 
+        }
+        else if(player[tourjoueur]->argent < g->prix){
+            printf("\nIA : Vous n'avez pas assez d'argent pour acheter cette galaxie !");
         }
         else {
             printf("IA : Fin de tour ...");
@@ -358,7 +370,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
             getchar();
             scanf("%d",&choix);
         }
-        if(choix == 1){
+        if(choix == 1 && player[tourjoueur]->argent >= s->prixMaison){
             printf("Vous avez achete une sonde spatiale, felicitations !");
             player[tourjoueur]->argent -= s->prixMaison;
             s->maison += 1;
@@ -380,7 +392,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
                     getchar();
                     scanf("%d",&choix);
                 }
-                if(choix2 == 1){
+                if(choix2 == 1 && player[tourjoueur]->argent >= s->prixMaison){
                     s->maison = 0;
                     s->hotel = 1;
                     Color(3,0);
@@ -389,7 +401,14 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
 
 
                 }
+                else if(player[tourjoueur]->argent < s->prixMaison){
+                    printf("\nIA : Vous n'avez pas assez d'argent pour acheter une station spataile !");
+                }
+
             }
+        }
+        else if (player[tourjoueur]->argent < s->prixMaison){
+            printf("\nIA : Vous n'avez pas assez d'argent pour acheter une sonde !");
         }
     }
 
@@ -495,15 +514,19 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
             scanf("%d",&answer);
         }
         Color(3,0);
-        if ( answer == 1){
+        if ( answer == 1 && player[tourjoueur]->argent >= s->prix){
             s->proprio = player[tourjoueur]->numeroJoueur;
             strcat(player[tourjoueur]->proprietes,s->nom);
             strcat(player[tourjoueur]->proprietes,",");
             player[tourjoueur]->argent -= s->prix;
+
             printf("IA : BRAVO %s! Vous avez aquis un nouveau satellite ...",player[tourjoueur]->prenomJoueur);
             Color(player[tourjoueur]->couleur, 0);
             printf("%s, Porte Monnaie : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
 
+        }
+        else if(player[tourjoueur]->argent < s->prix){
+            printf("\nIA : Vous n'avez pas assez d'argent pour acheter ce satellite ! ");
         }
         else {
             printf("IA : Fin de tour ...");
