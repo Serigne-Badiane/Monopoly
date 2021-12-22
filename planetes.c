@@ -21,15 +21,15 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         printf("%c PLAN%cTE %s %c",0x02,0xD4,p->nom,0x02);
         Color(15,0);
         printf("\n                          Prix d'achat : %d",p->prix);
-        printf("\n                          Prix loyer actuel : %d",p->loyer);
-        printf("\n                              Prix loyer avec 1 maison : %d",p->loyer1);
-        printf("\n                              Prix loyer avec 2 maisons : %d",p->loyer2);
-        printf("\n                              Prix loyer avec 3 maisons : %d",p->loyer3);
-        printf("\n                              Prix loyer avec 4 maisons : %d",p->loyer4);
-        printf("\n                              Prix loyer avec 1 hotel : %d",p->loyerHotel);
+        printf("\n                          Prix loyer sans sonde spatiale  : %d",p->loyer);
+        printf("\n                              Prix loyer avec 1 sonde spatiale : %d",p->loyer1);
+        printf("\n                              Prix loyer avec 2 sondes spatiales : %d",p->loyer2);
+        printf("\n                              Prix loyer avec 3 sondes spatiales : %d",p->loyer3);
+        printf("\n                              Prix loyer avec 4 sondes spatiales : %d",p->loyer4);
+        printf("\n                              Prix loyer avec 1 station spatiale : %d",p->loyerHotel);
 
-        printf("\n                          Prix d'une maison : %d",p->prixMaison);
-        printf("\n                          Prix d'un hotel : %d",p->prixMaison);
+        printf("\n                          Prix d'une sonde spatiale : %d",p->prixMaison);
+        printf("\n                          Prix d'une station spatiale : %d",p->prixMaison);
         printf("\n                          Prix hypoth%cquaire : %d",0x82,p->p_hypo);
 
         Color(3,0);
@@ -72,15 +72,15 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
     //achat des maisons
     else if(player[p->proprio - 1]->prenomJoueur == player[tourjoueur]->prenomJoueur){
         Color(15,0);
-        printf("\n                          Nombre de maisons : %d",p->maison);
-        printf("\n                          Nombre d'hotels : %d",p->hotel);
-        printf("\n                          Prix d'une maison : %d",p->prixMaison);
-        printf("\n                          Prix loyer actuel : %d",p->loyer);
-        printf("\n                              Prix loyer avec 1 maison : %d",p->loyer1);
-        printf("\n                              Prix loyer avec 2 maisons : %d",p->loyer2);
-        printf("\n                              Prix loyer avec 3 maisons : %d",p->loyer3);
-        printf("\n                              Prix loyer avec 4 maisons : %d",p->loyer4);
-        printf("\n                              Prix loyer avec 1 hotel : %d",p->loyerHotel);
+        printf("\n                          Nombre de sondes spatiales : %d",p->maison);
+        printf("\n                          Nombre de stations spatiales : %d",p->hotel);
+        printf("\n                          Prix d'une sonde spatiale : %d",p->prixMaison);
+        printf("\n                          Prix loyer sans sonde spatiale  : %d",p->loyer);
+        printf("\n                              Prix loyer avec 1 sonde spatiale : %d",p->loyer1);
+        printf("\n                              Prix loyer avec 2 sondes spatiales : %d",p->loyer2);
+        printf("\n                              Prix loyer avec 3 sondes spatiales : %d",p->loyer3);
+        printf("\n                              Prix loyer avec 4 sondes spatiales : %d",p->loyer4);
+        printf("\n                              Prix loyer avec 1 station spatiale : %d",p->loyerHotel);
 
         printf("                                  ");
         Color(3,0);
@@ -88,7 +88,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         Color(player[tourjoueur]->couleur);
         printf("%s !\n", player[tourjoueur]->prenomJoueur);
         printf("Voici votre Porte Monnaie : %d\n", player[tourjoueur]->argent);
-        printf("Voulez-vous acheter une nouvelle maison ?\n");
+        printf("Voulez-vous acheter une nouvelle sonde spatiale ?\n");
         printf("                                  ");
         Color(10,0);
         printf("1.OUI");
@@ -105,13 +105,13 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
             scanf("%d",&choix);
         }
         if(choix == 1){
-            printf("Vous avez achete une maison, felicitations !\n");
+            printf("Vous avez achete une sonde spatiale, felicitations !\n");
             player[tourjoueur]->argent -= p->prixMaison;
             p->maison += 1;
 
-            //placement des hotels
+            //placement des station spatiales
             if (p->maison == 4){
-                printf("Vous possedez 4 maisons. Voulez-vous les remplacer par un hotel ?\n ");
+                printf("Vous possedez 4 sondes spatiales. Voulez-vous les remplacer par une station spatiale ?\n ");
                 printf("                                  ");
                 Color(10,0);
                 printf("1.OUI");
@@ -130,7 +130,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
                     p->maison = 0;
                     p->hotel = 1;
                     Color(3,0);
-                    printf("Vous avez achete un hotel, felicitations !");
+                    printf("Vous avez achete une station spatiale, felicitations !");
                     player[tourjoueur]->argent -= p->prixMaison;
                     printf("%d", player[tourjoueur]->argent);
 
@@ -144,14 +144,14 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
     }
     else{
         Color(15,0);
-        printf("\n                          Nombre de maisons : %d",p->maison);
-        printf("\n                          Nombre d'hotels : %d",p->hotel);
-        printf("\n                          Prix loyer actuel : %d",p->loyer);
-        printf("\n                              Prix loyer avec 1 maison : %d",p->loyer1);
-        printf("\n                              Prix loyer avec 2 maisons : %d",p->loyer2);
-        printf("\n                              Prix loyer avec 3 maisons : %d",p->loyer3);
-        printf("\n                              Prix loyer avec 4 maisons : %d",p->loyer4);
-        printf("\n                              Prix loyer avec 1 hotel : %d",p->loyerHotel);
+        printf("\n                          Nombre de sondes spatiales : %d",p->maison);
+        printf("\n                          Nombre de stations spatiales : %d",p->hotel);
+        printf("\n                          Prix loyer sans sonde spatiale  : %d",p->loyer);
+        printf("\n                              Prix loyer avec 1 sonde spatiale : %d",p->loyer1);
+        printf("\n                              Prix loyer avec 2 sondes spatiales : %d",p->loyer2);
+        printf("\n                              Prix loyer avec 3 sondes spatiales : %d",p->loyer3);
+        printf("\n                              Prix loyer avec 4 sondes spatiales : %d",p->loyer4);
+        printf("\n                              Prix loyer avec 1 station spatiale : %d",p->loyerHotel);
 
 
         printf("                                  ");
@@ -220,7 +220,7 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
     if (g->proprio == player[0]->numeroJoueur || g->proprio == player[1]->numeroJoueur || g->proprio == player[2]->numeroJoueur || g->proprio == player[3]->numeroJoueur){
         Color(15,0);
         printf("\n                          Nombre de galaxie possede par %s : %d",player[g->proprio - 1]->prenomJoueur, player[g->proprio-1]->nbDeGare);
-        printf("\n                          Prix loyer actuel : %d",g->loyer);
+        printf("\n                          Prix loyer avec 1 galaxie : %d",g->loyer);
         printf("\n                              Prix loyer avec 2 galaxie : %d",g->loyer1);
         printf("\n                              Prix loyer avec 3 galaxie : %d",g->loyer2);
         printf("\n                              Prix loyer avec 4 galaxie : %d",g->loyer3);
@@ -276,7 +276,7 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         printf("%c GALAXIE %s %c",0x0f,g->nom,0x0f);
         Color(15,0);
         printf("\n                          Prix d'achat : %d",g->prix);
-        printf("\n                          Prix loyer actuel : %d",g->loyer);
+        printf("\n                          Prix loyer avec 1 galaxie  : %d",g->loyer);
         printf("\n                              Prix loyer avec 2 galaxie : %d",g->loyer1);
         printf("\n                              Prix loyer avec 3 galaxie : %d",g->loyer2);
         printf("\n                              Prix loyer avec 4 galaxie : %d",g->loyer3);
@@ -326,15 +326,15 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
 
     if(player[s->proprio - 1]->prenomJoueur == player[tourjoueur]->prenomJoueur){
         Color(15,0);
-        printf("\n                          Nombre de maisons : %d",s->maison);
-        printf("\n                          Nombre d'hotels : %d",s->hotel);
-        printf("\n                          Prix d'une maison : %d",s->prixMaison);
-        printf("\n                          Prix loyer actuel : %d",s->loyer);
-        printf("\n                              Prix loyer avec 1 maison : %d",s->loyer1);
-        printf("\n                              Prix loyer avec 2 maisons : %d",s->loyer2);
-        printf("\n                              Prix loyer avec 3 maisons : %d",s->loyer3);
-        printf("\n                              Prix loyer avec 4 maisons : %d",s->loyer4);
-        printf("\n                              Prix loyer avec 1 hotel : %d",s->loyerHotel);
+        printf("\n                          Nombre de sondes spatiales : %d",s->maison);
+        printf("\n                          Nombre de stations spatiales : %d",s->hotel);
+        printf("\n                          Prix d'une sonde spatiale : %d",s->prixMaison);
+        printf("\n                          Prix loyer sans sonde spatiale  : %d",s->loyer);
+        printf("\n                              Prix loyer avec 1 sonde spatiale : %d",s->loyer1);
+        printf("\n                              Prix loyer avec 2 sondes spatiales : %d",s->loyer2);
+        printf("\n                              Prix loyer avec 3 sondes spatiales : %d",s->loyer3);
+        printf("\n                              Prix loyer avec 4 sondes spatiales : %d",s->loyer4);
+        printf("\n                              Prix loyer avec 1 station spatiale : %d",s->loyerHotel);
 
         printf("                                  ");
         Color(3,0);
@@ -342,7 +342,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
         Color(player[tourjoueur]->couleur);
         printf("%s !\n", player[tourjoueur]->prenomJoueur);
         printf("Voici votre Porte Monnaie : %d\n", player[tourjoueur]->argent);
-        printf("Voulez-vous acheter une nouvelle maison ?\n");
+        printf("Voulez-vous acheter une nouvelle sonde spatiale ?\n");
         printf("                                  ");
         Color(10,0);
         printf("1.OUI");
@@ -359,13 +359,13 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
             scanf("%d",&choix);
         }
         if(choix == 1){
-            printf("Vous avez achete une maison, felicitations !");
+            printf("Vous avez achete une sonde spatiale, felicitations !");
             player[tourjoueur]->argent -= s->prixMaison;
             s->maison += 1;
 
             //placement des hotels
             if (s->maison == 4){
-                printf("Vous possedez 4 maisons. Voulez-vous les remplacer par un hotel ?\n ");
+                printf("Vous possedez 4 maisons. Voulez-vous les remplacer par une station spatiale ?\n ");
                 printf("                                  ");
                 Color(10,0);
                 printf("1.OUI");
@@ -384,7 +384,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
                     s->maison = 0;
                     s->hotel = 1;
                     Color(3,0);
-                    printf("Vous avez achete un hotel, felicitations !");
+                    printf("Vous avez achete une station spatiale, felicitations !");
                     player[tourjoueur]->argent -= s->prixMaison;
 
 
@@ -395,13 +395,13 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
 
     else if (s->proprio == player[0]->numeroJoueur || s->proprio == player[1]->numeroJoueur || s->proprio == player[2]->numeroJoueur || s->proprio == player[3]->numeroJoueur){
         Color(15,0);
-        printf("\n                          Nombre de maisons : %d",s->maison);
-        printf("\n                          Prix loyer actuel : %d",s->loyer);
-        printf("\n                              Prix loyer avec 1 maison : %d",s->loyer1);
-        printf("\n                              Prix loyer avec 2 maisons : %d",s->loyer2);
-        printf("\n                              Prix loyer avec 3 maisons : %d",s->loyer3);
-        printf("\n                              Prix loyer avec 4 maisons : %d",s->loyer4);
-        printf("\n                              Prix loyer avec 1 hotel : %d",s->loyerHotel);
+        printf("\n                          Nombre de sondes spatiales : %d",s->maison);
+        printf("\n                          Prix loyer sans sonde spatiale  : %d",s->loyer);
+        printf("\n                              Prix loyer avec 1 sonde spatiale : %d",s->loyer1);
+        printf("\n                              Prix loyer avec 2 sondes spatiales : %d",s->loyer2);
+        printf("\n                              Prix loyer avec 3 sondes spatiales : %d",s->loyer3);
+        printf("\n                              Prix loyer avec 4 sondes spatiales : %d",s->loyer4);
+        printf("\n                              Prix loyer avec 1 station spatiale : %d",s->loyerHotel);
 
         printf("                                  ");
         Color(3,0);
@@ -468,15 +468,15 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
         Color(15,0);
 
         printf("\n                          Prix d'achat : %d",s->prix);
-        printf("\n                          Prix loyer actuel : %d",s->loyer);
-        printf("\n                              Prix loyer avec 1 maison : %d",s->loyer1);
-        printf("\n                              Prix loyer avec 2 maisons : %d",s->loyer2);
-        printf("\n                              Prix loyer avec 3 maisons : %d",s->loyer3);
-        printf("\n                              Prix loyer avec 4 maisons : %d",s->loyer4);
-        printf("\n                              Prix loyer avec 1 hotel : %d",s->loyerHotel);
+        printf("\n                          Prix loyer sans sonde spatiale  : %d",s->loyer);
+        printf("\n                              Prix loyer avec 1 sonde spatiale : %d",s->loyer1);
+        printf("\n                              Prix loyer avec 2 sondes spatiales : %d",s->loyer2);
+        printf("\n                              Prix loyer avec 3 sondes spatiales : %d",s->loyer3);
+        printf("\n                              Prix loyer avec 4 sondes spatiales : %d",s->loyer4);
+        printf("\n                              Prix loyer avec 1 station spatiale : %d",s->loyerHotel);
 
-        printf("\n                          Prix d'une maison : %d",s->prixMaison);
-        printf("\n                          Prix d'un hotel : %d",s->prixMaison);
+        printf("\n                          Prix d'une sonde spatiale : %d",s->prixMaison);
+        printf("\n                          Prix d'une station spatiale : %d",s->prixMaison);
         printf("\n                          Prix hypoth%cquaire : %d",0x82,s->p_hypo);
         Color(3,0);
         printf("\nIA : Le satellite est libre d'achat, souhaitez-vous l'acheter ?\n ");
@@ -883,7 +883,7 @@ void mercure(planete* mercure)
     mercure->prix = 350;
     char noms [] = "MERCURE";
     strcpy (mercure->nom ,noms);
-    char anecdotes [] = "Mercure est la planete la plus proche du systeme solaire, il y fait une temperature moyenne de 167 degres pouvant montant jusqu'a 427 degres ! Elle est 3 fois plus petite que notre Terre mais egalement 20 moins massive.";
+    char anecdotes [] = "Mercure est la plane   te la plus proche du systeme solaire, il y fait une temperature moyenne de 167 degres pouvant montant jusqu'a 427 degres ! Elle est 3 fois plus petite que notre Terre mais egalement 20 moins massive.";
     strcpy (mercure->anecdote , anecdotes);
     mercure->loyer = 35;
     mercure->loyer1 = 175;
