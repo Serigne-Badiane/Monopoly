@@ -38,7 +38,14 @@ int main()
     galaxie nuageDeMagellan_ = {0,"","",0,0,0,0,0,0};
     planete mercure_ = {0, "", "", 0, 0, 0, 0 , 0} ;
     planete soleil_ = {0, "", "", 0, 0, 0};
-    menu(player);
+
+
+    int nombreJoueur = 0;
+    int deplacement = 0;
+    menu1(&nombreJoueur, &deplacement, player);
+
+
+
     mars(&mars_);
     terre(&terre_);
     voieLactee(&voieLactee_);
@@ -60,21 +67,17 @@ int main()
     mercure(&mercure_);
     soleil(&soleil_);
 
-    //arrivplan(&mars_,player,0);
-    //arrivplan(&mars_,player,1);
 
-        //si vous voulez tester:
+    c5(player, 2);
+    printf("%d\n", player[0]->argent);
+    printf("%d\n", player[1]->argent);
+    printf("%d\n", player[2]->argent);
+    printf("%d\n", player[3]->argent);
 
-    /*arrivgalax(&voieLactee_, player, 0);
-    arrivgalax(&nuageDeMagellan_, player, 0);
-    arrivgalax(&tetard_, player, 0);
-    arrivgalax(&voieLactee_, player, 1);
 
-    arrivplan(&jupiter_, player, 0);
-    arrivplan(&jupiter_, player, 0);
-    arrivplan(&jupiter_, player, 0);
-    arrivplan(&jupiter_, player, 0);
-    arrivplan(&jupiter_, player, 0);
-    arrivplan(&jupiter_, player, 1);*/
+
+
+
+
     return 0;
 }
