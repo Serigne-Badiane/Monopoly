@@ -32,6 +32,9 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="bib.h" />
+		<Unit filename="cartes.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="joueurs.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -42,6 +45,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="planetes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="plateau.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions />

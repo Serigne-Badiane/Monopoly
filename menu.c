@@ -9,7 +9,7 @@
 
 
 ///PROCEDURE MENU
-void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, t_joueur player[NbJoueurMax][TAILLE]){
+void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE]){
     int menu=0;
     int J=0;
     printf("            MONOPOLY\n1.-Nouvelle Partie\n\n2.-Sauvegarder Partie en cours\n\n3.-Charger Partie\n\n4.-Regle\n\n5.-Cr%cdit\n\n",0x82);
@@ -62,6 +62,7 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, t_joueur player[NbJou
     int numeroDe[2];
     int deplacementCase;
     numeroTour = choixDuPremier(J); //on choisit le premier utilisateur � jouer
+    *tourJoueur = numeroTour;
     Color(3,0);
     printf("\nIA : Le premier joueur a debute la partie est : ");
     Color(player[numeroTour]->couleur, 0);
