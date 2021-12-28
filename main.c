@@ -70,11 +70,14 @@ int main()
     soleil(&soleil_);
 
 
-int choix = 1;
+
 player[0]->numeroCase = 1;
 player[1]->numeroCase = 1;
 player[2]->numeroCase = 1;
 player[3]->numeroCase = 1;
+
+int choix = 1;
+
 while(choix != 0)
 {
 
@@ -82,170 +85,172 @@ while(choix != 0)
     {
         case 1:
         {
-            case1();
+            printf("BONJOUR");
             player[tourJoueur]->numeroCase = 1;
             break;
         }
         case 2:
         {
-            case2(lune_,player,tourJoueur);
+            arrivsat(&lune_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 2;
             break;
         }
         case 3:
         {
-            case3(terre_,player,tourJoueur);
+            arrivplan(&terre_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 3;
-
             break;
         }
         case 4:
         {
-            case4();
+            player[tourJoueur]->argent -= 200;
+            printf("\nIA : Vous devez payer 200 euros pour les taxes !\n");
+            Color(player[tourJoueur]->couleur, 0);
+            printf("%s, votre porte monnaie est de : %d\n", player[tourJoueur]->prenomJoueur, player[tourJoueur]->argent);
             player[tourJoueur]->numeroCase = 4;
             break;
         }
         case 5:
         {
-            case5(voieLactee_,player,tourJoueur);
+            arrivgalax(&voieLactee_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 5;
             break;
         }
         case 6:
         {
-            case6(phobos_,player,tourJoueur);
+            arrivsat(&phobos_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 6;
             break;
         }
         case 7:
         {
-            case7(mars_,player,tourJoueur);
+            arrivplan(&mars_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 7;
             break;
         }
         case 8:
         {
-            case8();
+            printf("\nIA : Vous allez directement en prison !\n");
             player[tourJoueur]->numeroCase = 8;
             break;
         }
         case 9:
         {
-            case9(ganymede_,player,tourJoueur);
+            arrivsat(&ganymede_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 9;
             break;
         }
         case 10:
         {
-            case10(callisto_,player,tourJoueur);
+            arrivsat(&callisto_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 10;
             break;
         }
         case 11:
         {
-            case11(andromede_,player,tourJoueur);
+            arrivgalax(&andromede_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 11;
             break;
         }
         case 12:
         {
-            case12(io_,player,tourJoueur);
+            arrivsat(&io_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 12;
             break;
         }
         case 13:
         {
-            case13(jupiter_,player,tourJoueur);
+            arrivplan(&jupiter_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 13;
             break;
         }
         case 14:
         {
-            case14();
+            printf("\nVous êtes sur le parking, reposez-vous !\n");
             player[tourJoueur]->numeroCase = 14;
             break;
         }
         case 15:
         {
-            case15();
+            printf("BONJOUR");
             player[tourJoueur]->numeroCase = 15;
             break;
         }
         case 16:
         {
-            case16(titan_,player,tourJoueur);
+            arrivsat(&titan_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 16;
             break;
         }
         case 17:
         {
-            case17(saturne_,player,tourJoueur);
+            arrivplan(&saturne_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 17;
             break;
         }
         case 18:
         {
-            case18(tetard_,player,tourJoueur);
+            arrivgalax(&tetard_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 18;
             break;
         }
         case 19:
         {
-            case19(pluton_,player,tourJoueur);
+            arrivsat(&pluton_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 19;
             break;
         }
         case 20:
         {
-            case20(neptune_,player,tourJoueur);
-            player[tourJoueur]->numeroCase = 20;
+            arrivplan(&neptune_, player, tourJoueur);
+            player[tourJoueur]->numeroCase = 29;
             break;
         }
         case 21:
         {
-            case21();
+            printf("BONJOUR");
             player[tourJoueur]->numeroCase = 21;
             break;
         }
         case 22:
         {
-            case22();
+            printf("BONJOUR");
             player[tourJoueur]->numeroCase = 22;
             break;
         }
         case 23:
         {
-            case23(venus_,player,tourJoueur);
+            arrivplan(&venus_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 23;
             break;
         }
         case 24:
         {
-            case24(uranus_,player,tourJoueur);
+            arrivplan(&uranus_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 24;
             break;
         }
         case 25:
         {
-            case25(nuageDeMagellan_,player,tourJoueur);
+            arrivgalax(&nuageDeMagellan_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 25;
             break;
         }
         case 26:
         {
-            case26(mercure_,player,tourJoueur);
+            arrivplan(&mercure_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 26;
             break;
         }
         case 27:
         {
-            case27(soleil_,player,tourJoueur);
+            arrivplan(&mercure_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 27;
             break;
         }
         case 28:
         {
-            case28();
+            printf("BONJOUR");
             player[tourJoueur]->numeroCase = 28;
             break;
         }
@@ -298,7 +303,6 @@ while(choix != 0)
             deplacement = deplacement - 28;
             player[tourJoueur]->argent += 200;
         }
-
 
     }
 
