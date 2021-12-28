@@ -78,21 +78,19 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jo
 
 
 
+    int deplacementCase1 = 0;
+    int deplacementCase2 = 0;
+    int deplacementCase3 = 0;
 
     if (choix == 1)
     {
-        deplacementCase = lancerDe(player, numeroDe, numeroTour);
-        printf("%s avance de %d cases.\n", player[numeroTour]->prenomJoueur, deplacementCase);
+        deplacementCase1 = lancerDe(player, numeroDe, numeroTour);
         if(numeroDe[1] == numeroDe[0])
         {
-            deplacementCase = lancerDe(player, numeroDe, numeroTour);
-            printf("%s avance de %d cases.\n", player[numeroTour]->prenomJoueur, deplacementCase);
-
+            deplacementCase2 = lancerDe(player, numeroDe, numeroTour);
             if(numeroDe[1] == numeroDe[0])
             {
-                deplacementCase = lancerDe(player, numeroDe, numeroTour);
-                printf("%s avance de %d cases.\n", player[numeroTour]->prenomJoueur, deplacementCase);
-
+                deplacementCase3 = lancerDe(player, numeroDe, numeroTour);
                 if(numeroDe[1] == numeroDe[0])
                 {
                     printf("IA : Vous allez en prison !");
@@ -101,6 +99,8 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jo
             }
 
         }
+        deplacementCase = deplacementCase1 + deplacementCase2 + deplacementCase3;
+        printf("%s avance de %d cases.\n", player[numeroTour]->prenomJoueur, deplacementCase);
         *nombreDeDeplacement = deplacementCase;
 
 
