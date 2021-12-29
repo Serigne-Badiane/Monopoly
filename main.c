@@ -13,6 +13,15 @@ void Color(int couleurDuTexte,int couleurDeFond)
     SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
 }
 
+void pause()
+{
+    char pause=kbhit('p');
+    pause=getch();
+    if(pause=='p')
+    {
+        menu1();
+    }
+}
 
 int main()
 {
