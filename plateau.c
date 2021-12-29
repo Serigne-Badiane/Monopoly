@@ -139,6 +139,7 @@ void case22(){
 
 void case23(planete venus_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
     arrivplan(&venus_, player, numeroJoueur);
+
 }
 
 

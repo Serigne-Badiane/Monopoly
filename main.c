@@ -178,30 +178,36 @@ while(choix != 0)
         }
         case 16:
         {
+
+            echange(nombreJoueur,player,tourJoueur);
             arrivsat(&titan_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 16;
             break;
         }
         case 17:
         {
+            echange(nombreJoueur,player,tourJoueur);
             arrivplan(&saturne_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 17;
             break;
         }
         case 18:
         {
+            echange(nombreJoueur,player,tourJoueur);
             arrivgalax(&tetard_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 18;
             break;
         }
         case 19:
         {
+            echange(nombreJoueur,player,tourJoueur);
             arrivsat(&pluton_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 19;
             break;
         }
         case 20:
         {
+            echange(nombreJoueur,player,tourJoueur);
             arrivplan(&neptune_, player, tourJoueur);
             player[tourJoueur]->numeroCase = 29;
             break;

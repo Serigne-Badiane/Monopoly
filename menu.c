@@ -42,7 +42,7 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jo
              scanf("%d", &J);
         }
 
-        Color(1,0);
+        Color(3,0);
         printf("IA : Pour qu'on puisse mieux se comprendre je m'allumerai d'une couleur differente a chaque fois que je voudrais parler a l'un d'entre vous en particulier, chaque joueur a sa couleur et vous garderez celle que vous avez eu toute la partie\n");
 
 

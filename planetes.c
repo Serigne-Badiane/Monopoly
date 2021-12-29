@@ -112,7 +112,6 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
             player[tourjoueur]->argent -= p->prixMaison;
             p->maison += 1;
 
-            //placement des station spatiales
             if (p->maison == 4){
                 printf("Vous possedez 4 sondes spatiales. Voulez-vous les remplacer par une station spatiale ?\n ");
                 printf("                                  ");
@@ -954,7 +953,223 @@ void soleil (planete* soleil){
     soleil->prixMaison = 200;
 
 }
+char *str_replace (const char *txt, const char *Avant, const char *Apres)
+{
+  const char *pos;
+  char *TxtRetour;
+  size_t PosTxtRetour;
 
+  size_t Long;
+  size_t TailleAllouee;
+  pos = strstr (txt, Avant);
+  if (pos == NULL)
+  {
+    return NULL;
+  }
+
+  Long = (size_t)pos - (size_t)txt;
+  TailleAllouee = Long + strlen (Apres) + 1;
+  TxtRetour = malloc (TailleAllouee);
+  PosTxtRetour = 0;
+
+  strncpy (TxtRetour + PosTxtRetour, txt, Long);
+  PosTxtRetour += Long;
+  txt = pos + strlen (Avant);
+
+  Long = strlen (Apres);
+  strncpy (TxtRetour + PosTxtRetour, Apres, Long);
+  PosTxtRetour += Long;
+
+  pos = strstr (txt, Avant);
+  while (pos != NULL)
+  {
+    Long = (size_t)pos - (size_t)txt;
+    TailleAllouee += Long + strlen (Apres);
+    TxtRetour = (char *)realloc (TxtRetour, TailleAllouee);
+    strncpy (TxtRetour + PosTxtRetour, txt, Long);
+    PosTxtRetour += Long;
+    txt = pos + strlen (Avant);
+    Long = strlen (Apres);
+    strncpy (TxtRetour + PosTxtRetour, Apres, Long);
+    PosTxtRetour += Long;
+    pos = strstr (txt, Avant);
+  }
+  Long = strlen (txt) + 1;
+  TailleAllouee += Long;
+  TxtRetour = realloc (TxtRetour, TailleAllouee);
+  strncpy (TxtRetour + PosTxtRetour, txt, Long);
+  return TxtRetour;
+}
+
+void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
+    Color(3,0);
+    printf("IA : Souhaitez vous faire un echange ?\n");
+    printf("                                  ");
+    Color(10,0);
+    printf("1.OUI");
+    printf("                                  ");
+    Color(12,0);
+    printf("2.NON\n");
+    int inpu;
+    scanf("%d",&inpu);
+    while( inpu != 1 && inpu != 2){
+        printf("IA : Saisie incorrect, veuilelz ressaisir : ");
+        scanf("%s");
+        scanf("%d",inpu);
+    }
+    if (inpu == 1){
+        if (nombreDeJoueur == 2){
+            Color(3,0);
+            printf("\nIA : Avec qui souhaitez-vous echanger ?");
+            Color(player[0]->couleurJoueur,0);
+            printf("\n1.%s  ",player[0]->prenomJoueur);
+            Color(player[1]->couleurJoueur,0);
+            printf(" 2.%s",player[1]->prenomJoueur);
+            int j;
+            Color(3,0);
+            scanf("%d",&j);
+            while (j != 1 && j!= 2){
+                printf("Saisie incorrect.");
+                scanf("%d",&j);
+            }
+            while ((j - 1) == tourjoueur){
+                printf("IA : Vous ne pouvez pas echanger avec vous meme !\nIA : Veuillez ressaisir : ");
+                scanf("%d",&j);
+            }
+            j--;
+            echange2(j,player,tourjoueur);
+
+        }
+
+        if (nombreDeJoueur == 3){
+            Color(3,0);
+            printf("\nIA : Avec qui souhaitez-vous echanger ?");
+            Color(player[0]->couleurJoueur,0);
+            printf("\n1.%s  ",player[0]->prenomJoueur);
+            Color(player[1]->couleurJoueur,0);
+            printf("2.%s  ",player[1]->prenomJoueur);
+            Color(player[2]->couleurJoueur,0);
+            printf("3.%s",player[2]->prenomJoueur);
+            int j;
+            Color(3,0);
+            scanf("%d",&j);
+            while (j != 1 && j!= 2 && j != 3){
+                printf("Saisie incorrect.");
+                scanf("%d",&j);
+            }
+            while ((j - 1)  == tourjoueur){
+                scanf("%s");
+                printf("IA : Vous ne pouvez pas echanger avec vous meme !\nIA : Veuillez ressaisir : ");
+                scanf("%d",&j);
+            }
+            j--;
+            echange2(j,player,tourjoueur);
+
+        }
+        else if (nombreDeJoueur == 4){
+
+            Color(3,0);
+            printf("\nIA : Avec qui souhaitez-vous echanger ?");
+            Color(player[0]->couleurJoueur,0);
+            printf("\n1.%s  ",player[0]->prenomJoueur);
+            Color(player[1]->couleurJoueur,0);
+            printf("2.%s  ",player[1]->prenomJoueur);
+            Color(player[2]->couleurJoueur,0);
+            printf("3.%s  ",player[2]->prenomJoueur);
+            Color(player[3]->couleurJoueur,0);
+            printf("4.%s",player[3]->prenomJoueur);
+            int k;
+            Color(3,0);
+            scanf("%d",&k);
+            while (k != 1 && k!= 2 && k != 3 && k!= 4){
+                printf("IA : Saisie incorrect.");
+                scanf("%d",&k);
+            }
+            while ((k- 1)  == tourjoueur){
+                printf("IA : Vous ne pouvez pas echanger avec vous meme !\nIA : Veuillez ressaisir : ");
+                scanf("%d",&k);
+            }
+            k--;
+            echange2(k,player,tourjoueur);
+        }
+    }
+}
+
+
+void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur){
+        Color(5,0);
+        printf("\n                                                  L'ECHANGE COMMENCE ENTRE LE J%d ET LE J%d !",player[tourjoueur]->numeroJoueur,player[j]->numeroJoueur);
+        printf("\nInformation J%d : ",player[tourjoueur]->numeroJoueur);
+        Color(player[tourjoueur]->couleurJoueur,0);
+        printf("%s",player[tourjoueur]->prenomJoueur);
+        printf("\nPorte Monnaie : %d",player[tourjoueur]->argent);
+        printf("\nProprietes : ");
+        printf("%s",player[tourjoueur]->proprietes);
+        Color(5,0);
+        printf("\nInformation J%d : ",player[j]->numeroJoueur);
+        Color(player[j]->couleurJoueur,0);
+        printf("%s",player[j]->prenomJoueur);
+        printf("\nPorte Monnaie : %d",player[j]->argent);
+        printf("\nProprietes : ");
+        printf("%s",player[j]->proprietes);
+        Color(5,0);
+        printf("\nA present choissiez quel propriete doit echange ");
+        Color(player[tourjoueur]->couleurJoueur,0);
+        printf("%s",player[tourjoueur]->prenomJoueur);
+        Color(5,0);
+        printf(".(Ecrire en majuscule le nom de la propriete ou appuyez sur la touche entree si il sagit seulement d'argent de votre cote) : ");
+        char input1 [TAILLE];
+        getchar();
+        gets(input1);
+        strcat(input1,",");
+        int argent1;
+        printf("\nEt combien d'euros avec ca ? : ");
+        scanf("%d",&argent1);
+        while(argent1 < 0 || argent1 > player[tourjoueur]->argent){
+            printf("\nFonds insuffisants, veuillez ressaisir : ");
+            scanf("%d",&argent1);
+        }
+        char input2 [TAILLE];
+        int argent2;
+        printf("A present choissiez quel propriete doit echange ");
+        Color(player[j]->couleurJoueur,0);
+        printf("%s",player[j]->prenomJoueur);
+        Color(5,0);
+        printf(".(Ecrire en majuscule le nom de la propriete ou appuyez sur la touche entree si il sagit seulement d'argent de votre cote) : ");
+        getchar();
+        gets(input2);
+        strcat(input2,",");
+        printf("\nEt combien d'euros avec ca ? : ");
+        scanf("%d",&argent2);
+        while(argent2 < 0 || argent2 > player[tourjoueur]->argent){
+            printf("\nFonds insuffisants, veuillezz ressaisir : ");
+            scanf("%d",&argent2);
+        }
+        player[j]->argent += argent1;
+        player[j]->argent -= argent2;
+        player[tourjoueur]->argent += argent2;
+        player[tourjoueur]->argent -= argent1;
+        strcat(player[j]->proprietes,input1);
+        strcpy(player[j]->proprietes,str_replace(player[j]->proprietes,input2,""));
+        strcat(player[tourjoueur]->proprietes,input2);
+        strcpy(player[tourjoueur]->proprietes,str_replace(player[tourjoueur]->proprietes,input1,""));
+        printf("\nEchange effectue ! Felicitation !");
+        printf("\nRecapitulatif : ");
+        printf("\nInformation J%d : ",player[tourjoueur]->numeroJoueur);
+        Color(player[tourjoueur]->couleurJoueur,0);
+        printf("%s",player[tourjoueur]->prenomJoueur);
+        printf("\nPorte Monnaie : %d",player[tourjoueur]->argent);
+        printf("\nProprietes : ");
+        printf("%s",player[tourjoueur]->proprietes);
+        Color(5,0);
+        printf("\nInformation J%d : ",player[j]->numeroJoueur);
+        Color(player[j]->couleurJoueur,0);
+        printf("%s",player[j]->prenomJoueur);
+        printf("\nPorte Monnaie : %d",player[j]->argent);
+        printf("\nProprietes : ");
+        printf("%s",player[j]->proprietes);
+
+}
 
 
 

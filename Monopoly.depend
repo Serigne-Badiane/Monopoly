@@ -4,7 +4,7 @@
 	<stdlib.h>
 	<windows.h>
 
-1639933484 source:c:\users\badia\onedrive\documents\code c\monopoly\main.c
+1640809324 source:c:\users\badia\onedrive\documents\code c\monopoly\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -58,9 +58,9 @@
 
 1639477523 source:c:\users\edouard\documents\github\monopoly\joueurs.c
 
-1639933858 c:\users\badia\onedrive\documents\code c\monopoly\bib.h
+1640534449 c:\users\badia\onedrive\documents\code c\monopoly\bib.h
 
-1639932970 source:c:\users\badia\onedrive\documents\code c\monopoly\menu.c
+1640704199 source:c:\users\badia\onedrive\documents\code c\monopoly\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -74,7 +74,7 @@
 
 1639477523 source:c:\users\edouard\documents\github\monopoly\planetes.c
 
-1639933683 source:c:\users\badia\onedrive\documents\code c\monopoly\planetes.c
+1640809355 source:c:\users\badia\onedrive\documents\code c\monopoly\planetes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -117,6 +117,18 @@
 	"bib.h"
 
 1640612337 source:c:\users\antan\documents\github\monopoly\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1640534785 source:c:\users\badia\onedrive\documents\code c\monopoly\cartes.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1640739937 source:c:\users\badia\onedrive\documents\code c\monopoly\plateau.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
