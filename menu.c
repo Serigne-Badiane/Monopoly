@@ -10,9 +10,10 @@
 
 ///PROCEDURE MENU
 void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE]){
+    FILE * fp=NULL;
     int menu=0;
     int J=0;
-    printf("            MONOPOLY\n1.-Nouvelle Partie\n\n2.-Sauvegarder Partie en cours\n\n3.-Charger Partie\n\n4.-Regle\n\n5.-Cr%cdit\n\n",0x82);
+    printf("        \n\n    MONOPOLY\n1.-Nouvelle Partie\n\n2.-Sauvegarder Partie en cours\n\n3.-Charger Partie\n\n4.-Regle\n\n5.-Cr%cdit\n\n",0x82);
     scanf("%d",&menu);
 
     while (menu!=1&&menu!=2&&menu!=3&&menu!=4&&menu!=5)
@@ -50,6 +51,56 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jo
         *nombreDeJoueur = J;
 
 
+    }
+        if (menu==2)
+    {
+        fp=fopen("Partie.txt","w");
+        if (fp==NULL)
+        {
+        printf("erreur d'ouverture");
+        exit (0);
+        }
+        for(int l = 0; l<4; l++)
+        {
+            fprintf(fp,"%s\n",player[l]->prenomJoueur);
+            fprintf(fp,"%d\n",player[l]->argent);
+            fprintf(fp,"%d\n",player[l]->couleur);
+            fprintf(fp,"%d\n",player[l]->numeroCase);
+            fprintf(fp,"%d\n",player[l]->numeroJoueur);
+            fprintf(fp,"%d\n",player[l]->prison);
+            fprintf(fp,"%s\n",player[l]->proprietes);
+            fprintf(fp,"%d\n",player[l]->nbDeGare);
+            fprintf(fp,"%d\n",player[l]->couleurJoueur);
+        }
+        fclose(fp);
+        return(0);
+
+
+    }
+
+    if (menu==3)
+    {
+
+        fp=fopen("Partie.txt","r");
+        if (fp==NULL)
+        {
+        printf("erreur d'ouverture");
+        exit (0);
+        }
+        for(int h = 0; h<4; h++)
+        {
+            fscanf(fp,"%s\n",&player[h]->prenomJoueur);
+            fscanf(fp,"%d\n",&player[h]->argent);
+            fscanf(fp,"%d\n",&player[h]->couleur);
+            fscanf(fp,"%d\n",&player[h]->numeroCase);
+            fscanf(fp,"%d\n",&player[h]->numeroJoueur);
+            fscanf(fp,"%d\n",&player[h]->prison);
+            fscanf(fp,"%s\n",&player[h]->proprietes);
+            fscanf(fp,"%d\n",&player[h]->nbDeGare);
+            fscanf(fp,"%d\n",&player[h]->couleurJoueur);
+        }
+        fclose(fp);
+        return(0);
     }
     if (menu==4)
     {

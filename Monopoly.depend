@@ -32,7 +32,11 @@
 
 1639755059 ated upstream
 
-1639757900 source:c:\users\edouard\documents\github\monopoly\main.c
+1641137488 source:c:\users\edouard\documents\github\monopoly\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
 
 1639932970 source:c:\users\badia\onedrive\documents\code c\monopoly\joueurs.c
 	<stdio.h>
@@ -150,7 +154,7 @@
 
 1641132116 c:\users\edouard\documents\github\monopoly\bib.h
 
-1641132116 source:c:\users\edouard\documents\github\monopoly\menu.c
+1641137548 source:c:\users\edouard\documents\github\monopoly\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
