@@ -56,7 +56,7 @@
 
 1640018185 c:\users\antan\documents\github\monopoly\bib.h
 
-1640697925 source:c:\users\edouard\documents\github\monopoly\joueurs.c
+1641132116 source:c:\users\edouard\documents\github\monopoly\joueurs.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -76,7 +76,7 @@
 	<windows.h>
 	"bib.h"
 
-1640697925 source:c:\users\edouard\documents\github\monopoly\planetes.c
+1641132116 source:c:\users\edouard\documents\github\monopoly\planetes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -137,6 +137,26 @@
 	"bib.h"
 
 1640739937 source:c:\users\badia\onedrive\documents\code c\monopoly\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1641132116 source:c:\users\edouard\documents\github\monopoly\cartes.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1641132116 c:\users\edouard\documents\github\monopoly\bib.h
+
+1641132116 source:c:\users\edouard\documents\github\monopoly\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1641132116 source:c:\users\edouard\documents\github\monopoly\plateau.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
