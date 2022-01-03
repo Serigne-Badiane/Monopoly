@@ -20,7 +20,7 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jo
     {
         Color(3,0);
         printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
-        scanf("%s");
+        fflush(stdin);
         scanf("%d",&menu);
     }
 
@@ -38,8 +38,9 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jo
         scanf("%d",&J);
         while(J>=5 || J<2)
         {
+             Color(3,0);
              printf("IA : il ne peut y avoir que 2 a 4 joueurs ... vous croyez que notre fus%ce peut acceuillir plus de monde ?",0x82);
-             scanf("%s");
+             fflush(stdin);
              scanf("%d", &J);
         }
 
@@ -123,7 +124,7 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jo
     scanf("%d", &choix);
     while(choix != 1){
         printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
-        scanf("%s");
+        fflush(stdin);
         scanf("%d",&choix);
     }
 

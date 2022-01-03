@@ -13,6 +13,13 @@
 void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
     Color(3,0);
     printf("\n\n%cIA : Nous sommes arriv%cs sur une nouvelle plan%cte... La plan%cte %s !",0x10,0x82,0x8A,0x8A,p->nom);
+    for (int i =0 ; i<4 ; i++){
+        char * result = strstr(player[i]->proprietes, p->nom);
+        if (result != NULL){
+            p->proprio = player[i]->numeroJoueur;
+        }
+        result = NULL;
+    }
     if (p->proprio != player[0]->numeroJoueur && p->proprio != player[1]->numeroJoueur && p->proprio != player[2]->numeroJoueur && p->proprio != player[3]->numeroJoueur){
         printf("\n%cIA : %s",0x10,p->anecdote);
         printf("\n%cIA : Voici un r%ccapitulatif capitaine...",0x10,0x82);
@@ -45,7 +52,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         scanf("%d",&answer);
         while( answer != 1 && answer != 2){
             printf("IA : Saisie incorrect\n");
-            getchar();
+            fflush(stdin);
             scanf("%d",&answer);
         }
         Color(3,0);
@@ -104,7 +111,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         Color(3,0);
         while( choix != 1 && choix != 2){
             printf("IA : Saisie incorrect\n");
-            getchar();
+            fflush(stdin);
             scanf("%d",&choix);
         }
         if(choix == 1 && player[tourjoueur]->argent >= p->prixMaison){
@@ -125,7 +132,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
                 scanf("%d", &choix2);
                 while( choix != 1 && choix != 2){
                     printf("IA : Saisie incorrect\n");
-                    getchar();
+                    fflush(stdin);
                     scanf("%d",&choix);
                 }
                 if(choix2 == 1 && player[tourjoueur]->argent >= p->prixMaison){
@@ -230,6 +237,13 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
 void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
     Color(3,0);
     printf("\n\n%cIA : Nous sommes arriv%cs sur une nouvelle galaxie : ...%s !",0x10,0x82,g->nom);
+    for (int i =0 ; i<4 ; i++){
+        char * result = strstr(player[i]->proprietes, g->nom);
+        if (result != NULL){
+            g->proprio = player[i]->numeroJoueur;
+        }
+        result = NULL;
+    }
     if (g->proprio == player[0]->numeroJoueur || g->proprio == player[1]->numeroJoueur || g->proprio == player[2]->numeroJoueur || g->proprio == player[3]->numeroJoueur){
         Color(15,0);
         printf("\n                          Nombre de galaxie possede par %s : %d",player[g->proprio - 1]->prenomJoueur, player[g->proprio-1]->nbDeGare);
@@ -311,7 +325,7 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
         scanf("%d",&answer);
         while( answer != 1 && answer != 2){
             printf("IA : Saisie incorrect\n");
-            getchar();
+            fflush(stdin);
             scanf("%d",&answer);
         }
         Color(3,0);
@@ -343,6 +357,13 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
     Color(3,0);
 
     printf("\n\n%cIA : Nous sommes arriv%cs sur un nouveaux satellite ...  %s !",0x10,0x82,s->nom);
+    for (int i =0 ; i<4 ; i++){
+        char * result = strstr(player[i]->proprietes, s->nom);
+        if (result != NULL){
+            s->proprio = player[i]->numeroJoueur;
+        }
+        result = NULL;
+    }
 
     if(player[s->proprio - 1]->prenomJoueur == player[tourjoueur]->prenomJoueur){
         Color(15,0);
@@ -375,7 +396,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
         Color(3,0);
         while( choix != 1 && choix != 2){
             printf("IA : Saisie incorrect\n");
-            getchar();
+            fflush(stdin);
             scanf("%d",&choix);
         }
         if(choix == 1 && player[tourjoueur]->argent >= s->prixMaison){
@@ -523,7 +544,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur)
         scanf("%d",&answer);
         while( answer != 1 && answer != 2){
             printf("IA : Saisie incorrect\n");
-            getchar();
+            fflush(stdin);
             scanf("%d",&answer);
         }
         Color(3,0);
@@ -1014,8 +1035,8 @@ void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourj
     scanf("%d",&inpu);
     while( inpu != 1 && inpu != 2){
         printf("IA : Saisie incorrect, veuilelz ressaisir : ");
-        scanf("%s");
-        scanf("%d",inpu);
+        fflush(stdin);
+        scanf("%d",&inpu);
     }
     if (inpu == 1){
         if (nombreDeJoueur == 2){
@@ -1029,10 +1050,12 @@ void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourj
             Color(3,0);
             scanf("%d",&j);
             while (j != 1 && j!= 2){
+                fflush(stdin);
                 printf("Saisie incorrect.");
                 scanf("%d",&j);
             }
             while ((j - 1) == tourjoueur){
+                fflush(stdin);
                 printf("IA : Vous ne pouvez pas echanger avec vous meme !\nIA : Veuillez ressaisir : ");
                 scanf("%d",&j);
             }
@@ -1054,11 +1077,12 @@ void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourj
             Color(3,0);
             scanf("%d",&j);
             while (j != 1 && j!= 2 && j != 3){
+                fflush(stdin);
                 printf("Saisie incorrect.");
                 scanf("%d",&j);
             }
             while ((j - 1)  == tourjoueur){
-                scanf("%s");
+                fflush(stdin);
                 printf("IA : Vous ne pouvez pas echanger avec vous meme !\nIA : Veuillez ressaisir : ");
                 scanf("%d",&j);
             }
@@ -1082,10 +1106,12 @@ void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourj
             Color(3,0);
             scanf("%d",&k);
             while (k != 1 && k!= 2 && k != 3 && k!= 4){
+                fflush(stdin);
                 printf("IA : Saisie incorrect.");
                 scanf("%d",&k);
             }
             while ((k- 1)  == tourjoueur){
+                fflush(stdin);
                 printf("IA : Vous ne pouvez pas echanger avec vous meme !\nIA : Veuillez ressaisir : ");
                 scanf("%d",&k);
             }
@@ -1117,15 +1143,23 @@ void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur){
         Color(player[tourjoueur]->couleurJoueur,0);
         printf("%s",player[tourjoueur]->prenomJoueur);
         Color(5,0);
-        printf(".(Ecrire en majuscule le nom de la propriete ou appuyez sur la touche entree si il sagit seulement d'argent de votre cote) : ");
-        char input1 [TAILLE];
-        getchar();
+        printf(".(Ecrire en majuscule le nom de la propriete) : ");
+        char input1 [TAILLE] = {NULL};
+        fflush(stdin);
         gets(input1);
+        char * result = strstr(player[tourjoueur]->proprietes,input1);
+        while ( result == NULL ) {
+            printf("Vous ne possedez pas cette propriete !(ou vous l'avez peut etre mal ecrite).\nVeuillez ressaisir : ");
+            gets(input1);
+            result = NULL;
+            result = strstr(player[tourjoueur]->proprietes,input1);
+        }
         strcat(input1,",");
         int argent1;
         printf("\nEt combien d'euros avec ca ? : ");
         scanf("%d",&argent1);
         while(argent1 < 0 || argent1 > player[tourjoueur]->argent){
+            fflush(stdin);
             printf("\nFonds insuffisants, veuillez ressaisir : ");
             scanf("%d",&argent1);
         }
@@ -1135,13 +1169,21 @@ void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur){
         Color(player[j]->couleurJoueur,0);
         printf("%s",player[j]->prenomJoueur);
         Color(5,0);
-        printf(".(Ecrire en majuscule le nom de la propriete ou appuyez sur la touche entree si il sagit seulement d'argent de votre cote) : ");
+        printf(".(Ecrire en majuscule le nom de la propriete) : ");
         getchar();
         gets(input2);
+        char * result2 = strstr(player[j]->proprietes,input2);
+        while ( result2 == NULL ) {
+            printf("Vous ne possedez pas cette propriete !(ou vous l'avez peut etre mal ecrite).\nVeuillez ressaisir : ");
+            gets(input2);
+            result2 = NULL;
+            result2 = strstr(player[j]->proprietes,input2);
+        }
         strcat(input2,",");
         printf("\nEt combien d'euros avec ca ? : ");
         scanf("%d",&argent2);
         while(argent2 < 0 || argent2 > player[tourjoueur]->argent){
+            fflush(stdin);
             printf("\nFonds insuffisants, veuillezz ressaisir : ");
             scanf("%d",&argent2);
         }
@@ -1150,9 +1192,9 @@ void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur){
         player[tourjoueur]->argent += argent2;
         player[tourjoueur]->argent -= argent1;
         strcat(player[j]->proprietes,input1);
+        strcpy(player[tourjoueur]->proprietes,str_replace(player[tourjoueur]->proprietes,input1,""));
         strcpy(player[j]->proprietes,str_replace(player[j]->proprietes,input2,""));
         strcat(player[tourjoueur]->proprietes,input2);
-        strcpy(player[tourjoueur]->proprietes,str_replace(player[tourjoueur]->proprietes,input1,""));
         printf("\nEchange effectue ! Felicitation !");
         printf("\nRecapitulatif : ");
         printf("\nInformation J%d : ",player[tourjoueur]->numeroJoueur);
