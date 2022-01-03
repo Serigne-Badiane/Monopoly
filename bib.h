@@ -17,6 +17,7 @@ typedef struct joueur
     int couleur;
     int argent;
     int nbDeGare;
+    int pion;
 
 }t_joueur;
 

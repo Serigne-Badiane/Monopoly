@@ -154,6 +154,7 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jo
         deplacementCase = deplacementCase1 + deplacementCase2 + deplacementCase3;
         printf("%s avance de %d cases.\n", player[numeroTour]->prenomJoueur, deplacementCase);
         *nombreDeDeplacement = deplacementCase;
+         system("PAUSE");
 
 
     }
