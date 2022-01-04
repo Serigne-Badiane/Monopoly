@@ -469,6 +469,7 @@ while(choix != 0)
     system("cls");
     Color(15,0);
     plateau();
+    affichageDesJoueurs(player);
 
 
 
@@ -485,7 +486,7 @@ while(choix != 0)
         case 2:
         {
 
-            gotoligcol(4,17);
+            gotoligcol(3,17);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -496,7 +497,7 @@ while(choix != 0)
         case 3:
         {
 
-            gotoligcol(4,27);
+            gotoligcol(3,27);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -508,7 +509,7 @@ while(choix != 0)
         {
 
 
-            gotoligcol(4,37);
+            gotoligcol(5,37);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -533,7 +534,7 @@ while(choix != 0)
         case 6:
         {
 
-            gotoligcol(4,61);
+            gotoligcol(3,61);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -544,7 +545,7 @@ while(choix != 0)
         case 7:
         {
 
-            gotoligcol(4,76);
+            gotoligcol(3,76);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -566,7 +567,7 @@ while(choix != 0)
         case 9:
         {
 
-            gotoligcol(8,87);
+            gotoligcol(7,87);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -577,7 +578,7 @@ while(choix != 0)
         case 10:
         {
 
-            gotoligcol(12,87);
+            gotoligcol(11,87);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -599,7 +600,7 @@ while(choix != 0)
         case 12:
         {
 
-            gotoligcol(20,87);
+            gotoligcol(19,87);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -610,7 +611,7 @@ while(choix != 0)
         case 13:
         {
 
-            gotoligcol(24,87);
+            gotoligcol(23,87);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -621,7 +622,7 @@ while(choix != 0)
         case 14:
         {
 
-            gotoligcol(30,87);
+            gotoligcol(29,87);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -633,7 +634,7 @@ while(choix != 0)
         case 15:
         {
 
-            gotoligcol(34,87);
+            gotoligcol(33,87);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -644,7 +645,7 @@ while(choix != 0)
         case 16:
         {
 
-            gotoligcol(33,63);
+            gotoligcol(31,76);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -656,7 +657,7 @@ while(choix != 0)
         case 17:
         {
 
-            gotoligcol(33,75);
+            gotoligcol(31,61);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -668,7 +669,7 @@ while(choix != 0)
         case 18:
         {
 
-            gotoligcol(33,39);
+            gotoligcol(32,49);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -680,7 +681,7 @@ while(choix != 0)
         case 19:
         {
 
-            gotoligcol(33,51);
+            gotoligcol(31,37);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -692,7 +693,7 @@ while(choix != 0)
         case 20:
         {
 
-            gotoligcol(33,29);
+            gotoligcol(31,27);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -714,7 +715,7 @@ while(choix != 0)
         case 22:
         {
 
-            gotoligcol(33,3);
+            gotoligcol(32,3);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -726,7 +727,7 @@ while(choix != 0)
         {
 
 
-            gotoligcol(29,3);
+            gotoligcol(27,2);
             Color(player[tourJoueur]->couleur, 0);
 
             printf("%c", player[tourJoueur]->pion);
@@ -738,7 +739,7 @@ while(choix != 0)
         case 24:
         {
 
-            gotoligcol(25,3);
+            gotoligcol(23,2);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -749,7 +750,7 @@ while(choix != 0)
         case 25:
         {
 
-            gotoligcol(21,3);
+            gotoligcol(20,2);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -760,7 +761,7 @@ while(choix != 0)
         case 26:
         {
 
-            gotoligcol(17,3);
+            gotoligcol(15,2);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -771,7 +772,7 @@ while(choix != 0)
         case 27:
         {
 
-            gotoligcol(13,3);
+            gotoligcol(11,2);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -782,7 +783,7 @@ while(choix != 0)
         case 28:
         {
 
-            gotoligcol(9,3);
+            gotoligcol(9,2);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);

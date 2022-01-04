@@ -151,3 +151,26 @@ int lancerDe(t_joueur player[NbJoueurMax][TAILLE], int de[2], int joueur)
     return nombreDeplacement;
 }
 
+void affichageDesJoueurs(t_joueur player[NbJoueurMax][TAILLE]){
+    gotoligcol(3, 100);
+    Color(player[0]->couleur, 0);
+    printf("%s, votre porte monnaie : %d\n", player[0]->prenomJoueur, player[0]->argent);
+    gotoligcol(4, 100);
+    printf("Vos proprietes sont : %s.", player[0]->proprietes);
+    gotoligcol(6, 100);
+    Color(player[1]->couleur, 0);
+    printf("%s, votre porte monnaie : %d\n", player[1]->prenomJoueur, player[1]->argent);
+    gotoligcol(7, 100);
+    printf("Vos proprietes sont : %s.", player[1]->proprietes);
+    gotoligcol(9, 100);
+    Color(player[2]->couleur, 0);
+    printf("%s, votre porte monnaie : %d\n", player[2]->prenomJoueur, player[2]->argent);
+    gotoligcol(10, 100);
+    printf("Vos proprietes sont : %s.", player[2]->proprietes);
+    gotoligcol(12, 100);
+    Color(player[3]->couleur, 0);
+    printf("%s, votre porte monnaie : %d\n", player[3]->prenomJoueur, player[3]->argent);
+    gotoligcol(13, 100);
+    printf("Vos proprietes sont : %s.", player[3]->proprietes);
+
+}
