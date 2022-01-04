@@ -61,7 +61,7 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jo
         printf("erreur d'ouverture");
         exit (0);
         }
-        for(int l = 0; l<4; l++)
+        for(int l = 0; l<NbJoueurMax; l++)
         {
             fprintf(fp,"%s\n",player[l]->prenomJoueur);
             fprintf(fp,"%d\n",player[l]->argent);
