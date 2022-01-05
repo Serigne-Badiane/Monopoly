@@ -63,13 +63,20 @@ int menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jou
     if (menu==3)
     {
 
+        int chJ=0;
+        printf("\nIA : Bonjour ! Pouvez vous me communiquez combien de joueurs etiez vous dans la Partie que vous voulez reprendre");
+        scanf("%d",&chJ);
+        while(chJ !=2 && chJ !=3 && chJ !=4)
+        {
+            printf("\nIA : Saisissez le bon nombre de joueur");
+        }
         fp=fopen("Partie.txt","r");
         if (fp==NULL)
         {
         printf("erreur d'ouverture");
         exit (0);
         }
-        for(int h = 0; h<4; h++)
+        for(int h = 0; h<chJ; h++)
         {
             fscanf(fp,"%s\n",&player[h]->prenomJoueur);
             fscanf(fp,"%d\n",&player[h]->argent);
