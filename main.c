@@ -26,13 +26,13 @@ SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
 
 }
 
-void pause()
+int pause(int sauvegarde)
 {
     char pause=kbhit('p');
     pause=getch();
     if(pause=='p')
     {
-        menu1();
+        sauvegarde=menu1();
     }
 }
 
@@ -41,6 +41,7 @@ void pause()
 int main()
 {
 
+    int sauvegarde=0;
     srand(time(NULL));
     t_joueur player[NbJoueurMax][TAILLE];
     satellite lune_ = {0, "","",0,0,0,0,0,0,0};
@@ -469,8 +470,32 @@ while(choix != 0)
     }
     Color(3,0);
     printf(" IA : %s, veuillez appuyer sur 1 pour lancer le de : ", player[tourJoueur]->prenomJoueur);
+    sauvegarde=pause(sauvegarde);
+    if(sauvegarde==1)
+    {
+        FILE * fp=NULL;
+        fp=fopen("Partie.txt","w");
+        if (fp==NULL)
+        {
+        printf("erreur d'ouverture");
+        exit (0);
+        }
+        for(int l = 0; l<NbJoueurMax; l++)
+        {
+            fprintf(fp,"%s\n",player[l]->prenomJoueur);
+            fprintf(fp,"%d\n",player[l]->argent);
+            fprintf(fp,"%d\n",player[l]->couleur);
+            fprintf(fp,"%d\n",player[l]->numeroCase);
+            fprintf(fp,"%d\n",player[l]->numeroJoueur);
+            fprintf(fp,"%d\n",player[l]->prison);
+            fprintf(fp,"%s\n",player[l]->proprietes);
+            fprintf(fp,"%d\n",player[l]->nbDeGare);
+            fprintf(fp,"%d\n",player[l]->couleurJoueur);
+        }
+        fclose(fp);
+    }
     scanf("%d", &choix);
-    pause();
+
 
     while(choix != 1 && choix != 0){
         printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");

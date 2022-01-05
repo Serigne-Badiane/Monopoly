@@ -9,7 +9,7 @@
 
 
 ///PROCEDURE MENU
-void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE]){
+int menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE]){
     FILE * fp=NULL;
     int menu=0;
     int J=0;
@@ -55,28 +55,9 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jo
     }
         if (menu==2)
     {
-        fp=fopen("Partie.txt","w");
-        if (fp==NULL)
-        {
-        printf("erreur d'ouverture");
-        exit (0);
-        }
-        for(int l = 0; l<NbJoueurMax; l++)
-        {
-            fprintf(fp,"%s\n",player[l]->prenomJoueur);
-            fprintf(fp,"%d\n",player[l]->argent);
-            fprintf(fp,"%d\n",player[l]->couleur);
-            fprintf(fp,"%d\n",player[l]->numeroCase);
-            fprintf(fp,"%d\n",player[l]->numeroJoueur);
-            fprintf(fp,"%d\n",player[l]->prison);
-            fprintf(fp,"%s\n",player[l]->proprietes);
-            fprintf(fp,"%d\n",player[l]->nbDeGare);
-            fprintf(fp,"%d\n",player[l]->couleurJoueur);
-        }
-        fclose(fp);
-        return(0);
-
-
+        int sauvegarde=1;
+        printf("sauvegarde en cours");
+        return sauvegarde;
     }
 
     if (menu==3)
