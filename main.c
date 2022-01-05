@@ -445,15 +445,15 @@ while(choix != 0)
     }
     Color(3,0);
     printf(" IA : %s, veuillez appuyer sur 1 pour lancer le de : ", player[tourJoueur]->prenomJoueur);
-    scanf("%d", &choix);
     pause();
+    scanf("%d", &choix);
+
 
     while(choix != 1 && choix != 0){
         printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
         scanf("%d",&choix);
 
     }
-
 
     if (choix == 1)
     {
