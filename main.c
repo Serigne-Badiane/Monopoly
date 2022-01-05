@@ -201,12 +201,14 @@ while(choix != 0)
         case 8:
         {
 
-            gotoligcol(4,87);
+            gotoligcol(32,3);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
             printf("\nIA : Vous allez directement en prison !\n");
-            player[tourJoueur]->numeroCase = 8;
+            player[tourJoueur]->prison = 1;
+            player[tourJoueur]->numeroCase = 22;
+
             break;
         }
         case 9:
@@ -363,9 +365,18 @@ while(choix != 0)
             gotoligcol(32,3);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
-            gotoligcol(35,1);
-            printf("\nBONJOUR");
-            player[tourJoueur]->numeroCase = 22;
+            if(player[tourJoueur]->prison == 1){
+                gotoligcol(35,1);
+                prison(player, tourJoueur, nombreJoueur);
+                player[tourJoueur]->numeroCase = 22;
+            }
+            else{
+                gotoligcol(35,1);
+                Color(3,0);
+                printf("\nVous visitez la prison spatiale !\n");
+                player[tourJoueur]->numeroCase = 22;
+            }
+
             break;
         }
         case 23:
@@ -439,21 +450,34 @@ while(choix != 0)
     }
 
     tourJoueur += 1;
-    if (tourJoueur == nombreJoueur  )
+    if (tourJoueur == nombreJoueur )
+    {
+        tourJoueur = 0;
+    }
+
+    while(player[tourJoueur]->prison == 1){
+
+        prison(player, tourJoueur, nombreJoueur);
+        player[tourJoueur]->numeroCase = 22;
+        if (player[tourJoueur]->prison == 1){
+            tourJoueur += 1;
+        }
+    }
+    if (tourJoueur == nombreJoueur )
     {
         tourJoueur = 0;
     }
     Color(3,0);
     printf(" IA : %s, veuillez appuyer sur 1 pour lancer le de : ", player[tourJoueur]->prenomJoueur);
-    pause();
     scanf("%d", &choix);
-
+    pause();
 
     while(choix != 1 && choix != 0){
         printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
         scanf("%d",&choix);
 
     }
+
 
     if (choix == 1)
     {
@@ -468,18 +492,23 @@ while(choix != 0)
                 {
                     printf("IA : Vous allez en prison !");
 
+                    player[tourJoueur]->prison = 1;
+                    player[tourJoueur]->numeroCase = 22;
+                    prison(player,tourJoueur, nombreJoueur);
                 }
             }
 
         }
 
         deplacement = deplacement1 + deplacement2 + deplacement3;
+
         printf("%s avance de %d cases.\n", player[tourJoueur]->prenomJoueur, deplacement);
-        system("PAUSE");
+
 
 
 
         deplacement += player[tourJoueur]->numeroCase;
+
         if (deplacement >= 28)
         {
             deplacement = deplacement - 28;
@@ -487,6 +516,7 @@ while(choix != 0)
         }
 
     }
+    system("PAUSE");
 
 }
 return 0;

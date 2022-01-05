@@ -146,6 +146,10 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jo
                 if(numeroDe[1] == numeroDe[0])
                 {
                     printf("IA : Vous allez en prison !");
+                    player[numeroTour]->prison = 1;
+                    player[numeroTour]->numeroCase = 22;
+                    prison(player,tourJoueur, nombreDeJoueur);
+
 
                 }
             }

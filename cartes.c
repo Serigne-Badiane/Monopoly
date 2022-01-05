@@ -497,6 +497,221 @@ void c16(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
     player[tourJoueur]->argent -= 200;
 }
 
+void prison(t_joueur player[NbJoueurMax][TAILLE], int numeroTour, int nbDeJoueur)
+{
+
+    int choix;
+    int choix2;
+    int choix3;
+    int choix4;
+    int de[2];
+
+    Color(3,0);
+
+    ///carte sortie de prison
+    if(player[numeroTour]->carteSortiePrison == 1){
+        Color(player[numeroTour]->couleur, 0);
+        printf("\n%s, ", player[numeroTour]->prenomJoueur);
+        Color(3,0);
+        printf("vous etes en prison !\n");
+        printf("%s");
+        printf("Vous possedez une carte permettant de sortir de prison.\nVoulez-vous l'utiliser ou la conserver pour plus tard ?\n");
+        printf("                                  ");
+        Color(10,0);
+        printf("1.UTILISER");
+        printf("                                  ");
+        Color(12,0);
+        printf("2.NE PAS UTILISER\n");
+        scanf("%d", &choix);
+        while( choix != 1 && choix != 2){
+            printf("IA : Saisie incorrect\n");
+            getchar();
+            scanf("%d",&choix);
+        }
+        if(choix == 1){
+            player[numeroTour]->prison = 0;
+            Color(player[numeroTour]->couleur, 0);
+            printf("%s, ", player[numeroTour]->prenomJoueur);
+            Color(3,0);
+            printf("vous etes sortis de prison, felicitations !\n");
+
+
+        }
+
+    }
+    else if (player[numeroTour]->carteSortiePrison != 1 && player[0]->carteSortiePrison == 1 || player[1]->carteSortiePrison == 1 || player[2]->carteSortiePrison == 1 || player[3]->carteSortiePrison == 1){
+        for (int i = 0; i<nbDeJoueur; i++){
+
+            if(player[i]->carteSortiePrison == 1 ){
+                Color(player[i]->couleur, 0);
+                printf("\n%s, ", player[i]->prenomJoueur);
+                Color(5,0);
+                printf("voulez-vous vendre votre carte 'sortir de prison' a ");
+                Color(player[numeroTour]->couleur, 0);
+                printf("%s ?\n", player[numeroTour]->prenomJoueur);
+                printf("                                  ");
+                Color(10,0);
+                printf("1.OUI");
+                printf("                                  ");
+                Color(12,0);
+                printf("2.NON\n");
+                int answer;
+                scanf("%d", &answer);
+                while( answer != 1 && answer != 2){
+                    printf("IA : Saisie incorrect\n");
+                    getchar();
+                    scanf("%d",&answer);
+                }
+                if(answer == 1){
+                    Color(5,0);
+                    printf("Pour quel prix voulez-vous la vendre ?\n");
+                    int prixCarte;
+                    scanf("%d", &prixCarte);
+                    Color(player[numeroTour]->couleur, 0);
+                    printf("%s, ", player[numeroTour]->prenomJoueur);
+                    Color(5,0);
+                    printf("Acceptez-vous ce prix ?\n");
+                    printf("                                  ");
+                    Color(10,0);
+                    printf("1.OUI");
+                    printf("                                  ");
+                    Color(12,0);
+                    printf("2.NON\n");
+                    int answer2;
+                    fflush(stdin);
+                    scanf("%d", &answer2);
+                    while( answer2 != 1 && answer2 != 2){
+                        printf("IA : Saisie incorrect\n");
+                        getchar();
+                        scanf("%d",&answer2);
+                    }
+                    if (answer2 == 1){
+                        Color(5,0);
+                        player[numeroTour]->argent -= prixCarte;
+                        player[i]->carteSortiePrison = 0;
+                        player[i]->argent += prixCarte;
+                        printf("Vous pouvez sortir de la prison, ");
+                        Color(player[numeroTour]->couleur, 0);
+                        printf("%s !\n", player[numeroTour]->prenomJoueur);
+                        player[numeroTour]->prison = 0;
+
+
+                    }
+
+                }
+            }
+        }
+    }
+
+    ///si le joueur ne paye pas 50 et n'a pas de carte
+if(player[numeroTour]->prison == 1){
+    if(player[numeroTour]->numeroTourPrison == 3){
+            Color(player[numeroTour]->couleur, 0);
+            printf("\n%s, ", player[numeroTour]->prenomJoueur);
+            Color(3,0);
+            printf("Vous sortez de prison en payant l'amande de 50 euros !\n");
+            player[numeroTour]->argent -= 50;
+
+            player[numeroTour]->prison = 0;
+            player[numeroTour]->numeroTourPrison = 0;
+    }
+    else if(player[numeroTour]->numeroTourPrison == 1 || player[numeroTour]->numeroTourPrison == 2){
+        Color(player[numeroTour]->couleur, 0);
+        printf("\n%s, ", player[numeroTour]->prenomJoueur);
+        Color(3,0);
+        printf("vous etes en prison !\n");
+        printf("Voulez-vous payer une amende de 50 euros pour sortir de la prison spatiale ?\n");
+        printf("                                  ");
+        Color(10,0);
+        printf("1.OUI");
+        printf("                                  ");
+        Color(12,0);
+        printf("2.NON\n");
+        scanf("%d", &choix4);
+        while( choix4 != 1 && choix4 != 2){
+            printf("IA : Saisie incorrect\n");
+            getchar();
+            scanf("%d",&choix4);
+        }
+        if(choix4 == 1){
+            player[numeroTour]->prison = 0;
+            Color(player[numeroTour]->couleur, 0);
+            printf("%s, ", player[numeroTour]->prenomJoueur);
+            Color(3,0);
+            printf("vous etes sortis de prison, felicitations !\n");
+            player[numeroTour]->argent -= 50;
+
+        }
+        else{
+            printf("Appuyer sur 1 pour lancer les des. Si vous faites un double, vous avez l'autorisation de quitter la prison spatiale !\n");
+            scanf("%d",&choix2);
+            while(choix2 != 1){
+                printf("IA : Saisie incorrect\n");
+                getchar();
+                scanf("%d",&choix2);
+            }
+
+            lancerDe(player,de,numeroTour);
+
+            if (de[0] == de[1]){
+                player[numeroTour]->prison = 0;
+                Color(player[numeroTour]->couleur, 0);
+                printf("%s, ", player[numeroTour]->prenomJoueur);
+                Color(3,0);
+                printf("vous etes sortis de prison, felicitations !\n");
+
+            }
+            else{
+                Color(3,0);
+                printf("Dommage, peut-etre au prochain tour !\n");
+                player[numeroTour]->numeroTourPrison += 1;
+
+            }
+
+
+
+
+
+        }
+    }
+
+    else{
+
+        Color(3,0);
+        Color(player[numeroTour]->couleur, 0);
+        printf("\n%s, ", player[numeroTour]->prenomJoueur);
+        Color(3,0);
+        printf("vous etes en prison !\n");
+        printf("Appuyer sur 1 pour lancer les des. Si vous faites un double, vous avez l'autorisation de quitter la prison spatiale !\n");
+        scanf("%d",&choix2);
+        while(choix2 != 1){
+            printf("IA : Saisie incorrect\n");
+            getchar();
+            scanf("%d",&choix2);
+        }
+
+        lancerDe(player,de,numeroTour);
+
+        if (de[0] == de[1]){
+            player[numeroTour]->prison = 0;
+            Color(player[numeroTour]->couleur, 0);
+            printf("%s, ", player[numeroTour]->prenomJoueur);
+            Color(3,0);
+            printf("vous etes sortis de prison, felicitations !\n");
+
+        }
+        else{
+            Color(3,0);
+            printf("Dommage, peut-etre au prochain tour !\n");
+            player[numeroTour]->numeroTourPrison += 1;
+
+        }
+
+    }
+}
+
+}
+
 
 
 
