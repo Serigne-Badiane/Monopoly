@@ -22,13 +22,13 @@
 	<windows.h>
 	"bib.h"
 
-1641331447 source:c:\users\lenal\documents\github\monopoly\main.c
+1641370446 source:c:\users\lenal\documents\github\monopoly\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	"bib.h"
 
-1641368810 c:\users\lenal\documents\github\monopoly\bib.h
+1641373313 c:\users\lenal\documents\github\monopoly\bib.h
 
 1639755059 ated upstream
 
@@ -116,7 +116,7 @@
 	<windows.h>
 	"bib.h"
 
-1641331447 source:c:\users\lenal\documents\github\monopoly\cartes.c
+1641374287 source:c:\users\lenal\documents\github\monopoly\cartes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -166,7 +166,7 @@
 	<windows.h>
 	"bib.h"
 
-1641331447 source:c:\users\lenal\documents\github\monopoly\plateau.c
+1641374339 source:c:\users\lenal\documents\github\monopoly\plateau.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
