@@ -98,13 +98,13 @@
 	<windows.h>
 	"bib.h"
 
-1641402284 source:c:\users\antan\documents\github\monopoly\main.c
+1641407825 source:c:\users\antan\documents\github\monopoly\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	"bib.h"
 
-1641214496 source:c:\users\antan\documents\github\monopoly\planetes.c
+1641406980 source:c:\users\antan\documents\github\monopoly\planetes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -122,7 +122,7 @@
 	<windows.h>
 	"bib.h"
 
-1641402284 source:c:\users\antan\documents\github\monopoly\cartes.c
+1641407231 source:c:\users\antan\documents\github\monopoly\cartes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>

@@ -104,12 +104,16 @@ player[2]->numeroCase = 1;
 player[3]->numeroCase = 1;
 
 int choix = 1;
+int choix2 = 0;
+int choix3 = 0;
+int choix4 = 0;
+int carte = 1;
 int numeroDe[2];
 int deplacement2 = 0;
 int deplacement3 = 0;
 int deplacement1 = 0;
 
-
+deplacement = 8;
 while(choix != 0)
 {
     system("cls");
@@ -278,9 +282,17 @@ while(choix != 0)
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
             Color(15,0);
-            printf("BONJOUR");
+            printf("\nAppuyer sur 1 pour piocher une carte de communaute !\n");
+            scanf("%d", &choix2);
+            while(choix2 != 1){
+                printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
+                scanf("%s");
+                scanf("%d",&choix2);
+            }
 
-            player[tourJoueur]->numeroCase = 14;
+            if (choix2 == 1){
+                piocheCartesCommu(carte, player, nombreJoueur, tourJoueur);
+            }
             break;
         }
         case 15:
@@ -353,13 +365,25 @@ while(choix != 0)
         case 21:
         {
 
+            player[tourJoueur]->numeroCase = 21;
             gotoligcol(32,17);
             Color(player[tourJoueur]->couleur, 1);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
             Color(15,0);
-            printf("BONJOUR\n");
-            player[tourJoueur]->numeroCase = 21;
+            printf("\nAppuyer sur 1 pour piocher une carte de communaute !\n");
+            scanf("%d", &choix3);
+            while(choix3 != 1){
+                printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
+                scanf("%s");
+                scanf("%d",&choix3);
+            }
+
+            if (choix3 == 1){
+                piocheCartesCommu(carte, player, nombreJoueur, tourJoueur);
+            }
+
+
             break;
         }
         case 22:
@@ -442,12 +466,23 @@ while(choix != 0)
         case 28:
         {
 
+            player[tourJoueur]->numeroCase = 28;
             gotoligcol(9,2);
             Color(player[tourJoueur]->couleur, 6);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            printf("BONJOUR");
-            player[tourJoueur]->numeroCase = 28;
+            printf("\nAppuyer sur 1 pour piocher une carte chance !\n");
+            scanf("%d", &choix4);
+            while(choix4 != 1){
+                printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
+                scanf("%s");
+                scanf("%d",&choix2);
+            }
+
+            if (choix4 == 1){
+                piocheCartesChances(carte, player, nombreJoueur, tourJoueur);
+            }
+
             break;
         }
     }
@@ -574,7 +609,11 @@ while(choix != 0)
         {
             deplacement = deplacement - 28;
             player[tourJoueur]->argent += 200;
+        }
     }
+    carte += 1;
+    if (carte >=16){
+        carte = 1;
     }
     system("PAUSE");
 

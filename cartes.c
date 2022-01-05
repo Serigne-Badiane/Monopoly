@@ -33,174 +33,329 @@ void melangerCartes(int tab[12])
 
 ///--------------------------------------------------------------------CARTES COMMUNAUTE---------------------------------------------------------------
 
-void cc1()
+void cc1(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
-    char c[TAILLE]="NON!\nRefusez de payer un joueur qui vous r�clame de l'argent ou qui joue une carte DEAL VOLE ou DEAL FORCE\nVous pouvez conserver cette carte pour l'utiliser plus tard.\n";
+    char c[TAILLE]="\nRETOURNEZ VISTER LA VOIE LACTEE !\n";
     Color(3,0);
     printf("%s", c);
+    player[tourJoueur]->numeroCase = 4;
 
 }
 
-void cc2()
+void cc2(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
-    char c[TAILLE]="BONUS!\nAchetez la prochaine propriete n'appartenat a personne puis recevez 100 de bonus de la banque\n";
-    Color(3,0);
+    char c[TAILLE]="\nVOTRE VAISSEAU EST ENDOMMAGE, vous devez le reparer !\nPayer 150.\n";
+    Color(5,0);
     printf("%s", c);
+    player[tourJoueur]->argent -= 150;
 
 }
 
-void cc3()
+void cc3(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
-    char c[TAILLE]="DROIT DEVANT!\nAvancez jusqu'a la prochaine propriete n'appartenant a personne.\nAchetez-la si vous le souhaitez.\n";
-    Color(3,0);
-    printf("%s", c);
+    char c[TAILLE]="FRAUDE! ALLEZ EN PRISON!\nNe recevez pas d'argent en passant par la case depart.\n";
+    Color(5,0);
 
+    printf("%s", c);
+    player[tourJoueur]->numeroCase = 22;
+    player[tourJoueur]->prison = 1;
 }
 
 
-void cc4()
+void cc4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
-    char c[TAILLE]="DEAL VOLE!\nVolez la carte de propriete de votre choix a un autre joueur.\nVous pouvez conserver cette carte pour l'utiiser plus tard.\n";
-    Color(3,0);
+    char c[TAILLE]="VOUS POUVEZ VOUS LIBERER DE LA PRISON SPATIALE A TOUT MOMENT!\n";
+    Color(5,0);
     printf("%s", c);
-
-}
-
-
-void cc5()
-{
-    char c[TAILLE]="DEAL FORCE!\nEchangez une de vos proprietes avec celle du joueur de votre choix\nVous pouvez conserver cette carte pour l'utiliser plus tard.\n";
-    Color(3,0);
-    printf("%s", c);
+    player[tourJoueur]->carteSortiePrison = 1;
 
 }
 
 
-void cc6()
+void cc5(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur)
 {
-    char c[TAILLE]="CADEAU DE MARIAGE\nAchetez la prochaine propriete n'appartenant a personne puis recevez 20 de chacun des autres joueurs.\n";
-    Color(3,0);
+    char c[TAILLE]="DEAL FORCE!\nEchangez une de vos proprietes avec celle du joueur de votre choix\n";
+    Color(5,0);
     printf("%s", c);
+
+    echange(nombreDeJoueur,player,tourJoueur);
+}
+
+
+void cc6(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+{
+    char c[TAILLE]="\nVOUS ETES RAPPELES DE TOUTE URGENCE SUR TERRE !\nAvancez jusqu'à la planete Terre et recevez les 200 euros\n";
+    Color(5,0);
+    printf("%s", c);
+
+    player[tourJoueur]->argent += 200;
+    player[tourJoueur]->numeroCase = 3;
 
 }
 
 
-void cc7()
+void cc7(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur)
 {
-    char c[TAILLE]="BONNE ACTION\nAchetez la prochaine propriete n'appartenant a personne puis donnez 20 a chacun des autres joueurs.\n";
-    Color(3,0);
+    char c[TAILLE]="BONNE ACTION ! Vous avez fait le ménage sur le vaissseau\nChacun des autres joueurs vous versent 20 euros.\n";
+    Color(5,0);
     printf("%s", c);
+
+    for (int i = 0; i<= nombreDeJoueur - 1; i++)
+    {
+        if(i != tourJoueur)
+        {
+            player[i]->argent -= 20;
+            player[tourJoueur]->argent += 20;
+        }
+    }
+}
+
+
+void cc8(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+{
+    char c[TAILLE]="PETIT VOYAGE INTERGALACTIQUE!\nAvancez jusqu'aux nuages de Magelan.\n";
+    Color(5,0);
+    printf("%s", c);
+
+    player[tourJoueur]->numeroCase = 25;
 
 }
 
 
-void cc8()
+void cc9(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
-    char c[TAILLE]="PETIT VOYAGE!\nAvancez jusqu'a la prochaine propriete n'appartenant a personne.\n. Achetez-la ou mettez-la aux encheres.\n";
-    Color(3,0);
+    char c[TAILLE]="PANNE, vous connaissez un leger souci technique.!\n. Reculez de 3 cases\n";
+    Color(5,0);
     printf("%s", c);
+
+    player[tourJoueur]->numeroCase -=3;
 
 }
 
 
-void cc9()
+void cc10(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur)
 {
-    char c[TAILLE]="MAISON GRATUITE!\nConstruisez une maison sur n'importe laquelle des proprietes d'un de vos groupes de proprietes complets.\nVous pouvez conserver cette carte pour l'utiliser plus tard.\n";
-    Color(3,0);
+    char c[TAILLE]="VOUS N'AVEZ PAS RESPECTES CERTAINES REGLES A BORD DU VAISSEAU!\nVersez 50 euros a tous les joueurs.\n";
+    Color(5,0);
     printf("%s", c);
+
+    for (int i = 0; i<= nombreDeJoueur - 1; i++)
+    {
+        if(i != tourJoueur)
+        {
+            player[i]->argent += 50;
+            player[tourJoueur]->argent -= 50;
+        }
+    }
 
 }
 
 
-void cc10()
+void cc11(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
-    char c[TAILLE]="COUP DOUBLE!\nAchetez la prochaine propriete n'appartenant a personne.\nAchetez-la ou payez le loyer demande.\n";
-    Color(3,0);
+    char c[TAILLE] = "SORTIE SPATIALE, vous devez sortir du vaisseau pour realiser des experiences !\nPayer 50 euros au joueur de votre choix pour qu'il vous accompagne.";
+    Color(5,0);
     printf("%s", c);
+
+    int choix;
+    printf("Veuillez saisir le numero du joueur : ");
+    scanf("%d", &choix);
+    choix -= 1;
+    while(choix >= 4){
+        Color(3,0);
+        printf("\nCe joueur n'existe pas !");
+        fflush(stdin);
+        scanf("%d", &choix);
+    }
+    while(choix == tourJoueur){
+        Color(3,0);
+        printf("\nVous ne pouvez pas sortir seul, ca serait trop dangereux !");
+        fflush(stdin);
+        scanf("%d", &choix);
+    }
+
+    Color(player[choix]->couleur, 0);
+    printf("\n%s, ", player[choix]->prenomJoueur);
+    Color(3,0);
+    printf("vous l'accompagnez pour cette sortie spatiale et recevez 50 euros.\n");
+    player[choix]->argent += 50;
+    player[tourJoueur]->argent -= 50;
+
+    Color(player[choix]->couleur, 0);
+    printf("Votre porte-monnaie : %d\n", player[choix]->argent);
+}
+
+
+void cc12(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+{
+    char c[TAILLE]="REPARATION DU MODULE REUSSI!\nRecevez 50 euros.\n";
+    Color(5,0);
+    printf("%s", c);
+    player[tourJoueur]->argent += 50;
 
 }
 
 
-void cc11()
+void cc13(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
-    char c[TAILLE]="PETIT TOUR EN LIMOUSINE!\nAchetez la prochaine propriete n'appartenant a personne.\n";
-    Color(3,0);
+    char c[TAILLE]="COUP DE BOOST DANS LES REACTEURS !\nAvancer de 5 cases.\n";
+    Color(5,0);
     printf("%s", c);
+
+    player[tourJoueur]->numeroCase += 5;
 
 }
 
 
-void cc12()
+void cc14(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
-    char c[TAILLE]="DEAL VOLE!\nVolez la carte de propriete de votre choix a un autre joueur.\nVous pouvez conserver cette carte pour l'utiiser plus tard.\n";
-    Color(3,0);
+    char c[TAILLE]="VOUS AVEZ ETE NOMMME COMMANDANT DE BORD!\nRecevez 100 euros \n";
+    Color(5,0);
     printf("%s", c);
+
+    player[tourJoueur]->argent += 100;
 
 }
 
 
-void cc13()
+void cc15(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur)
 {
-    char c[TAILLE]="PETIT TOUR EN LIMOUSINE!\nAchetez la prochaine propriete n'appartenant a personne.\n";
-    Color(3,0);
+    char c[TAILLE]="DEAL FORCE!\nEchangez une de vos proprietes avec celle du joueur de votre choix\n";
+    Color(5,0);
     printf("%s", c);
+
+    echange(nombreDeJoueur,player,tourJoueur);
 
 }
 
 
-void cc14()
+void cc16(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur)
 {
-    char c[TAILLE]="PETIT VOYAGE!\nAvancez jusqu'a la prochaine propriete n'appartenant a personne.\n. Achetez-la ou mettez-la aux encheres.\n";
-    Color(3,0);
+    char c[TAILLE]="JOYEUX ANNIVERSAIRE !\nTous les joueurs vous versent 100 euros \n";
+    Color(5,0);
     printf("%s", c);
-
-}
-
-
-void cc15()
-{
-    char c[TAILLE]="BONNE ACTION\nAchetez la prochaine propriete n'appartenant a personne puis donnez 20 a chacun des autres joueurs.\n";
-    Color(3,0);
-    printf("%s", c);
-
-}
-
-
-void cc16()
-{
-    char c[TAILLE]="CADEAU DE MARIAGE\nAchetez la prochaine propriete n'appartenant a personne puis recevez 20 de chacun des autres joueurs.\n";
-    Color(3,0);
-    printf("%s", c);
+    for (int i = 0; i<= nombreDeJoueur - 1; i++)
+    {
+        if(i != tourJoueur)
+        {
+            player[i]->argent -= 100;
+            player[tourJoueur]->argent += 100;
+        }
+    }
 
 }
 
 
 
 ///PIOCHE
-/*int piocheCartesCommunautes()
+int piocheCartesCommu(int carte, t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur)
 {
 
+    switch (carte)
+    {
+        case 1:
+        case 17:
+        {
+            cc1(player, tourJoueur);
+            break;
+        }
+        case 2:
+        {
+            cc2(player, tourJoueur);
+            break;
+        }
+        case 3:
+        {
+            cc3( player,   tourJoueur);
+            break;
+        }
+        case 4:
+        {
+            cc4( player,   tourJoueur);
+            break;
+        }
+        case 5:
+        {
+            cc5( player,tourJoueur, nombreDeJoueur);
+            break;
+        }
+        case 6:
+        {
+            cc6( player ,   tourJoueur);
+            break;
+        }
+        case 7:
+        {
+            cc7( player ,   tourJoueur, nombreDeJoueur);
+            break;
+        }
+        case 8:
+        {
+            cc8( player, tourJoueur);
+            break;
+        }
+        case 9:
+        {
+            cc9(  player, tourJoueur );
+            break;
+        }
+        case 10:
+        {
+            cc10(  player ,   tourJoueur, nombreDeJoueur);
+            break;
+        }
+        case 11:
+        {
+            cc11(  player, tourJoueur );
+            break;
+        }
+        case 12:
+        {
+            c12(  player, tourJoueur );
+            break;
+        }
+        case 13:
+        {
+            cc13(player, tourJoueur);
+            break;
+        }
+        case 14:
+        {
+            cc14(  player ,   tourJoueur);
+            break;
+        }
+        case 15:
+        {
+            cc15(  player, tourJoueur, nombreDeJoueur);
+            break;
+        }
+        case 16:
+        {
+            cc16(  player ,   tourJoueur, nombreDeJoueur);
+            break;
+        }
 
 
-}*/
+    }
+}
 
 ///----------------------------------------------------------------------CARTES CHANCES-------------------------------------------------------------------
 
 
 
-void c1(t_joueur player[NbJoueurMax][TAILLE])
+void c1( t_joueur player[NbJoueurMax][TAILLE], int numeroTour)
 {
-    char c[TAILLE]="VOUS ETES LIBERES DE PRISON!\n";
-    Color(3,0);
+    char c[TAILLE]="VOUS POUVEZ VOUS LIBERER DE LA PRISON SPATIALE A TOUT MOMENT!\n";
+    Color(5,0);
     printf("%s", c);
-    //faire en sorte que le joueur garde la carte et coder avec prison
+    player[numeroTour]->carteSortiePrison = 1;
 }
 
 
 void c2(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur)
 {
     char c[TAILLE]="JOYEUX ANNIVERSAIRE!\nChaque joueur vous verse 50 \n";
-    Color(3,0);
+    Color(5,0);
 
     printf("%s", c);
 
@@ -217,8 +372,8 @@ void c2(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur
 
 void c3(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
-    char c[TAILLE]="CAMPAGNE PUBLICITAIRE PAYANTE!\nLa banque vous verse 100\n";
-    Color(3,0);
+    char c[TAILLE]="CAMPAGNE PUBLICITAIRE PAYANTE!\nLa banque vous verse 100 euros\n";
+    Color(5,0);
 
     printf("%s", c);
     player[tourJoueur]->argent += 100;
@@ -227,20 +382,37 @@ void c3(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 
 void c4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
-    Color(3,0);
-    char c[TAILLE]="SOIREE AU CASINO!\nChoisissez un adversaire.\nLancez tous les deux les des.\nCelui qui obtient le plus gros score recoit 200 de la Banque.\n";
-    printf("%s\n", c);
-
-    ///il faut blinder si l'utilisateur choix n'existe pas
-    printf("Veuillez saisir le numero de l'utilisateur que vous avez choisi de defier : ");
     int choix = 0;
-    scanf("%d", &choix);
-
-    choix -= 1; //car le tableau des joueurs commence � 0
     int de1[2];
     int de2[2];
     int resultat1 = 0;
     int resultat2 = 0;
+    Color(5,0);
+    char c[TAILLE]="SOIREE DETENTE SUR LE VAISSEAU!\nChoisissez un adversaire.\nLancez tous les deux les des.\nCelui qui obtient le plus gros score recoit 200 de la Banque.\n";
+    printf("%s\n", c);
+
+
+    printf("Veuillez saisir le numero de l'utilisateur que vous avez choisi de defier : ");
+    scanf("%d", &choix);
+
+    choix = choix - 1; //car le tableau des joueurs commence à 0
+
+
+
+    while(choix >= 4){
+        Color(3,0);
+        printf("\nIA : Ce joueur n'existe pas !\n");
+        fflush(stdin);
+        scanf("%d",&choix );
+    }
+    while(choix == tourJoueur)
+    {
+        Color(3,0);
+        printf("\nIA : Vous ne pouvez vous defier vous-meme !\n");
+        fflush(stdin);
+        scanf("%d",&choix);
+    }
+
 
     while (resultat1 == resultat2){
         Color(3,0);
@@ -249,7 +421,6 @@ void c4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
         scanf("%d", &choix2);
         while(choix2 != 1){
             printf("\nIA : Je n'ai pas compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
-            fflush(stdin);
 
             scanf("%d",&choix2);
         }
@@ -271,9 +442,17 @@ void c4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
         printf("%s, vous avez un score de %d\n", player[choix]->prenomJoueur, resultat2);
 
         if (resultat1 > resultat2){
+            Color(player[tourJoueur]->couleur, 0);
+            printf("%s, ", player[tourJoueur]->prenomJoueur);
+            Color(3,0);
+            printf("vous gagnez 200 euros !\n");
             player[tourJoueur]->argent += 200;
         }
         else if(resultat2 > resultat1){
+            Color(player[choix]->couleur, 0);
+            printf("%s, ", player[choix]->prenomJoueur);
+            Color(3,0);
+            printf("vous gagnez 200 euros !\n");
             player[choix]->argent += 200;
         }
 
@@ -285,23 +464,40 @@ void c4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 }
 
 
+
 void c5(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
-    char c[TAILLE]="SOIREE AU CASINO!\nChoisissez un adversaire.\nLancez tous les deux les des.\nCelui qui obtient le plus gros score recoit 200 de la Banque.\n";
-    Color(3,0);
-    printf("%s", c);
-
-
-    ///il faut blinder si l'utilisateur choix n'existe pas
-    printf("Veuillez saisir le numero de l'utilisateur que vous avez choisi de defier : ");
     int choix = 0;
-    scanf("%d", &choix);
-
-    choix -= 1; //car le tableau des joueurs commence � 0
     int de1[2];
     int de2[2];
     int resultat1 = 0;
     int resultat2 = 0;
+    Color(5,0);
+    char c[TAILLE]="SOIREE DETENTE SUR LE VAISSEAU !\nChoisissez un adversaire.\nLancez tous les deux les des.\nCelui qui obtient le plus gros score recoit 200 de la Banque.\n";
+    printf("%s\n", c);
+
+
+    printf("Veuillez saisir le numero de l'utilisateur que vous avez choisi de defier : ");
+    scanf("%d", &choix);
+
+    choix = choix - 1; //car le tableau des joueurs commence à 0
+
+
+
+    while(choix >= 4){
+        Color(3,0);
+        printf("\nIA : Ce joueur n'existe pas !\n");
+        fflush(stdin);
+        scanf("%d",&choix );
+    }
+    while(choix == tourJoueur)
+    {
+        Color(3,0);
+        printf("\nIA : Vous ne pouvez vous defier vous-meme !\n");
+        fflush(stdin);
+        scanf("%d",&choix);
+    }
+
 
     while (resultat1 == resultat2){
         Color(3,0);
@@ -310,7 +506,7 @@ void c5(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
         scanf("%d", &choix2);
         while(choix2 != 1){
             printf("\nIA : Je n'ai pas compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
-            fflush(stdin);
+
             scanf("%d",&choix2);
         }
         resultat1 = lancerDe(player, de1, tourJoueur);
@@ -331,21 +527,28 @@ void c5(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
         printf("%s, vous avez un score de %d\n", player[choix]->prenomJoueur, resultat2);
 
         if (resultat1 > resultat2){
+            Color(player[tourJoueur]->couleur, 0);
+            printf("%s, ", player[tourJoueur]->prenomJoueur);
+            Color(3,0);
+            printf("vous gagnez 200 euros !\n");
             player[tourJoueur]->argent += 200;
         }
         else if(resultat2 > resultat1){
+            Color(player[choix]->couleur, 0);
+            printf("%s, ", player[choix]->prenomJoueur);
+            Color(3,0);
+            printf("vous gagnez 200 euros !\n");
             player[choix]->argent += 200;
         }
 
     }
-
 }
 
 
 void c6(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
     char c[TAILLE]="PRIX DU BUSINESSMAN DE L'ANNEE!\nLa banque vous verse 400.\n";
-    Color(3,0);
+    Color(5,0);
 
     printf("%s", c);
     player[tourJoueur]->argent += 400;
@@ -355,90 +558,116 @@ void c6(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 void c7(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
     char c[TAILLE]="VOUS LANCEZ VOTRE SITE INTERNET!\nVos ventes decollent!\nLa banque vous verse 300.\n";
-    Color(3,0);
+    Color(5,0);
 
     printf("%s", c);
     player[tourJoueur]->argent += 300;
 }
 
 
-void c8(t_joueur player[NbJoueurMax][TAILLE])
+void c8(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
     char c[TAILLE]="FRAUDE! ALLEZ EN PRISON!\nNe recevez pas d'argent en passant par la case depart.\n";
-    Color(3,0);
+    Color(5,0);
 
     printf("%s", c);
-    //coder avec prison
+    player[tourJoueur]->numeroCase = 22;
+    player[tourJoueur]->prison = 1;
 }
 
 
-void c9(t_joueur player[NbJoueurMax][TAILLE])
+void c9(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
     char c[TAILLE]="AVANCE SUR VOS PROFITS!\nAvancez jusqu'a la case Depart pour toucher votre salaire!\n";
-    Color(3,0);
+    Color(5,0);
 
     printf("%s", c);
-    //deplacement sur la case d�part et donc salaire (� relier � la case d�part)
+    player[tourJoueur]->numeroCase = 1;
+    player[tourJoueur]->argent +=200;
 }
 
 
 void c10(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
     char c[TAILLE]="AMENDE POUR ESPIONNAGE INDUSTRIEL!\nPayez 200 a la Banque.\n";
-    Color(3,0);
+    Color(5,0);
 
     printf("%s", c);
     player[tourJoueur]->argent -= 200;
 }
 
 
-void c11(t_joueur player[NbJoueurMax][TAILLE])
+void c11(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
-    char c[TAILLE]="ROULEZ BOLIDES!\nAvancez de cinq cases dans votre voiture de course!\n";
-    Color(3,0);
+    char c[TAILLE]="ROULEZ BOLIDES!\nAvancez de cinq cases dans votre vaisseau supersonique !\n";
+    Color(5,0);
 
     printf("%s", c);
-    //A coder avec d�s + cases
+    player[tourJoueur]->numeroCase += 5;
 }
 
 
-void c12(t_joueur player[NbJoueurMax][TAILLE])
+void c12(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
     char c[TAILLE]="ALLEZ EN PRISON!\nNe recevez pas d'argent en passant par la case depart.\n";
     Color(3,0);
 
     printf("%s", c);
-    //coder avec prison
+    player[tourJoueur]->numeroCase = 22;
+    player[tourJoueur]->prison = 1;
 }
 
 
-void c13(t_joueur player[NbJoueurMax][TAILLE])
+void c13(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur)
 {
     char c[TAILLE]="Vous touchez le fruit de vos investissements!\nChaque joueur vous donne 20\n";
-    Color(3,0);
+    Color(5,0);
 
     printf("%s", c);
-    //coder avec prison
+    for (int i = 0; i<= nombreDeJoueur - 1; i++)
+    {
+        if(i != tourJoueur)
+        {
+            player[i]->argent -= 20;
+            player[tourJoueur]->argent += 20;
+        }
+    }
 }
 
 
 void c14(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
-    char c[TAILLE]="SOIREE AU CASINO!\nChoisissez un adversaire.\nLancez tous les deux les des.\nCelui qui obtient le plus gros score recoit 200 de la Banque.\n";
-    Color(3,0);
-    printf("%s", c);
-
-
-    ///il faut blinder si l'utilisateur choix n'existe pas
-    printf("Veuillez saisir le numero de l'utilisateur que vous avez choisi de defier : ");
     int choix = 0;
-    scanf("%d", &choix);
-
-    choix -= 1; //car le tableau des joueurs commence � 0
     int de1[2];
     int de2[2];
     int resultat1 = 0;
     int resultat2 = 0;
+    Color(5,0);
+    char c[TAILLE]="SOIREE DETENTE SUR LE VAISSEAU!\nChoisissez un adversaire.\nLancez tous les deux les des.\nCelui qui obtient le plus gros score recoit 200 de la Banque.\n";
+    printf("%s\n", c);
+
+
+    printf("Veuillez saisir le numero de l'utilisateur que vous avez choisi de defier : ");
+    scanf("%d", &choix);
+
+    choix = choix - 1; //car le tableau des joueurs commence à 0
+
+
+
+    while(choix >= 4){
+        Color(3,0);
+        printf("\nIA : Ce joueur n'existe pas !\n");
+        fflush(stdin);
+        scanf("%d",&choix );
+    }
+    while(choix == tourJoueur)
+    {
+        Color(3,0);
+        printf("\nIA : Vous ne pouvez vous defier vous-meme !\n");
+        fflush(stdin);
+        scanf("%d",&choix);
+    }
+
 
     while (resultat1 == resultat2){
         Color(3,0);
@@ -447,7 +676,7 @@ void c14(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
         scanf("%d", &choix2);
         while(choix2 != 1){
             printf("\nIA : Je n'ai pas compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
-            fflush(stdin);
+
             scanf("%d",&choix2);
         }
         resultat1 = lancerDe(player, de1, tourJoueur);
@@ -468,9 +697,17 @@ void c14(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
         printf("%s, vous avez un score de %d\n", player[choix]->prenomJoueur, resultat2);
 
         if (resultat1 > resultat2){
+            Color(player[tourJoueur]->couleur, 0);
+            printf("%s, ", player[tourJoueur]->prenomJoueur);
+            Color(3,0);
+            printf("vous gagnez 200 euros !\n");
             player[tourJoueur]->argent += 200;
         }
         else if(resultat2 > resultat1){
+            Color(player[choix]->couleur, 0);
+            printf("%s, ", player[choix]->prenomJoueur);
+            Color(3,0);
+            printf("vous gagnez 200 euros !\n");
             player[choix]->argent += 200;
         }
 
@@ -479,20 +716,21 @@ void c14(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 }
 
 
-void c15(t_joueur player[NbJoueurMax][TAILLE])
+void c15(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
     char c[TAILLE]="ALLEZ EN PRISON!\nNe recevez pas d'argent en passant par la case depart.\n";
-    Color(3,0);
+    Color(5,0);
 
     printf("%s", c);
-    //coder avec prison.
+    player[tourJoueur]->numeroCase = 22;
+    player[tourJoueur]->prison = 1;
 }
 
 
 void c16(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 {
     char c[TAILLE]="AMENDE POUR ESPIONNAGE INDUSTRIEL!\nPayez 200 a la Banque.\n";
-    Color(3,0);
+    Color(5,0);
 
     printf("%s", c);
     player[tourJoueur]->argent -= 200;
@@ -717,75 +955,93 @@ if(player[numeroTour]->prison == 1){
 
 
 ///PIOCHE
-/*int piocheCartesChances(int *i)
+int piocheCartesChances(int carte, t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur)
 {
 
-    if (*i==17){
-        *i=1;
-    }
-    if (*i==1)
+    switch (carte)
     {
-        c1(t_joueur player[NbJoueurMax][TAILLE]);
-    }
-    if (*i==2)
-    {
-        c2(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur);
-    }
-    if (*i==3)
-    {
-        c3(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur);
-    }
-    if (*i==4)
-    {
-        c4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur);
-    }
-    if (*i==5)
-    {
-        c5(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur);
-    }
-    if (*i==6)
-    {
-        c6(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur);
-    }
-    if (*i==7)
-    {
-        c7(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur);
-    }
-    if (*i==8)
-    {
-        c8(t_joueur player[NbJoueurMax][TAILLE]);
-    }
-    if (*i==9)
-    {
-        c9(t_joueur player[NbJoueurMax][TAILLE]);
-    }
-    if (*i==10)
-    {
-        c10(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur);
-    }
-    if (*i==11)
-    {
-        c11(t_joueur player[NbJoueurMax][TAILLE]);
-    }
-    if (*i==12)
-    {
-        c12(t_joueur player[NbJoueurMax][TAILLE]);
-    }
-    if (*i==13)
-    {
-        c13(t_joueur player[NbJoueurMax][TAILLE]);
-    }
-    if (*i==14)
-    {
-        c14(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur);
-    }
-    if (*i==15)
-    {
-        c15(t_joueur player[NbJoueurMax][TAILLE]);
-    }
-    if (*i==16)
-    {
-        c16(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur);
-    }
+        case 1:
+        case 17:
+        {
+            c1(player, tourJoueur);
+            break;
+        }
+        case 2:
+        {
+            c2(  player,   nombreDeJoueur,   tourJoueur);
+            break;
+        }
+        case 3:
+        {
+            c3( player,   tourJoueur);
+            break;
+        }
+        case 4:
+        {
+            c4( player,   tourJoueur);
+            break;
+        }
+        case 5:
+        {
+            c5( player,   tourJoueur);
+            break;
+        }
+        case 6:
+        {
+            c6( player ,   tourJoueur);
+            break;
+        }
+        case 7:
+        {
+            c7( player ,   tourJoueur);
+            break;
+        }
+        case 8:
+        {
+            c8( player, tourJoueur);
+            break;
+        }
+        case 9:
+        {
+            c9(  player, tourJoueur );
+            break;
+        }
+        case 10:
+        {
+            c10(  player ,   tourJoueur);
+            break;
+        }
+        case 11:
+        {
+            c11(  player, tourJoueur );
+            break;
+        }
+        case 12:
+        {
+            c12(  player, tourJoueur );
+            break;
+        }
+        case 13:
+        {
+            c13(player, nombreDeJoueur, tourJoueur);
+            break;
+        }
+        case 14:
+        {
+            c14(  player ,   tourJoueur);
+            break;
+        }
+        case 15:
+        {
+            c15(  player, tourJoueur);
+            break;
+        }
+        case 16:
+        {
+            c16(  player ,   tourJoueur);
+            break;
+        }
 
-}*/
+
+    }
+}
