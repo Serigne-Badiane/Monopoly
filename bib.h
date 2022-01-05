@@ -92,5 +92,7 @@ void arrivplan (planete *p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur);
 void arrivgalax (galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur);
 void arrivsat (satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur);
 
+//Affichage plateau
+void plateau();
 
 #endif // BIB_H_INCLUDED
