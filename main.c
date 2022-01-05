@@ -123,7 +123,10 @@ while(choix != 0)
     {
         case 1:
         {
-
+            gotoligcol(4,5);
+            Color(player[tourJoueur]->couleur, 10);
+            printf("%c", player[tourJoueur]->pion);
+            gotoligcol(35,1);
             printf("BONJOUR");
             player[tourJoueur]->numeroCase = 1;
             break;
@@ -131,22 +134,22 @@ while(choix != 0)
         case 2:
         {
 
-            gotoligcol(3,17);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(4,17);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&lune_, player, tourJoueur);
+            arrivsat(&lune_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 2;
             break;
         }
         case 3:
         {
 
-            gotoligcol(3,27);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(4,29);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&terre_, player, tourJoueur);
+            arrivplan(&terre_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 3;
             break;
         }
@@ -154,8 +157,8 @@ while(choix != 0)
         {
 
 
-            gotoligcol(5,37);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(4,41);
+            Color(player[tourJoueur]->couleur, 7);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
             player[tourJoueur]->argent -= 200;
@@ -169,32 +172,32 @@ while(choix != 0)
         {
 
             gotoligcol(4,49);
-            Color(player[tourJoueur]->couleur, 0);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivgalax(&voieLactee_, player, tourJoueur);
+            arrivgalax(&voieLactee_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 5;
             break;
         }
         case 6:
         {
 
-            gotoligcol(3,61);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(4,64);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&phobos_, player, tourJoueur);
+            arrivsat(&phobos_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 6;
             break;
         }
         case 7:
         {
 
-            gotoligcol(3,76);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(3,77);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&mars_, player, tourJoueur);
+            arrivplan(&mars_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 7;
             break;
         }
@@ -212,22 +215,22 @@ while(choix != 0)
         case 9:
         {
 
-            gotoligcol(7,87);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(8,89);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&ganymede_, player, tourJoueur);
+            arrivsat(&ganymede_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 9;
             break;
         }
         case 10:
         {
 
-            gotoligcol(11,87);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(12,89);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&callisto_, player, tourJoueur);
+            arrivsat(&callisto_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 10;
             break;
         }
@@ -235,42 +238,43 @@ while(choix != 0)
         {
 
             gotoligcol(16,87);
-            Color(player[tourJoueur]->couleur, 0);
+            Color(player[tourJoueur]->couleur, 7);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivgalax(&andromede_, player, tourJoueur);
+            arrivgalax(&andromede_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 11;
             break;
         }
         case 12:
         {
 
-            gotoligcol(19,87);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(20,89);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&io_, player, tourJoueur);
+            arrivsat(&io_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 12;
             break;
         }
         case 13:
         {
 
-            gotoligcol(23,87);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(24,89);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&jupiter_, player, tourJoueur);
+            arrivplan(&jupiter_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 13;
             break;
         }
         case 14:
         {
 
-            gotoligcol(29,87);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(28,89);
+            Color(player[tourJoueur]->couleur, 1);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
+            Color(15,0);
             printf("BONJOUR");
 
             player[tourJoueur]->numeroCase = 14;
@@ -279,10 +283,11 @@ while(choix != 0)
         case 15:
         {
 
-            gotoligcol(33,87);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(32,89);
+            Color(player[tourJoueur]->couleur, 12);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
+            Color(15,0);
             printf("\nVous etes sur le parking, reposez-vous !\n");
             player[tourJoueur]->numeroCase = 15;
             break;
@@ -290,70 +295,67 @@ while(choix != 0)
         case 16:
         {
 
-            gotoligcol(31,76);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(32,77);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&titan_, player, tourJoueur);
-            echange(nombreJoueur,player,tourJoueur);
+            arrivsat(&titan_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 16;
             break;
         }
         case 17:
         {
 
-            gotoligcol(31,61);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(32,65);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&saturne_, player, tourJoueur);
-            echange(nombreJoueur,player,tourJoueur);
+            arrivplan(&saturne_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 17;
             break;
         }
         case 18:
         {
 
-            gotoligcol(32,49);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(32,53);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            echange(nombreJoueur,player,tourJoueur);
-            arrivgalax(&tetard_, player, tourJoueur);
+            arrivgalax(&tetard_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 18;
             break;
         }
         case 19:
         {
 
-            gotoligcol(31,37);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(32,40);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&pluton_, player, tourJoueur);
-            echange(nombreJoueur,player,tourJoueur);
+            arrivsat(&pluton_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 19;
             break;
         }
         case 20:
         {
 
-            gotoligcol(31,27);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(32,29);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&neptune_, player, tourJoueur);
-            echange(nombreJoueur,player,tourJoueur);
+            arrivplan(&neptune_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 29;
             break;
         }
         case 21:
         {
 
-            gotoligcol(33,17);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(32,17);
+            Color(player[tourJoueur]->couleur, 1);
             printf("%c", player[tourJoueur]->pion);
-            printf("BONJOUR");
+            gotoligcol(35,1);
+            Color(15,0);
+            printf("BONJOUR\n");
             player[tourJoueur]->numeroCase = 21;
             break;
         }
@@ -372,34 +374,34 @@ while(choix != 0)
         {
 
 
-            gotoligcol(27,2);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(28,5);
+            Color(player[tourJoueur]->couleur, 15);
 
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&venus_, player, tourJoueur);
+            arrivplan(&venus_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 23;
             break;
         }
         case 24:
         {
 
-            gotoligcol(23,2);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(24,5);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&uranus_, player, tourJoueur);
+            arrivplan(&uranus_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 24;
             break;
         }
         case 25:
         {
 
-            gotoligcol(20,2);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(20,5);
+            Color(player[tourJoueur]->couleur, 7);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivgalax(&nuageDeMagellan_, player, tourJoueur);
+            arrivgalax(&nuageDeMagellan_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 25;
             break;
         }
@@ -407,21 +409,21 @@ while(choix != 0)
         {
 
             gotoligcol(15,2);
-            Color(player[tourJoueur]->couleur, 0);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&mercure_, player, tourJoueur);
+            arrivplan(&mercure_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 26;
             break;
         }
         case 27:
         {
 
-            gotoligcol(11,2);
-            Color(player[tourJoueur]->couleur, 0);
+            gotoligcol(12,5);
+            Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&soleil_, player, tourJoueur);
+            arrivplan(&soleil_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             player[tourJoueur]->numeroCase = 27;
             break;
         }
@@ -429,7 +431,7 @@ while(choix != 0)
         {
 
             gotoligcol(9,2);
-            Color(player[tourJoueur]->couleur, 0);
+            Color(player[tourJoueur]->couleur, 6);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
             printf("BONJOUR");
@@ -444,11 +446,11 @@ while(choix != 0)
         tourJoueur = 0;
     }
     Color(3,0);
-    printf(" IA : %s, veuillez appuyer sur 1 pour lancer le de : ", player[tourJoueur]->prenomJoueur);
+    printf(" IA : %s, veuillez appuyer sur 1 pour lancer le de, ou 2 pour un echange : ", player[tourJoueur]->prenomJoueur);
     scanf("%d", &choix);
     pause();
 
-    while(choix != 1 && choix != 0){
+    while(choix != 1 && choix != 0 && choix != 2){
         printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
         scanf("%d",&choix);
 
@@ -457,6 +459,41 @@ while(choix != 0)
 
     if (choix == 1)
     {
+        deplacement1 = lancerDe(player, numeroDe, tourJoueur);
+        if(numeroDe[1] == numeroDe[0])
+        {
+            deplacement2 = lancerDe(player, numeroDe, tourJoueur);
+            if(numeroDe[1] == numeroDe[0])
+            {
+                deplacement3 = lancerDe(player, numeroDe, tourJoueur);
+                if(numeroDe[1] == numeroDe[0])
+                {
+                    printf("IA : Vous allez en prison !");
+
+                }
+            }
+
+        }
+
+        deplacement = deplacement1 + deplacement2 + deplacement3;
+        deplacement1 = 0;
+        deplacement2 = 0;
+        deplacement3 = 0;
+        printf("%s avance de %d cases.\n", player[tourJoueur]->prenomJoueur, deplacement);
+        system("PAUSE");
+
+
+
+        deplacement += player[tourJoueur]->numeroCase;
+        if (deplacement >= 28)
+        {
+            deplacement = deplacement - 28;
+            player[tourJoueur]->argent += 200;
+        }
+
+    }
+    if (choix == 2) {
+        echange(nombreJoueur,player,tourJoueur);
         deplacement1 = lancerDe(player, numeroDe, tourJoueur);
         if(numeroDe[1] == numeroDe[0])
         {
@@ -484,8 +521,7 @@ while(choix != 0)
         {
             deplacement = deplacement - 28;
             player[tourJoueur]->argent += 200;
-        }
-
+    }
     }
 
 }

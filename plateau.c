@@ -114,17 +114,19 @@ void plateau()
 
 
 
-    Color(0,15);
+    Color(0,10);
     gotoligcol(2,1);
     printf("          ");
     gotoligcol(3,1);
     printf("          ");
     gotoligcol(4,1);
     printf("          ");
+    gotoligcol(5,1);
+    printf("          ");
     gotoligcol(2,3);
     printf("DEPART");
     gotoligcol(3,5);
-    Color(4,15);
+    Color(4,10);
     printf("%c",0x1A);
 
     Color(0,5);
@@ -133,6 +135,13 @@ void plateau()
     gotoligcol(2,16);
     Color(0,5);
     printf("LUNE");
+    Color(0,15);
+    gotoligcol(3,13);
+    printf("          ");
+    gotoligcol(4,13);
+    printf("          ");
+    gotoligcol(5,13);
+    printf("          ");
 
     Color(0,5);
     gotoligcol(2,25);
@@ -140,8 +149,15 @@ void plateau()
     gotoligcol(2,27);
     Color(0,5);
     printf("TERRE");
+    Color(0,15);
+    gotoligcol(3,25);
+    printf("          ");
+    gotoligcol(4,25);
+    printf("          ");
+    gotoligcol(5,25);
+    printf("          ");
 
-    Color(0,8);
+    Color(0,7);
     gotoligcol(2,37);
     printf("          ");
     gotoligcol(3,37);
@@ -150,8 +166,10 @@ void plateau()
     printf("          ");
     gotoligcol(2,39);
     printf("TAXE%c",0x24);
+    gotoligcol(5,37);
+    printf("          ");
 
-    Color(0,15);
+    Color(0,8);
     gotoligcol(2,49);
     printf("          ");
     gotoligcol(3,49);
@@ -160,6 +178,12 @@ void plateau()
     printf("VOIE");
     gotoligcol(3,51);
     printf("LACTEE");
+    Color(0,7);
+    gotoligcol(4,49);
+    printf("          ");
+    gotoligcol(5,49);
+    printf("          ");
+
 
     Color(0,11);
     gotoligcol(2,61);
@@ -167,6 +191,13 @@ void plateau()
     Color(0,11);
     gotoligcol(2,63);
     printf("PHOBOS");
+    Color(0,15);
+    gotoligcol(3,61);
+    printf("          ");
+    gotoligcol(4,61);
+    printf("          ");
+    gotoligcol(5,61);
+    printf("          ");
 
     Color(0,11);
     gotoligcol(2,73);
@@ -174,6 +205,13 @@ void plateau()
     gotoligcol(2,76);
     Color(0,11);
     printf("MARS");
+    Color(0,15);
+    gotoligcol(3,73);
+    printf("          ");
+    gotoligcol(4,73);
+    printf("          ");
+    gotoligcol(5,73);
+    printf("          ");
 
     Color(15,0);
     gotoligcol(2,89);
@@ -209,6 +247,8 @@ void plateau()
     printf("          ");
     gotoligcol(8,1);
     printf("          ");
+    gotoligcol(9,1);
+    printf("          ");
     gotoligcol(7,3);
     printf("CHANCE");
     Color(0,13);
@@ -217,6 +257,13 @@ void plateau()
     gotoligcol(6,86);
     Color(0,13);
     printf("GANYMEDE");
+    Color(0,15);
+    gotoligcol(7,85);
+    printf("          ");
+    gotoligcol(8,85);
+    printf("          ");
+    gotoligcol(9,85);
+    printf("          ");
     ///3ème ligne
     Color(0,9);
     gotoligcol(10,1);
@@ -224,12 +271,26 @@ void plateau()
     gotoligcol(10,3);
     Color(0,9);
     printf("SOLEIL");
+    Color(0,15);
+    gotoligcol(11,1);
+    printf("          ");
+    gotoligcol(12,1);
+    printf("          ");
+    gotoligcol(13,1);
+    printf("          ");
     Color(0,13);
     gotoligcol(10,85);
     printf("          ");
     gotoligcol(10,86);
     Color(0,13);
     printf("CALLISTO");
+    Color(0,15);
+    gotoligcol(11,85);
+    printf("          ");
+    gotoligcol(12,85);
+    printf("          ");
+    gotoligcol(13,85);
+    printf("          ");
     ///4ème ligne
     Color(0,9);
     gotoligcol(14,1);
@@ -238,15 +299,28 @@ void plateau()
     gotoligcol(14,3);
     printf("MERCURE");
     Color(0,15);
+    gotoligcol(15,1);
+    printf("          ");
+    gotoligcol(16,1);
+    printf("          ");
+    gotoligcol(17,1);
+    printf("          ");
+    Color(0,8);
 
     gotoligcol(14,85);
     printf("ANDROMEDE ");
     gotoligcol(15,85);
     printf("          ");
+    Color(0,7);
+    gotoligcol(16,85);
+    printf("          ");
+    gotoligcol(17,85);
+    printf("          ");
+
 
 
     ///5ème ligne
-    Color(0,15);
+    Color(0,8);
     gotoligcol(18,1);
     printf("          ");
     gotoligcol(18,2);
@@ -255,12 +329,25 @@ void plateau()
     printf("          ");
     gotoligcol(19,3);
     printf("MAGELAN");
+    Color(0,7);
+    gotoligcol(20,1);
+    printf("          ");
+    gotoligcol(21,1);
+    printf("          ");
+
     Color(0,6);
     gotoligcol(18,85);
     printf("          ");
     gotoligcol(18,89);
     Color(0,6);
     printf("IO");
+    Color(0,15);
+    gotoligcol(19,85);
+    printf("          ");
+    gotoligcol(20,85);
+    printf("          ");
+    gotoligcol(21,85);
+    printf("          ");
     ///6ème ligne
     Color(0,2);
     gotoligcol(22,1);
@@ -268,12 +355,26 @@ void plateau()
     Color(0,2);
     gotoligcol(22,3);
     printf("URANUS");
+    Color(0,15);
+    gotoligcol(23,1);
+    printf("          ");
+    gotoligcol(24,1);
+    printf("          ");
+    gotoligcol(25,1);
+    printf("          ");
     Color(0,6);
     gotoligcol(22,85);
     printf("          ");
     Color(0,6);
     gotoligcol(22,87);
     printf("JUPITER");
+    Color(0,15);
+    gotoligcol(23,85);
+    printf("          ");
+    gotoligcol(24,85);
+    printf("          ");
+    gotoligcol(25,85);
+    printf("          ");
     ///7ème ligne
     Color(0,2);
     gotoligcol(26,1);
@@ -281,12 +382,21 @@ void plateau()
     Color(0,2);
     gotoligcol(26,3);
     printf("VENUS");
+    Color(0,15);
+    gotoligcol(27,1);
+    printf("          ");
+    gotoligcol(28,1);
+    printf("          ");
+    gotoligcol(29,1);
+    printf("          ");
     Color(0,1);
     gotoligcol(26,85);
     printf("          ");
     gotoligcol(27,85);
     printf("          ");
     gotoligcol(28,85);
+    printf("          ");
+    gotoligcol(29,85);
     printf("          ");
     Color(0,1);
     gotoligcol(27,85);
@@ -306,6 +416,8 @@ void plateau()
     printf("          ");
     gotoligcol(32,13);
     printf("          ");
+    gotoligcol(33,13);
+    printf("          ");
     gotoligcol(31,13);
     Color(0,1);
     printf("COMMUNAUTE");
@@ -316,6 +428,13 @@ void plateau()
     Color(0,14);
     gotoligcol(30,27);
     printf("NEPTUNE");
+    Color(0,15);
+    gotoligcol(31,25);
+    printf("          ");
+    gotoligcol(32,25);
+    printf("          ");
+    gotoligcol(33,25);
+    printf("          ");
 
     Color(0,14);
     gotoligcol(30,37);
@@ -323,8 +442,15 @@ void plateau()
     Color(0,14);
     gotoligcol(30,39);
     printf("PLUTON");
-
     Color(0,15);
+    gotoligcol(31,37);
+    printf("          ");
+    gotoligcol(32,37);
+    printf("          ");
+    gotoligcol(33,37);
+    printf("          ");
+
+    Color(0,8);
     gotoligcol(30,49);
     printf("          ");
     gotoligcol(30,52);
@@ -333,6 +459,12 @@ void plateau()
     printf("          ");
     gotoligcol(31,51);
     printf("TETARD");
+    Color(0,15);
+    gotoligcol(32,49);
+    printf("          ");
+    gotoligcol(33,49);
+    printf("          ");
+
 
     Color(0,4);
     gotoligcol(30,61);
@@ -340,6 +472,13 @@ void plateau()
     Color(0,4);
     gotoligcol(30,63);
     printf("SATURNE");
+    Color(0,15);
+    gotoligcol(31,61);
+    printf("          ");
+    gotoligcol(32,61);
+    printf("          ");
+    gotoligcol(33,61);
+    printf("          ");
 
     Color(0,4);
     gotoligcol(30,73);
@@ -347,6 +486,13 @@ void plateau()
     Color(0,4);
     gotoligcol(30,75);
     printf("TITAN");
+    Color(0,15);
+    gotoligcol(31,73);
+    printf("          ");
+    gotoligcol(32,73);
+    printf("          ");
+    gotoligcol(33,73);
+    printf("          ");
 
     Color(0,12);
     gotoligcol(30,85);
@@ -354,6 +500,8 @@ void plateau()
     gotoligcol(31,85);
     printf("          ");
     gotoligcol(32,85);
+    printf("          ");
+    gotoligcol(33,85);
     printf("          ");
     Color(0,12);
     gotoligcol(31,87);
@@ -379,16 +527,16 @@ void case1(){
 
 }
 
-void case2(satellite lune_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
+void case2(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
 
-    arrivsat(&lune_, player, numeroJoueur);
+    arrivsat(&lune_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 
 }
 
 
-void case3(planete terre_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
+void case3(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
 
-   arrivplan(&terre_, player, numeroJoueur);
+   arrivplan(&terre_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
 
@@ -400,19 +548,19 @@ void case4(){
 }
 
 
-void case5(galaxie voieLactee_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-   arrivgalax(&voieLactee_, player, numeroJoueur);
+void case5(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+   arrivgalax(&voieLactee_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 
 }
 
 
-void case6(satellite phobos_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivsat(&phobos_, player, numeroJoueur);
+void case6(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivsat(&phobos_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
 
-void case7(planete mars_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-     arrivplan(&mars_, player, numeroJoueur);
+void case7(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+     arrivplan(&mars_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
 //Prison
@@ -423,28 +571,28 @@ void case8(){
 }
 
 
-void case9(satellite ganymede_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivsat(&ganymede_, player, numeroJoueur);
+void case9(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivsat(&ganymede_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
 
-void case10(satellite callisto_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivsat(&callisto_, player, numeroJoueur);
+void case10(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivsat(&callisto_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
 
-void case11(galaxie andromede_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivgalax(&andromede_, player, numeroJoueur);
+void case11(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivgalax(&andromede_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
 
-void case12(satellite io_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivsat(&io_, player, numeroJoueur);
+void case12(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivsat(&io_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
 
-void case13(planete jupiter_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivplan(&jupiter_, player, numeroJoueur);
+void case13( t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivplan(&jupiter_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
 
@@ -462,28 +610,28 @@ void case15(){
 }
 
 
-void case16(satellite titan_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-   arrivsat(&titan_, player, numeroJoueur);
+void case16(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+   arrivsat(&titan_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
-void case17(planete saturne_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivplan(&saturne_, player, numeroJoueur);
+void case17(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivplan(&saturne_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 
-}
-
-
-void case18(galaxie tetard_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivgalax(&tetard_, player, numeroJoueur);
 }
 
 
-void case19(satellite pluton_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-   arrivsat(&pluton_, player, numeroJoueur);
+void case18( t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivgalax(&tetard_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
 
-void case20(planete neptune_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivplan(&neptune_, player, numeroJoueur);
+void case19(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+   arrivsat(&pluton_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+}
+
+
+void case20(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivplan(&neptune_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
 void case21(){
@@ -498,31 +646,31 @@ void case22(){
 
 }
 
-void case23(planete venus_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivplan(&venus_, player, numeroJoueur);
+void case23(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivplan(&venus_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 
 }
 
 
-void case24(planete uranus_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivplan(&uranus_, player, numeroJoueur);
+void case24(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivplan(&uranus_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
 
-void case25(galaxie nuageDeMagellan_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivgalax(&nuageDeMagellan_, player, numeroJoueur);
-
-}
-
-
-void case26(planete mercure_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivplan(&mercure_, player, numeroJoueur);
+void case25(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivgalax(&nuageDeMagellan_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 
 }
 
 
-void case27(planete soleil_, t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur){
-    arrivplan(&soleil_, player, numeroJoueur);
+void case26(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivplan(&mercure_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+
+}
+
+
+void case27( t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+    arrivplan(&soleil_, player, numeroJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
 

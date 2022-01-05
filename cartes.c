@@ -89,7 +89,7 @@ void c4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
         scanf("%d", &choix2);
         while(choix2 != 1){
             printf("\nIA : Je n'ai pas compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
-            scanf("%s");
+            fflush(stdin);
             scanf("%d",&choix2);
         }
         resultat1 = lancerDe(player, de1, tourJoueur);
@@ -102,7 +102,7 @@ void c4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
         scanf("%d", &choix3);
         while(choix3 != 1){
             printf("\nIA : Je n'ai pas compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
-            scanf("%s");
+            fflush(stdin);
             scanf("%d", &choix3);
         }
         resultat2 = lancerDe(player, de2, choix);
@@ -148,7 +148,7 @@ void c5(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
         scanf("%d", &choix2);
         while(choix2 != 1){
             printf("\nIA : Je n'ai pas compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
-            scanf("%s");
+            fflush(stdin);
             scanf("%d",&choix2);
         }
         resultat1 = lancerDe(player, de1, tourJoueur);
@@ -161,7 +161,7 @@ void c5(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
         scanf("%d", &choix3);
         while(choix3 != 1){
             printf("\nIA : Je n'ai pas compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
-            scanf("%s");
+            fflush(stdin);
             scanf("%d", &choix3);
         }
         resultat2 = lancerDe(player, de2, choix);
