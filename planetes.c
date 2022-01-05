@@ -699,7 +699,7 @@ void lune(satellite* lune)
     char anecdotes[] = "La Lune est l'unique satellite naturel de la planete Terre. Il s'agit du cinquieme plus grand satellite naturel du Systeme Solaire, avec un diametre de 2 500 KM.";
     strcpy(lune->anecdote, anecdotes);
 
-    lune->loyer = 800;
+    lune->loyer = 2;
     lune->loyer1 = 10;
     lune->loyer2 = 30;
     lune->loyer3 = 90;
@@ -721,7 +721,7 @@ void terre (planete* terre){
     char anecdotes [] = "Nous somme de retour chez nous ! Notre belle planete bleu, mere porteuse de la vie humaine...";
     strcpy (terre->anecdote , anecdotes);
 
-    terre->loyer = 800;
+    terre->loyer = 4;
     terre->loyer1 = 20;
     terre->loyer2 = 60;
     terre->loyer3 = 180;
@@ -743,7 +743,7 @@ void voieLactee(galaxie* voieLactee)
     char anecdotes[] = "Voici notre galaxie : l a Voie Lactee. Elle comprend entre 200 et 400 milliards d'etoiles et au minimum 100 milliards de planetes, dont la Terre ! ";
     strcpy(voieLactee->anecdote, anecdotes);
 
-    voieLactee->loyer = 800;
+    voieLactee->loyer = 25;
     voieLactee->loyer1 = 50;
     voieLactee->loyer2 = 100;
     voieLactee->loyer3 = 200;
@@ -762,7 +762,7 @@ void phobos(satellite* phobos)
     char anecdotes[] = "Phobos est le plus grand des deux satellites naturels de Mars. Son nom fait reference a la mythologie grecque, Phobos etant l'enfant du dieu Ares et de la deesse Aphrodite.";
     strcpy(phobos->anecdote, anecdotes);
 
-    phobos->loyer = 800;
+    phobos->loyer = 6;
     phobos->loyer1 = 30;
     phobos->loyer2 = 90;
     phobos->loyer3 = 270;
@@ -783,7 +783,7 @@ void mars (planete* mars){
     strcpy (mars->nom ,noms);
     char anecdotes [] = "La 1re personne a avoir observe Mars au telescope fut l'astronome Galilee.Ce n'est qu'avec l'envoi de la premiere sonde autour de Mars, en 1965, qu on a su que les planete etait inhabitee." ;
     strcpy (mars->anecdote , anecdotes);
-    mars->loyer = 800;
+    mars->loyer = 8;
     mars->loyer1 = 40;
     mars->loyer2 = 100;
     mars->loyer3 = 300;
@@ -804,7 +804,7 @@ void ganymede(satellite* ganymede)
     char anecdotes[] = "Ganymede est le plus grand satellite naturel de Jupiter, mais egalement de notre Systeme Solaire ! Ganymede est nomme d'apres le guerrier troyen de la mythologie grecque, qui fut enleve par Zeus.";
     strcpy(ganymede->anecdote, anecdotes);
 
-    ganymede->loyer = 800;
+    ganymede->loyer = 10;
     ganymede->loyer1 = 50;
     ganymede->loyer2 = 150;
     ganymede->loyer3 = 450;
@@ -825,7 +825,7 @@ void callisto(satellite* callisto)
     char anecdotes[] = "Callisto a ete decouverte par Galilee, en 1610. Elle fait partie des nombreuses satellites de Jupiter. De plus, Callisto etait l'une des nombreuses conquetes de Zeus.";
     strcpy(callisto->anecdote, anecdotes);
 
-    callisto->loyer = 800;
+    callisto->loyer = 12;
     callisto->loyer1 = 60;
     callisto->loyer2 = 180;
     callisto->loyer3 = 500;
@@ -845,7 +845,7 @@ void andromede(galaxie* andromede)
     char anecdotes[] = "Andromede est la galaxie la plus proche de la notre ! Elle est situee a 2,55 millions d'annees-lumiere de notre Soleil. Elle est donc la galaxie la plus proche de la notre. Elle possede un diametre de 220 000 annees-lumieres et contiendrait environ mille milliards d'etoiles !";
     strcpy(andromede->anecdote, anecdotes);
 
-    andromede->loyer = 800;
+    andromede->loyer = 25;
     andromede->loyer1 = 50;
     andromede->loyer2 = 100;
     andromede->loyer3 = 200;
@@ -864,7 +864,7 @@ void io(satellite* io)
     char anecdotes[] = "IO, satellite de Jupiter, a ete decouvert par Galilee, en 1610. Avec environ 400 volcans actifs, il est l'astre le plus, geologiquement, actif du Systeme Solaire. ";
     strcpy(io->anecdote, anecdotes);
 
-    io->loyer = 800;
+    io->loyer = 14;
     io->loyer1 = 70;
     io->loyer2 = 200;
     io->loyer3 = 550;
@@ -884,7 +884,7 @@ void jupiter (planete* jupiter){
     char anecdotes [] = "Jupiter est la plus grande de notre systeme solaire. Son diametre est dix fois celui de la Terre et son volume est tel qu'il pourrait contenir 1 321 Terre.\nIl y a des tempetes et des cyclones sur Jupiter qui sont plus grandes que notre planete entiere.";
     strcpy (jupiter->anecdote , anecdotes);
 
-    jupiter->loyer = 800;
+    jupiter->loyer = 16;
     jupiter->loyer1 = 80;
     jupiter->loyer2 = 220;
     jupiter->loyer3 = 600;
@@ -905,7 +905,7 @@ void titan(satellite* titan)
     char anecdotes[] = "Titan est le plus grand satellite naturel de Saturne, decouvert en 1665. Il est le deuxieme satellite le plus gros du Systeme Solaire, derriere Ganymede.";
     strcpy(titan->anecdote, anecdotes);
 
-    titan->loyer = 800;
+    titan->loyer = 18;
     titan->loyer1 = 90;
     titan->loyer2 = 250;
     titan->loyer3 = 700;
@@ -926,7 +926,7 @@ void saturne (planete* saturne){
     char anecdotes [] = "Saturne, deuxieme plus grande planete du systeme solaire apres Jupiter, a une masse volumique moyenne bien inferieure a celle de l eau (0,69 g/cm3).\nCette particularite physique etonnante signifie que si l on disposait d'une immense baignoire sur laquelle on pouvait la poser, elle y flotterait.";
     strcpy (saturne->anecdote , anecdotes);
 
-    saturne->loyer = 800;
+    saturne->loyer = 20;
     saturne->loyer1 = 100;
     saturne->loyer2 = 300;
     saturne->loyer3 = 750;
@@ -947,7 +947,7 @@ void tetard(galaxie* tetard)
     char anecdotes[] = "La Galaxie du Tetard est situee a environ 400 millions d'annees-lumieres de la Voie Lactee. On peut la distinguer par sa queue de maree, longue de plus de 280 000 annees-lumiere.";
     strcpy(tetard->anecdote, anecdotes);
 
-    tetard->loyer = 800;
+    tetard->loyer = 25;
     tetard->loyer1 = 50;
     tetard->loyer2 = 100;
     tetard->loyer3 = 200;
@@ -964,7 +964,7 @@ void pluton(planete* pluton)
     strcpy (pluton->nom ,noms);
     char anecdotes [] = "Pluton a ete decouverte en 1930 et a ete considere comme la 9e planete du Systeme Solaire. Mais a la fin du XXe, d'autres objets similaires ont ete decouvert, d'ou la creation de la categorie de planetes naines. Pluton est donc une planete naine.";
     strcpy (pluton->anecdote , anecdotes);
-    pluton->loyer = 800;
+    pluton->loyer = 22;
     pluton->loyer1 = 110;
     pluton->loyer2 = 330;
     pluton->loyer3 = 800;
@@ -984,7 +984,7 @@ void neptune(planete* neptune)
     strcpy (neptune->nom ,noms);
     char anecdotes [] = "Neptune est la derniere planete de notre Systeme Solaire. Son nom vient du dieu romain des oceans, Neptune. Elle met 165 ans a realise un tour complet au tour du Soleil !";
     strcpy (neptune->anecdote , anecdotes);
-    neptune->loyer = 800;
+    neptune->loyer = 24;
     neptune->loyer1 = 120;
     neptune->loyer2 = 360;
     neptune->loyer3 = 850;
@@ -1004,7 +1004,7 @@ void venus (planete* venus){
     strcpy (venus->nom ,noms);
     char anecdotes [] = "Avec une moyenne de 462 C, Venus possede en surface la temperature la plus elevee du Systeme solaire, alors qu'elle n est que la deuxieme planete la plus proche du Soleil.";
     strcpy (venus->anecdote , anecdotes);
-    venus->loyer = 800;
+    venus->loyer = 26;
     venus->loyer1 = 130;
     venus->loyer2 = 390;
     venus->loyer3 = 900;
@@ -1023,7 +1023,7 @@ void uranus(planete* uranus){
     strcpy (uranus->nom ,noms);
     char anecdotes [] = "Uranus est la premiere planete decouverte a l'aide d'un telescope. Elle tient son nom du dieu du ciel, Ouranos, l'une des divinites primordiales de la mythologie grecque.";
     strcpy (uranus->anecdote , anecdotes);
-    uranus->loyer = 800;
+    uranus->loyer = 28;
     uranus->loyer1 = 150;
     uranus->loyer2 = 450;
     uranus->loyer3 = 1000;
@@ -1044,7 +1044,7 @@ void nuageDeMagellan(galaxie* nuageDeMagellan)
     char anecdotes[] = "Les nuages de magellan forment un groupe de deux galaxie. D'une part le Grand Nuage de Magellan, situe a environ 157 000 annees-lumieres de notre Soleil. Et d'autre part, le Petit Nuage de Magellan, situe a environ 197 000 annees-lumiers";
     strcpy(nuageDeMagellan->anecdote, anecdotes);
 
-    nuageDeMagellan->loyer = 800;
+    nuageDeMagellan->loyer = 25;
     nuageDeMagellan->loyer1 = 50;
     nuageDeMagellan->loyer2 = 100;
     nuageDeMagellan->loyer3 = 200;
@@ -1062,7 +1062,7 @@ void mercure(planete* mercure)
     strcpy (mercure->nom ,noms);
     char anecdotes [] = "Mercure est la plane   te la plus proche du systeme solaire, il y fait une temperature moyenne de 167 degres pouvant montant jusqu'a 427 degres ! Elle est 3 fois plus petite que notre Terre mais egalement 20 moins massive.";
     strcpy (mercure->anecdote , anecdotes);
-    mercure->loyer = 800;
+    mercure->loyer = 35;
     mercure->loyer1 = 175;
     mercure->loyer2 = 500;
     mercure->loyer3 = 1100;
@@ -1078,7 +1078,7 @@ void mercure(planete* mercure)
 
 void soleil (planete* soleil){
     soleil->proprio = 5;
-    soleil->prix = 800;
+    soleil->prix = 400;
     char noms [] = "SOLEIL";
     strcpy (soleil->nom ,noms);
     char anecdotes [] = "Dans environ cinq milliards d'annees, le Soleil gonflera pour devenir une geante rouge, avalant du meme coup les planetes Mercure, Venus, la Terre et Mars.";
