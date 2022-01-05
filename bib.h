@@ -3,6 +3,7 @@
 
 
 
+
 ///JOUEURS
 
 //Structure joueur
@@ -18,6 +19,8 @@ typedef struct joueur
     int argent;
     int nbDeGare;
     int pion;
+    int numeroTourPrison;
+    int carteSortiePrison;
 
 }t_joueur;
 

@@ -598,6 +598,7 @@ void case13( t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terr
 
 void case14(){
     //carte chance
+    //ajouter un pointeur compteur i qui augmente de 1 a chaque fois que quelqu'un passe par la case
     printf("BONJOUR");
 
 }
@@ -636,6 +637,7 @@ void case20(t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terre
 
 void case21(){
     //carte communaute
+    //ajouter un pointeur compteur j qui augmente de 1 a chaque fois que quelqu'un passe par la case
     printf("BONJOUR");
 
 }
@@ -675,7 +677,7 @@ void case27( t_joueur player[NbJoueurMax][TAILLE], int numeroJoueur,planete terr
 
 
 void case28(){
-    //chance ou commu
+    //chance ou commu ?
     printf("BONJOUR");
 
 }

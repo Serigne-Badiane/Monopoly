@@ -6,12 +6,12 @@
 #define TAILLE 200
 #include "bib.h"
 
-
 void Color(int couleurDuTexte,int couleurDeFond)
 {
     HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
 }
+
 
 void gotoligcol( int lig, int col )
 {
@@ -26,13 +26,13 @@ SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
 
 }
 
-void pause()
+int pause(int sauvegarde)
 {
     char pause=kbhit('p');
     pause=getch();
     if(pause=='p')
     {
-        menu1();
+        sauvegarde=menu1();
     }
 }
 
@@ -41,6 +41,7 @@ void pause()
 int main()
 {
 
+    int sauvegarde=0;
     srand(time(NULL));
     t_joueur player[NbJoueurMax][TAILLE];
     satellite lune_ = {0, "","",0,0,0,0,0,0,0};
@@ -204,12 +205,14 @@ while(choix != 0)
         case 8:
         {
 
-            gotoligcol(4,87);
+            gotoligcol(32,3);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
             printf("\nIA : Vous allez directement en prison !\n");
-            player[tourJoueur]->numeroCase = 8;
+            player[tourJoueur]->prison = 1;
+            player[tourJoueur]->numeroCase = 22;
+
             break;
         }
         case 9:
@@ -365,9 +368,18 @@ while(choix != 0)
             gotoligcol(32,3);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
-            gotoligcol(35,1);
-            printf("\nBONJOUR");
-            player[tourJoueur]->numeroCase = 22;
+            if(player[tourJoueur]->prison == 1){
+                gotoligcol(35,1);
+                prison(player, tourJoueur, nombreJoueur);
+                player[tourJoueur]->numeroCase = 22;
+            }
+            else{
+                gotoligcol(35,1);
+                Color(3,0);
+                printf("\nVous visitez la prison spatiale !\n");
+                player[tourJoueur]->numeroCase = 22;
+            }
+
             break;
         }
         case 23:
@@ -441,14 +453,51 @@ while(choix != 0)
     }
 
     tourJoueur += 1;
-    if (tourJoueur == nombreJoueur  )
+    if (tourJoueur == nombreJoueur )
+    {
+        tourJoueur = 0;
+    }
+
+    while(player[tourJoueur]->prison == 1){
+
+        prison(player, tourJoueur, nombreJoueur);
+        player[tourJoueur]->numeroCase = 22;
+        if (player[tourJoueur]->prison == 1){
+            tourJoueur += 1;
+        }
+    }
+    if (tourJoueur == nombreJoueur )
     {
         tourJoueur = 0;
     }
     Color(3,0);
     printf(" IA : %s, veuillez appuyer sur 1 pour lancer le de, ou 2 pour un echange : ", player[tourJoueur]->prenomJoueur);
+    sauvegarde=pause(sauvegarde);
+    if(sauvegarde==1)
+    {
+        FILE * fp=NULL;
+        fp=fopen("Partie.txt","w");
+        if (fp==NULL)
+        {
+        printf("erreur d'ouverture");
+        exit (0);
+        }
+        for(int l = 0; l<NbJoueurMax; l++)
+        {
+            fprintf(fp,"%s\n",player[l]->prenomJoueur);
+            fprintf(fp,"%d\n",player[l]->argent);
+            fprintf(fp,"%d\n",player[l]->couleur);
+            fprintf(fp,"%d\n",player[l]->numeroCase);
+            fprintf(fp,"%d\n",player[l]->numeroJoueur);
+            fprintf(fp,"%d\n",player[l]->prison);
+            fprintf(fp,"%s\n",player[l]->proprietes);
+            fprintf(fp,"%d\n",player[l]->nbDeGare);
+            fprintf(fp,"%d\n",player[l]->couleurJoueur);
+        }
+        fclose(fp);
+    }
     scanf("%d", &choix);
-    pause();
+
 
     while(choix != 1 && choix != 0 && choix != 2){
         printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
@@ -470,6 +519,9 @@ while(choix != 0)
                 {
                     printf("IA : Vous allez en prison !");
 
+                    player[tourJoueur]->prison = 1;
+                    player[tourJoueur]->numeroCase = 22;
+                    prison(player,tourJoueur, nombreJoueur);
                 }
             }
 
@@ -480,11 +532,12 @@ while(choix != 0)
         deplacement2 = 0;
         deplacement3 = 0;
         printf("%s avance de %d cases.\n", player[tourJoueur]->prenomJoueur, deplacement);
-        system("PAUSE");
+
 
 
 
         deplacement += player[tourJoueur]->numeroCase;
+
         if (deplacement >= 28)
         {
             deplacement = deplacement - 28;
@@ -523,6 +576,7 @@ while(choix != 0)
             player[tourJoueur]->argent += 200;
     }
     }
+    system("PAUSE");
 
 }
 return 0;

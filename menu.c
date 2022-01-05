@@ -9,7 +9,7 @@
 
 
 ///PROCEDURE MENU
-void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE]){
+int menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE]){
     FILE * fp=NULL;
     int menu=0;
     int J=0;
@@ -55,40 +55,28 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jo
     }
         if (menu==2)
     {
-        fp=fopen("Partie.txt","w");
-        if (fp==NULL)
-        {
-        printf("erreur d'ouverture");
-        exit (0);
-        }
-        for(int l = 0; l<NbJoueurMax; l++)
-        {
-            fprintf(fp,"%s\n",player[l]->prenomJoueur);
-            fprintf(fp,"%d\n",player[l]->argent);
-            fprintf(fp,"%d\n",player[l]->couleur);
-            fprintf(fp,"%d\n",player[l]->numeroCase);
-            fprintf(fp,"%d\n",player[l]->numeroJoueur);
-            fprintf(fp,"%d\n",player[l]->prison);
-            fprintf(fp,"%s\n",player[l]->proprietes);
-            fprintf(fp,"%d\n",player[l]->nbDeGare);
-            fprintf(fp,"%d\n",player[l]->couleurJoueur);
-        }
-        fclose(fp);
-        return(0);
-
-
+        int sauvegarde=1;
+        printf("sauvegarde en cours");
+        return sauvegarde;
     }
 
     if (menu==3)
     {
 
+        int chJ=0;
+        printf("\nIA : Bonjour ! Pouvez vous me communiquez combien de joueurs etiez vous dans la Partie que vous voulez reprendre");
+        scanf("%d",&chJ);
+        while(chJ !=2 && chJ !=3 && chJ !=4)
+        {
+            printf("\nIA : Saisissez le bon nombre de joueur");
+        }
         fp=fopen("Partie.txt","r");
         if (fp==NULL)
         {
         printf("erreur d'ouverture");
         exit (0);
         }
-        for(int h = 0; h<4; h++)
+        for(int h = 0; h<chJ; h++)
         {
             fscanf(fp,"%s\n",&player[h]->prenomJoueur);
             fscanf(fp,"%d\n",&player[h]->argent);
@@ -146,6 +134,10 @@ void menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jo
                 if(numeroDe[1] == numeroDe[0])
                 {
                     printf("IA : Vous allez en prison !");
+                    player[numeroTour]->prison = 1;
+                    player[numeroTour]->numeroCase = 22;
+                    prison(player,tourJoueur, nombreDeJoueur);
+
 
                 }
             }
