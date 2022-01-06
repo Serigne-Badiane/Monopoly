@@ -26,13 +26,13 @@ SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
 
 }
 
-int pause(int sauvegarde)
+int pause(int sauvegarde, int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE])
 {
     char pause=kbhit('p');
     pause=getch();
     if(pause=='p')
     {
-        sauvegarde=menu1();
+        sauvegarde=menu1(&nombreDeJoueur, &nombreDeDeplacement, &tourJoueur, player);
     }
 }
 
@@ -544,7 +544,7 @@ while(choix != 0)
     }
     Color(3,0);
     printf(" IA : %s, veuillez appuyer sur 1 pour lancer le de, ou 2 pour un echange : ", player[tourJoueur]->prenomJoueur);
-    sauvegarde=pause(sauvegarde);
+    sauvegarde=pause(sauvegarde,&nombreJoueur, &deplacement, &tourJoueur, player);
     if(sauvegarde==1)
     {
         FILE * fp=NULL;
@@ -566,6 +566,63 @@ while(choix != 0)
             fprintf(fp,"%d\n",player[l]->nbDeGare);
             fprintf(fp,"%d\n",player[l]->couleurJoueur);
         }
+        fprintf(fp,"%d\n",lune_.proprio);
+        fprintf(fp,"%d\n",lune_.maison);
+        fprintf(fp,"%d\n",lune_.hotel);
+        fprintf(fp,"%d\n",terre_.proprio);
+        fprintf(fp,"%d\n",terre_.maison);
+        fprintf(fp,"%d\n",terre_.hotel);
+        fprintf(fp,"%d\n",voieLactee_.proprio);
+        fprintf(fp,"%d\n",voieLactee_.maison);
+        fprintf(fp,"%d\n",voieLactee_.hotel);
+        fprintf(fp,"%d\n",phobos_.proprio);
+        fprintf(fp,"%d\n",phobos_.maison);
+        fprintf(fp,"%d\n",phobos_.hotel);
+        fprintf(fp,"%d\n",mars_.proprio);
+        fprintf(fp,"%d\n",mars_.maison);
+        fprintf(fp,"%d\n",mars_.hotel);
+        fprintf(fp,"%d\n",ganymede_.proprio);
+        fprintf(fp,"%d\n",ganymede_.maison);
+        fprintf(fp,"%d\n",ganymede_.hotel);
+        fprintf(fp,"%d\n",callisto_.proprio);
+        fprintf(fp,"%d\n",callisto_.maison);
+        fprintf(fp,"%d\n",callisto_.hotel);
+        fprintf(fp,"%d\n",andromede_.proprio);
+        fprintf(fp,"%d\n",andromede_.maison);
+        fprintf(fp,"%d\n",andromede_.hotel);
+        fprintf(fp,"%d\n",io_.proprio);
+        fprintf(fp,"%d\n",io_.maison);
+        fprintf(fp,"%d\n",io_.hotel);
+        fprintf(fp,"%d\n",jupiter_.proprio);
+        fprintf(fp,"%d\n",jupiter_.maison);
+        fprintf(fp,"%d\n",jupiter_.hotel);
+        fprintf(fp,"%d\n",titan_.proprio);
+        fprintf(fp,"%d\n",titan_.maison);
+        fprintf(fp,"%d\n",titan_.hotel);
+        fprintf(fp,"%d\n",saturne_.proprio);
+        fprintf(fp,"%d\n",saturne_.maison);
+        fprintf(fp,"%d\n",saturne_.hotel);
+        fprintf(fp,"%d\n",pluton_.proprio);
+        fprintf(fp,"%d\n",pluton_.maison);
+        fprintf(fp,"%d\n",pluton_.hotel);
+        fprintf(fp,"%d\n",neptune_.proprio);
+        fprintf(fp,"%d\n",neptune_.maison);
+        fprintf(fp,"%d\n",neptune_.hotel);
+        fprintf(fp,"%d\n",venus_.proprio);
+        fprintf(fp,"%d\n",venus_.maison);
+        fprintf(fp,"%d\n",venus_.hotel);
+        fprintf(fp,"%d\n",uranus_.proprio);
+        fprintf(fp,"%d\n",uranus_.maison);
+        fprintf(fp,"%d\n",uranus_.hotel);
+        fprintf(fp,"%d\n",nuageDeMagellan_.proprio);
+        fprintf(fp,"%d\n",nuageDeMagellan_.maison);
+        fprintf(fp,"%d\n",nuageDeMagellan_.hotel);
+        fprintf(fp,"%d\n",mercure_.proprio);
+        fprintf(fp,"%d\n",mercure_.maison);
+        fprintf(fp,"%d\n",mercure_.hotel);
+        fprintf(fp,"%d\n",soleil_.proprio);
+        fprintf(fp,"%d\n",soleil_.maison);
+        fprintf(fp,"%d\n",soleil_.hotel);
         fclose(fp);
     }
     scanf("%d", &choix);
