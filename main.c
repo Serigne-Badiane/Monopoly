@@ -113,7 +113,8 @@ int deplacement2 = 0;
 int deplacement3 = 0;
 int deplacement1 = 0;
 
-deplacement = 8;
+int maisonMax = 32;
+int hotelMax = 12;
 while(choix != 0)
 {
     system("cls");
@@ -132,7 +133,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 10);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            printf("BONJOUR");
+            printf("\nCASE DEPART !\n");
             player[tourJoueur]->numeroCase = 1;
             break;
         }
@@ -143,7 +144,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&lune_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivsat(&lune_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 2;
             break;
         }
@@ -154,7 +155,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&terre_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivplan(&terre_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 3;
             break;
         }
@@ -191,7 +192,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&phobos_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivsat(&phobos_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 6;
             break;
         }
@@ -202,7 +203,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&mars_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivplan(&mars_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 7;
             break;
         }
@@ -226,7 +227,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&ganymede_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivsat(&ganymede_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 9;
             break;
         }
@@ -237,7 +238,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&callisto_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivsat(&callisto_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 10;
             break;
         }
@@ -259,7 +260,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&io_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivsat(&io_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 12;
             break;
         }
@@ -270,7 +271,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&jupiter_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivplan(&jupiter_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 13;
             break;
         }
@@ -314,7 +315,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&titan_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivsat(&titan_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 16;
             break;
         }
@@ -325,7 +326,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&saturne_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivplan(&saturne_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 17;
             break;
         }
@@ -347,7 +348,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivsat(&pluton_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivsat(&pluton_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 19;
             break;
         }
@@ -358,7 +359,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&neptune_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivplan(&neptune_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 29;
             break;
         }
@@ -415,7 +416,7 @@ while(choix != 0)
 
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&venus_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivplan(&venus_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 23;
             break;
         }
@@ -426,7 +427,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&uranus_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivplan(&uranus_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 24;
             break;
         }
@@ -448,7 +449,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&mercure_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivplan(&mercure_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 26;
             break;
         }
@@ -459,7 +460,7 @@ while(choix != 0)
             Color(player[tourJoueur]->couleur, 15);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
-            arrivplan(&soleil_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            arrivplan(&soleil_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax);
             player[tourJoueur]->numeroCase = 27;
             break;
         }

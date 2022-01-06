@@ -10,7 +10,7 @@
 
 
 ///AFFICHAGE DE L'ARRIVEE SUR LES PLANETES
-void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_, int *maisonMax, int *hotelMax){
     Color(3,0);
     printf("\n\n%cIA : Nous sommes arriv%cs sur une nouvelle plan%cte... La plan%cte %s !",0x10,0x82,0x8A,0x8A,p->nom);
     p->proprio = 5;
@@ -116,12 +116,13 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             fflush(stdin);
             scanf("%d",&choix);
         }
-        if(choix == 1 && player[tourjoueur]->argent >= p->prixMaison){
+        if(choix == 1 && player[tourjoueur]->argent >= p->prixMaison && *maisonMax >= 0){
             printf("Vous avez achete une sonde spatiale, felicitations !\n");
             player[tourjoueur]->argent -= p->prixMaison;
             p->maison += 1;
+            *maisonMax -= 1;
 
-            if (p->maison == 4){
+            if (p->maison == 4 && *hotelMax >=0){
                 printf("Vous possedez 4 sondes spatiales. Voulez-vous les remplacer par une station spatiale ?\n ");
                 printf("                                  ");
                 Color(10,0);
@@ -140,6 +141,8 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 if(choix2 == 1 && player[tourjoueur]->argent >= p->prixMaison){
                     p->maison = 0;
                     p->hotel = 1;
+                    *hotelMax -=1;
+                    *maisonMax += 4;
                     Color(3,0);
                     printf("Vous avez achete une station spatiale, felicitations !");
                     player[tourjoueur]->argent -= p->prixMaison;
@@ -427,7 +430,7 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
 
 }
 
-void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_)
+void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_, int *maisonMax, int *hotelMax)
 {
     Color(3,0);
     s->proprio = 5;
@@ -474,13 +477,15 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             fflush(stdin);
             scanf("%d",&choix);
         }
-        if(choix == 1 && player[tourjoueur]->argent >= s->prixMaison){
+        if(choix == 1 && player[tourjoueur]->argent >= s->prixMaison && *maisonMax >= 0){
             printf("Vous avez achete une sonde spatiale, felicitations !");
             player[tourjoueur]->argent -= s->prixMaison;
             s->maison += 1;
+            *maisonMax -= 1;
+
 
             //placement des hotels
-            if (s->maison == 4){
+            if (s->maison == 4 && *hotelMax >= 0){
                 printf("Vous possedez 4 maisons. Voulez-vous les remplacer par une station spatiale ?\n ");
                 printf("                                  ");
                 Color(10,0);
@@ -499,6 +504,8 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 if(choix2 == 1 && player[tourjoueur]->argent >= s->prixMaison){
                     s->maison = 0;
                     s->hotel = 1;
+                    *hotelMax -= 1;
+                    *maisonMax += 4;
                     Color(3,0);
                     printf("Vous avez achete une station spatiale, felicitations !");
                     player[tourjoueur]->argent -= s->prixMaison;

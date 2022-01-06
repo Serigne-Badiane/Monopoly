@@ -58,7 +58,7 @@
 	<windows.h>
 	"bib.h"
 
-1641402284 c:\users\antan\documents\github\monopoly\bib.h
+1641469285 c:\users\antan\documents\github\monopoly\bib.h
 
 1641397567 source:c:\users\edouard\documents\github\monopoly\joueurs.c
 	<stdio.h>
@@ -98,13 +98,13 @@
 	<windows.h>
 	"bib.h"
 
-1641407825 source:c:\users\antan\documents\github\monopoly\main.c
+1641469601 source:c:\users\antan\documents\github\monopoly\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	"bib.h"
 
-1641406980 source:c:\users\antan\documents\github\monopoly\planetes.c
+1641470147 source:c:\users\antan\documents\github\monopoly\planetes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -128,7 +128,7 @@
 	<windows.h>
 	"bib.h"
 
-1641402284 source:c:\users\antan\documents\github\monopoly\plateau.c
+1641469351 source:c:\users\antan\documents\github\monopoly\plateau.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>

@@ -520,7 +520,7 @@ void plateau()
 
 
 //DEPART
-void case1(){
+/*void case1(){
         //200 à chaque passage
     printf("BONJOUR");
 
@@ -680,4 +680,4 @@ void case28(){
     //chance ou commu ?
     printf("BONJOUR");
 
-}
+}*/
