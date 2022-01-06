@@ -223,9 +223,9 @@ void plateau()
     gotoligcol(2,85);
     printf("%c%c%c",0xB2,0xB2,0xB2);
     gotoligcol(3,85);
-    printf("%c%",0xB2);
+    printf("%c",0xB2);
     gotoligcol(4,85);
-    printf("%c%",0xB2);
+    printf("%c",0xB2);
     gotoligcol(2,93);
     printf("%c",0xB2);
     gotoligcol(2,94);
@@ -459,7 +459,7 @@ void plateau()
     printf("          ");
     gotoligcol(31,51);
     printf("TETARD");
-    Color(0,15);
+    Color(0,7);
     gotoligcol(32,49);
     printf("          ");
     gotoligcol(33,49);

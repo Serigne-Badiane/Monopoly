@@ -72,13 +72,13 @@ void cc4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 }
 
 
-void cc5(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur)
+void cc5(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_)
 {
     char c[TAILLE]="DEAL FORCE!\nEchangez une de vos proprietes avec celle du joueur de votre choix\n";
     Color(5,0);
     printf("%s", c);
 
-    echange(nombreDeJoueur,player,tourJoueur);
+    echange(nombreDeJoueur,player,tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 }
 
 
@@ -248,7 +248,7 @@ void cc16(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoue
 
 
 ///PIOCHE
-int piocheCartesCommu(int carte, t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur)
+void piocheCartesCommu(int carte, t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_)
 {
 
     switch (carte)
@@ -276,7 +276,7 @@ int piocheCartesCommu(int carte, t_joueur player[NbJoueurMax][TAILLE], int nombr
         }
         case 5:
         {
-            cc5( player,tourJoueur, nombreDeJoueur);
+            cc5( player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             break;
         }
         case 6:
@@ -397,13 +397,13 @@ void c4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 
     choix = choix - 1; //car le tableau des joueurs commence à 0
 
-
-
-    while(choix >= 4){
+    while (choix != 3 && choix != 2 && choix != 1 && choix != 0)
+    {
         Color(3,0);
         printf("\nIA : Ce joueur n'existe pas !\n");
         fflush(stdin);
         scanf("%d",&choix );
+        choix = choix - 1;
     }
     while(choix == tourJoueur)
     {
@@ -411,6 +411,7 @@ void c4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
         printf("\nIA : Vous ne pouvez vous defier vous-meme !\n");
         fflush(stdin);
         scanf("%d",&choix);
+        choix = choix - 1;
     }
 
 
@@ -484,7 +485,7 @@ void c5(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 
 
 
-    while(choix >= 4){
+    while(choix ){
         Color(3,0);
         printf("\nIA : Ce joueur n'existe pas !\n");
         fflush(stdin);
@@ -654,7 +655,7 @@ void c14(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 
 
 
-    while(choix >= 4){
+    while(choix != 0 && choix != 1 && choix != 2 && choix != 3){
         Color(3,0);
         printf("\nIA : Ce joueur n'existe pas !\n");
         fflush(stdin);
@@ -741,7 +742,6 @@ void prison(t_joueur player[NbJoueurMax][TAILLE], int numeroTour, int nbDeJoueur
 
     int choix;
     int choix2;
-    int choix3;
     int choix4;
     int de[2];
 
@@ -753,7 +753,6 @@ void prison(t_joueur player[NbJoueurMax][TAILLE], int numeroTour, int nbDeJoueur
         printf("\n%s, ", player[numeroTour]->prenomJoueur);
         Color(3,0);
         printf("vous etes en prison !\n");
-        printf("%s");
         printf("Vous possedez une carte permettant de sortir de prison.\nVoulez-vous l'utiliser ou la conserver pour plus tard ?\n");
         printf("                                  ");
         Color(10,0);
@@ -778,7 +777,7 @@ void prison(t_joueur player[NbJoueurMax][TAILLE], int numeroTour, int nbDeJoueur
         }
 
     }
-    else if (player[numeroTour]->carteSortiePrison != 1 && player[0]->carteSortiePrison == 1 || player[1]->carteSortiePrison == 1 || player[2]->carteSortiePrison == 1 || player[3]->carteSortiePrison == 1){
+    else if (player[numeroTour]->carteSortiePrison != 1 && ( player[0]->carteSortiePrison == 1 || player[1]->carteSortiePrison == 1 || player[2]->carteSortiePrison == 1 || player[3]->carteSortiePrison == 1)){
         for (int i = 0; i<nbDeJoueur; i++){
 
             if(player[i]->carteSortiePrison == 1 ){
@@ -955,7 +954,7 @@ if(player[numeroTour]->prison == 1){
 
 
 ///PIOCHE
-int piocheCartesChances(int carte, t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur)
+void piocheCartesChances(int carte, t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur)
 {
 
     switch (carte)

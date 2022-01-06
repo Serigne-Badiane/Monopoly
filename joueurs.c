@@ -35,8 +35,8 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
 
             scanf("%s", &player[i]->prenomJoueur);
             fflush(stdin);
-            strcat(&player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
-            strcat(&player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
+            strcat(player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
+            strcat(player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
 
             player[i]->numeroJoueur = i+1;
             fflush(stdin);
@@ -54,10 +54,10 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
             printf("\n\nBienvenu cher joueur !\n\nVotre but aujourd'hui est de devenir le joueur le plus riche\n\nBonne chance !\n\n");
             printf("Indiquez votre pr%cnom\n",0x82);
 
-            scanf("%s", &player[i]->prenomJoueur);
+            scanf("%s", player[i]->prenomJoueur);
             fflush(stdin);
-            strcat(&player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
-            strcat(&player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
+            strcat(player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
+            strcat(player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
 
             player[i]->numeroJoueur = i+1;
             fflush(stdin);
@@ -77,8 +77,8 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
 
             scanf("%s", &player[i]->prenomJoueur);
             fflush(stdin);
-            strcat(&player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
-            strcat(&player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
+            strcat(player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
+            strcat(player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
 
             player[i]->numeroJoueur = i+1;
             fflush(stdin);
@@ -100,8 +100,8 @@ t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
 
             scanf("%s", &player[i]->prenomJoueur);
             fflush(stdin);
-            strcat(&player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
-            strcat(&player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
+            strcat(player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
+            strcat(player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
 
             player[i]->numeroJoueur = i+1;
             fflush(stdin);

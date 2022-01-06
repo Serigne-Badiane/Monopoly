@@ -10,7 +10,7 @@
 
 
 ///AFFICHAGE DE L'ARRIVEE SUR LES PLANETES
-void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_, int *maisonMax, int *hotelMax){
+void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_, int *maisonMax, int *hotelMax,int nombreJoueur){
     Color(3,0);
     printf("\n\n%cIA : Nous sommes arriv%cs sur une nouvelle plan%cte... La plan%cte %s !",0x10,0x82,0x8A,0x8A,p->nom);
     p->proprio = 5;
@@ -62,6 +62,8 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             p->proprio = player[tourjoueur]->numeroJoueur;
             strcat(player[tourjoueur]->proprietes,p->nom);
             strcat(player[tourjoueur]->proprietes,",");
+            player[tourjoueur]->famillec[p->couleurF] += 1;
+            verfiwin(player , tourjoueur , nombreJoueur);
 
             player[tourjoueur]->argent -= p->prix;
             printf("IA : BRAVO %s! Vous avez aquis une nouvelle planete ...\n",player[tourjoueur]->prenomJoueur);
@@ -181,6 +183,20 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         printf("%s",player[p->proprio - 1]->prenomJoueur);
         Color(3,0);
         printf("... Vous devez lui payer son loyer !");
+        if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+            printf("\nIA: ");
+            Color(player[p->proprio - 1]->couleurJoueur,0);
+            printf("%s",player[p->proprio - 1]->prenomJoueur);
+            printf(" possede cette famille d'astre ! Le loyer est donc double !");
+            Color(player[tourjoueur]->couleur,0);
+            printf("\n%s",player[tourjoueur]->prenomJoueur);
+            Color(3,0);
+            printf(" paye a ");
+            Color(player[p->proprio - 1]->couleur,0);
+            printf("%s",player[p->proprio - 1]->prenomJoueur);
+            Color(3,0);
+        }
+        else {
         Color(player[tourjoueur]->couleur,0);
         printf("\n%s",player[tourjoueur]->prenomJoueur);
         Color(3,0);
@@ -188,84 +204,203 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         Color(player[p->proprio - 1]->couleur,0);
         printf("%s",player[p->proprio - 1]->prenomJoueur);
         Color(3,0);
+        }
 
         if(p->maison == 0 && p->hotel == 0 && player[tourjoueur]->argent >= p->loyer){
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+            player[tourjoueur]->argent -= (p->loyer)*2;
+            player[p->proprio - 1]->argent += (p->loyer)*2;
+            printf(" %d euros...",(p->loyer)*2);
+            }
+            else {
             player[tourjoueur]->argent -= p->loyer;
             player[p->proprio - 1]->argent += p->loyer;
             printf(" %d euros...",p->loyer);
+            }
         }
         else if (p->maison == 1 && player[tourjoueur]->argent >= p->loyer1){
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                player[tourjoueur]->argent -= (p->loyer1)*2;
+                player[p->proprio - 1]->argent += (p->loyer1)*2;
+                printf(" %d euros...",(p->loyer1)*2);
+            }
+            else{
             player[tourjoueur]->argent -= p->loyer1;
             player[p->proprio - 1]->argent += p->loyer1;
             printf(" %d euros...",p->loyer1);
+            }
         }
         else if (p->maison == 2 && player[tourjoueur]->argent >= p->loyer2){
-            player[tourjoueur]->argent -= p->loyer2;
-            player[p->proprio - 1]->argent += p->loyer2;
-            printf(" %d euros...",p->loyer2);
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                player[tourjoueur]->argent -= (p->loyer2)*2;
+                player[p->proprio - 1]->argent += (p->loyer2)*2;
+                printf(" %d euros...",(p->loyer2)*2);
+            }
+            else{
+                player[tourjoueur]->argent -= p->loyer2;
+                player[p->proprio - 1]->argent += p->loyer2;
+                printf(" %d euros...",p->loyer2);
+            }
         }
         else if (p->maison == 3 && player[tourjoueur]->argent >= p->loyer3){
-            player[tourjoueur]->argent -= p->loyer3;
-            player[p->proprio - 1]->argent += p->loyer3;
-            printf(" %d euros...",p->loyer3);
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                player[tourjoueur]->argent -= (p->loyer3)*2;
+                player[p->proprio - 1]->argent += (p->loyer3)*2;
+                printf(" %d euros...",(p->loyer3)*2);
+            }
+            else {
+                player[tourjoueur]->argent -= p->loyer3;
+                player[p->proprio - 1]->argent += p->loyer3;
+                printf(" %d euros...",p->loyer3);
+            }
         }
         else if(p->maison == 4 && player[tourjoueur]->argent >= p->loyer4){
-            player[tourjoueur]->argent -= p->loyer4;
-            player[p->proprio - 1]->argent += p->loyer4;
-            printf(" %d euros...",p->loyer4);
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                player[tourjoueur]->argent -= (p->loyer4)*2;
+                player[p->proprio - 1]->argent += (p->loyer4)*2;
+                printf(" %d euros...",(p->loyer4)*2);
+            }
+            else{
+                player[tourjoueur]->argent -= p->loyer4;
+                player[p->proprio - 1]->argent += p->loyer4;
+                printf(" %d euros...",p->loyer4);
+            }
         }
         else if(p->hotel == 1 && player[tourjoueur]->argent >= p->loyerHotel){
-            player[tourjoueur]->argent -= p->loyerHotel;
-            player[p->proprio - 1] ->argent += p->loyerHotel;
-            printf(" %d euros...", p->loyerHotel);
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                player[tourjoueur]->argent -= (p->loyerHotel)*2;
+                player[p->proprio - 1]->argent += (p->loyerHotel)*2;
+                printf(" %d euros...",(p->loyerHotel)*2);
+            }
+            else{
+                player[tourjoueur]->argent -= p->loyerHotel;
+                player[p->proprio - 1] ->argent += p->loyerHotel;
+                printf(" %d euros...", p->loyerHotel);
+            }
         }
         else if (p->maison == 0 && p->hotel == 0 && player[tourjoueur]->argent <= p->loyer) {
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
-            int prixapayer = p->loyer1 - player[tourjoueur]->argent;
+            int prixapayer;
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+            prixapayer = ((p->loyer)*2) - player[tourjoueur]->argent;
+            }
+            else {
+            prixapayer = p->loyer - player[tourjoueur]->argent;
+            }
             hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                player[tourjoueur]->argent -= p->loyer *2;
+                player[p->proprio - 1] ->argent += p->loyer *2;
+            }
+
+            else{
             player[tourjoueur]->argent -= p->loyer;
             player[p->proprio - 1] ->argent += p->loyer;
+            }
         }
         else if (p->maison == 1 && player[tourjoueur]->argent <= p->loyer1){
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
-            int prixapayer = p->loyer1 - player[tourjoueur]->argent;
+            int prixapayer;
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                prixapayer = ((p->loyer1)*2) - player[tourjoueur]->argent;
+            }
+            else {
+            prixapayer = p->loyer1 - player[tourjoueur]->argent;
+            }
             hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                player[tourjoueur]->argent -= p->loyer1 *2;
+                player[p->proprio - 1] ->argent += p->loyer1 *2;
+            }
+            else{
             player[tourjoueur]->argent -= p->loyer1;
             player[p->proprio - 1] ->argent += p->loyer1;
+            }
         }
         else if(p->maison == 2 && player[tourjoueur]->argent <= p->loyer2){
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
-            int prixapayer = p->loyer2 - player[tourjoueur]->argent;
+            int prixapayer;
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                prixapayer = ((p->loyer2)*2) - player[tourjoueur]->argent;
+            }
+            else {
+            prixapayer = p->loyer2 - player[tourjoueur]->argent;
+            }
             hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                player[tourjoueur]->argent -= p->loyer2 *2;
+                player[p->proprio - 1] ->argent += p->loyer2 *2;
+            }
+            else{
             player[tourjoueur]->argent -= p->loyer2;
             player[p->proprio - 1] ->argent += p->loyer2;
+            }
         }
         else if (p->maison == 3 && player[tourjoueur]->argent <= p->loyer3){
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
-            int prixapayer = p->loyer3 - player[tourjoueur]->argent;
+            int prixapayer;
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                prixapayer = ((p->loyer3)*2) - player[tourjoueur]->argent;
+            }
+            else {
+            prixapayer = p->loyer3 - player[tourjoueur]->argent;
+            }
             hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                player[tourjoueur]->argent -= p->loyer3 *2;
+                player[p->proprio - 1] ->argent += p->loyer3 *2;
+            }
+
+            else{
             player[tourjoueur]->argent -= p->loyer3;
             player[p->proprio - 1] ->argent += p->loyer3;
+            }
         }
         else if (p->maison == 4 && player[tourjoueur]->argent <= p->loyer4){
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
-            int prixapayer = p->loyer4 - player[tourjoueur]->argent;
+            int prixapayer;
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                prixapayer = ((p->loyer4)*2) - player[tourjoueur]->argent;
+            }
+            else {
+            prixapayer = p->loyer4 - player[tourjoueur]->argent;
+            }
             hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                player[tourjoueur]->argent -= p->loyer4 *2;
+                player[p->proprio - 1] ->argent += p->loyer4 *2;
+            }
+
+            else{
             player[tourjoueur]->argent -= p->loyer4;
             player[p->proprio - 1] ->argent += p->loyer4;
+            }
         }
         else if (p->hotel == 1 && player[tourjoueur]->argent <= p->loyerHotel) {
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
-            int prixapayer = p->loyerHotel - player[tourjoueur]->argent;
+            int prixapayer;
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                prixapayer = ((p->loyerHotel)*2) - player[tourjoueur]->argent;
+            }
+            else {
+            prixapayer = p->loyerHotel - player[tourjoueur]->argent;
+            }
             hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
+                player[tourjoueur]->argent -= p->loyerHotel *2;
+                player[p->proprio - 1] ->argent += p->loyerHotel *2;
+            }
+
+            else{
             player[tourjoueur]->argent -= p->loyerHotel;
             player[p->proprio - 1] ->argent += p->loyerHotel;
+            }
         }
 
         Color(player[p->proprio-1]->couleur, 0);
@@ -283,7 +418,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
 }
 
 ///AFFICHAGE DE L'ARRIVEE SUR LES ETOILES
-void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int nombreJoueur){
     Color(3,0);
     printf("\n\n%cIA : Nous sommes arriv%cs sur une nouvelle galaxie : ...%s !",0x10,0x82,g->nom);
     g->proprio = 5;
@@ -376,7 +511,7 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         printf("%s, Porte Monnaire : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
 
     }
-    else{
+    else if( g->proprio != player[0]->numeroJoueur && g->proprio != player[1]->numeroJoueur && g->proprio != player[2]->numeroJoueur && g->proprio != player[3]->numeroJoueur ){
         printf("\n%cIA : %s",0x10,g->anecdote);
         printf("\n%cIA : Voici un r%capitulatif capitaine...",0x10,0x82);
         Color(15,0);
@@ -412,6 +547,8 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             strcat(player[tourjoueur]->proprietes,g->nom);
             strcat(player[tourjoueur]->proprietes,",");
             player[tourjoueur]->argent -= g->prix;
+            player[tourjoueur]->famillec[g->couleurF] += 1;
+            verfiwin(player , tourjoueur , nombreJoueur);
             printf("IA : BRAVO %s! Vous avez aquis une nouvelle galaxie ...",player[tourjoueur]->prenomJoueur);
             player[tourjoueur]->nbDeGare += 1; //pour les gares, nous n'avons de maisons. Donc on compte les nombres de gares possédes;
             Color(player[tourjoueur]->couleur, 0);
@@ -427,10 +564,26 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             printf("IA : Fin de tour ...");
         }
     }
+    else{
+        Color(15,0);
+        printf("\n                          Nombre de galaxie possede par %s : %d",player[g->proprio - 1]->prenomJoueur, player[g->proprio-1]->nbDeGare);
+        printf("\n                          Prix loyer avec 1 galaxie : %d",g->loyer);
+        printf("\n                              Prix loyer avec 2 galaxie : %d",g->loyer1);
+        printf("\n                              Prix loyer avec 3 galaxie : %d",g->loyer2);
+        printf("\n                              Prix loyer avec 4 galaxie : %d",g->loyer3);
+        Color(3,0);
+        printf("\nIA : La galaxie appartient a ");
+        Color(player[g->proprio - 1]->couleur,0);
+        printf("%s",player[g->proprio - 1]->prenomJoueur);
+        Color(3,0);
+        printf("\nIA : Re-bonjour ");
+        Color(player[tourjoueur]->couleur,0);
+        printf("%s !\n", player[tourjoueur]->prenomJoueur);
+    }
 
 }
 
-void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_, int *maisonMax, int *hotelMax)
+void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_, int *maisonMax, int *hotelMax,int nombreJoueur)
 {
     Color(3,0);
     s->proprio = 5;
@@ -540,94 +693,228 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         printf("%s",player[s->proprio - 1]->prenomJoueur);
         Color(3,0);
         printf("... Vous devez lui payer son loyer !");
+        if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+            printf("\nIA: ");
+            Color(player[s->proprio - 1]->couleurJoueur,0);
+            printf("%s",player[s->proprio - 1]->prenomJoueur);
+            printf(" possede cette famille d'astre ! Le loyer est donc double !");
+            Color(player[tourjoueur]->couleur,0);
+            printf("\n%s",player[tourjoueur]->prenomJoueur);
+            Color(3,0);
+            printf(" paye a ");
+            Color(player[s->proprio - 1]->couleur,0);
+            printf("%s",player[s->proprio - 1]->prenomJoueur);
+            Color(3,0);
+        }
+        else {
         Color(player[tourjoueur]->couleur,0);
         printf("\n%s",player[tourjoueur]->prenomJoueur);
         Color(3,0);
         printf(" paye a ");
         Color(player[s->proprio - 1]->couleur,0);
         printf("%s",player[s->proprio - 1]->prenomJoueur);
+        }
         Color(3,0);
 
         if(s->maison == 0 && s->hotel == 0 && player[tourjoueur]->argent >= s->loyer){
-            player[tourjoueur]->argent -= s->loyer;
-            player[s->proprio - 1]->argent += s->loyer;
-            printf(" %d euros...",s->loyer);
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                player[tourjoueur]->argent -= s->loyer *2;
+                player[s->proprio - 1]->argent += s->loyer *2;
+                printf(" %d euros...",s->loyer *2);
+            }
+            else{
+                player[tourjoueur]->argent -= s->loyer;
+                player[s->proprio - 1]->argent += s->loyer;
+                printf(" %d euros...",s->loyer);
+            }
         }
         else if (s->maison == 1 && player[tourjoueur]->argent >= s->loyer1){
-            player[tourjoueur]->argent -= s->loyer1;
-            player[s->proprio - 1]->argent += s->loyer1;
-            printf(" %d euros...",s->loyer1);
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                player[tourjoueur]->argent -= s->loyer1 *2;
+                player[s->proprio - 1]->argent += s->loyer1 *2;
+                printf(" %d euros...",s->loyer1 *2);
+            }
+            else{
+                player[tourjoueur]->argent -= s->loyer1;
+                player[s->proprio - 1]->argent += s->loyer1;
+                printf(" %d euros...",s->loyer1);
+            }
         }
         else if (s->maison == 2 && player[tourjoueur]->argent >= s->loyer2){
-            player[tourjoueur]->argent -= s->loyer2;
-            player[s->proprio - 1]->argent += s->loyer2;
-            printf(" %d euros...",s->loyer2);
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                player[tourjoueur]->argent -= s->loyer2 *2;
+                player[s->proprio - 1]->argent += s->loyer2 *2;
+                printf(" %d euros...",s->loyer2 *2);
+            }
+            else{
+                player[tourjoueur]->argent -= s->loyer2;
+                player[s->proprio - 1]->argent += s->loyer2;
+                printf(" %d euros...",s->loyer2);
+            }
         }
         else if (s->maison == 3 && player[tourjoueur]->argent >= s->loyer3){
-            player[tourjoueur]->argent -= s->loyer3;
-            player[s->proprio - 1]->argent += s->loyer3;
-            printf(" %d euros...",s->loyer3);
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                player[tourjoueur]->argent -= s->loyer3 *2;
+                player[s->proprio - 1]->argent += s->loyer3 *2;
+                printf(" %d euros...",s->loyer3 *2);
+            }
+            else{
+                player[tourjoueur]->argent -= s->loyer3;
+                player[s->proprio - 1]->argent += s->loyer3;
+                printf(" %d euros...",s->loyer3);
+            }
         }
         else if(s->maison == 4 && player[tourjoueur]->argent >= s->loyer4){
-            player[tourjoueur]->argent -= s->loyer4;
-            player[s->proprio- 1]->argent += s->loyer4;
-            printf(" %d euros...", s->loyer4);
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                player[tourjoueur]->argent -= s->loyer4 *2;
+                player[s->proprio - 1]->argent += s->loyer4 *2;
+                printf(" %d euros...",s->loyer4 *2);
+            }
+            else{
+                player[tourjoueur]->argent -= s->loyer4;
+                player[s->proprio- 1]->argent += s->loyer4;
+                printf(" %d euros...", s->loyer4);
+            }
 
         }
         else if(s->hotel == 1 && player[tourjoueur]->argent >= s->loyerHotel){
-            player[tourjoueur]->argent -= s->loyerHotel;
-            player[s->proprio- 1]->argent += s->loyerHotel;
-            printf(" %d euros...", s->loyerHotel);
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                player[tourjoueur]->argent -= s->loyerHotel *2;
+                player[s->proprio - 1]->argent += s->loyerHotel  *2;
+                printf(" %d euros...",s->loyerHotel *2);
+            }
+            else{
+                player[tourjoueur]->argent -= s->loyerHotel;
+                player[s->proprio- 1]->argent += s->loyerHotel;
+                printf(" %d euros...", s->loyerHotel);
+            }
 
         }
         else if (s->maison == 0 && s->hotel == 0 && player[tourjoueur]->argent <= s->loyer) {
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
-            int prixapayer = s->loyer1 - player[tourjoueur]->argent;
+            int prixapayer;
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                prixapayer = (s->loyer*2) - player[tourjoueur]->argent;
+
+            }
+            else{
+                prixapayer = s->loyer - player[tourjoueur]->argent;
+            }
             hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
-            player[tourjoueur]->argent -= s->loyer;
-            player[s->proprio - 1] ->argent += s->loyer;
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                player[tourjoueur]->argent -= s->loyer*2;
+                player[s->proprio - 1] ->argent += s->loyer*2;
+            }
+            else{
+                player[tourjoueur]->argent -= s->loyer;
+                player[s->proprio - 1] ->argent += s->loyer;
+            }
         }
         else if (s->maison == 1 && player[tourjoueur]->argent <= s->loyer1){
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
-            int prixapayer = s->loyer1 - player[tourjoueur]->argent;
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
-            player[tourjoueur]->argent -= s->loyer1;
-            player[s->proprio - 1] ->argent += s->loyer1;
+            int prixapayer;
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                prixapayer = (s->loyer1*2) - player[tourjoueur]->argent;
 
+            }
+            else{
+                prixapayer = s->loyer1 - player[tourjoueur]->argent;
+            }
+            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                player[tourjoueur]->argent -= s->loyer1*2;
+                player[s->proprio - 1] ->argent += s->loyer1*2;
+            }
+            else{
+                player[tourjoueur]->argent -= s->loyer1;
+                player[s->proprio - 1] ->argent += s->loyer1;
+            }
         }
         else if(s->maison == 2 && player[tourjoueur]->argent <= s->loyer2){
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
-            int prixapayer = s->loyer2 - player[tourjoueur]->argent;
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
-            player[tourjoueur]->argent -= s->loyer2;
-            player[s->proprio - 1] ->argent += s->loyer2;
+            int prixapayer;
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                prixapayer = (s->loyer2*2) - player[tourjoueur]->argent;
+
+            }
+            else{
+                prixapayer = s->loyer2 - player[tourjoueur]->argent;
+            }
+            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);player[tourjoueur]->argent -= s->loyer2;
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                player[tourjoueur]->argent -= s->loyer2*2;
+                player[s->proprio - 1] ->argent += s->loyer2*2;
+            }
+            else{
+                player[tourjoueur]->argent -= s->loyer2;
+                player[s->proprio - 1] ->argent += s->loyer2;
+            }
         }
         else if (s->maison == 3 && player[tourjoueur]->argent <= s->loyer3){
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
-            int prixapayer = s->loyer3 - player[tourjoueur]->argent;
+            int prixapayer;
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                prixapayer = (s->loyer3*2) - player[tourjoueur]->argent;
+
+            }
+            else{
+                prixapayer = s->loyer3 - player[tourjoueur]->argent;
+            }
             hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
-            player[tourjoueur]->argent -= s->loyer3;
-            player[s->proprio - 1] ->argent += s->loyer3;
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                player[tourjoueur]->argent -= s->loyer3*2;
+                player[s->proprio - 1] ->argent += s->loyer3*2;
+            }
+            else{
+                player[tourjoueur]->argent -= s->loyer3;
+                player[s->proprio - 1] ->argent += s->loyer3;
+            }
         }
         else if (s->maison == 4 && player[tourjoueur]->argent <= s->loyer4){
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
-            int prixapayer = s->loyer4 - player[tourjoueur]->argent;
+            int prixapayer;
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                prixapayer = (s->loyer4*2) - player[tourjoueur]->argent;
+
+            }
+            else{
+                prixapayer = s->loyer4 - player[tourjoueur]->argent;
+            }
             hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
-            player[tourjoueur]->argent -= s->loyer4;
-            player[s->proprio - 1] ->argent += s->loyer4;
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                player[tourjoueur]->argent -= s->loyer4*2;
+                player[s->proprio - 1] ->argent += s->loyer4*2;
+            }
+            else{
+                player[tourjoueur]->argent -= s->loyer4;
+                player[s->proprio - 1] ->argent += s->loyer4;
+            }
         }
         else if (s->hotel == 1 && player[tourjoueur]->argent <= s->loyerHotel) {
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
-            int prixapayer = s->loyerHotel - player[tourjoueur]->argent;
+            int prixapayer;
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                prixapayer = (s->loyerHotel*2) - player[tourjoueur]->argent;
+
+            }
+            else{
+                prixapayer = s->loyerHotel - player[tourjoueur]->argent;
+            }
             hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
-            player[tourjoueur]->argent -= s->loyerHotel;
-            player[s->proprio - 1] ->argent += s->loyerHotel;
+            if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
+                player[tourjoueur]->argent -= s->loyerHotel*2;
+                player[s->proprio - 1] ->argent += s->loyerHotel*2;
+            }
+            else{
+                player[tourjoueur]->argent -= s->loyerHotel;
+                player[s->proprio - 1] ->argent += s->loyerHotel;
+            }
         }
 
         Color(player[s->proprio-1]->couleur, 0);
@@ -680,7 +967,8 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             strcat(player[tourjoueur]->proprietes,s->nom);
             strcat(player[tourjoueur]->proprietes,",");
             player[tourjoueur]->argent -= s->prix;
-
+            player[tourjoueur]->famillec[s->couleurF] += 1;
+            verfiwin(player , tourjoueur , nombreJoueur);
             printf("IA : BRAVO %s! Vous avez aquis un nouveau satellite ...",player[tourjoueur]->prenomJoueur);
             Color(player[tourjoueur]->couleur, 0);
             printf("%s, Porte Monnaie : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
@@ -717,6 +1005,7 @@ void lune(satellite* lune)
     lune->prixMaison = 50;
     lune->p_hypo = 30 ;
     lune->couleur = 5;
+    lune->couleurF = 0;
 
 }
 
@@ -737,6 +1026,7 @@ void terre (planete* terre){
     terre->prixMaison = 50;
     terre->p_hypo = 30;
     terre->couleur = 5;
+    terre->couleurF = 0;
 
 }
 
@@ -756,6 +1046,7 @@ void voieLactee(galaxie* voieLactee)
     voieLactee->loyer3 = 200;
     voieLactee->p_hypo = 100;
     voieLactee->couleur = 8;
+    voieLactee->couleurF = 1;
 
 
 }
@@ -778,6 +1069,7 @@ void phobos(satellite* phobos)
     phobos->prixMaison = 50;
     phobos->p_hypo = 50;
     phobos->couleur = 3;
+    phobos->couleurF = 2;
 
 }
 
@@ -799,6 +1091,7 @@ void mars (planete* mars){
     mars->p_hypo = 50;
     mars->couleur = 3;
     mars->prixMaison = 50;
+    mars->couleurF = 3;
 
 }
 
@@ -820,6 +1113,7 @@ void ganymede(satellite* ganymede)
     ganymede->prixMaison = 100;
     ganymede->p_hypo = 70;
     ganymede->couleur = 13;
+    ganymede->couleurF = 4;
 
 }
 
@@ -841,6 +1135,7 @@ void callisto(satellite* callisto)
     callisto->prixMaison = 100;
     callisto->p_hypo = 80;
     callisto->couleur = 13;
+    callisto->couleurF = 4;
 }
 
 void andromede(galaxie* andromede)
@@ -858,7 +1153,7 @@ void andromede(galaxie* andromede)
     andromede->loyer3 = 200;
     andromede->p_hypo = 100;
     andromede->couleur = 8;
-
+    andromede->couleurF = 1;
 
 }
 
@@ -880,6 +1175,7 @@ void io(satellite* io)
     io->prixMaison = 100;
     io->p_hypo = 90;
     io->couleur = 6;
+    io->couleurF = 5;
 
 }
 
@@ -900,6 +1196,7 @@ void jupiter (planete* jupiter){
     jupiter->p_hypo = 100;
     jupiter->couleur = 6;
     jupiter->prixMaison = 100;
+    jupiter->couleurF = 5;
 
 }
 
@@ -921,6 +1218,7 @@ void titan(satellite* titan)
     titan->prixMaison = 150;
     titan->p_hypo = 110;
     titan->couleur = 4;
+    titan->couleurF = 6;
 
 }
 
@@ -942,6 +1240,7 @@ void saturne (planete* saturne){
     saturne->p_hypo = 120;
     saturne->couleur = 4;
     saturne->prixMaison = 150;
+    saturne->couleurF = 6;
 
 }
 
@@ -960,6 +1259,7 @@ void tetard(galaxie* tetard)
     tetard->loyer3 = 200;
     tetard->p_hypo = 100;
     tetard->couleur = 8;
+    tetard->couleurF = 1;
 
 }
 
@@ -980,6 +1280,7 @@ void pluton(planete* pluton)
     pluton->p_hypo = 130;
     pluton->couleur = 14;
     pluton->prixMaison = 150;
+    pluton->couleurF = 7;
 
 }
 
@@ -1000,6 +1301,7 @@ void neptune(planete* neptune)
     neptune->p_hypo = 140;
     neptune->couleur = 14;
     neptune->prixMaison = 150;
+    neptune->couleurF = 7;
 
 }
 
@@ -1020,6 +1322,7 @@ void venus (planete* venus){
     venus->p_hypo = 150;
     venus->couleur = 2;
     venus->prixMaison = 200;
+    venus->couleurF = 8;
 
 }
 
@@ -1039,6 +1342,7 @@ void uranus(planete* uranus){
     uranus->p_hypo = 160;
     uranus->couleur = 2;
     uranus->prixMaison = 200;
+    uranus->couleurF = 8;
 
 }
 
@@ -1057,6 +1361,7 @@ void nuageDeMagellan(galaxie* nuageDeMagellan)
     nuageDeMagellan->loyer3 = 200;
     nuageDeMagellan->p_hypo = 100;
     nuageDeMagellan->couleur = 8;
+    nuageDeMagellan->couleurF = 1;
 
 
 }
@@ -1078,6 +1383,7 @@ void mercure(planete* mercure)
     mercure->p_hypo = 175;
     mercure->couleur = 1;
     mercure->prixMaison = 200;
+    mercure->couleurF = 9;
 
 }
 
@@ -1099,6 +1405,7 @@ void soleil (planete* soleil){
     soleil->p_hypo = 200;
     soleil->couleur = 1;
     soleil->prixMaison = 200;
+    soleil->couleurF = 9;
 
 }
 char *str_replace (const char *txt, const char *Avant, const char *Apres)
@@ -1149,7 +1456,7 @@ char *str_replace (const char *txt, const char *Avant, const char *Apres)
   return TxtRetour;
 }
 
-void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur){
+void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
     Color(3,0);
     printf("IA : Souhaitez vous faire un echange ?\n");
     printf("                                  ");
@@ -1187,7 +1494,7 @@ void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourj
                 scanf("%d",&j);
             }
             j--;
-            echange2(j,player,tourjoueur);
+            echange2(j,player,tourjoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 
         }
 
@@ -1214,7 +1521,7 @@ void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourj
                 scanf("%d",&j);
             }
             j--;
-            echange2(j,player,tourjoueur);
+            echange2(j,player,tourjoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 
         }
         else if (nombreDeJoueur == 4){
@@ -1243,13 +1550,13 @@ void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourj
                 scanf("%d",&k);
             }
             k--;
-            echange2(k,player,tourjoueur);
+            echange2(k,player,tourjoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
         }
     }
 }
 
 
-void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur){
+void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
         Color(5,0);
         printf("\n                                                  L'ECHANGE COMMENCE ENTRE LE J%d ET LE J%d !",player[tourjoueur]->numeroJoueur,player[j]->numeroJoueur);
         printf("\nInformation J%d : ",player[tourjoueur]->numeroJoueur);
@@ -1318,6 +1625,10 @@ void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur){
         player[j]->argent -= argent2;
         player[tourjoueur]->argent += argent2;
         player[tourjoueur]->argent -= argent1;
+        player[tourjoueur]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input1)] -= 1;
+        player[tourjoueur]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input2)] += 1;
+        player[j]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input1)] += 1;
+        player[j]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input2)] -= 1;
         strcat(player[j]->proprietes,input1);
         strcpy(player[tourjoueur]->proprietes,str_replace(player[tourjoueur]->proprietes,input1,""));
         strcpy(player[j]->proprietes,str_replace(player[j]->proprietes,input2,""));
@@ -1336,7 +1647,7 @@ void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur){
         printf("%s",player[j]->prenomJoueur);
         printf("\nPorte Monnaie : %d",player[j]->argent);
         printf("\nProprietes : ");
-        printf("%s",player[j]->proprietes);
+        printf("%s\n",player[j]->proprietes);
 
 }
 
@@ -1369,6 +1680,7 @@ void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixa
         result = strstr(player[tourjoueur]->proprietes,input);
     }
     int prixhp = cherchplan(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input);
+    player[tourjoueur]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input)] -= 1;
     strcat(input,",");
     strcpy(player[tourjoueur]->proprietes,str_replace(player[tourjoueur]->proprietes,input,""));
     player[tourjoueur]->argent += prixhp;
@@ -1494,4 +1806,124 @@ int cherchplan (planete terre_,planete mars_,planete jupiter_,planete saturne_,p
 }
 
 
+void verfiwin (t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJoueur){
 
+    int compteur = 0;
+    for (int i = 0; i<10;i ++){
+        if (player[tourjoueur]->famillec[i] == 4){
+            compteur ++;
+        }
+        if (player[tourjoueur]->famillec[i] == 2){
+            compteur ++;
+        }
+    }
+    if (compteur == 3){
+
+        system("cls");
+        Color(3,0);
+        printf("IA : FELICITATION NOUS AVONS NOTRE ASTRONAUTE ULTIME !\nIA : ");
+        Color(player[tourjoueur]->couleurJoueur,0);
+        printf("%s",player[tourjoueur]->prenomJoueur);
+        Color(3,0);
+        printf(" A OBTENU 3 FAMILLES D'ASTRES ! IL REMPORTE DONC LA PARTIE !");
+        printf("\n                                  RECAPITULATIF DE LA PARTIE : ");
+        for (int i = 0; i<nombreJoueur ; i++){
+            Color(player[i]->couleurJoueur,0);
+            printf("\nInformation J%d : ",player[i]->numeroJoueur);
+            printf("%s",player[i]->prenomJoueur);
+            printf("\nPorte Monnaie : %d",player[i]->argent);
+            printf("\nProprietes : ");
+            printf("%s",player[i]->proprietes);
+
+        }
+        exit (0);
+
+
+    }
+    else {
+        compteur = 0;
+    }
+}
+
+int cherchplanp (planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,char input [TAILLE]){
+    char *result = strstr(terre_.nom,input);
+    if (result != NULL){
+        return terre_.couleurF;
+    }
+    result = strstr(mars_.nom,input);
+    if (result != NULL){
+        return mars_.couleurF;
+    }
+    result = strstr(jupiter_.nom,input);
+    if (result != NULL){
+        return jupiter_.couleurF;
+    }
+    result = strstr(saturne_.nom,input);
+    if (result != NULL){
+        return saturne_.couleurF;
+    }
+    result = strstr(pluton_.nom,input);
+    if (result != NULL){
+        return pluton_.couleurF;
+    }
+    result = strstr(neptune_.nom,input);
+    if (result != NULL){
+        return saturne_.couleurF;
+    }
+    result = strstr(venus_.nom,input);
+    if (result != NULL){
+        return venus_.couleurF;
+    }
+    result = strstr(uranus_.nom,input);
+    if (result != NULL){
+        return uranus_.couleurF;
+    }
+    result = strstr(mercure_.nom,input);
+    if (result != NULL){
+        return mercure_.couleurF;
+    }
+    result = strstr(soleil_.nom,input);
+    if (result != NULL){
+        return soleil_.couleurF;
+    }
+    result = strstr(lune_.nom,input);
+    if (result != NULL){
+        return lune_.couleurF;
+    }
+    result = strstr(phobos_.nom,input);
+    if (result != NULL){
+        return phobos_.couleurF;
+    }
+    result = strstr(ganymede_.nom,input);
+    if (result != NULL){
+        return ganymede_.couleurF;
+    }
+    result = strstr(callisto_.nom,input);
+    if (result != NULL){
+        return callisto_.couleurF;
+    }
+    result = strstr(io_.nom,input);
+    if (result != NULL){
+        return io_.couleurF;
+    }
+    result = strstr(titan_.nom,input);
+    if (result != NULL){
+        return titan_.couleurF;
+    }
+    result = strstr(voieLactee_.nom,input);
+    if (result != NULL){
+        return voieLactee_.couleurF;
+    }
+    result = strstr(andromede_.nom,input);
+    if (result != NULL){
+        return andromede_.couleurF;
+    }
+    result = strstr(tetard_.nom,input);
+    if (result != NULL){
+        return tetard_.couleurF;
+    }
+    result = strstr(nuageDeMagellan_.nom,input);
+    if (result != NULL){
+        return nuageDeMagellan_.couleurF;
+    }
+}
