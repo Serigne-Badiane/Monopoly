@@ -26,13 +26,13 @@ SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
 
 }
 
-int pause(int sauvegarde, int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE])
+int pause(int sauvegarde, int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE], int* chargement)
 {
     char pause=kbhit('p');
     pause=getch();
     if(pause=='p')
     {
-        sauvegarde=menu1(&nombreDeJoueur, &nombreDeDeplacement, &tourJoueur, player);
+        sauvegarde=menu1(&nombreDeJoueur, &nombreDeDeplacement, &tourJoueur, player, &chargement);
     }
 }
 
@@ -42,6 +42,7 @@ int main()
 {
 
     int sauvegarde=0;
+    int chargement=0;
     srand(time(NULL));
     t_joueur player[NbJoueurMax][TAILLE];
     satellite lune_ = {0, "","",0,0,0,0,0,0,0,0};
@@ -70,7 +71,7 @@ int main()
     int tourJoueur = 0;
     int deplacement = 0;
 
-    menu1(&nombreJoueur, &deplacement, &tourJoueur, player);
+    menu1(&nombreJoueur, &deplacement, &tourJoueur, player, &chargement);
     deplacement += 1;
 
 
@@ -544,17 +545,17 @@ while(choix != 0)
     }
     Color(3,0);
     printf(" IA : %s, veuillez appuyer sur 1 pour lancer le de, ou 2 pour un echange : ", player[tourJoueur]->prenomJoueur);
-    sauvegarde=pause(sauvegarde,&nombreJoueur, &deplacement, &tourJoueur, player);
+    sauvegarde=pause(sauvegarde,&nombreJoueur, &deplacement, &tourJoueur, player, &chargement);
+    FILE * fp=NULL;
     if(sauvegarde==1)
     {
-        FILE * fp=NULL;
         fp=fopen("Partie.txt","w");
         if (fp==NULL)
         {
         printf("erreur d'ouverture");
         exit (0);
         }
-        for(int l = 0; l<NbJoueurMax; l++)
+        for(int l=0; l<NbJoueurMax; l++)
         {
             fprintf(fp,"%s\n",player[l]->prenomJoueur);
             fprintf(fp,"%d\n",player[l]->argent);
@@ -625,6 +626,94 @@ while(choix != 0)
         fprintf(fp,"%d\n",soleil_.hotel);
         fclose(fp);
     }
+    sauvegarde=0;
+    if(chargement==1)
+    {
+        int chJ=0;
+        printf("\nIA : Bonjour ! Pouvez vous me communiquez combien de joueurs etiez vous dans la Partie que vous voulez reprendre");
+        scanf("%d",&chJ);
+        while(chJ !=2 && chJ !=3 && chJ !=4)
+        {
+            printf("\nIA : Saisissez le bon nombre de joueur");
+        }
+        fp=fopen("Partie.txt","r");
+        if (fp==NULL)
+        {
+        printf("erreur d'ouverture");
+        exit (0);
+        }
+        for(int h = 0; h<chJ; h++)
+        {
+            fscanf(fp,"%s\n",player[h]->prenomJoueur);
+            fscanf(fp,"%d\n",&player[h]->argent);
+            fscanf(fp,"%d\n",&player[h]->couleur);
+            fscanf(fp,"%d\n",&player[h]->numeroCase);
+            fscanf(fp,"%d\n",&player[h]->numeroJoueur);
+            fscanf(fp,"%d\n",&player[h]->prison);
+            fscanf(fp,"%s\n",player[h]->proprietes);
+            fscanf(fp,"%d\n",&player[h]->nbDeGare);
+            fscanf(fp,"%d\n",&player[h]->couleurJoueur);
+        }
+        fscanf(fp,"%d\n",&lune_.proprio);
+        fscanf(fp,"%d\n",&lune_.maison);
+        fscanf(fp,"%d\n",&lune_.hotel);
+        fscanf(fp,"%d\n",&terre_.proprio);
+        fscanf(fp,"%d\n",&terre_.maison);
+        fscanf(fp,"%d\n",&terre_.hotel);
+        fscanf(fp,"%d\n",&voieLactee_.proprio);
+        fscanf(fp,"%d\n",&voieLactee_.maison);
+        fscanf(fp,"%d\n",&voieLactee_.hotel);
+        fscanf(fp,"%d\n",&phobos_.proprio);
+        fscanf(fp,"%d\n",&phobos_.maison);
+        fscanf(fp,"%d\n",&phobos_.hotel);
+        fscanf(fp,"%d\n",&mars_.proprio);
+        fscanf(fp,"%d\n",&mars_.maison);
+        fscanf(fp,"%d\n",&mars_.hotel);
+        fscanf(fp,"%d\n",&ganymede_.proprio);
+        fscanf(fp,"%d\n",&ganymede_.maison);
+        fscanf(fp,"%d\n",&ganymede_.hotel);
+        fscanf(fp,"%d\n",&callisto_.proprio);
+        fscanf(fp,"%d\n",&callisto_.maison);
+        fscanf(fp,"%d\n",&callisto_.hotel);
+        fscanf(fp,"%d\n",&andromede_.proprio);
+        fscanf(fp,"%d\n",&andromede_.maison);
+        fscanf(fp,"%d\n",&andromede_.hotel);
+        fscanf(fp,"%d\n",&io_.proprio);
+        fscanf(fp,"%d\n",&io_.maison);
+        fscanf(fp,"%d\n",&io_.hotel);
+        fscanf(fp,"%d\n",&jupiter_.proprio);
+        fscanf(fp,"%d\n",&jupiter_.maison);
+        fscanf(fp,"%d\n",&jupiter_.hotel);
+        fscanf(fp,"%d\n",&titan_.proprio);
+        fscanf(fp,"%d\n",&titan_.maison);
+        fscanf(fp,"%d\n",&titan_.hotel);
+        fscanf(fp,"%d\n",&saturne_.proprio);
+        fscanf(fp,"%d\n",&saturne_.maison);
+        fscanf(fp,"%d\n",&saturne_.hotel);
+        fscanf(fp,"%d\n",&pluton_.proprio);
+        fscanf(fp,"%d\n",&pluton_.maison);
+        fscanf(fp,"%d\n",&pluton_.hotel);
+        fscanf(fp,"%d\n",&neptune_.proprio);
+        fscanf(fp,"%d\n",&neptune_.maison);
+        fscanf(fp,"%d\n",&neptune_.hotel);
+        fscanf(fp,"%d\n",&venus_.proprio);
+        fscanf(fp,"%d\n",&venus_.maison);
+        fscanf(fp,"%d\n",&venus_.hotel);
+        fscanf(fp,"%d\n",&uranus_.proprio);
+        fscanf(fp,"%d\n",&uranus_.maison);
+        fscanf(fp,"%d\n",&uranus_.hotel);
+        fscanf(fp,"%d\n",&nuageDeMagellan_.proprio);
+        fscanf(fp,"%d\n",&nuageDeMagellan_.maison);
+        fscanf(fp,"%d\n",&nuageDeMagellan_.hotel);
+        fscanf(fp,"%d\n",&mercure_.proprio);
+        fscanf(fp,"%d\n",&mercure_.maison);
+        fscanf(fp,"%d\n",&mercure_.hotel);
+        fscanf(fp,"%d\n",&soleil_.proprio);
+        fscanf(fp,"%d\n",&soleil_.maison);
+        fscanf(fp,"%d\n",&soleil_.hotel);
+        fclose(fp);
+    }
+    chargement=0;
     scanf("%d", &choix);
 
 
