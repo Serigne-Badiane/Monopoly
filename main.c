@@ -26,13 +26,13 @@ SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
 
 }
 
-int pause(int sauvegarde, int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE])
+int pause(int sauvegarde, int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE], int* chargement)
 {
     char pause=kbhit('p');
     pause=getch();
     if(pause=='p')
     {
-        sauvegarde=menu1(&nombreDeJoueur, &nombreDeDeplacement, &tourJoueur, player);
+        sauvegarde=menu1(&nombreDeJoueur, &nombreDeDeplacement, &tourJoueur, player, &chargement);
     }
 }
 
@@ -42,6 +42,7 @@ int main()
 {
 
     int sauvegarde=0;
+    int chargement=0;
     srand(time(NULL));
     t_joueur player[NbJoueurMax][TAILLE];
     satellite lune_ = {0, "","",0,0,0,0,0,0,0,0};
@@ -544,7 +545,7 @@ while(choix != 0)
     }
     Color(3,0);
     printf(" IA : %s, veuillez appuyer sur 1 pour lancer le de, ou 2 pour un echange : ", player[tourJoueur]->prenomJoueur);
-    sauvegarde=pause(sauvegarde,&nombreJoueur, &deplacement, &tourJoueur, player);
+    sauvegarde=pause(sauvegarde,&nombreJoueur, &deplacement, &tourJoueur, player, &chargement);
     if(sauvegarde==1)
     {
         FILE * fp=NULL;
@@ -623,6 +624,37 @@ while(choix != 0)
         fprintf(fp,"%d\n",soleil_.proprio);
         fprintf(fp,"%d\n",soleil_.maison);
         fprintf(fp,"%d\n",soleil_.hotel);
+        fclose(fp);
+    }
+    sauvegarde=0;
+    if(chargement==1)
+    {
+        FILE * fp=NULL;
+        int chJ=0;
+        printf("\nIA : Bonjour ! Pouvez vous me communiquez combien de joueurs etiez vous dans la Partie que vous voulez reprendre");
+        scanf("%d",&chJ);
+        while(chJ !=2 && chJ !=3 && chJ !=4)
+        {
+            printf("\nIA : Saisissez le bon nombre de joueur");
+        }
+        fp=fopen("Partie.txt","r");
+        if (fp==NULL)
+        {
+        printf("erreur d'ouverture");
+        exit (0);
+        }
+        for(int h = 0; h<chJ; h++)
+        {
+            fscanf(fp,"%s\n",&player[h]->prenomJoueur);
+            fscanf(fp,"%d\n",&player[h]->argent);
+            fscanf(fp,"%d\n",&player[h]->couleur);
+            fscanf(fp,"%d\n",&player[h]->numeroCase);
+            fscanf(fp,"%d\n",&player[h]->numeroJoueur);
+            fscanf(fp,"%d\n",&player[h]->prison);
+            fscanf(fp,"%s\n",&player[h]->proprietes);
+            fscanf(fp,"%d\n",&player[h]->nbDeGare);
+            fscanf(fp,"%d\n",&player[h]->couleurJoueur);
+        }
         fclose(fp);
     }
     scanf("%d", &choix);
