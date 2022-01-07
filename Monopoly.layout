@@ -2,39 +2,39 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="14451" topLine="216" />
-		</Cursor>
-	</File>
-	<File name="cartes.c" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="12481" topLine="457" />
-		</Cursor>
-	</File>
-	<File name="plateau.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3265" topLine="146" />
-		</Cursor>
-	</File>
-	<File name="bib.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1643" topLine="72" />
+			<Cursor1 position="25430" topLine="414" />
 		</Cursor>
 	</File>
 	<File name="joueurs.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4421" topLine="145" />
+			<Cursor1 position="2430" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="planetes.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+	<File name="planetes.c" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="15851" topLine="0" />
+			<Cursor1 position="61659" topLine="1307" />
 		</Cursor>
 	</File>
-	<File name="menu.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+	<File name="plateau.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="14369" topLine="102" />
+			<Cursor1 position="9826" topLine="653" />
+		</Cursor>
+	</File>
+	<File name="menu.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="775" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="cartes.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7733" topLine="231" />
+		</Cursor>
+	</File>
+	<File name="bib.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="426" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

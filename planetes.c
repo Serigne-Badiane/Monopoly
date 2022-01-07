@@ -1091,7 +1091,7 @@ void mars (planete* mars){
     mars->p_hypo = 50;
     mars->couleur = 3;
     mars->prixMaison = 50;
-    mars->couleurF = 3;
+    mars->couleurF = 2;
 
 }
 
@@ -1113,7 +1113,7 @@ void ganymede(satellite* ganymede)
     ganymede->prixMaison = 100;
     ganymede->p_hypo = 70;
     ganymede->couleur = 13;
-    ganymede->couleurF = 4;
+    ganymede->couleurF = 3;
 
 }
 
@@ -1135,7 +1135,7 @@ void callisto(satellite* callisto)
     callisto->prixMaison = 100;
     callisto->p_hypo = 80;
     callisto->couleur = 13;
-    callisto->couleurF = 4;
+    callisto->couleurF = 3;
 }
 
 void andromede(galaxie* andromede)
@@ -1175,7 +1175,7 @@ void io(satellite* io)
     io->prixMaison = 100;
     io->p_hypo = 90;
     io->couleur = 6;
-    io->couleurF = 5;
+    io->couleurF = 4;
 
 }
 
@@ -1196,7 +1196,7 @@ void jupiter (planete* jupiter){
     jupiter->p_hypo = 100;
     jupiter->couleur = 6;
     jupiter->prixMaison = 100;
-    jupiter->couleurF = 5;
+    jupiter->couleurF = 4;
 
 }
 
@@ -1218,7 +1218,7 @@ void titan(satellite* titan)
     titan->prixMaison = 150;
     titan->p_hypo = 110;
     titan->couleur = 4;
-    titan->couleurF = 6;
+    titan->couleurF = 5;
 
 }
 
@@ -1240,7 +1240,7 @@ void saturne (planete* saturne){
     saturne->p_hypo = 120;
     saturne->couleur = 4;
     saturne->prixMaison = 150;
-    saturne->couleurF = 6;
+    saturne->couleurF = 5;
 
 }
 
@@ -1280,7 +1280,7 @@ void pluton(planete* pluton)
     pluton->p_hypo = 130;
     pluton->couleur = 14;
     pluton->prixMaison = 150;
-    pluton->couleurF = 7;
+    pluton->couleurF = 6;
 
 }
 
@@ -1301,7 +1301,7 @@ void neptune(planete* neptune)
     neptune->p_hypo = 140;
     neptune->couleur = 14;
     neptune->prixMaison = 150;
-    neptune->couleurF = 7;
+    neptune->couleurF = 6;
 
 }
 
@@ -1322,7 +1322,7 @@ void venus (planete* venus){
     venus->p_hypo = 150;
     venus->couleur = 2;
     venus->prixMaison = 200;
-    venus->couleurF = 8;
+    venus->couleurF = 7;
 
 }
 
@@ -1342,7 +1342,7 @@ void uranus(planete* uranus){
     uranus->p_hypo = 160;
     uranus->couleur = 2;
     uranus->prixMaison = 200;
-    uranus->couleurF = 8;
+    uranus->couleurF = 7;
 
 }
 
@@ -1383,7 +1383,7 @@ void mercure(planete* mercure)
     mercure->p_hypo = 175;
     mercure->couleur = 1;
     mercure->prixMaison = 200;
-    mercure->couleurF = 9;
+    mercure->couleurF = 8;
 
 }
 
@@ -1405,7 +1405,7 @@ void soleil (planete* soleil){
     soleil->p_hypo = 200;
     soleil->couleur = 1;
     soleil->prixMaison = 200;
-    soleil->couleurF = 9;
+    soleil->couleurF = 8;
 
 }
 char *str_replace (const char *txt, const char *Avant, const char *Apres)
@@ -1588,7 +1588,7 @@ void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur,pla
             result = NULL;
             result = strstr(player[tourjoueur]->proprietes,input1);
         }
-        strcat(input1,",");
+
         int argent1;
         printf("\nEt combien d'euros avec ca ? : ");
         scanf("%d",&argent1);
@@ -1613,7 +1613,7 @@ void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur,pla
             result2 = NULL;
             result2 = strstr(player[j]->proprietes,input2);
         }
-        strcat(input2,",");
+
         printf("\nEt combien d'euros avec ca ? : ");
         scanf("%d",&argent2);
         while(argent2 < 0 || argent2 > player[tourjoueur]->argent){
@@ -1629,6 +1629,8 @@ void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur,pla
         player[tourjoueur]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input2)] += 1;
         player[j]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input1)] += 1;
         player[j]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input2)] -= 1;
+        strcat(input1,",");
+        strcat(input2,",");
         strcat(player[j]->proprietes,input1);
         strcpy(player[tourjoueur]->proprietes,str_replace(player[tourjoueur]->proprietes,input1,""));
         strcpy(player[j]->proprietes,str_replace(player[j]->proprietes,input2,""));
@@ -1807,25 +1809,22 @@ int cherchplan (planete terre_,planete mars_,planete jupiter_,planete saturne_,p
 
 
 void verfiwin (t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJoueur){
+    int compteur;
+    for ( int i = 0 ; i < nombreJoueur ; i ++){
+        if (player[i]->argent <= 0){
+            compteur ++;
 
-    int compteur = 0;
-    for (int i = 0; i<10;i ++){
-        if (player[tourjoueur]->famillec[i] == 4){
-            compteur ++;
-        }
-        if (player[tourjoueur]->famillec[i] == 2){
-            compteur ++;
         }
     }
-    if (compteur == 3){
+    if (compteur == nombreJoueur - 1 ){
 
         system("cls");
         Color(3,0);
-        printf("IA : FELICITATION NOUS AVONS NOTRE ASTRONAUTE ULTIME !\nIA : ");
+        printf("                           IA : FELICITATION NOUS AVONS NOTRE ASTRONAUTE ULTIME !\nIA : ");
         Color(player[tourjoueur]->couleurJoueur,0);
         printf("%s",player[tourjoueur]->prenomJoueur);
         Color(3,0);
-        printf(" A OBTENU 3 FAMILLES D'ASTRES ! IL REMPORTE DONC LA PARTIE !");
+        printf(" EST LE DERNIER ! IL REMPORTE DONC LA PARTIE !");
         printf("\n                                  RECAPITULATIF DE LA PARTIE : ");
         for (int i = 0; i<nombreJoueur ; i++){
             Color(player[i]->couleurJoueur,0);
