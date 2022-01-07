@@ -35,6 +35,9 @@
 		<Unit filename="cartes.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="deal.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="joueurs.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -48,6 +51,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="plateau.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="victoire.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions />

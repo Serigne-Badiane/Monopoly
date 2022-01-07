@@ -116,6 +116,9 @@ int deplacement1 = 0;
 
 int maisonMax = 32;
 int hotelMax = 12;
+player[tourJoueur]->etatIG = 1;
+
+
 while(choix != 0)
 {
     system("cls");
@@ -123,10 +126,13 @@ while(choix != 0)
     plateau();
     affichageDesJoueurs(player);
 
-    if(player[tourJoueur]->etatIG==0)
+    deplacement = 2;
+
+    /*if(player[tourJoueur]->etatIG==0)
     {
         tourJoueur+=1;
-    }
+    }*/
+
 
     switch(deplacement)
     {

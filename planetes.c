@@ -151,11 +151,83 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                     printf("%d", player[tourjoueur]->argent);
 
                 }
+                else if (choix2 == 2 && p->hotel > 0){
+                    int choixVente2;
+                    int nombreDeHotel;
+                    printf("Voulez-vous vendre une station spatiale ?\n");
+                    printf("                                  ");
+                    Color(10,0);
+                    printf("1.OUI");
+                    printf("                                  ");
+                    Color(12,0);
+                    printf("2.NON\n");
+                    Color(15,0);
+                    scanf("%d", &choixVente2);
+                    Color(3,0);
+                    while( choixVente2 != 1 && choixVente2 != 2){
+                        printf("IA : Saisie incorrect\n");
+                        fflush(stdin);
+                        scanf("%d",&choixVente2);
+                    }
+                    if (choixVente2 == 1){
+                        printf("Vous possedez %d stations.\n", p->hotel);
+                        printf("Combien de stations voulez-vous vendre ?\n");
+                        scanf("%d", &nombreDeHotel);
+                        while(nombreDeHotel > p->hotel ){
+                            printf("IA : Saisie incorrect !\n");
+                        }
+                        *hotelMax += nombreDeHotel;
+                        p->hotel -= nombreDeHotel;
+                        for (int m = 0; m<nombreDeHotel; m++){
+                            player[tourjoueur]->argent += p->prixMaison;
+                        }
+
+                    }
+                    printf("IA : Vente reussie !\n");
+
+                }
                 else if(player[tourjoueur]->argent < p->prixMaison){
                     printf("\nIA : Vous n'avez pas assez d'argent pour acheter une station spatiale");
                 }
 
             }
+        }
+        else if (choix == 2 && p->maison > 0){
+                int choixVente;
+                int nombreDeMaison;
+                printf("Voulez-vous vendre une sonde spatiale ?\n");
+                printf("                                  ");
+                Color(10,0);
+                printf("1.OUI");
+                printf("                                  ");
+                Color(12,0);
+                printf("2.NON\n");
+                Color(15,0);
+                scanf("%d", &choixVente);
+                Color(3,0);
+                while( choixVente != 1 && choixVente != 2){
+                    printf("IA : Saisie incorrect\n");
+                    fflush(stdin);
+                    scanf("%d",&choixVente);
+                }
+                if (choixVente == 1){
+                    printf("Vous possedez %d sondes.\n", p->maison);
+                    printf("Combien de maison voulez-vous vendre ?\n");
+                    scanf("%d", &nombreDeMaison);
+                    while(nombreDeMaison > p->maison ){
+                        printf("IA : Saisie incorrect !\n");
+                        fflush(stdin);
+                        scanf("%d", &nombreDeMaison);
+                    }
+                    *maisonMax += nombreDeMaison;
+                    p->maison -= nombreDeMaison;
+                    for (int m = 0; m<nombreDeMaison; m++){
+                        player[tourjoueur]->argent += p->prixMaison;
+                    }
+                    printf("IA : Vente reussie !\n");
+
+                }
+
         }
         else if (player[tourjoueur]->argent < p->prixMaison){
             printf("\nIA : Vous n'avez pas assez d'argent pour acheter une sonde");
@@ -665,11 +737,82 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
 
 
                 }
+                else if (choix2 == 2 && s->hotel > 0){
+                    int choixVente2;
+                    int nombreDeHotel;
+                    printf("Voulez-vous vendre une station spatiale ?\n");
+                    printf("                                  ");
+                    Color(10,0);
+                    printf("1.OUI");
+                    printf("                                  ");
+                    Color(12,0);
+                    printf("2.NON\n");
+                    Color(15,0);
+                    scanf("%d", &choixVente2);
+                    Color(3,0);
+                    while( choixVente2 != 1 && choixVente2 != 2){
+                        printf("IA : Saisie incorrect\n");
+                        fflush(stdin);
+                        scanf("%d",&choixVente2);
+                    }
+                    if (choixVente2 == 1){
+                        printf("Vous possedez %d stations.\n", s->hotel);
+                        printf("Combien de stations voulez-vous vendre ?\n");
+                        scanf("%d", &nombreDeHotel);
+                        while(nombreDeHotel > s->hotel ){
+                            printf("IA : Saisie incorrect !\n");
+                        }
+                        *hotelMax += nombreDeHotel;
+                        s->hotel -= nombreDeHotel;
+                        for (int m = 0; m<nombreDeHotel; m++){
+                            player[tourjoueur]->argent += s->prixMaison;
+                        }
+
+                    }
+                    printf("IA : Vente reussie !\n");
+                }
                 else if(player[tourjoueur]->argent < s->prixMaison){
                     printf("\nIA : Vous n'avez pas assez d'argent pour acheter une station spataile !");
                 }
 
             }
+        }
+        else if (choix == 2 && s->maison > 0){
+                int choixVente;
+                int nombreDeMaison;
+                printf("Voulez-vous vendre une sonde spatiale ?\n");
+                printf("                                  ");
+                Color(10,0);
+                printf("1.OUI");
+                printf("                                  ");
+                Color(12,0);
+                printf("2.NON\n");
+                Color(15,0);
+                scanf("%d", &choixVente);
+                Color(3,0);
+                while( choixVente != 1 && choixVente != 2){
+                    printf("IA : Saisie incorrect\n");
+                    fflush(stdin);
+                    scanf("%d",&choixVente);
+                }
+                if (choixVente == 1){
+                    printf("Vous possedez %d sondes.\n", s->maison);
+                    printf("Combien de maison voulez-vous vendre ?\n");
+                    scanf("%d", &nombreDeMaison);
+                    while(nombreDeMaison > s->maison ){
+                        printf("IA : Saisie incorrect !\n");
+                        fflush(stdin);
+                        scanf("%d", &nombreDeMaison);
+                    }
+                    *maisonMax += nombreDeMaison;
+                    s->maison -= nombreDeMaison;
+                    for (int m = 0; m<nombreDeMaison; m++){
+                        player[tourjoueur]->argent += s->prixMaison;
+                    }
+                    printf("IA : Vente reussie !\n");
+
+                }
+
         }
         else if (player[tourjoueur]->argent < s->prixMaison){
             printf("\nIA : Vous n'avez pas assez d'argent pour acheter une sonde !");
