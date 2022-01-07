@@ -218,13 +218,13 @@ void cc14(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 }
 
 
-void cc15(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur)
+void cc15(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_)
 {
     char c[TAILLE]="DEAL FORCE!\nEchangez une de vos proprietes avec celle du joueur de votre choix\n";
     Color(5,0);
     printf("%s", c);
 
-    echange(nombreDeJoueur,player,tourJoueur);
+    echange(player,tourJoueur,nombreDeJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 
 }
 
@@ -311,7 +311,7 @@ void piocheCartesCommu(int carte, t_joueur player[NbJoueurMax][TAILLE], int nomb
         }
         case 12:
         {
-            c12(  player, tourJoueur );
+            cc12(  player, tourJoueur );
             break;
         }
         case 13:
@@ -326,7 +326,7 @@ void piocheCartesCommu(int carte, t_joueur player[NbJoueurMax][TAILLE], int nomb
         }
         case 15:
         {
-            cc15(  player, tourJoueur, nombreDeJoueur);
+            cc15(  player, tourJoueur, nombreDeJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
             break;
         }
         case 16:

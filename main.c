@@ -123,8 +123,10 @@ while(choix != 0)
     plateau();
     affichageDesJoueurs(player);
 
-
-
+    if(player[tourJoueur]->etatIG==0)
+    {
+        tourJoueur+=1;
+    }
 
     switch(deplacement)
     {
@@ -224,7 +226,7 @@ while(choix != 0)
         case 8:
         {
 
-            gotoligcol(32,3);
+            gotoligcol(32,5);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);
@@ -308,7 +310,7 @@ while(choix != 0)
             while(choix2 != 1){
                 Color(3,0);
                 printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
-                scanf("%s");
+                fflush(stdin);
                 scanf("%d",&choix2);
             }
 

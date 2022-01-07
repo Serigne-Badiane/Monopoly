@@ -22,6 +22,7 @@ typedef struct joueur
     int numeroTourPrison;
     int carteSortiePrison;
     int famillec [TAILLE];
+    int etatIG;
 
 }t_joueur;
 
@@ -101,7 +102,35 @@ void arrivsat (satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,
 void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixapayer,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_);
 int cherchplan (planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,char input [TAILLE]);
 int cherchplanp (planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,char input [TAILLE]);
+void verfiwin (t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJoueur);
+void affichageDesJoueurs(t_joueur player[NbJoueurMax][TAILLE]);
+void lune(satellite* lune);
+void terre(planete* terre);
+void voieLactee(galaxie* voieLactee);
+void phobos(satellite* phobos);
+void mars (planete* mars);
+void ganymede(satellite* ganymede);
+void callisto(satellite* callisto);
+void andromede(galaxie* andromede);
+void io(satellite* io);
+void jupiter (planete* jupiter);
+void titan(satellite* titan);
+void saturne (planete* saturne);
+void tetard(galaxie* tetard);
+void pluton(planete* pluton);
+void neptune(planete* neptune);
+void venus (planete* venus);
+void uranus(planete* uranus);
+void nuageDeMagellan(galaxie* nuageDeMagellan);
+void mercure(planete* mercure);
+void soleil (planete* soleil);
+void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_);
+
 //Affichage plateau
 void plateau();
+void Color(int couleurDuTexte,int couleurDeFond);
+void gotoligcol( int lig, int col );
 
+
+void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_);
 #endif // BIB_H_INCLUDED

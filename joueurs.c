@@ -142,7 +142,7 @@ int lancerDe(t_joueur player[NbJoueurMax][TAILLE], int de[2], int joueur)
     {
         de[i] = 1 + rand()%6; //r�cuperer une valeur entre 0 et 6
         Color(3, 0);
-        printf("%s a lance un %d\n", &player[joueur]->prenomJoueur, de[i]);
+        printf("%s a lance un %d\n", player[joueur]->prenomJoueur, de[i]);
     }
 
     int nombreDeplacement = 0;
