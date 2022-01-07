@@ -224,7 +224,7 @@ void cc15(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoue
     Color(5,0);
     printf("%s", c);
 
-    echange(nombreDeJoueur,player,tourJoueur);
+    echange(nombreDeJoueur,player,tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 
 }
 
