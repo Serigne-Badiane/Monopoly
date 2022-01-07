@@ -546,16 +546,16 @@ while(choix != 0)
     Color(3,0);
     printf(" IA : %s, veuillez appuyer sur 1 pour lancer le de, ou 2 pour un echange : ", player[tourJoueur]->prenomJoueur);
     sauvegarde=pause(sauvegarde,&nombreJoueur, &deplacement, &tourJoueur, player, &chargement);
+    FILE * fp=NULL;
     if(sauvegarde==1)
     {
-        FILE * fp=NULL;
         fp=fopen("Partie.txt","w");
         if (fp==NULL)
         {
         printf("erreur d'ouverture");
         exit (0);
         }
-        for(int l = 0; l<NbJoueurMax; l++)
+        for(int l=0; l<NbJoueurMax; l++)
         {
             fprintf(fp,"%s\n",player[l]->prenomJoueur);
             fprintf(fp,"%d\n",player[l]->argent);
@@ -629,7 +629,6 @@ while(choix != 0)
     sauvegarde=0;
     if(chargement==1)
     {
-        FILE * fp=NULL;
         int chJ=0;
         printf("\nIA : Bonjour ! Pouvez vous me communiquez combien de joueurs etiez vous dans la Partie que vous voulez reprendre");
         scanf("%d",&chJ);
@@ -645,13 +644,13 @@ while(choix != 0)
         }
         for(int h = 0; h<chJ; h++)
         {
-            fscanf(fp,"%s\n",&player[h]->prenomJoueur);
+            fscanf(fp,"%s\n",player[h]->prenomJoueur);
             fscanf(fp,"%d\n",&player[h]->argent);
             fscanf(fp,"%d\n",&player[h]->couleur);
             fscanf(fp,"%d\n",&player[h]->numeroCase);
             fscanf(fp,"%d\n",&player[h]->numeroJoueur);
             fscanf(fp,"%d\n",&player[h]->prison);
-            fscanf(fp,"%s\n",&player[h]->proprietes);
+            fscanf(fp,"%s\n",player[h]->proprietes);
             fscanf(fp,"%d\n",&player[h]->nbDeGare);
             fscanf(fp,"%d\n",&player[h]->couleurJoueur);
         }
