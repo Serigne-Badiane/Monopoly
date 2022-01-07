@@ -126,8 +126,6 @@ while(choix != 0)
     plateau();
     affichageDesJoueurs(player);
 
-    deplacement = 2;
-
     /*if(player[tourJoueur]->etatIG==0)
     {
         tourJoueur+=1;
