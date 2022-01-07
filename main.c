@@ -226,7 +226,7 @@ while(choix != 0)
         case 8:
         {
 
-            gotoligcol(32,3);
+            gotoligcol(32,5);
             Color(player[tourJoueur]->couleur, 0);
             printf("%c", player[tourJoueur]->pion);
             gotoligcol(35,1);

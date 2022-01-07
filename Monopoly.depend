@@ -4,7 +4,7 @@
 	<stdlib.h>
 	<windows.h>
 
-1641562716 source:c:\users\badia\onedrive\documents\code c\monopoly\main.c
+1641567850 source:c:\users\badia\onedrive\documents\code c\monopoly\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -66,7 +66,7 @@
 	<windows.h>
 	"bib.h"
 
-1641563077 c:\users\badia\onedrive\documents\code c\monopoly\bib.h
+1641567464 c:\users\badia\onedrive\documents\code c\monopoly\bib.h
 
 1641562192 source:c:\users\badia\onedrive\documents\code c\monopoly\menu.c
 	<stdio.h>
@@ -86,7 +86,7 @@
 	<windows.h>
 	"bib.h"
 
-1641566567 source:c:\users\badia\onedrive\documents\code c\monopoly\planetes.c
+1641567536 source:c:\users\badia\onedrive\documents\code c\monopoly\planetes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -134,7 +134,7 @@
 	<windows.h>
 	"bib.h"
 
-1641563318 source:c:\users\badia\onedrive\documents\code c\monopoly\cartes.c
+1641567486 source:c:\users\badia\onedrive\documents\code c\monopoly\cartes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -173,6 +173,18 @@
 	"bib.h"
 
 1641567241 source:c:\users\lenal\documents\github\monopoly\victoire.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1641567464 source:c:\users\badia\onedrive\documents\code c\monopoly\victoire.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1641567464 source:c:\users\badia\onedrive\documents\code c\monopoly\deal.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
