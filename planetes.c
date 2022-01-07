@@ -1588,17 +1588,7 @@ void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur,pla
             result = NULL;
             result = strstr(player[tourjoueur]->proprietes,input1);
         }
-
-        int argent1;
-        printf("\nEt combien d'euros avec ca ? : ");
-        scanf("%d",&argent1);
-        while(argent1 < 0 || argent1 > player[tourjoueur]->argent){
-            fflush(stdin);
-            printf("\nFonds insuffisants, veuillez ressaisir : ");
-            scanf("%d",&argent1);
-        }
         char input2 [TAILLE];
-        int argent2;
         printf("A present choissiez quel propriete doit echange ");
         Color(player[j]->couleurJoueur,0);
         printf("%s",player[j]->prenomJoueur);
@@ -1614,17 +1604,6 @@ void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur,pla
             result2 = strstr(player[j]->proprietes,input2);
         }
 
-        printf("\nEt combien d'euros avec ca ? : ");
-        scanf("%d",&argent2);
-        while(argent2 < 0 || argent2 > player[tourjoueur]->argent){
-            fflush(stdin);
-            printf("\nFonds insuffisants, veuillezz ressaisir : ");
-            scanf("%d",&argent2);
-        }
-        player[j]->argent += argent1;
-        player[j]->argent -= argent2;
-        player[tourjoueur]->argent += argent2;
-        player[tourjoueur]->argent -= argent1;
         player[tourjoueur]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input1)] -= 1;
         player[tourjoueur]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input2)] += 1;
         player[j]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input1)] += 1;

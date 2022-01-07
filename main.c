@@ -308,7 +308,7 @@ while(choix != 0)
             while(choix2 != 1){
                 Color(3,0);
                 printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
-                scanf("%s");
+                fflush(stdin);
                 scanf("%d",&choix2);
             }
 
