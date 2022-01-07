@@ -133,4 +133,9 @@ void gotoligcol( int lig, int col );
 
 
 void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_);
+
+
+//FIN DU JEU
+void faillite(t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJoueur);
+
 #endif // BIB_H_INCLUDED

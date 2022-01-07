@@ -10,25 +10,25 @@
 	<windows.h>
 	"bib.h"
 
-1641564294 source:c:\users\lenal\documents\github\monopoly\joueurs.c
+1641577078 source:c:\users\lenal\documents\github\monopoly\joueurs.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	"bib.h"
 
-1641567241 source:c:\users\lenal\documents\github\monopoly\planetes.c
+1641577078 source:c:\users\lenal\documents\github\monopoly\planetes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	"bib.h"
 
-1641566404 source:c:\users\lenal\documents\github\monopoly\main.c
+1641577078 source:c:\users\lenal\documents\github\monopoly\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	"bib.h"
 
-1641567312 c:\users\lenal\documents\github\monopoly\bib.h
+1641577110 c:\users\lenal\documents\github\monopoly\bib.h
 
 1639755059 ated upstream
 
@@ -110,13 +110,13 @@
 	<windows.h>
 	"bib.h"
 
-1641564294 source:c:\users\lenal\documents\github\monopoly\menu.c
+1641577078 source:c:\users\lenal\documents\github\monopoly\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	"bib.h"
 
-1641564294 source:c:\users\lenal\documents\github\monopoly\cartes.c
+1641577078 source:c:\users\lenal\documents\github\monopoly\cartes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -166,7 +166,7 @@
 	<windows.h>
 	"bib.h"
 
-1641564294 source:c:\users\lenal\documents\github\monopoly\plateau.c
+1641577078 source:c:\users\lenal\documents\github\monopoly\plateau.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -197,6 +197,12 @@
 	"bib.h"
 
 1641568762 source:c:\users\antan\documents\github\monopoly\victoire.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1641577078 source:c:\users\lenal\documents\github\monopoly\deal.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>

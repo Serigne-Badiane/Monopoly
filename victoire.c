@@ -45,3 +45,13 @@ void verfiwin (t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJo
         compteur = 0;
     }
 }
+
+
+
+void faillite(t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJoueur)
+{
+    if (player[tourjoueur]->argent<=0  )
+    {
+        player[tourjoueur]->etatIG=0;
+    }
+}
