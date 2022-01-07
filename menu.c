@@ -65,7 +65,7 @@ int menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jou
 
         *chargement=1;
         printf("\nchargement de la partie\n");
-        return(0);
+        return 0;
     }
     if (menu==4)
     {
