@@ -71,7 +71,7 @@ int main()
     int tourJoueur = 0;
     int deplacement = 0;
 
-    menu1(&nombreJoueur, &deplacement, &tourJoueur, player);
+    menu1(&nombreJoueur, &deplacement, &tourJoueur, player, &chargement);
     deplacement += 1;
 
 
