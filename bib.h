@@ -136,6 +136,6 @@ void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourj
 
 
 //FIN DU JEU
-void faillite(t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJoueur);
+void faillite(t_joueur player [NbJoueurMax][TAILLE],int tourjoueur);
 
 #endif // BIB_H_INCLUDED

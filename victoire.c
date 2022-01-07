@@ -48,7 +48,7 @@ void verfiwin (t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJo
 
 
 
-void faillite(t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJoueur)
+void faillite(t_joueur player [NbJoueurMax][TAILLE],int tourjoueur)
 {
     if (player[tourjoueur]->argent<=0  )
     {
