@@ -68,7 +68,7 @@ void cc4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueu
     char c[TAILLE]="VOUS POUVEZ VOUS LIBERER DE LA PRISON SPATIALE A TOUT MOMENT!\n";
     Color(5,0);
     printf("%s", c);
-    player[tourJoueur]->carteSortiePrison = 1;
+    player[tourJoueur]->carteSortiePrison += 1;
 
 }
 
@@ -349,7 +349,7 @@ void c1( t_joueur player[NbJoueurMax][TAILLE], int numeroTour)
     char c[TAILLE]="VOUS POUVEZ VOUS LIBERER DE LA PRISON SPATIALE A TOUT MOMENT!\n";
     Color(5,0);
     printf("%s", c);
-    player[numeroTour]->carteSortiePrison = 1;
+    player[numeroTour]->carteSortiePrison += 1;
 }
 
 
@@ -749,7 +749,7 @@ void prison(t_joueur player[NbJoueurMax][TAILLE], int numeroTour, int nbDeJoueur
     Color(3,0);
 
     ///carte sortie de prison
-    if(player[numeroTour]->carteSortiePrison == 1){
+    if(player[numeroTour]->carteSortiePrison >= 1){
         Color(player[numeroTour]->couleur, 0);
         printf("\n%s, ", player[numeroTour]->prenomJoueur);
         Color(3,0);
@@ -778,10 +778,10 @@ void prison(t_joueur player[NbJoueurMax][TAILLE], int numeroTour, int nbDeJoueur
         }
 
     }
-    else if (player[numeroTour]->carteSortiePrison != 1 && ( player[0]->carteSortiePrison == 1 || player[1]->carteSortiePrison == 1 || player[2]->carteSortiePrison == 1 || player[3]->carteSortiePrison == 1)){
+    else if (player[numeroTour]->carteSortiePrison <= 1 && ( player[0]->carteSortiePrison >= 1 || player[1]->carteSortiePrison >= 1 || player[2]->carteSortiePrison >= 1 || player[3]->carteSortiePrison >= 1)){
         for (int i = 0; i<nbDeJoueur; i++){
 
-            if(player[i]->carteSortiePrison == 1 ){
+            if(player[i]->carteSortiePrison >= 1 ){
                 Color(player[i]->couleur, 0);
                 printf("\n%s, ", player[i]->prenomJoueur);
                 Color(5,0);
