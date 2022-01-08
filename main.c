@@ -253,8 +253,8 @@ if(chargement==1)
             {
                 Color(9,0);
                 player[i]->couleurJoueur = 9;
-                printf("\n\nBienvenu cher joueur !\n\nVotre but aujourd'hui est de devenir le joueur le plus riche\n\nBonne chance !\n\n");
-                printf("Indiquez votre pr%cnom\n",0x82);
+                printf("\n\nRebonjour cher joueur !\n\nJe suis content de vous revoir !\n\nBonne chance !\n\n");
+                printf("Pouvez vous me redonner votre pr%cnom ?\n",0x82);
 
                 scanf("%s", &player[i]->prenomJoueur);
                 fflush(stdin);
