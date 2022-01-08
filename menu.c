@@ -56,7 +56,7 @@ int menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jou
         if (menu==2)
     {
         int sauvegarde=1;
-        printf("sauvegarde en cours");
+        printf("\nsauvegardé, appuyez sur 1 pour lancer les des ");
         return sauvegarde;
     }
 
