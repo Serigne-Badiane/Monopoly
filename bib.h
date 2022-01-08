@@ -56,6 +56,8 @@ typedef struct {
     int maison;
     int hotel;
     int couleurF;
+    int etatHypo;
+    int loyerFixe;
 }planete;
 
 typedef struct
@@ -76,6 +78,8 @@ typedef struct
     int maison;
     int hotel;
     int couleurF;
+    int loyerFixe;
+    int etatHypo;
 }satellite;
 
 typedef struct {
@@ -92,6 +96,8 @@ typedef struct {
     int maison;
     int hotel;
     int couleurF;
+    int etatHypo;
+    int loyerFixe;
 
 }galaxie;
 
