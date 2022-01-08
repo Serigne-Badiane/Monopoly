@@ -10,7 +10,6 @@
 
 ///PROCEDURE MENU
 int menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE], int* chargement){
-    FILE * fp=NULL;
     int menu=0;
     int J=0;
     printf("        \n\n    MONOPOLY\n1.-Nouvelle Partie\n\n2.-Sauvegarder Partie en cours\n\n3.-Charger Partie\n\n4.-Regle\n\n5.-Cr%cdit\n\n",0x82);
@@ -56,39 +55,12 @@ int menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jou
         if (menu==2)
     {
         int sauvegarde=1;
-        printf("\nsauvegardé, appuyez sur 1 pour lancer les des ");
+        printf("\nsauvegarder, appuyez sur 1 pour lancer les des ");
         return sauvegarde;
     }
 
     if (menu==3)
     {
-
-        int chJ=0;
-        printf("\nIA : Bonjour ! Pouvez vous me communiquez combien de joueurs etiez vous dans la Partie que vous voulez reprendre");
-        scanf("%d",&chJ);
-        while(chJ !=2 && chJ !=3 && chJ !=4)
-        {
-            printf("\nIA : Saisissez le bon nombre de joueur");
-        }
-        fp=fopen("Partie.txt","r");
-        if (fp==NULL)
-        {
-        printf("erreur d'ouverture");
-        exit (0);
-        }
-        for(int h = 0; h<chJ; h++)
-        {
-            fscanf(fp,"%s\n",&player[h]->prenomJoueur);
-            fscanf(fp,"%d\n",&player[h]->argent);
-            fscanf(fp,"%d\n",&player[h]->couleur);
-            fscanf(fp,"%d\n",&player[h]->numeroCase);
-            fscanf(fp,"%d\n",&player[h]->numeroJoueur);
-            fscanf(fp,"%d\n",&player[h]->prison);
-            fscanf(fp,"%s\n",&player[h]->proprietes);
-            fscanf(fp,"%d\n",&player[h]->nbDeGare);
-            fscanf(fp,"%d\n",&player[h]->couleurJoueur);
-        }
-        fclose(fp);
         *chargement=1;
         printf("\nchargement de la partie\n");
         return 0;
