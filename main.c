@@ -565,9 +565,9 @@ while(choix != 0)
         {
             //fprintf(fp,"%s\n",player[l]->prenomJoueur);
             fprintf(fp,"%d\n",player[l]->argent);
-            fprintf(fp,"%d\n",player[l]->couleur);
+            //fprintf(fp,"%d\n",player[l]->couleur);
             fprintf(fp,"%d\n",player[l]->numeroCase);
-            fprintf(fp,"%d\n",player[l]->numeroJoueur);
+            //fprintf(fp,"%d\n",player[l]->numeroJoueur);
             fprintf(fp,"%d\n",player[l]->prison);
             //fprintf(fp,"%s\n",player[l]->proprietes);
             fprintf(fp,"%d\n",player[l]->nbDeGare);
@@ -652,9 +652,9 @@ while(choix != 0)
         {
             //fgets(player[h]->prenomJoueur,50,fp);
             fscanf(fp,"%d",player[h]->argent);
-            fscanf(fp,"%d",player[h]->couleur);
+            //fscanf(fp,"%d",player[h]->couleur);
             fscanf(fp,"%d",player[h]->numeroCase);
-            fscanf(fp,"%d",player[h]->numeroJoueur);
+            //fscanf(fp,"%d",player[h]->numeroJoueur);
             fscanf(fp,"%d",player[h]->prison);
             //fgets(player[h]->proprietes,TAILLE,fp);
             fscanf(fp,"%d",player[h]->nbDeGare);
@@ -820,6 +820,97 @@ while(choix != 0)
             {
                 strcat(player[i]->proprietes,soleil_.nom);
                 strcat(player[i]->proprietes,",");
+            }
+
+            char astronaute[NbJoueurMax][TAILLE]; //tableau des noms de familles
+            strcpy(astronaute[0], "PESQUET");
+            strcpy(astronaute[1], "ARMSTRONG");
+            strcpy(astronaute[2], "GARGARINE");
+            strcpy(astronaute[3], "ALDRIN");
+
+            if (i == 0)
+            {
+                Color(4,0);
+                player[i]->couleurJoueur = 4;
+                printf("\n\nRebonjour cher joueur !\n\nJe suis content de vous revoir !\n\nBonne chance !\n\n");
+                printf("Pouvez vous me redonner votre pr%cnom ?\n",0x82);
+
+                scanf("%s", &player[i]->prenomJoueur);
+                fflush(stdin);
+                strcat(player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
+                strcat(player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
+
+                player[i]->numeroJoueur = i+1;
+                fflush(stdin);
+
+                player[i]->couleur = 4;
+                player[i]->pion = 0x03;
+            }
+            else if (i==1)
+            {
+                Color(6,0);
+                player[i]->couleurJoueur = 6;
+                printf("\n\nBienvenu cher joueur !\n\nVotre but aujourd'hui est de devenir le joueur le plus riche\n\nBonne chance !\n\n");
+                printf("Indiquez votre pr%cnom\n",0x82);
+
+                scanf("%s", player[i]->prenomJoueur);
+                fflush(stdin);
+                strcat(player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
+                strcat(player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
+
+                player[i]->numeroJoueur = i+1;
+                fflush(stdin);
+
+                player[i]->argent = 1500;
+                fflush(stdin);
+
+                player[i]->couleur = 6;
+                player[i]->pion = 0x04;
+            }
+            else if (i==2)
+            {
+                Color(9,0);
+                player[i]->couleurJoueur = 9;
+                printf("\n\nBienvenu cher joueur !\n\nVotre but aujourd'hui est de devenir le joueur le plus riche\n\nBonne chance !\n\n");
+                printf("Indiquez votre pr%cnom\n",0x82);
+
+                scanf("%s", &player[i]->prenomJoueur);
+                fflush(stdin);
+                strcat(player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
+                strcat(player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
+
+                player[i]->numeroJoueur = i+1;
+                fflush(stdin);
+
+                player[i]->argent = 1500;
+                fflush(stdin);
+
+                player[i]->couleur = 9;
+                player[i]->pion = 0x05;
+
+            }
+
+            else if (i==3)
+            {
+                Color(11,0);
+                player[i]->couleurJoueur = 11;
+                printf("\n\nBienvenu cher joueur !\n\nVotre but aujourd'hui est de devenir le joueur le plus riche\n\nBonne chance !\n\n");
+                printf("Indiquez votre pr%cnom\n",0x82);
+
+                scanf("%s", &player[i]->prenomJoueur);
+                fflush(stdin);
+                strcat(player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
+                strcat(player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
+
+                player[i]->numeroJoueur = i+1;
+                fflush(stdin);
+
+                player[i]->argent = 1500;
+                fflush(stdin);
+
+                player[i]->couleur = 11;
+                player[i]->pion = 0x06;
+
             }
         }
     }
