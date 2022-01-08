@@ -288,7 +288,10 @@ if(chargement==1)
                 player[i]->pion = 0x06;
 
             }
+        }
 
+        for(int i=0; i<chJ;i++)
+        {
             if(player[i]->numeroJoueur==lune_.proprio)
             {
                 strcat(player[i]->proprietes,lune_.nom);
