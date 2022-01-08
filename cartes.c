@@ -33,16 +33,17 @@ void melangerCartes(int tab[12])
 
 ///--------------------------------------------------------------------CARTES COMMUNAUTE---------------------------------------------------------------
 
-void cc1(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+void cc1(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="\nRETOURNEZ VISTER LA VOIE LACTEE !\n";
     Color(3,0);
     printf("%s", c);
+    arrivgalax(&voieLactee_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, nombreDeJoueur);
     player[tourJoueur]->numeroCase = 4;
 
 }
 
-void cc2(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+void cc2(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="\nVOTRE VAISSEAU EST ENDOMMAGE, vous devez le reparer !\nPayer 150.\n";
     Color(5,0);
@@ -51,7 +52,7 @@ void cc2(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 
 }
 
-void cc3(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+void cc3(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="FRAUDE! ALLEZ EN PRISON!\nNe recevez pas d'argent en passant par la case depart.\n";
     Color(5,0);
@@ -62,7 +63,7 @@ void cc3(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 }
 
 
-void cc4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+void cc4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="VOUS POUVEZ VOUS LIBERER DE LA PRISON SPATIALE A TOUT MOMENT!\n";
     Color(5,0);
@@ -72,7 +73,7 @@ void cc4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 }
 
 
-void cc5(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_)
+void cc5(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="DEAL FORCE!\nEchangez une de vos proprietes avec celle du joueur de votre choix\n";
     Color(5,0);
@@ -82,19 +83,19 @@ void cc5(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueu
 }
 
 
-void cc6(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+void cc6(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="\nVOUS ETES RAPPELES DE TOUTE URGENCE SUR TERRE !\nAvancez jusqu'à la planete Terre et recevez les 200 euros\n";
     Color(5,0);
     printf("%s", c);
-
+    arrivplan(&terre_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, &maisonMax, &hotelMax, nombreDeJoueur);
     player[tourJoueur]->argent += 200;
     player[tourJoueur]->numeroCase = 3;
 
 }
 
 
-void cc7(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur)
+void cc7(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="BONNE ACTION ! Vous avez fait le ménage sur le vaissseau\nChacun des autres joueurs vous versent 20 euros.\n";
     Color(5,0);
@@ -111,18 +112,18 @@ void cc7(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueu
 }
 
 
-void cc8(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+void cc8(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="PETIT VOYAGE INTERGALACTIQUE!\nAvancez jusqu'aux nuages de Magelan.\n";
     Color(5,0);
     printf("%s", c);
-
+    arrivgalax(&nuageDeMagellan_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, nombreDeJoueur);
     player[tourJoueur]->numeroCase = 25;
 
 }
 
 
-void cc9(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+void cc9(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="PANNE, vous connaissez un leger souci technique.!\n. Reculez de 3 cases\n";
     Color(5,0);
@@ -133,7 +134,7 @@ void cc9(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 }
 
 
-void cc10(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur)
+void cc10(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="VOUS N'AVEZ PAS RESPECTES CERTAINES REGLES A BORD DU VAISSEAU!\nVersez 50 euros a tous les joueurs.\n";
     Color(5,0);
@@ -151,14 +152,14 @@ void cc10(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoue
 }
 
 
-void cc11(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+void cc11(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE] = "SORTIE SPATIALE, vous devez sortir du vaisseau pour realiser des experiences !\nPayer 50 euros au joueur de votre choix pour qu'il vous accompagne.";
     Color(5,0);
     printf("%s", c);
 
     int choix;
-    printf("Veuillez saisir le numero du joueur : ");
+    printf("\nVeuillez saisir le numero du joueur : ");
     scanf("%d", &choix);
     choix -= 1;
     while(choix >= 4){
@@ -182,11 +183,11 @@ void cc11(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
     player[tourJoueur]->argent -= 50;
 
     Color(player[choix]->couleur, 0);
-    printf("Votre porte-monnaie : %d\n", player[choix]->argent);
+    printf("\nVotre porte-monnaie : %d\n", player[choix]->argent);
 }
 
 
-void cc12(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+void cc12(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="REPARATION DU MODULE REUSSI!\nRecevez 50 euros.\n";
     Color(5,0);
@@ -196,7 +197,7 @@ void cc12(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 }
 
 
-void cc13(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+void cc13(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="COUP DE BOOST DANS LES REACTEURS !\nAvancer de 5 cases.\n";
     Color(5,0);
@@ -207,7 +208,7 @@ void cc13(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 }
 
 
-void cc14(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
+void cc14(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="VOUS AVEZ ETE NOMMME COMMANDANT DE BORD!\nRecevez 100 euros \n";
     Color(5,0);
@@ -218,7 +219,7 @@ void cc14(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 }
 
 
-void cc15(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_)
+void cc15(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="DEAL FORCE!\nEchangez une de vos proprietes avec celle du joueur de votre choix\n";
     Color(5,0);
@@ -229,7 +230,7 @@ void cc15(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoue
 }
 
 
-void cc16(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur)
+void cc16(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
     char c[TAILLE]="JOYEUX ANNIVERSAIRE !\nTous les joueurs vous versent 100 euros \n";
     Color(5,0);
@@ -248,7 +249,7 @@ void cc16(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoue
 
 
 ///PIOCHE
-void piocheCartesCommu(int carte, t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_)
+void piocheCartesCommu(int carte, t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
 
     switch (carte)
@@ -256,82 +257,82 @@ void piocheCartesCommu(int carte, t_joueur player[NbJoueurMax][TAILLE], int nomb
         case 1:
         case 17:
         {
-            cc1(player, tourJoueur);
+            cc1(player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
         case 2:
         {
-            cc2(player, tourJoueur);
+            cc2(player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
         case 3:
         {
-            cc3( player,   tourJoueur);
+            cc3(player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
         case 4:
         {
-            cc4( player,   tourJoueur);
+            cc4( player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
         case 5:
         {
-            cc5( player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            cc5( player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
         case 6:
         {
-            cc6( player ,   tourJoueur);
+            cc6( player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax);
             break;
         }
         case 7:
         {
-            cc7( player ,   tourJoueur, nombreDeJoueur);
+            cc7( player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
         case 8:
         {
-            cc8( player, tourJoueur);
+            cc8( player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
         case 9:
         {
-            cc9(  player, tourJoueur );
+            cc9(  player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
         case 10:
         {
-            cc10(  player ,   tourJoueur, nombreDeJoueur);
+            cc10( player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
         case 11:
         {
-            cc11(  player, tourJoueur );
+            cc11(  player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax);
             break;
         }
         case 12:
         {
-            cc12(  player, tourJoueur );
+            cc12( player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
         case 13:
         {
-            cc13(player, tourJoueur);
+            cc13(player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
         case 14:
         {
-            cc14(  player ,   tourJoueur);
+            cc14( player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
         case 15:
         {
-            cc15(  player, tourJoueur, nombreDeJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            cc15(  player, tourJoueur, nombreDeJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
         case 16:
         {
-            cc16(  player ,   tourJoueur, nombreDeJoueur);
+            cc16( player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
         }
 

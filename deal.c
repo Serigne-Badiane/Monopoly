@@ -78,8 +78,26 @@ void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixa
 
 
 
-void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+void echange2 (int nombreJoueur,int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
         Color(5,0);
+        int compteur;
+        int compteur2;
+        for (int i = 0; i < 9 ; i++){
+            if  ( player[tourjoueur]->famillec[i] > 0) {
+                compteur++;
+            }
+        }
+        for (int h = 0; h < 9 ; h++){
+            if  ( player[j]->famillec[h] > 0) {
+                compteur2++;
+            }
+        }
+        if ( compteur == 0 || compteur2 == 0){
+            Color(3,0);
+            printf("IA : Ce joueur n'a pas de proprietes !\n");
+            echange(nombreJoueur,player,tourjoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+        }
+        else {
         printf("\n                                                  L'ECHANGE COMMENCE ENTRE LE J%d ET LE J%d !",player[tourjoueur]->numeroJoueur,player[j]->numeroJoueur);
         printf("\nInformation J%d : ",player[tourjoueur]->numeroJoueur);
         Color(player[tourjoueur]->couleurJoueur,0);
@@ -172,6 +190,7 @@ void echange2 (int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur,pla
         printf("\nPorte Monnaie : %d",player[j]->argent);
         printf("\nProprietes : ");
         printf("%s\n",player[j]->proprietes);
+        }
 
 }
 
@@ -214,7 +233,7 @@ void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourj
                 scanf("%d",&j);
             }
             j--;
-            echange2(j,player,tourjoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            echange2(nombreDeJoueur,j,player,tourjoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 
         }
 
@@ -241,7 +260,7 @@ void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourj
                 scanf("%d",&j);
             }
             j--;
-            echange2(j,player,tourjoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            echange2(nombreDeJoueur,j,player,tourjoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
 
         }
         else if (nombreDeJoueur == 4){
@@ -270,7 +289,7 @@ void echange (int* nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourj
                 scanf("%d",&k);
             }
             k--;
-            echange2(k,player,tourjoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            echange2(nombreDeJoueur,k,player,tourjoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
         }
     }
 }
