@@ -910,7 +910,7 @@ while(choix != 0)
         fclose(fp);
     }
     sauvegarde=0;
-    printf("\n\n%d\n\n",chargement);
+    //printf("\n\n%d\n\n",chargement);
     if(chargement==1)
     {
         int chJ=0;
