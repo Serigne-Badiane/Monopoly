@@ -718,6 +718,14 @@ while(choix != 0)
         fscanf(fp,"%d",&soleil_.maison);
         fscanf(fp,"%d",&soleil_.hotel);
         fclose(fp);
+        for(int i=0; i<chJ;i++)
+        {
+            if(player[i]->numeroJoueur==lune_.proprio)
+            {
+                strcat(player[i]->proprietes,lune_.nom);
+                strcat(player[i]->proprietes,",");
+            }
+        }
     }
     chargement=0;
     scanf("%d", &choix);

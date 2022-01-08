@@ -60,7 +60,7 @@
 
 1641577781 c:\users\antan\documents\github\monopoly\bib.h
 
-1641541179 source:c:\users\edouard\documents\github\monopoly\joueurs.c
+1641650339 source:c:\users\edouard\documents\github\monopoly\joueurs.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -80,7 +80,7 @@
 	<windows.h>
 	"bib.h"
 
-1641541179 source:c:\users\edouard\documents\github\monopoly\planetes.c
+1641650339 source:c:\users\edouard\documents\github\monopoly\planetes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -146,21 +146,21 @@
 	<windows.h>
 	"bib.h"
 
-1641541179 source:c:\users\edouard\documents\github\monopoly\cartes.c
+1641650339 source:c:\users\edouard\documents\github\monopoly\cartes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	"bib.h"
 
-1641541179 c:\users\edouard\documents\github\monopoly\bib.h
+1641650339 c:\users\edouard\documents\github\monopoly\bib.h
 
-1641546187 source:c:\users\edouard\documents\github\monopoly\menu.c
+1641650339 source:c:\users\edouard\documents\github\monopoly\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	"bib.h"
 
-1641541179 source:c:\users\edouard\documents\github\monopoly\plateau.c
+1641650339 source:c:\users\edouard\documents\github\monopoly\plateau.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -203,6 +203,18 @@
 	"bib.h"
 
 1641577078 source:c:\users\lenal\documents\github\monopoly\deal.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1641650339 source:c:\users\edouard\documents\github\monopoly\deal.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"bib.h"
+
+1641650339 source:c:\users\edouard\documents\github\monopoly\victoire.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
