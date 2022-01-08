@@ -873,7 +873,7 @@ while(choix != 0)
 
     }
     if (choix == 2) {
-        echange(nombreJoueur,player,tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+        echange(&nombreJoueur,player,tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
         deplacement1 = lancerDe(player, numeroDe, tourJoueur);
         if(numeroDe[1] == numeroDe[0])
         {
