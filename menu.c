@@ -10,7 +10,6 @@
 
 ///PROCEDURE MENU
 int menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE], int* chargement){
-    FILE * fp=NULL;
     int menu=0;
     int J=0;
     gotoligcol(12,35);
@@ -103,7 +102,7 @@ int menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jou
         }
 
         Color(3,0);
-        printf("IA : Pour qu'on puisse mieux se comprendre je m'allumerai d'une couleur differente a chaque fois que je voudrais parler a l'un d'entre vous en particulier, chaque joueur a sa couleur et vous garderez celle que vous avez eu toute la partie\n");
+        printf("IA : Pour qu'on puisse mieux se comprendre je m'allumerai d'une couleur differente a chaque fois que je voudrais parler a l'un d'entre vous en particulier, chaque joueur a sa couleur et vous garderez celle que vous avez eu toute la partie\n\nVous aurez la possibilité de mettre pause en appuyant sur p uniquement avant de lancer les des et ce à partir du 2eme lance de des de la partie");
 
 
         saisie(player, J);
@@ -114,39 +113,12 @@ int menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_jou
         if (menu==2)
     {
         int sauvegarde=1;
-        printf("sauvegarde en cours");
+        printf("\nsauvegarder, appuyez sur 1 pour lancer les des ");
         return sauvegarde;
     }
 
     if (menu==3)
     {
-
-        int chJ=0;
-        printf("\nIA : Bonjour ! Pouvez vous me communiquez combien de joueurs etiez vous dans la Partie que vous voulez reprendre");
-        scanf("%d",&chJ);
-        while(chJ !=2 && chJ !=3 && chJ !=4)
-        {
-            printf("\nIA : Saisissez le bon nombre de joueur");
-        }
-        fp=fopen("Partie.txt","r");
-        if (fp==NULL)
-        {
-        printf("erreur d'ouverture");
-        exit (0);
-        }
-        for(int h = 0; h<chJ; h++)
-        {
-            fscanf(fp,"%s\n",&player[h]->prenomJoueur);
-            fscanf(fp,"%d\n",&player[h]->argent);
-            fscanf(fp,"%d\n",&player[h]->couleur);
-            fscanf(fp,"%d\n",&player[h]->numeroCase);
-            fscanf(fp,"%d\n",&player[h]->numeroJoueur);
-            fscanf(fp,"%d\n",&player[h]->prison);
-            fscanf(fp,"%s\n",&player[h]->proprietes);
-            fscanf(fp,"%d\n",&player[h]->nbDeGare);
-            fscanf(fp,"%d\n",&player[h]->couleurJoueur);
-        }
-        fclose(fp);
         *chargement=1;
         printf("\nchargement de la partie\n");
         return 0;
