@@ -563,13 +563,13 @@ while(choix != 0)
         }
         for(int l=0; l<NbJoueurMax; l++)
         {
-            fprintf(fp,"%s\n",player[l]->prenomJoueur);
+            //fprintf(fp,"%s\n",player[l]->prenomJoueur);
             fprintf(fp,"%d\n",player[l]->argent);
             fprintf(fp,"%d\n",player[l]->couleur);
             fprintf(fp,"%d\n",player[l]->numeroCase);
             fprintf(fp,"%d\n",player[l]->numeroJoueur);
             fprintf(fp,"%d\n",player[l]->prison);
-            fprintf(fp,"%s\n",player[l]->proprietes);
+            //fprintf(fp,"%s\n",player[l]->proprietes);
             fprintf(fp,"%d\n",player[l]->nbDeGare);
             fprintf(fp,"%d\n",player[l]->couleurJoueur);
         }
@@ -749,6 +749,7 @@ while(choix != 0)
             {
                 strcat(player[i]->proprietes,ganymede_.nom);
                 strcat(player[i]->proprietes,",");
+            }
 
             if(player[i]->numeroJoueur==callisto_.proprio)
             {
