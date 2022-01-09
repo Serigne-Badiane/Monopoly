@@ -7,11 +7,11 @@
 
 #include "bib.h"
 
-//Affichage plateau
+///-----------------------------------------------------------AFFICHAGE DU PLATEAU-----------------------------------------------------------
 void plateau()
 {
     printf("\n");
-    ///premiere ligne de case
+    ///************************************************PREMIERE LIGNE DE CASES************************************************
     for(int i;i<8;i++)
     {
     printf(" __________ ");
@@ -38,7 +38,7 @@ void plateau()
 
     //||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-    /// toutes les lignes de case du milieu appart l'avant dernière
+    ///************************************************TOUTES LES LIGNES DE CASES DU MILIEU SAUF L'AVANT DERNIERE ************************************************
     for (int i=0;i<5;i++)
     {
         for (int i=0;i<3;i++)
@@ -61,7 +61,7 @@ void plateau()
 
 
 
-    ///avant derniere ligne de case
+    ///************************************************AVANT DERNIERE LIGNE DE CASES************************************************
 
     for (int i=0;i<3;i++)
     {
@@ -94,7 +94,7 @@ void plateau()
     printf("\n");*/
 
 
-    ///derniere ligne de case
+    ///************************************************DERNIERE LIGNE DE CASES************************************************
  for(int i=0;i<3;i++)
     {
         for(int k=0;k<8;k++)
@@ -531,6 +531,11 @@ void plateau()
     gotoligcol(35,0);
 }
 
+
+///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+///-----------------------------------------------------------PROCEDURE PION-----------------------------------------------------------
 void pion (t_joueur player [NbJoueurMax][TAILLE],int nombreDeJoueur){
 
     for (int i = 0 ; i < nombreDeJoueur ; i++){
