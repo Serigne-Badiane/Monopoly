@@ -12,10 +12,14 @@
 
 void verfiwin (t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJoueur){
     int compteur;
+    int numgan;
     for ( int i = 0 ; i < nombreJoueur ; i ++){
-        if (player[i]->argent <= 0){
+        if (player[i]->etatIG == 0){
             compteur ++;
 
+        }
+        if (player[i]->etatIG == 1){
+            numgan = player[i]->numeroJoueur;
         }
     }
     if (compteur == nombreJoueur - 1 ){
@@ -23,8 +27,8 @@ void verfiwin (t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJo
         system("cls");
         Color(3,0);
         printf("                           IA : FELICITATION NOUS AVONS NOTRE ASTRONAUTE ULTIME !\nIA : ");
-        Color(player[tourjoueur]->couleurJoueur,0);
-        printf("%s",player[tourjoueur]->prenomJoueur);
+        Color(player[numgan]->couleurJoueur,0);
+        printf("%s",player[numgan]->prenomJoueur);
         Color(3,0);
         printf(" EST LE DERNIER ! IL REMPORTE DONC LA PARTIE !");
         printf("\n                                  RECAPITULATIF DE LA PARTIE : ");

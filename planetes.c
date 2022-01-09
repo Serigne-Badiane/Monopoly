@@ -231,36 +231,6 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 }
         }
 
-
-
-        else if(choix == 2 && p->maison == 0 && p->hotel == 0 && p->etatHypo == 0){
-                    int choixHypo;
-                    Color(player[tourjoueur]->couleur,0);
-                    printf("Souhaitez-vous hypothequer votre propriete ?\n");
-                    printf("                                  ");
-                    Color(10,0);
-                    printf("1.OUI");
-                    printf("                                  ");
-                    Color(12,0);
-                    printf("2.NON\n");
-                    Color(15,0);
-                    scanf("%d", &choixHypo);
-                    Color(3,0);
-                    while( choixHypo!= 1 && choixHypo != 2){
-                        printf("IA : Saisie incorrect\n");
-                        fflush(stdin);
-                        scanf("%d",&choixHypo);
-                    }
-                    if (choixHypo == 1){
-                        Color(player[tourjoueur]->couleur, 0);
-                        printf("Vous recevez %d !\n", p->p_hypo);
-                        player[tourjoueur]->argent += p->p_hypo;
-                        p->loyerFixe = p->loyer;
-                        p->loyer = 0;
-                        p->etatHypo = 1;
-                    }
-                }
-
     }
     else if (player[p->proprio - 1]->prenomJoueur == player[tourjoueur]->prenomJoueur && p->etatHypo == 1){
             int choixLeverHypo;
@@ -423,7 +393,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             else {
             prixapayer = p->loyer - player[tourjoueur]->argent;
             }
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
                 player[tourjoueur]->argent -= p->loyer *2;
                 player[p->proprio - 1] ->argent += p->loyer *2;
@@ -444,7 +414,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             else {
             prixapayer = p->loyer1 - player[tourjoueur]->argent;
             }
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
                 player[tourjoueur]->argent -= p->loyer1 *2;
                 player[p->proprio - 1] ->argent += p->loyer1 *2;
@@ -464,7 +434,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             else {
             prixapayer = p->loyer2 - player[tourjoueur]->argent;
             }
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
                 player[tourjoueur]->argent -= p->loyer2 *2;
                 player[p->proprio - 1] ->argent += p->loyer2 *2;
@@ -484,7 +454,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             else {
             prixapayer = p->loyer3 - player[tourjoueur]->argent;
             }
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
                 player[tourjoueur]->argent -= p->loyer3 *2;
                 player[p->proprio - 1] ->argent += p->loyer3 *2;
@@ -505,7 +475,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             else {
             prixapayer = p->loyer4 - player[tourjoueur]->argent;
             }
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
                 player[tourjoueur]->argent -= p->loyer4 *2;
                 player[p->proprio - 1] ->argent += p->loyer4 *2;
@@ -526,7 +496,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             else {
             prixapayer = p->loyerHotel - player[tourjoueur]->argent;
             }
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
                 player[tourjoueur]->argent -= p->loyerHotel *2;
                 player[p->proprio - 1] ->argent += p->loyerHotel *2;
@@ -610,7 +580,7 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
             int prixapayer = g->loyer1 - player[tourjoueur]->argent;
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             player[tourjoueur]->argent -= g->loyer;
             player[g->proprio - 1] ->argent -= g->loyer;
         }
@@ -618,7 +588,7 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
             int prixapayer = g->loyer1 - player[tourjoueur]->argent;
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             player[tourjoueur]->argent -= g->loyer1;
             player[g->proprio - 1] ->argent += g->loyer1;
         }
@@ -626,7 +596,7 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
             int prixapayer = g->loyer2 - player[tourjoueur]->argent;
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             player[tourjoueur]->argent -= g->loyer2;
             player[g->proprio - 1] ->argent += g->loyer2;
         }
@@ -634,7 +604,7 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
             int prixapayer = g->loyer3 - player[tourjoueur]->argent;
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             player[tourjoueur]->argent -= g->loyer3;
             player[g->proprio - 1] ->argent += g->loyer3;
         }
@@ -715,34 +685,7 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         printf("\nIA : Re-bonjour ");
         Color(player[tourjoueur]->couleur,0);
         printf("%s !\n", player[tourjoueur]->prenomJoueur);
-        if(g->etatHypo == 0){
-            int choixHypo;
-            Color(player[tourjoueur]->couleur,0);
-            printf("Souhaitez-vous hypothequer votre propriete ?\n");
-            printf("                                  ");
-            Color(10,0);
-            printf("1.OUI");
-            printf("                                  ");
-            Color(12,0);
-            printf("2.NON\n");
-            Color(15,0);
-            scanf("%d", &choixHypo);
-            Color(3,0);
-            while( choixHypo!= 1 && choixHypo != 2){
-                printf("IA : Saisie incorrect\n");
-                fflush(stdin);
-                scanf("%d",&choixHypo);
-            }
-            if (choixHypo == 1){
-                Color(player[tourjoueur]->couleur, 0);
-                printf("Vous recevez %d !\n", g->p_hypo);
-                player[tourjoueur]->argent += g->p_hypo;
-                g->loyerFixe = g->loyer;
-                g->loyer = 0;
-                g->etatHypo = 1;
-            }
-        }
-        else if(g->etatHypo == 1){
+        if(g->etatHypo == 1){
             int choixLeverHypo;
             Color(player[tourjoueur]->couleur,0);
             printf("\n%s, voulez-vous levez l'hypotheque ?\n", player[tourjoueur]->prenomJoueur);
@@ -937,33 +880,6 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 }
 
         }
-        else if(choix == 2 && s->maison == 0 && s->hotel == 0 && s->etatHypo == 0){
-                    int choixHypo;
-                    Color(player[tourjoueur]->couleur,0);
-                    printf("Souhaitez-vous hypothequer votre propriete ?\n");
-                    printf("                                  ");
-                    Color(10,0);
-                    printf("1.OUI");
-                    printf("                                  ");
-                    Color(12,0);
-                    printf("2.NON\n");
-                    Color(15,0);
-                    scanf("%d", &choixHypo);
-                    Color(3,0);
-                    while( choixHypo!= 1 && choixHypo != 2){
-                        printf("IA : Saisie incorrect\n");
-                        fflush(stdin);
-                        scanf("%d",&choixHypo);
-                    }
-                    if (choixHypo == 1){
-                        Color(player[tourjoueur]->couleur, 0);
-                        printf("Vous recevez %d !\n", s->p_hypo);
-                        player[tourjoueur]->argent += s->p_hypo;
-                        s->loyerFixe = s->loyer;
-                        s->loyer = 0;
-                        s->etatHypo = 1;
-                    }
-        }
     }
     else if (player[s->proprio - 1]->prenomJoueur == player[tourjoueur]->prenomJoueur && s->etatHypo == 1){
             int choixLeverHypo;
@@ -1125,7 +1041,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             else{
                 prixapayer = s->loyer - player[tourjoueur]->argent;
             }
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
                 player[tourjoueur]->argent -= s->loyer*2;
                 player[s->proprio - 1] ->argent += s->loyer*2;
@@ -1146,7 +1062,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             else{
                 prixapayer = s->loyer1 - player[tourjoueur]->argent;
             }
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
                 player[tourjoueur]->argent -= s->loyer1*2;
                 player[s->proprio - 1] ->argent += s->loyer1*2;
@@ -1167,7 +1083,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             else{
                 prixapayer = s->loyer2 - player[tourjoueur]->argent;
             }
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);player[tourjoueur]->argent -= s->loyer2;
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);player[tourjoueur]->argent -= s->loyer2;
             if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
                 player[tourjoueur]->argent -= s->loyer2*2;
                 player[s->proprio - 1] ->argent += s->loyer2*2;
@@ -1188,7 +1104,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             else{
                 prixapayer = s->loyer3 - player[tourjoueur]->argent;
             }
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
                 player[tourjoueur]->argent -= s->loyer3*2;
                 player[s->proprio - 1] ->argent += s->loyer3*2;
@@ -1209,7 +1125,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             else{
                 prixapayer = s->loyer4 - player[tourjoueur]->argent;
             }
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
                 player[tourjoueur]->argent -= s->loyer4*2;
                 player[s->proprio - 1] ->argent += s->loyer4*2;
@@ -1230,7 +1146,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             else{
                 prixapayer = s->loyerHotel - player[tourjoueur]->argent;
             }
-            hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
+            hypotheque(player,tourjoueur,prixapayer,&terre_,&mars_,&jupiter_,& saturne_, &pluton_,& neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_,& voieLactee_,& andromede_, &tetard_,&nuageDeMagellan_);
             if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
                 player[tourjoueur]->argent -= s->loyerHotel*2;
                 player[s->proprio - 1] ->argent += s->loyerHotel*2;
@@ -1788,86 +1704,86 @@ char *str_replace (const char *txt, const char *Avant, const char *Apres)
 
 
 
-int cherchplan (planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,char input [TAILLE]){
-    char *result = strstr(terre_.nom,input);
+int cherchplan (planete* terre_,planete* mars_,planete* jupiter_,planete* saturne_,planete* pluton_,planete *neptune_,planete* venus_,planete *uranus_,planete *mercure_,planete *soleil_,satellite* lune_,satellite* phobos_,satellite *ganymede_,satellite *callisto_,satellite *io_,satellite *titan_,galaxie* voieLactee_,galaxie *andromede_,galaxie *tetard_,galaxie *nuageDeMagellan_,char input [TAILLE]){
+    char *result = strstr(terre_->nom,input);
     if (result != NULL){
-        return terre_.p_hypo;
+        return terre_->p_hypo;
     }
-    result = strstr(mars_.nom,input);
+    result = strstr(mars_->nom,input);
     if (result != NULL){
-        return mars_.p_hypo;
+        return mars_->p_hypo;
     }
-    result = strstr(jupiter_.nom,input);
+    result = strstr(jupiter_->nom,input);
     if (result != NULL){
-        return jupiter_.p_hypo;
+        return jupiter_->p_hypo;
     }
-    result = strstr(saturne_.nom,input);
+    result = strstr(saturne_->nom,input);
     if (result != NULL){
-        return saturne_.p_hypo;
+        return saturne_->p_hypo;
     }
-    result = strstr(pluton_.nom,input);
+    result = strstr(pluton_->nom,input);
     if (result != NULL){
-        return pluton_.p_hypo;
+        return pluton_->p_hypo;
     }
-    result = strstr(neptune_.nom,input);
+    result = strstr(neptune_->nom,input);
     if (result != NULL){
-        return saturne_.p_hypo;
+        return saturne_->p_hypo;
     }
-    result = strstr(venus_.nom,input);
+    result = strstr(venus_->nom,input);
     if (result != NULL){
-        return venus_.p_hypo;
+        return venus_->p_hypo;
     }
-    result = strstr(uranus_.nom,input);
+    result = strstr(uranus_->nom,input);
     if (result != NULL){
-        return uranus_.p_hypo;
+        return uranus_->p_hypo;
     }
-    result = strstr(mercure_.nom,input);
+    result = strstr(mercure_->nom,input);
     if (result != NULL){
-        return mercure_.p_hypo;
+        return mercure_->p_hypo;
     }
-    result = strstr(soleil_.nom,input);
+    result = strstr(soleil_->nom,input);
     if (result != NULL){
-        return soleil_.p_hypo;
+        return soleil_->p_hypo;
     }
-    result = strstr(lune_.nom,input);
+    result = strstr(lune_->nom,input);
     if (result != NULL){
-        return lune_.p_hypo;
+        return lune_->p_hypo;
     }
-    result = strstr(phobos_.nom,input);
+    result = strstr(phobos_->nom,input);
     if (result != NULL){
-        return phobos_.p_hypo;
+        return phobos_->p_hypo;
     }
-    result = strstr(ganymede_.nom,input);
+    result = strstr(ganymede_->nom,input);
     if (result != NULL){
-        return ganymede_.p_hypo;
+        return ganymede_->p_hypo;
     }
-    result = strstr(callisto_.nom,input);
+    result = strstr(callisto_->nom,input);
     if (result != NULL){
-        return callisto_.p_hypo;
+        return callisto_->p_hypo;
     }
-    result = strstr(io_.nom,input);
+    result = strstr(io_->nom,input);
     if (result != NULL){
-        return io_.p_hypo;
+        return io_->p_hypo;
     }
-    result = strstr(titan_.nom,input);
+    result = strstr(titan_->nom,input);
     if (result != NULL){
-        return titan_.p_hypo;
+        return titan_->p_hypo;
     }
-    result = strstr(voieLactee_.nom,input);
+    result = strstr(voieLactee_->nom,input);
     if (result != NULL){
-        return voieLactee_.p_hypo;
+        return voieLactee_->p_hypo;
     }
-    result = strstr(andromede_.nom,input);
+    result = strstr(andromede_->nom,input);
     if (result != NULL){
-        return andromede_.p_hypo;
+        return andromede_->p_hypo;
     }
-    result = strstr(tetard_.nom,input);
+    result = strstr(tetard_->nom,input);
     if (result != NULL){
-        return tetard_.p_hypo;
+        return tetard_->p_hypo;
     }
-    result = strstr(nuageDeMagellan_.nom,input);
+    result = strstr(nuageDeMagellan_->nom,input);
     if (result != NULL){
-        return nuageDeMagellan_.p_hypo;
+        return nuageDeMagellan_->p_hypo;
     }
 }
 
@@ -1954,5 +1870,94 @@ int cherchplanp (planete terre_,planete mars_,planete jupiter_,planete saturne_,
     result = strstr(nuageDeMagellan_.nom,input);
     if (result != NULL){
         return nuageDeMagellan_.couleurF;
+    }
+}
+
+planete cherchplanpp (planete *terre_,planete* mars_,planete *jupiter_,planete* saturne_,planete* pluton_,planete* neptune_,planete *venus_,planete* uranus_,planete *mercure_,planete *soleil_,char input [TAILLE]){
+    char *result = strstr(terre_->nom,input);
+    if (result != NULL){
+        terre_->etatHypo +=1;
+    }
+    result = strstr(mars_->nom,input);
+    if (result != NULL){
+        mars_->etatHypo +=1;
+    }
+    result = strstr(jupiter_->nom,input);
+    if (result != NULL){
+        jupiter_->etatHypo +=1;
+    }
+    result = strstr(saturne_->nom,input);
+    if (result != NULL){
+        saturne_->etatHypo +=1;
+    }
+    result = strstr(pluton_->nom,input);
+    if (result != NULL){
+        pluton_->etatHypo +=1;
+    }
+    result = strstr(neptune_->nom,input);
+    if (result != NULL){
+        neptune_->etatHypo +=1;
+    }
+    result = strstr(venus_->nom,input);
+    if (result != NULL){
+        venus_->etatHypo +=1;
+    }
+    result = strstr(uranus_->nom,input);
+    if (result != NULL){
+        uranus_->etatHypo +=1;
+    }
+    result = strstr(mercure_->nom,input);
+    if (result != NULL){
+        mercure_;
+    }
+    result = strstr(soleil_->nom,input);
+    if (result != NULL){
+        soleil_->etatHypo +=1;
+    }
+
+}
+satellite cherplanps (satellite *lune_,satellite* phobos_,satellite* ganymede_,satellite *callisto_,satellite* io_,satellite* titan_,char input [TAILLE]){
+    char * result = strstr(lune_->nom,input);
+    if (result != NULL){
+        lune_->etatHypo +=1;
+    }
+    result = strstr(phobos_->nom,input);
+    if (result != NULL){
+        phobos_->etatHypo +=1;
+    }
+    result = strstr(ganymede_->nom,input);
+    if (result != NULL){
+        ganymede_->etatHypo +=1;
+    }
+    result = strstr(callisto_->nom,input);
+    if (result != NULL){
+        callisto_->etatHypo +=1;
+    }
+    result = strstr(io_->nom,input);
+    if (result != NULL){
+        io_->etatHypo +=1;
+    }
+    result = strstr(titan_->nom,input);
+    if (result != NULL){
+        titan_->etatHypo +=1;
+    }
+}
+
+galaxie cherplanpg ( galaxie* voieLactee_,galaxie *andromede_,galaxie* tetard_,galaxie* nuageDeMagellan_,char input [TAILLE]){
+    char * result = strstr(voieLactee_->nom,input);
+    if (result != NULL){
+        voieLactee_->etatHypo +=1;
+    }
+    result = strstr(andromede_->nom,input);
+    if (result != NULL){
+        andromede_->etatHypo +=1;
+    }
+    result = strstr(tetard_->nom,input);
+    if (result != NULL){
+        tetard_->etatHypo +=1;
+    }
+    result = strstr(nuageDeMagellan_->nom,input);
+    if (result != NULL){
+        nuageDeMagellan_->etatHypo +=1;
     }
 }

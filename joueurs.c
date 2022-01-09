@@ -10,7 +10,7 @@
 
 
 ///Sous-programme permettant de r�cup�rer le nom et num�ro des joueurs
-t_joueur saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
+void saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
 {
 
     char astronaute[NbJoueurMax][TAILLE]; //tableau des noms de familles
@@ -152,25 +152,32 @@ int lancerDe(t_joueur player[NbJoueurMax][TAILLE], int de[2], int joueur)
 }
 
 void affichageDesJoueurs(t_joueur player[NbJoueurMax][TAILLE]){
+    if (player[0]->etatIG == 1){
     gotoligcol(3, 100);
     Color(player[0]->couleur, 0);
     printf("%s, votre porte monnaie : %d\n", player[0]->prenomJoueur, player[0]->argent);
     gotoligcol(4, 100);
     printf("Vos proprietes sont : %s.", player[0]->proprietes);
+    }
+    if (player[1]->etatIG == 1){
     gotoligcol(6, 100);
     Color(player[1]->couleur, 0);
     printf("%s, votre porte monnaie : %d\n", player[1]->prenomJoueur, player[1]->argent);
     gotoligcol(7, 100);
     printf("Vos proprietes sont : %s.", player[1]->proprietes);
+    }
+    if (player[2]->etatIG == 1){
     gotoligcol(9, 100);
     Color(player[2]->couleur, 0);
     printf("%s, votre porte monnaie : %d\n", player[2]->prenomJoueur, player[2]->argent);
     gotoligcol(10, 100);
     printf("Vos proprietes sont : %s.", player[2]->proprietes);
+    }
+    if (player[3]->etatIG == 1){
     gotoligcol(12, 100);
     Color(player[3]->couleur, 0);
     printf("%s, votre porte monnaie : %d\n", player[3]->prenomJoueur, player[3]->argent);
     gotoligcol(13, 100);
     printf("Vos proprietes sont : %s.", player[3]->proprietes);
-
+    }
 }

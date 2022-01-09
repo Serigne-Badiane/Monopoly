@@ -402,12 +402,30 @@ void plateau()
     gotoligcol(27,85);
     printf("COMMUNAUTE");
     ///8ème ligne
-    Color(0,9);
-    gotoligcol(30,3);
+
+    Color(6,0);
+    gotoligcol(30,1);
+    printf("%c%c",0xB2,0xB2);
+    Color(15,0);
     printf("PRISON");
-    gotoligcol(31,5);
     Color(6,0);
     printf("%c%c",0xB2,0xB2);
+    gotoligcol(31,1);
+    printf("%c%c%c%c%c%c%c%c%c%c",0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2);
+    gotoligcol(32,1);
+    printf("%c",0xB2);
+    gotoligcol(32,3);
+    printf("%c",0xB2);
+    gotoligcol(32,5);
+    printf("%c",0xB2);
+    gotoligcol(32,7);
+    printf("%c",0xB2);
+    gotoligcol(32,9);
+    printf("%c",0xB2);
+    gotoligcol(32,10);
+    printf("%c",0xB2);
+    gotoligcol(33,1);
+    printf("%c%c%c%c%c%c%c%c%c%c",0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2);
 
     Color(0,1);
     gotoligcol(30,13);
@@ -511,6 +529,237 @@ void plateau()
 
     Color(15,0);
     gotoligcol(35,0);
+}
+
+void pion (t_joueur player [NbJoueurMax][TAILLE],int nombreDeJoueur){
+
+    for (int i = 0 ; i < nombreDeJoueur ; i++){
+        gotoligcol(150,2);
+        printf("\n%d",player[i]->numeroCase);
+
+        switch (player[i]->numeroCase){
+
+            case 1:
+            {
+                gotoligcol(4,5+i);
+                Color(player[i]->couleur, 10);
+                printf("%c", player[i]->pion);
+                break;
+            }
+            case 2:
+            {
+                gotoligcol(4,17+i);
+                Color(player[i]->couleur, 15);
+                printf("%c", player[i]->pion);
+                break;
+
+            }
+            case 3:
+            {
+                gotoligcol(4,29+i);
+                Color(player[i]->couleur, 15);
+                printf("%c", player[i]->pion);
+                break;
+
+            }
+            case 4:
+            {
+                gotoligcol(4,41+i);
+                Color(player[i]->couleur, 7);
+                printf("%c", player[i]->pion);
+                break;
+
+            }
+            case 5:
+            {
+                gotoligcol(4,52+i);
+                Color(player[i]->couleur, 7);
+                printf("%c", player[i]->pion);
+                break;
+
+            }
+            case  6:
+            {
+                gotoligcol(4,64+i);
+                Color(player[i]->couleur, 15);
+                printf("%c", player[i]->pion);
+                break;
+
+            }
+            case 7:
+            {
+                gotoligcol(4,77+i);
+                Color(player[i]->couleur, 15);
+                printf("%c", player[i]->pion);
+                break;
+
+            }
+            case 8:
+            {
+
+            }
+            case 9:
+            {
+                gotoligcol(8,89+i);
+                Color(player[i]->couleur, 15);
+                printf("%c", player[i]->pion);
+                break;
+
+            }
+            case 10:
+            {
+                gotoligcol(12,89+i);
+                Color(player[i]->couleur, 15);
+                printf("%c", player[i]->pion);
+                break;
+
+            }
+            case 11:
+            {
+                gotoligcol(16,89+i);
+                Color(player[i]->couleur, 7);
+                printf("%c", player[i]->pion);
+                break;
+
+            }
+            case 12:
+            {
+                gotoligcol(20,89+i);
+                Color(player[i]->couleur, 15);
+                printf("%c", player[i]->pion);
+                break;
+
+            }
+            case 13:
+            {
+                gotoligcol(24,89+i);
+                Color(player[i]->couleur, 15);
+                printf("%c", player[i]->pion);
+                break;
+            }
+            case 14:
+            {
+                gotoligcol(28,89+i);
+            Color(player[i]->couleur, 1);
+            printf("%c", player[i]->pion);
+            break;
+
+            }
+            case 15:
+            {
+                gotoligcol(32,89+i);
+            Color(player[i]->couleur, 12);
+            printf("%c", player[i]->pion);
+            break;
+
+            }
+            case 16:
+            {
+                gotoligcol(32,77+i);
+            Color(player[i]->couleur, 15);
+            printf("%c", player[i]->pion);
+            break;
+            }
+            case 17:
+            {
+                gotoligcol(32,65+i);
+            Color(player[i]->couleur, 15);
+            printf("%c", player[i]->pion);
+            break;
+            }
+            case 18:
+            {
+                gotoligcol(32,53+i);
+            Color(player[i]->couleur, 7);
+            printf("%c", player[i]->pion);
+            break;
+
+            }
+            case 19:
+            {
+                gotoligcol(32,40+i);
+            Color(player[i]->couleur, 15);
+            printf("%c", player[i]->pion);
+            break;
+
+            }
+            case 20:
+            {
+                gotoligcol(32,29+i);
+            Color(player[i]->couleur, 15);
+            printf("%c", player[i]->pion);
+            break;
+
+            }
+            case 21:
+            {
+                gotoligcol(32,17+i);
+            Color(player[i]->couleur, 1);
+            printf("%c", player[i]->pion);
+            break;
+
+            }
+            case 22:
+            {
+                gotoligcol(32,2+i*2);
+            Color(player[i]->couleur, 0);
+            printf("%c", player[i]->pion);
+            break;
+            }
+            case 23:
+            {
+                gotoligcol(28,5+i);
+            Color(player[i]->couleur, 15);
+
+            printf("%c", player[i]->pion);
+            break;
+            }
+            case 24:
+            {
+
+                gotoligcol(24,5+i);
+                Color(player[i]->couleur, 15);
+                printf("%c", player[i]->pion);
+                break;
+            }
+            case 25:
+            {
+                gotoligcol(15,5+i);
+            Color(player[i]->couleur, 15);
+            printf("%c", player[i]->pion);
+            break;
+            }
+            case 26:
+            {
+                gotoligcol(35,5+i);
+                Color(player[i]->couleur, 15);
+            printf("%c", player[i]->pion);
+            break;
+            }
+            case 27:
+            {
+                gotoligcol(12,5+i);
+            Color(player[i]->couleur, 15);
+            printf("%c", player[i]->pion);
+            break;
+            }
+            case 28:
+            {
+                 gotoligcol(9,5+i);
+                Color(player[i]->couleur, 6);
+                printf("%c", player[i]->pion);
+                break;
+            }
+    }
+
+
+
+
+    }
+
+
+
+
 }
 
 

@@ -7,7 +7,7 @@
 
 #include "bib.h"
 
-void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixapayer,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
+void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixapayer,planete* terre_,planete* mars_,planete* jupiter_,planete *saturne_,planete* pluton_,planete *neptune_,planete* venus_,planete *uranus_,planete *mercure_,planete* soleil_,satellite* lune_,satellite *phobos_,satellite *ganymede_,satellite* callisto_,satellite *io_,satellite *titan_,galaxie *voieLactee_,galaxie* andromede_,galaxie *tetard_,galaxie *nuageDeMagellan_){
     Color(13,0);
     printf("\n                                      HYPOTHEQUE");
     printf("\nVoici vos proprietes ");
@@ -19,11 +19,16 @@ void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixa
     printf("%s",player[tourjoueur]->proprietes);
     Color(13,0);
     printf("\nVous avez une dette de %d",prixapayer);
-    printf("\nIndiquez en majuscule la propriete que vous souhaitez hypothequer : ");
+    printf("\nIndiquez en majuscule la propriete que vous souhaitez hypothequer (si vous n'en avait plus ecrire FAILLITE : ");
     Color(15,0);
     char input [TAILLE];
     fflush(stdin);
     gets(input);
+    if (input == 'FAILLITE'){
+        player[tourjoueur]->etatIG -= 1;
+
+    }
+    else{
     char * result = strstr(player[tourjoueur]->proprietes,input);
     while (result == NULL){
         Color(13,0);
@@ -34,14 +39,11 @@ void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixa
         result = NULL;
         result = strstr(player[tourjoueur]->proprietes,input);
     }
-    int prixhp = cherchplan(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input);
-    player[tourjoueur]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input)] -= 1;
-    strcat(input,",");
-    strcpy(player[tourjoueur]->proprietes,str_replace(player[tourjoueur]->proprietes,input,""));
+    int prixhp = cherchplan(&terre_,&mars_,&jupiter_, &saturne_, &pluton_, &neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_, &voieLactee_, &andromede_, &tetard_,&nuageDeMagellan_,input);
     player[tourjoueur]->argent += prixhp;
     Color(13,0);
     printf("\nLe prix hypothequaire de la planete %s est de %d",input,prixhp);
-    prixapayer += prixhp;
+    prixapayer += player[tourjoueur]->argent;
     if (prixapayer < 0){
         printf("\nL'hypotheque de cette prorpiete ne suffit pas a rembourser votre dette !");
         printf("\nVoulez vous poursuivre avec une autre hypotheque ?");
@@ -72,6 +74,7 @@ void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixa
         printf("%s",player[tourjoueur]->proprietes);
     Color(13,0);
     printf("\nFin de l'hypotheque ...\n");
+    }
 
 
 }
@@ -118,7 +121,7 @@ void echange2 (int nombreJoueur,int j, t_joueur player [NbJoueurMax] [TAILLE], i
         printf("%s",player[tourjoueur]->prenomJoueur);
         Color(5,0);
         printf(".(Ecrire en majuscule le nom de la propriete) : ");
-        char input1 [TAILLE] = {NULL};
+        char input1 [TAILLE];
         fflush(stdin);
         gets(input1);
         char * result = strstr(player[tourjoueur]->proprietes,input1);
@@ -129,22 +132,13 @@ void echange2 (int nombreJoueur,int j, t_joueur player [NbJoueurMax] [TAILLE], i
             result = strstr(player[tourjoueur]->proprietes,input1);
         }
 
-        int argent1;
-        printf("\nEt combien d'euros avec ca ? : ");
-        scanf("%d",&argent1);
-        while(argent1 < 0 || argent1 > player[tourjoueur]->argent){
-            fflush(stdin);
-            printf("\nFonds insuffisants, veuillez ressaisir : ");
-            scanf("%d",&argent1);
-        }
         char input2 [TAILLE];
-        int argent2;
         printf("A present choissiez quel propriete doit echange ");
         Color(player[j]->couleurJoueur,0);
         printf("%s",player[j]->prenomJoueur);
         Color(5,0);
         printf(".(Ecrire en majuscule le nom de la propriete) : ");
-        getchar();
+        fflush(stdin);
         gets(input2);
         char * result2 = strstr(player[j]->proprietes,input2);
         while ( result2 == NULL ) {
@@ -154,17 +148,6 @@ void echange2 (int nombreJoueur,int j, t_joueur player [NbJoueurMax] [TAILLE], i
             result2 = strstr(player[j]->proprietes,input2);
         }
 
-        printf("\nEt combien d'euros avec ca ? : ");
-        scanf("%d",&argent2);
-        while(argent2 < 0 || argent2 > player[tourjoueur]->argent){
-            fflush(stdin);
-            printf("\nFonds insuffisants, veuillezz ressaisir : ");
-            scanf("%d",&argent2);
-        }
-        player[j]->argent += argent1;
-        player[j]->argent -= argent2;
-        player[tourjoueur]->argent += argent2;
-        player[tourjoueur]->argent -= argent1;
         player[tourjoueur]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input1)] -= 1;
         player[tourjoueur]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input2)] += 1;
         player[j]->famillec[cherchplanp(terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,input1)] += 1;
@@ -172,9 +155,10 @@ void echange2 (int nombreJoueur,int j, t_joueur player [NbJoueurMax] [TAILLE], i
         strcat(input1,",");
         strcat(input2,",");
         strcat(player[j]->proprietes,input1);
+        strcat(player[tourjoueur]->proprietes,input2);
         strcpy(player[tourjoueur]->proprietes,str_replace(player[tourjoueur]->proprietes,input1,""));
         strcpy(player[j]->proprietes,str_replace(player[j]->proprietes,input2,""));
-        strcat(player[tourjoueur]->proprietes,input2);
+
         printf("\nEchange effectue ! Felicitation !");
         printf("\nRecapitulatif : ");
         printf("\nInformation J%d : ",player[tourjoueur]->numeroJoueur);
