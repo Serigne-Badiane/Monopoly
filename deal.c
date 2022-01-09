@@ -7,6 +7,8 @@
 
 #include "bib.h"
 
+
+///-----------------------------------------------------------PROCEDURE HYPOTHEQUE-----------------------------------------------------------
 void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixapayer,planete* terre_,planete* mars_,planete* jupiter_,planete *saturne_,planete* pluton_,planete *neptune_,planete* venus_,planete *uranus_,planete *mercure_,planete* soleil_,satellite* lune_,satellite *phobos_,satellite *ganymede_,satellite* callisto_,satellite *io_,satellite *titan_,galaxie *voieLactee_,galaxie* andromede_,galaxie *tetard_,galaxie *nuageDeMagellan_){
     Color(13,0);
     printf("\n                                      HYPOTHEQUE");
@@ -19,7 +21,7 @@ void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixa
     printf("%s",player[tourjoueur]->proprietes);
     Color(13,0);
     printf("\nVous avez une dette de %d",prixapayer);
-    printf("\nIndiquez en majuscule la propriete que vous souhaitez hypothequer (si vous n'en avait plus ecrire FAILLITE : ");
+    printf("\nIndiquez en majuscule la propriete que vous souhaitez hypothequer (si vous n'en avez plus ecrire FAILLITE : ");
     Color(15,0);
     char input [TAILLE];
     fflush(stdin);
@@ -32,7 +34,7 @@ void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixa
     char * result = strstr(player[tourjoueur]->proprietes,input);
     while (result == NULL){
         Color(13,0);
-        printf("\nPropriete non reconnu, veuillez ressaisir : ");
+        printf("\nPropriete non reconnue, veuillez ressaisir : ");
         fflush(stdin);
         Color(15,0);
         gets(input);
@@ -42,7 +44,7 @@ void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixa
     int prixhp = cherchplan(&terre_,&mars_,&jupiter_, &saturne_, &pluton_, &neptune_, &venus_, &uranus_, &mercure_, &soleil_, &lune_, &phobos_, &ganymede_, &callisto_, &io_, &titan_, &voieLactee_, &andromede_, &tetard_,&nuageDeMagellan_,input);
     player[tourjoueur]->argent += prixhp;
     Color(13,0);
-    printf("\nLe prix hypothequaire de la planete %s est de %d",input,prixhp);
+    printf("\nLe prix hypothecaire de la planete %s est de %d",input,prixhp);
     prixapayer += player[tourjoueur]->argent;
     if (prixapayer < 0){
         printf("\nL'hypotheque de cette prorpiete ne suffit pas a rembourser votre dette !");
@@ -57,7 +59,7 @@ void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixa
         Color(3,0);
         scanf("%d",&inpu);
         while( inpu != 1 && inpu != 2){
-            printf("IA : Saisie incorrect, veuilelz ressaisir : ");
+            printf("IA : Saisie incorrect, veuillez ressaisir : ");
             fflush(stdin);
             scanf("%d",&inpu);
         }
@@ -65,7 +67,7 @@ void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixa
             hypotheque(player,tourjoueur,prixapayer,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_);
         }
     }
-    printf("\nVotre dette a ete rembourse avec succes !");
+    printf("\nVotre dette a ete remboursee avec succes !");
     printf("\nInformation J%d : ",player[tourjoueur]->numeroJoueur);
         Color(player[tourjoueur]->couleurJoueur,0);
         printf("%s",player[tourjoueur]->prenomJoueur);
@@ -79,7 +81,10 @@ void hypotheque (t_joueur player [NbJoueurMax] [TAILLE],int tourjoueur,int prixa
 
 }
 
+///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
+///-----------------------------------------------------------PROCEDURE ECHANGE2-----------------------------------------------------------
 
 void echange2 (int nombreJoueur,int j, t_joueur player [NbJoueurMax] [TAILLE], int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
         Color(5,0);
@@ -102,21 +107,21 @@ void echange2 (int nombreJoueur,int j, t_joueur player [NbJoueurMax] [TAILLE], i
         }
         else {
         printf("\n                                                  L'ECHANGE COMMENCE ENTRE LE J%d ET LE J%d !",player[tourjoueur]->numeroJoueur,player[j]->numeroJoueur);
-        printf("\nInformation J%d : ",player[tourjoueur]->numeroJoueur);
+        printf("\nInformations J%d : ",player[tourjoueur]->numeroJoueur);
         Color(player[tourjoueur]->couleurJoueur,0);
         printf("%s",player[tourjoueur]->prenomJoueur);
         printf("\nPorte Monnaie : %d",player[tourjoueur]->argent);
         printf("\nProprietes : ");
         printf("%s",player[tourjoueur]->proprietes);
         Color(5,0);
-        printf("\nInformation J%d : ",player[j]->numeroJoueur);
+        printf("\nInformations J%d : ",player[j]->numeroJoueur);
         Color(player[j]->couleurJoueur,0);
         printf("%s",player[j]->prenomJoueur);
         printf("\nPorte Monnaie : %d",player[j]->argent);
         printf("\nProprietes : ");
         printf("%s",player[j]->proprietes);
         Color(5,0);
-        printf("\nA present choissiez quel propriete doit echange ");
+        printf("\nA present choisissez quelle propriete doit echanger ");
         Color(player[tourjoueur]->couleurJoueur,0);
         printf("%s",player[tourjoueur]->prenomJoueur);
         Color(5,0);
@@ -133,7 +138,7 @@ void echange2 (int nombreJoueur,int j, t_joueur player [NbJoueurMax] [TAILLE], i
         }
 
         char input2 [TAILLE];
-        printf("A present choissiez quel propriete doit echange ");
+        printf("A present choisissez quelle propriete doit echanger ");
         Color(player[j]->couleurJoueur,0);
         printf("%s",player[j]->prenomJoueur);
         Color(5,0);
@@ -161,14 +166,14 @@ void echange2 (int nombreJoueur,int j, t_joueur player [NbJoueurMax] [TAILLE], i
 
         printf("\nEchange effectue ! Felicitation !");
         printf("\nRecapitulatif : ");
-        printf("\nInformation J%d : ",player[tourjoueur]->numeroJoueur);
+        printf("\nInformations J%d : ",player[tourjoueur]->numeroJoueur);
         Color(player[tourjoueur]->couleurJoueur,0);
         printf("%s",player[tourjoueur]->prenomJoueur);
         printf("\nPorte Monnaie : %d",player[tourjoueur]->argent);
         printf("\nProprietes : ");
         printf("%s",player[tourjoueur]->proprietes);
         Color(5,0);
-        printf("\nInformation J%d : ",player[j]->numeroJoueur);
+        printf("\nInformations J%d : ",player[j]->numeroJoueur);
         Color(player[j]->couleurJoueur,0);
         printf("%s",player[j]->prenomJoueur);
         printf("\nPorte Monnaie : %d",player[j]->argent);
@@ -178,6 +183,10 @@ void echange2 (int nombreJoueur,int j, t_joueur player [NbJoueurMax] [TAILLE], i
 
 }
 
+///--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+///-----------------------------------------------------------PROCEDURE ECHANGE-----------------------------------------------------------
 
 void echange (int nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_){
     Color(3,0);
@@ -191,7 +200,7 @@ void echange (int nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourjo
     int inpu;
     scanf("%d",&inpu);
     while( inpu != 1 && inpu != 2){
-        printf("IA : Saisie incorrect, veuilelz ressaisir : ");
+        printf("IA : Saisie incorrecte, veuillez ressaisir : ");
         fflush(stdin);
         scanf("%d",&inpu);
     }
@@ -208,7 +217,7 @@ void echange (int nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourjo
             scanf("%d",&j);
             while (j != 1 && j!= 2){
                 fflush(stdin);
-                printf("Saisie incorrect.");
+                printf("Saisie incorrecte.");
                 scanf("%d",&j);
             }
             while ((j - 1) == tourjoueur){
@@ -235,7 +244,7 @@ void echange (int nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourjo
             scanf("%d",&j);
             while (j != 1 && j!= 2 && j != 3){
                 fflush(stdin);
-                printf("Saisie incorrect.");
+                printf("Saisie incorrecte.");
                 scanf("%d",&j);
             }
             while ((j - 1)  == tourjoueur){
@@ -264,7 +273,7 @@ void echange (int nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourjo
             scanf("%d",&k);
             while (k != 1 && k!= 2 && k != 3 && k!= 4){
                 fflush(stdin);
-                printf("IA : Saisie incorrect.");
+                printf("IA : Saisie incorrecte.");
                 scanf("%d",&k);
             }
             while ((k- 1)  == tourjoueur){

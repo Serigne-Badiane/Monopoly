@@ -9,7 +9,7 @@
 
 
 
-
+///-----------------------------------------------------------FONCTION VERIFICATION DE LA VICTOIRE-----------------------------------------------------------
 void verfiwin (t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJoueur){
     int compteur;
     int numgan;
@@ -26,13 +26,13 @@ void verfiwin (t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJo
 
         system("cls");
         Color(3,0);
-        printf("                           IA : FELICITATION NOUS AVONS NOTRE ASTRONAUTE ULTIME !\nIA : ");
+        printf("                           IA : FELICITATIONS NOUS AVONS NOTRE ASTRONAUTE ULTIME !\nIA : ");
         Color(player[numgan]->couleurJoueur,0);
         printf("%s",player[numgan]->prenomJoueur);
         Color(3,0);
         printf(" EST LE DERNIER ! IL REMPORTE DONC LA PARTIE !");
         printf("\n                                  RECAPITULATIF DE LA PARTIE : ");
-        for (int i = 0; i<nombreJoueur ; i++){
+        for (int i = 0; i<nombreJoueur ; i++){ //Affichage de toutes les stats des joueurs
             Color(player[i]->couleurJoueur,0);
             printf("\nInformation J%d : ",player[i]->numeroJoueur);
             printf("%s",player[i]->prenomJoueur);
@@ -52,10 +52,3 @@ void verfiwin (t_joueur player [NbJoueurMax][TAILLE],int tourjoueur,int nombreJo
 
 
 
-void faillite(t_joueur player [NbJoueurMax][TAILLE],int tourjoueur)
-{
-    if (player[tourjoueur]->argent<=0  )
-    {
-        player[tourjoueur]->etatIG=0;
-    }
-}
