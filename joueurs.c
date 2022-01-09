@@ -9,7 +9,7 @@
 
 
 
-///Sous-programme permettant de r�cup�rer le nom et num�ro des joueurs
+///-----------------------------------------------------------Sous-programme permettant de r�cup�rer le nom et num�ro des joueurs-----------------------------------------------------------
 void saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
 {
 
@@ -128,12 +128,16 @@ void saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur)
 
 }
 
+
+///-----------------------------------------------------------CHOIX DU PREMIER A JOUER-----------------------------------------------------------
 int choixDuPremier(int nbJoueur)
 {
         int nombre = 0 + rand()%nbJoueur; //on choisit une personne parmi tous les utilisateurs pour commencer.
         return nombre;
 }
 
+
+///-----------------------------------------------------------LANCER DU DE-----------------------------------------------------------
 int lancerDe(t_joueur player[NbJoueurMax][TAILLE], int de[2], int joueur)
 {
 
@@ -151,6 +155,8 @@ int lancerDe(t_joueur player[NbJoueurMax][TAILLE], int de[2], int joueur)
     return nombreDeplacement;
 }
 
+
+///-----------------------------------------------------------AFFICHAGE DU STATUT DES JOUEURS SUR LA DROITE DU PLATEAU-----------------------------------------------------------
 void affichageDesJoueurs(t_joueur player[NbJoueurMax][TAILLE]){
     if (player[0]->etatIG == 1){
     gotoligcol(3, 100);

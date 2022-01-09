@@ -428,8 +428,8 @@ while(choix != 0)
     {
         case 1:
         {
-            player[tourJoueur]->numeroCase = 1;
-            pion(player,nombreJoueur);
+            player[tourJoueur]->numeroCase = 1; //on assigne le joueur au numéro de la case du plateau
+            pion(player,nombreJoueur); //on place le pion du joueur à cette case
             gotoligcol(35,1);
             Color(4,0);
             printf("\nCASE DEPART ! Recevez ");
@@ -598,7 +598,7 @@ while(choix != 0)
             Color(15,0);
             printf("\nAppuyez sur 1 pour piocher une carte de communaute !\n");
             scanf("%d", &choix2);
-            while(choix2 != 1){
+            while(choix2 != 1){ //blindage
                 Color(3,0);
                 printf("\nIA : Je n'ai pas compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
                 fflush(stdin);
