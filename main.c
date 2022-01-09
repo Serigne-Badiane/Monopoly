@@ -46,7 +46,7 @@ int pause(int sauvegarde, int* nombreDeJoueur, int* nombreDeDeplacement, int* to
 
 int main()
 {
-
+///-----------------------------------------DECLARATION DES VARAIBLES + STRUCUTRES PLANETES/SATELITTES/GALAXIES-------------------------------------------------------------
     int sauvegarde=0;
     int chargement=0;
     srand(time(NULL));
@@ -77,33 +77,6 @@ int main()
     int tourJoueur = 0;
     int deplacement = 0;
 
-    menu1(&nombreJoueur, &deplacement, &tourJoueur, player, &chargement);
-    deplacement += 1;
-
-
-
-    mars(&mars_);
-    terre(&terre_);
-    voieLactee(&voieLactee_);
-    lune(&lune_);
-    phobos(&phobos_);
-    ganymede(&ganymede_);
-    callisto(&callisto_);
-    andromede(&andromede_);
-    io(&io_);
-    jupiter(&jupiter_);
-    titan(&titan_);
-    saturne(&saturne_);
-    tetard(&tetard_);
-    pluton(&pluton_);
-    neptune(&neptune_);
-    venus(&venus_);
-    uranus(&uranus_);
-    nuageDeMagellan(&nuageDeMagellan_);
-    mercure(&mercure_);
-    soleil(&soleil_);
-
-
 
 player[0]->numeroCase = 1;
 player[1]->numeroCase = 1;
@@ -130,300 +103,46 @@ int hotelMax = 12;
 
 FILE * fp=NULL;
 
-if(chargement==1)
-    {
-        int chJ=0;
-        printf("\nIA : Bonjour ! Pouvez vous me communiquez combien de joueurs etiez vous dans la Partie que vous voulez reprendre");
-        scanf("%d",&chJ);
-        while(chJ !=2 && chJ !=3 && chJ !=4)
-        {
-            printf("\nIA : Saisissez le bon nombre de joueur");
-        }
-        fp=fopen("Partie.txt","r");
-        if (fp==NULL)
-        {
-        printf("erreur d'ouverture");
-        exit (0);
-        }
-        for(int h = 0; h<chJ; h++)
-        {
-            //fgets(player[h]->prenomJoueur,50,fp);
-            fscanf(fp,"%d",&player[h]->argent);
-            //fscanf(fp,"%d",player[h]->couleur);
-            fscanf(fp,"%d",&player[h]->numeroCase);
-            //fscanf(fp,"%d",player[h]->numeroJoueur);
-            fscanf(fp,"%d",&player[h]->prison);
-            //fgets(player[h]->proprietes,TAILLE,fp);
-            fscanf(fp,"%d",&player[h]->nbDeGare);
-            fscanf(fp,"%d",&player[h]->couleurJoueur);
-        }
-        fscanf(fp,"%d",&lune_.proprio);
-        fscanf(fp,"%d",&lune_.maison);
-        fscanf(fp,"%d",&lune_.hotel);
-        fscanf(fp,"%d",&terre_.proprio);
-        fscanf(fp,"%d",&terre_.maison);
-        fscanf(fp,"%d",&terre_.hotel);
-        fscanf(fp,"%d",&voieLactee_.proprio);
-        fscanf(fp,"%d",&voieLactee_.maison);
-        fscanf(fp,"%d",&voieLactee_.hotel);
-        fscanf(fp,"%d",&phobos_.proprio);
-        fscanf(fp,"%d",&phobos_.maison);
-        fscanf(fp,"%d",&phobos_.hotel);
-        fscanf(fp,"%d",&mars_.proprio);
-        fscanf(fp,"%d",&mars_.maison);
-        fscanf(fp,"%d",&mars_.hotel);
-        fscanf(fp,"%d",&ganymede_.proprio);
-        fscanf(fp,"%d",&ganymede_.maison);
-        fscanf(fp,"%d",&ganymede_.hotel);
-        fscanf(fp,"%d",&callisto_.proprio);
-        fscanf(fp,"%d",&callisto_.maison);
-        fscanf(fp,"%d",&callisto_.hotel);
-        fscanf(fp,"%d",&andromede_.proprio);
-        fscanf(fp,"%d",&andromede_.maison);
-        fscanf(fp,"%d",&andromede_.hotel);
-        fscanf(fp,"%d",&io_.proprio);
-        fscanf(fp,"%d",&io_.maison);
-        fscanf(fp,"%d",&io_.hotel);
-        fscanf(fp,"%d",&jupiter_.proprio);
-        fscanf(fp,"%d",&jupiter_.maison);
-        fscanf(fp,"%d",&jupiter_.hotel);
-        fscanf(fp,"%d",&titan_.proprio);
-        fscanf(fp,"%d",&titan_.maison);
-        fscanf(fp,"%d",&titan_.hotel);
-        fscanf(fp,"%d",&saturne_.proprio);
-        fscanf(fp,"%d",&saturne_.maison);
-        fscanf(fp,"%d",&saturne_.hotel);
-        fscanf(fp,"%d",&pluton_.proprio);
-        fscanf(fp,"%d",&pluton_.maison);
-        fscanf(fp,"%d",&pluton_.hotel);
-        fscanf(fp,"%d",&neptune_.proprio);
-        fscanf(fp,"%d",&neptune_.maison);
-        fscanf(fp,"%d",&neptune_.hotel);
-        fscanf(fp,"%d",&venus_.proprio);
-        fscanf(fp,"%d",&venus_.maison);
-        fscanf(fp,"%d",&venus_.hotel);
-        fscanf(fp,"%d",&uranus_.proprio);
-        fscanf(fp,"%d",&uranus_.maison);
-        fscanf(fp,"%d",&uranus_.hotel);
-        fscanf(fp,"%d",&nuageDeMagellan_.proprio);
-        fscanf(fp,"%d",&nuageDeMagellan_.maison);
-        fscanf(fp,"%d",&nuageDeMagellan_.hotel);
-        fscanf(fp,"%d",&mercure_.proprio);
-        fscanf(fp,"%d",&mercure_.maison);
-        fscanf(fp,"%d",&mercure_.hotel);
-        fscanf(fp,"%d",&soleil_.proprio);
-        fscanf(fp,"%d",&soleil_.maison);
-        fscanf(fp,"%d",&soleil_.hotel);
-        fclose(fp);
-        for(int i=0; i<chJ;i++)
-        {
-            char astronaute[NbJoueurMax][TAILLE]; //tableau des noms de familles
-            strcpy(astronaute[0], "PESQUET");
-            strcpy(astronaute[1], "ARMSTRONG");
-            strcpy(astronaute[2], "GARGARINE");
-            strcpy(astronaute[3], "ALDRIN");
 
-            if (i == 0)
-            {
-                Color(4,0);
-                player[i]->couleurJoueur = 4;
-                printf("\n\nRebonjour cher joueur !\n\nJe suis content de vous revoir !\n\nBonne chance !\n\n");
-                printf("Pouvez vous me redonner votre pr%cnom ?\n",0x82);
+///---------------------------------------------------FONCTIONS D'INITIALISATION DES STRUCUTRES PLANETES/SATELLITES/GALAXIES----------------------------------------------------------
 
-                scanf("%s", &player[i]->prenomJoueur);
-                fflush(stdin);
-                strcat(player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
-                strcat(player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
+    mars(&mars_);
+    terre(&terre_);
+    voieLactee(&voieLactee_);
+    lune(&lune_);
+    phobos(&phobos_);
+    ganymede(&ganymede_);
+    callisto(&callisto_);
+    andromede(&andromede_);
+    io(&io_);
+    jupiter(&jupiter_);
+    titan(&titan_);
+    saturne(&saturne_);
+    tetard(&tetard_);
+    pluton(&pluton_);
+    neptune(&neptune_);
+    venus(&venus_);
+    uranus(&uranus_);
+    nuageDeMagellan(&nuageDeMagellan_);
+    mercure(&mercure_);
+    soleil(&soleil_);
 
-                player[i]->numeroJoueur = i+1;
-                fflush(stdin);
 
-                player[i]->couleur = 4;
-                player[i]->pion = 0x03;
-            }
-            else if (i==1)
-            {
-                Color(6,0);
-                player[i]->couleurJoueur = 6;
-                printf("\n\nRebonjour cher joueur !\n\nJe suis content de vous revoir !\n\nBonne chance !\n\n");
-                printf("Pouvez vous me redonner votre pr%cnom ?\n",0x82);
+    menu1(&nombreJoueur, &deplacement, &tourJoueur, player, &chargement);
+    deplacement += 1;
 
-                scanf("%s", player[i]->prenomJoueur);
-                fflush(stdin);
-                strcat(player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
-                strcat(player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
 
-                player[i]->numeroJoueur = i+1;
-                fflush(stdin);
-
-                player[i]->couleur = 6;
-                player[i]->pion = 0x04;
-            }
-            else if (i==2)
-            {
-                Color(9,0);
-                player[i]->couleurJoueur = 9;
-                printf("\n\nRebonjour cher joueur !\n\nJe suis content de vous revoir !\n\nBonne chance !\n\n");
-                printf("Pouvez vous me redonner votre pr%cnom ?\n",0x82);
-
-                scanf("%s", &player[i]->prenomJoueur);
-                fflush(stdin);
-                strcat(player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
-                strcat(player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
-
-                player[i]->numeroJoueur = i+1;
-                fflush(stdin);
-
-                player[i]->couleur = 9;
-                player[i]->pion = 0x05;
-
-            }
-
-            else if (i==3)
-            {
-                Color(11,0);
-                player[i]->couleurJoueur = 11;
-                printf("\n\nRebonjour cher joueur !\n\nJe suis content de vous revoir !\n\nBonne chance !\n\n");
-                printf("Pouvez vous me redonner votre pr%cnom ?\n",0x82);
-
-                scanf("%s", &player[i]->prenomJoueur);
-                fflush(stdin);
-                strcat(player[i]->prenomJoueur, " "); //on ajoute un espace apr�s le pr�nom
-                strcat(player[i]->prenomJoueur, astronaute[i]); //on ajoute un nom d'astronaute au pr�nom de l'utilisateur
-
-                player[i]->numeroJoueur = i+1;
-                fflush(stdin);
-
-                player[i]->couleur = 11;
-                player[i]->pion = 0x06;
-
-            }
-        }
-
-        for(int i=0; i<chJ;i++)
-        {
-            if(player[i]->numeroJoueur==lune_.proprio)
-            {
-                strcat(player[i]->proprietes,lune_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==terre_.proprio)
-            {
-                strcat(player[i]->proprietes,terre_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==voieLactee_.proprio)
-            {
-                strcat(player[i]->proprietes,voieLactee_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==phobos_.proprio)
-            {
-                strcat(player[i]->proprietes,phobos_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==mars_.proprio)
-            {
-                strcat(player[i]->proprietes,mars_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==ganymede_.proprio)
-            {
-                strcat(player[i]->proprietes,ganymede_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-
-            if(player[i]->numeroJoueur==callisto_.proprio)
-            {
-                strcat(player[i]->proprietes,callisto_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==andromede_.proprio)
-            {
-                strcat(player[i]->proprietes,andromede_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==io_.proprio)
-            {
-                strcat(player[i]->proprietes,io_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==jupiter_.proprio)
-            {
-                strcat(player[i]->proprietes,jupiter_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==titan_.proprio)
-            {
-                strcat(player[i]->proprietes,titan_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==saturne_.proprio)
-            {
-                strcat(player[i]->proprietes,saturne_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==tetard_.proprio)
-            {
-                strcat(player[i]->proprietes,tetard_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==pluton_.proprio)
-            {
-                strcat(player[i]->proprietes,pluton_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==neptune_.proprio)
-            {
-                strcat(player[i]->proprietes,neptune_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==venus_.proprio)
-            {
-                strcat(player[i]->proprietes,venus_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==uranus_.proprio)
-            {
-                strcat(player[i]->proprietes,uranus_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==nuageDeMagellan_.proprio)
-            {
-                strcat(player[i]->proprietes,nuageDeMagellan_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==mercure_.proprio)
-            {
-                strcat(player[i]->proprietes,mercure_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-            if(player[i]->numeroJoueur==soleil_.proprio)
-            {
-                strcat(player[i]->proprietes,soleil_.nom);
-                strcat(player[i]->proprietes,",");
-            }
-        }
-    }
-    chargement=0;
-
+///-------------------------------------------------------------------BOUCLE TOUR DES JOUEURS-----------------------------------------------------------------------------------------
 while(choix != 0)
 {
     system("cls");
     Color(15,0);
     plateau();
     affichageDesJoueurs(player);
-
-    /*if(player[tourJoueur]->etatIG==0)
-    {
-        tourJoueur+=1;
-    }*/
     if (player[tourJoueur]->etatIG == 0){
 
     }
     else{
-
-    ///-----------------------------------------------------------PLATEAU-----------------------------------------------------------
     switch(deplacement)
     {
         case 1:
@@ -802,7 +521,6 @@ while(choix != 0)
     }
     }
 
-    ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     tourJoueur += 1;
     if (tourJoueur == nombreJoueur )
@@ -825,6 +543,10 @@ while(choix != 0)
     Color(3,0);
     printf("\nIA : %s, veuillez appuyer sur 1 pour lancer le de, ou 2 pour un echange : ", player[tourJoueur]->prenomJoueur);
     sauvegarde=pause(sauvegarde,&nombreJoueur, &deplacement, &tourJoueur, player, &chargement);
+
+///--------------------------------------------------------------------------------SAUVEGARDE DE LA PARTIE----------------------------------------------------------------------------------------
+
+
     if(sauvegarde==1)
     {
         fp=fopen("Partie.txt","w");
@@ -905,11 +627,12 @@ while(choix != 0)
         fclose(fp);
     }
     sauvegarde=0;
-    //printf("\n\n%d\n\n",chargement);
-    if(chargement==1)
+
+///-----------------------------------------------------------FONCTION CAHRGEMENT PARTIE-----------------------------------------------------------
+if(chargement==1)
     {
         int chJ=0;
-        printf("\nIA : Bonjour ! Pouvez vous me communiquer combien de joueurs etiez vous dans la Partie que vous voulez reprendre");
+        printf("\nIA : Bonjour ! Pouvez vous me communiquez combien de joueurs etiez vous dans la Partie que vous voulez reprendre");
         scanf("%d",&chJ);
         while(chJ !=2 && chJ !=3 && chJ !=4)
         {
@@ -991,7 +714,6 @@ while(choix != 0)
         fscanf(fp,"%d",&soleil_.maison);
         fscanf(fp,"%d",&soleil_.hotel);
         fclose(fp);
-
         for(int i=0; i<chJ;i++)
         {
             char astronaute[NbJoueurMax][TAILLE]; //tableau des noms de familles
@@ -1181,13 +903,16 @@ while(choix != 0)
                 strcat(player[i]->proprietes,",");
             }
         }
-        printf("\nVeuillez appuyer sur 1 pour lancer les des : ");
     }
     chargement=0;
+
+
+
+
+
+///-----------------------------------------------------------LANCEMENT DES DES-----------------------------------------------------------
     scanf("%d", &choix);
-
-
-    while(choix != 1 && choix != 0 && choix != 2){
+    while(choix != 0 && choix != 1 && choix != 2){
         printf("\nIA : Je n'ai pas compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
         scanf("%d",&choix);
 

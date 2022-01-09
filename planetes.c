@@ -1809,7 +1809,7 @@ void soleil (planete* soleil){
 
 }
 
-///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+///-----------------------------------------------------------------------PROCEDURE QUI REMPLACE UN OU PLUSIEURS CARACTERES D'UNE CHAINE DE CARACTERE--------------------------------------------------------------------------------------------------
 
 
 char *str_replace (const char *txt, const char *Avant, const char *Apres)
@@ -1866,7 +1866,7 @@ char *str_replace (const char *txt, const char *Avant, const char *Apres)
 
 
 
-
+///--------------------------------------------------------------------CHERCHE A QUEL PLANETE CORRESPOND L'INPUT ET RENVOI SON PRIX HYPOTHEQUAIRE-------------------------------------------------------------------------------------
 
 int cherchplan (planete* terre_,planete* mars_,planete* jupiter_,planete* saturne_,planete* pluton_,planete *neptune_,planete* venus_,planete *uranus_,planete *mercure_,planete *soleil_,satellite* lune_,satellite* phobos_,satellite *ganymede_,satellite *callisto_,satellite *io_,satellite *titan_,galaxie* voieLactee_,galaxie *andromede_,galaxie *tetard_,galaxie *nuageDeMagellan_,char input [TAILLE]){
     char *result = strstr(terre_->nom,input);
@@ -1953,7 +1953,7 @@ int cherchplan (planete* terre_,planete* mars_,planete* jupiter_,planete* saturn
 
 
 
-
+///--------------------------------------------------------------------CHERCHE ET RENVOI LA COULEUR DE LA PLANETE ------------------------------
 int cherchplanp (planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,char input [TAILLE]){
     char *result = strstr(terre_.nom,input);
     if (result != NULL){
@@ -2037,6 +2037,7 @@ int cherchplanp (planete terre_,planete mars_,planete jupiter_,planete saturne_,
     }
 }
 
+///--------------------------------------------------------------------CHERCHE LA PLANETE ET LA REND EN 'ETAT HYPOTHEQUE'-------------------------------------------------------------
 planete cherchplanpp (planete *terre_,planete* mars_,planete *jupiter_,planete* saturne_,planete* pluton_,planete* neptune_,planete *venus_,planete* uranus_,planete *mercure_,planete *soleil_,char input [TAILLE]){
     char *result = strstr(terre_->nom,input);
     if (result != NULL){
@@ -2080,6 +2081,7 @@ planete cherchplanpp (planete *terre_,planete* mars_,planete *jupiter_,planete* 
     }
 
 }
+///--------------------------------------------------------------------CHERCHE LE SATELLITE ET LE REND EN 'ETAT HYPOTHEQUE'-------------------------------------------------------------
 satellite cherplanps (satellite *lune_,satellite* phobos_,satellite* ganymede_,satellite *callisto_,satellite* io_,satellite* titan_,char input [TAILLE]){
     char * result = strstr(lune_->nom,input);
     if (result != NULL){
@@ -2107,6 +2109,7 @@ satellite cherplanps (satellite *lune_,satellite* phobos_,satellite* ganymede_,s
     }
 }
 
+///--------------------------------------------------------------------CHERCHE LA GALAXIE ET LA REND EN 'ETAT HYPOTHEQUE'-------------------------------------------------------------
 galaxie cherplanpg ( galaxie* voieLactee_,galaxie *andromede_,galaxie* tetard_,galaxie* nuageDeMagellan_,char input [TAILLE]){
     char * result = strstr(voieLactee_->nom,input);
     if (result != NULL){
