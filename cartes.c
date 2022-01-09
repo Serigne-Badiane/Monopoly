@@ -7,6 +7,8 @@
 
 #include "bib.h"
 
+
+//Essaie non concluant du mélange des cartes communautés et chances
 void melangerCartes(int tab[12])
 {
 
@@ -31,7 +33,7 @@ void melangerCartes(int tab[12])
 
 
 
-///--------------------------------------------------------------------CARTES COMMUNAUTE---------------------------------------------------------------
+///-----------------------------------------------------------CARTES COMMUNAUTE-----------------------------------------------------------
 
 void cc1(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
@@ -45,7 +47,7 @@ void cc1(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueu
 
 void cc2(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
-    char c[TAILLE]="\nVOTRE VAISSEAU EST ENDOMMAGE, vous devez le reparer !\nPayer 150.\n";
+    char c[TAILLE]="\nVOTRE VAISSEAU EST ENDOMMAGE, vous devez le reparer !\nPayez 150.\n";
     Color(5,0);
     printf("%s", c);
     player[tourJoueur]->argent -= 150;
@@ -97,7 +99,7 @@ void cc6(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueu
 
 void cc7(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
-    char c[TAILLE]="BONNE ACTION ! Vous avez fait le ménage sur le vaissseau\nChacun des autres joueurs vous versent 20 euros.\n";
+    char c[TAILLE]="BONNE ACTION ! Vous avez fait le menage sur le vaissseau\nChacun des autres joueurs vous versent 20 euros.\n";
     Color(5,0);
     printf("%s", c);
 
@@ -114,7 +116,7 @@ void cc7(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueu
 
 void cc8(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
-    char c[TAILLE]="PETIT VOYAGE INTERGALACTIQUE!\nAvancez jusqu'aux nuages de Magelan.\n";
+    char c[TAILLE]="PETIT VOYAGE INTERGALACTIQUE!\nAvancez jusqu'aux nuages de Magellan.\n";
     Color(5,0);
     printf("%s", c);
     arrivgalax(&nuageDeMagellan_, player, tourJoueur,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_, nombreDeJoueur);
@@ -162,7 +164,7 @@ void cc11(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoue
     printf("\nVeuillez saisir le numero du joueur : ");
     scanf("%d", &choix);
     choix -= 1;
-    while(choix >= 4){
+    while(choix >= 4){ //blindage de la saisie du numéro du joueur
         Color(3,0);
         printf("\nCe joueur n'existe pas !");
         fflush(stdin);
@@ -199,7 +201,7 @@ void cc12(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoue
 
 void cc13(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
-    char c[TAILLE]="COUP DE BOOST DANS LES REACTEURS !\nAvancer de 5 cases.\n";
+    char c[TAILLE]="COUP DE BOOST DANS LES REACTEURS !\nAvancez de 5 cases.\n";
     Color(5,0);
     printf("%s", c);
 
@@ -246,16 +248,20 @@ void cc16(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur, int nombreDeJoue
 
 }
 
+///--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-///PIOCHE
+
+
+///-----------------------------------------------------------PIOCHE CARTES COMMUNAUTES-----------------------------------------------------------
+
 void piocheCartesCommu(int carte, t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax)
 {
 
     switch (carte)
     {
         case 1:
-        case 17:
+        case 17: //si on arrive à la 17e carte alors la pile recommence à 1 carte 1 = carte 17
         {
             cc1(player,tourJoueur, nombreDeJoueur ,terre_,mars_,jupiter_, saturne_, pluton_, neptune_, venus_, uranus_, mercure_, soleil_, lune_, phobos_, ganymede_, callisto_, io_, titan_, voieLactee_, andromede_, tetard_,nuageDeMagellan_,&maisonMax, &hotelMax );
             break;
@@ -340,6 +346,9 @@ void piocheCartesCommu(int carte, t_joueur player[NbJoueurMax][TAILLE], int nomb
     }
 }
 
+///----------------------------------------------------------------------------------------------------------------------
+
+
 ///----------------------------------------------------------------------CARTES CHANCES-------------------------------------------------------------------
 
 
@@ -398,7 +407,7 @@ void c4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
 
     choix = choix - 1; //car le tableau des joueurs commence à 0
 
-    while (choix != 3 && choix != 2 && choix != 1 && choix != 0)
+    while (choix != 3 && choix != 2 && choix != 1 && choix != 0) //blindage choix
     {
         Color(3,0);
         printf("\nIA : Ce joueur n'existe pas !\n");
@@ -406,7 +415,7 @@ void c4(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
         scanf("%d",&choix );
         choix = choix - 1;
     }
-    while(choix == tourJoueur)
+    while(choix == tourJoueur) // blindage choix
     {
         Color(3,0);
         printf("\nIA : Vous ne pouvez vous defier vous-meme !\n");
@@ -738,6 +747,11 @@ void c16(t_joueur player[NbJoueurMax][TAILLE], int tourJoueur)
     player[tourJoueur]->argent -= 200;
 }
 
+///----------------------------------------------------------------------------------------------------------------------
+
+
+///-----------------------------------------------------------PROCEDURE PRISON-----------------------------------------------------------
+
 void prison(t_joueur player[NbJoueurMax][TAILLE], int numeroTour, int nbDeJoueur)
 {
 
@@ -748,7 +762,7 @@ void prison(t_joueur player[NbJoueurMax][TAILLE], int numeroTour, int nbDeJoueur
 
     Color(3,0);
 
-    ///carte sortie de prison
+    ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Si carte sortie de prison~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if(player[numeroTour]->carteSortiePrison >= 1){
         Color(player[numeroTour]->couleur, 0);
         printf("\n%s, ", player[numeroTour]->prenomJoueur);
@@ -762,11 +776,13 @@ void prison(t_joueur player[NbJoueurMax][TAILLE], int numeroTour, int nbDeJoueur
         Color(12,0);
         printf("2.NE PAS UTILISER\n");
         scanf("%d", &choix);
-        while( choix != 1 && choix != 2){
+        while( choix != 1 && choix != 2){ // blindage
             printf("IA : Saisie incorrect\n");
             getchar();
             scanf("%d",&choix);
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ S'il veut utiliser carte ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         if(choix == 1){
             player[numeroTour]->prison = 0;
             Color(player[numeroTour]->couleur, 0);
@@ -797,7 +813,7 @@ void prison(t_joueur player[NbJoueurMax][TAILLE], int numeroTour, int nbDeJoueur
                 int answer;
                 scanf("%d", &answer);
                 while( answer != 1 && answer != 2){
-                    printf("IA : Saisie incorrect\n");
+                    printf("IA : Saisie incorrecte\n");
                     getchar();
                     scanf("%d",&answer);
                 }
@@ -820,7 +836,7 @@ void prison(t_joueur player[NbJoueurMax][TAILLE], int numeroTour, int nbDeJoueur
                     fflush(stdin);
                     scanf("%d", &answer2);
                     while( answer2 != 1 && answer2 != 2){
-                        printf("IA : Saisie incorrect\n");
+                        printf("IA : Saisie incorrecte\n");
                         getchar();
                         scanf("%d",&answer2);
                     }
@@ -842,13 +858,13 @@ void prison(t_joueur player[NbJoueurMax][TAILLE], int numeroTour, int nbDeJoueur
         }
     }
 
-    ///si le joueur ne paye pas 50 et n'a pas de carte
+///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~si le joueur ne paye pas 50 et n'a pas de carte~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 if(player[numeroTour]->prison == 1){
     if(player[numeroTour]->numeroTourPrison == 3){
             Color(player[numeroTour]->couleur, 0);
             printf("\n%s, ", player[numeroTour]->prenomJoueur);
             Color(3,0);
-            printf("Vous sortez de prison en payant l'amande de 50 euros !\n");
+            printf("Vous sortez de prison en payant l'amende de 50 euros !\n");
             player[numeroTour]->argent -= 50;
 
             player[numeroTour]->prison = 0;
@@ -868,7 +884,7 @@ if(player[numeroTour]->prison == 1){
         printf("2.NON\n");
         scanf("%d", &choix4);
         while( choix4 != 1 && choix4 != 2){
-            printf("IA : Saisie incorrect\n");
+            printf("IA : Saisie incorrecte\n");
             getchar();
             scanf("%d",&choix4);
         }
@@ -877,15 +893,15 @@ if(player[numeroTour]->prison == 1){
             Color(player[numeroTour]->couleur, 0);
             printf("%s, ", player[numeroTour]->prenomJoueur);
             Color(3,0);
-            printf("vous etes sortis de prison, felicitations !\n");
+            printf("vous etes sorti de prison, felicitations !\n");
             player[numeroTour]->argent -= 50;
 
         }
         else{
-            printf("Appuyer sur 1 pour lancer les des. Si vous faites un double, vous avez l'autorisation de quitter la prison spatiale !\n");
+            printf("Appuyez sur 1 pour lancer les des. Si vous faites un double, vous avez l'autorisation de quitter la prison spatiale !\n");
             scanf("%d",&choix2);
             while(choix2 != 1){
-                printf("IA : Saisie incorrect\n");
+                printf("IA : Saisie incorrecte\n");
                 getchar();
                 scanf("%d",&choix2);
             }
@@ -897,7 +913,7 @@ if(player[numeroTour]->prison == 1){
                 Color(player[numeroTour]->couleur, 0);
                 printf("%s, ", player[numeroTour]->prenomJoueur);
                 Color(3,0);
-                printf("vous etes sortis de prison, felicitations !\n");
+                printf("vous etes sorti de prison, felicitations !\n");
 
             }
             else{
@@ -921,10 +937,10 @@ if(player[numeroTour]->prison == 1){
         printf("\n%s, ", player[numeroTour]->prenomJoueur);
         Color(3,0);
         printf("vous etes en prison !\n");
-        printf("Appuyer sur 1 pour lancer les des. Si vous faites un double, vous avez l'autorisation de quitter la prison spatiale !\n");
+        printf("Appuyez sur 1 pour lancer les des. Si vous faites un double, vous avez l'autorisation de quitter la prison spatiale !\n");
         scanf("%d",&choix2);
         while(choix2 != 1){
-            printf("IA : Saisie incorrect\n");
+            printf("IA : Saisie incorrecte\n");
             getchar();
             scanf("%d",&choix2);
         }
@@ -936,7 +952,7 @@ if(player[numeroTour]->prison == 1){
             Color(player[numeroTour]->couleur, 0);
             printf("%s, ", player[numeroTour]->prenomJoueur);
             Color(3,0);
-            printf("vous etes sortis de prison, felicitations !\n");
+            printf("vous etes sorti de prison, felicitations !\n");
 
         }
         else{
@@ -952,9 +968,11 @@ if(player[numeroTour]->prison == 1){
 }
 
 
+///----------------------------------------------------------------------------------------------------------------------
 
 
-///PIOCHE
+
+///-----------------------------------------------------------PIOCHE CARTES CHANCES-----------------------------------------------------------
 void piocheCartesChances(int carte, t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur)
 {
 
@@ -1045,3 +1063,6 @@ void piocheCartesChances(int carte, t_joueur player[NbJoueurMax][TAILLE], int no
 
     }
 }
+
+
+///----------------------------------------------------------------------------------------------------------------------
