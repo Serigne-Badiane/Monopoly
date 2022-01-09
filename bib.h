@@ -4,7 +4,7 @@
 
 
 
-///JOUEURS
+///-----------------------------------------------------------JOUEURS-----------------------------------------------------------
 
 //Structure joueur
 typedef struct joueur
@@ -31,14 +31,20 @@ void saisie(t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur);
 int choixDuPremier(int nbJoueur);
 int lancerDe(t_joueur player[NbJoueurMax][TAILLE], int de[2], int joueur);
 
+///-----------------------------------------------------------FIN JOUEURS-----------------------------------------------------------
 
-///MENU
+
+///-----------------------------------------------------------MENU-----------------------------------------------------------
+
 void menu (t_joueur player[NbJoueurMax] [TAILLE]);
 
-///PLANETES ET ETOILES
+///-----------------------------------------------------------FIN MENU-----------------------------------------------------------
 
-//Structures planetes et etoiles
-//Structures planetes et etoiles
+
+///-----------------------------------------------------------PLANETES, GALAXIE ET SATELLITES-----------------------------------------------------------
+
+//Structures planetes
+
 typedef struct {
     int proprio;
     char nom [TAILLE];
@@ -60,6 +66,7 @@ typedef struct {
     int loyerFixe;
 }planete;
 
+//structure satellites
 typedef struct
 {
     int proprio;
@@ -82,6 +89,7 @@ typedef struct
     int etatHypo;
 }satellite;
 
+//structure galaxie
 typedef struct {
     int proprio ;
     char nom [TAILLE];
@@ -101,7 +109,8 @@ typedef struct {
 
 }galaxie;
 
-//Procedures planetes et etoiles
+
+//Procedures planetes, galaxie et satellites
 void arrivplan (planete *p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_, int *maisonMax, int *hotelMax,int nombreJoueur);
 void arrivgalax (galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int nombreJoueur);
 void arrivsat (satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_, int *maisonMax, int *hotelMax,int nombreJoueur);
@@ -132,17 +141,35 @@ void mercure(planete* mercure);
 void soleil (planete* soleil);
 void echange (int nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_);
 
+///-----------------------------------------------------------FIN PLANETES, GALAXIE ET SATELLITES-----------------------------------------------------------
+
+
+
+///-----------------------------------------------------------PLATEAU-----------------------------------------------------------
+
 //Affichage plateau
 void plateau();
 void pion (t_joueur player [NbJoueurMax][TAILLE],int nombreDeJoueur);
 void Color(int couleurDuTexte,int couleurDeFond);
 void gotoligcol( int lig, int col );
 
+///-----------------------------------------------------------FIN PLATEAU-----------------------------------------------------------
+
+
+///-----------------------------------------------------------DEAL-----------------------------------------------------------
 
 void echange (int nombreDeJoueur,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_);
+
+///-----------------------------------------------------------FIN DEAL-----------------------------------------------------------
+
+
+
+///-----------------------------------------------------------CARTES-----------------------------------------------------------
+
 void piocheCartesCommu(int carte, t_joueur player[NbJoueurMax][TAILLE], int nombreDeJoueur, int tourJoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int *maisonMax, int *hotelMax);
 
-//FIN DU JEU
-void faillite(t_joueur player [NbJoueurMax][TAILLE],int tourjoueur);
+///-----------------------------------------------------------FIN CARTES-----------------------------------------------------------
+
+
 
 #endif // BIB_H_INCLUDED

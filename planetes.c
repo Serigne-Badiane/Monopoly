@@ -1437,7 +1437,7 @@ void voieLactee(galaxie* voieLactee)
     voieLactee->prix = 200;
     char noms [] = "VOIE LACTEE";
     strcpy(voieLactee->nom, noms);
-    char anecdotes[] = "Voici notre galaxie : l a Voie Lactee. Elle comprend entre 200 et 400 milliards d'etoiles et au minimum 100 milliards de planetes, dont la Terre ! ";
+    char anecdotes[] = "Voici notre galaxie : la Voie Lactee. Elle comprend entre 200 et 400 milliards d'etoiles et au minimum 100 milliards de planetes, dont la Terre ! ";
     strcpy(voieLactee->anecdote, anecdotes);
 
     voieLactee->loyer = 25;
@@ -1810,6 +1810,7 @@ void soleil (planete* soleil){
 }
 
 ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 char *str_replace (const char *txt, const char *Avant, const char *Apres)
 {
