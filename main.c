@@ -6,6 +6,7 @@
 #define TAILLE 200
 #include "bib.h"
 
+///-----------------------------------------------------------Initialisation couleur-----------------------------------------------------------
 void Color(int couleurDuTexte,int couleurDeFond)
 {
     HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
@@ -13,6 +14,8 @@ void Color(int couleurDuTexte,int couleurDeFond)
 }
 
 
+
+///-----------------------------------------------------------Placement du curseur-----------------------------------------------------------
 void gotoligcol( int lig, int col )
 {
 
@@ -26,6 +29,8 @@ SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
 
 }
 
+
+///-----------------------------------------------------------Fonction pause-----------------------------------------------------------
 int pause(int sauvegarde, int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE], int* chargement)
 {
     char pause=kbhit('p');
@@ -417,6 +422,8 @@ while(choix != 0)
 
     }
     else{
+
+    ///-----------------------------------------------------------PLATEAU-----------------------------------------------------------
     switch(deplacement)
     {
         case 1:
@@ -589,11 +596,11 @@ while(choix != 0)
             pion(player,nombreJoueur);
             gotoligcol(35,1);
             Color(15,0);
-            printf("\nAppuyer sur 1 pour piocher une carte de communaute !\n");
+            printf("\nAppuyez sur 1 pour piocher une carte de communaute !\n");
             scanf("%d", &choix2);
             while(choix2 != 1){
                 Color(3,0);
-                printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
+                printf("\nIA : Je n'ai pas compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
                 fflush(stdin);
                 scanf("%d",&choix2);
             }
@@ -681,11 +688,11 @@ while(choix != 0)
 
             gotoligcol(35,1);
             Color(15,0);
-            printf("\nAppuyer sur 1 pour piocher une carte de communaute !\n");
+            printf("\nAppuyez sur 1 pour piocher une carte de communaute !\n");
             scanf("%d", &choix3);
             while(choix3 != 1){
                 Color(3,0);
-                printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
+                printf("\nIA : Je n'ai pas compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
                 scanf("%s");
                 scanf("%d",&choix3);
             }
@@ -778,10 +785,10 @@ while(choix != 0)
             pion(player,nombreJoueur);
 
             gotoligcol(35,1);
-            printf("\nAppuyer sur 1 pour piocher une carte chance !\n");
+            printf("\nAppuyez sur 1 pour piocher une carte chance !\n");
             scanf("%d", &choix4);
             while(choix4 != 1){
-                printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
+                printf("\nIA : Je n'ai pas compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
                 scanf("%s");
                 scanf("%d",&choix2);
             }
@@ -794,6 +801,8 @@ while(choix != 0)
         }
     }
     }
+
+    ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     tourJoueur += 1;
     if (tourJoueur == nombreJoueur )
@@ -900,7 +909,7 @@ while(choix != 0)
     if(chargement==1)
     {
         int chJ=0;
-        printf("\nIA : Bonjour ! Pouvez vous me communiquez combien de joueurs etiez vous dans la Partie que vous voulez reprendre");
+        printf("\nIA : Bonjour ! Pouvez vous me communiquer combien de joueurs etiez vous dans la Partie que vous voulez reprendre");
         scanf("%d",&chJ);
         while(chJ !=2 && chJ !=3 && chJ !=4)
         {
@@ -1179,7 +1188,7 @@ while(choix != 0)
 
 
     while(choix != 1 && choix != 0 && choix != 2){
-        printf("\nIA : Je n'ai compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
+        printf("\nIA : Je n'ai pas compris ... je sens que ca va etre complique ... veuillez ressaisir\n");
         scanf("%d",&choix);
 
     }
