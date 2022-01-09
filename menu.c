@@ -8,7 +8,7 @@
 #include "bib.h"
 
 
-///PROCEDURE MENU
+///FONCTION MENU
 int menu1 (int* nombreDeJoueur, int* nombreDeDeplacement, int* tourJoueur, t_joueur player[NbJoueurMax][TAILLE], int* chargement){
     int menu=0;
     int J=0;

@@ -9,7 +9,8 @@
 
 
 
-///AFFICHAGE DE L'ARRIVEE SUR LES PLANETES
+///-----------------------------------------------------------PROCEDURE D'ARRIVEE SUR LES PLANETES-----------------------------------------------------------
+
 void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_, int *maisonMax, int *hotelMax,int nombreJoueur){
     Color(3,0);
     printf("\n\n%cIA : Nous sommes arriv%cs sur une nouvelle plan%cte... La plan%cte %s !",0x10,0x82,0x8A,0x8A,p->nom);
@@ -22,15 +23,17 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         result = NULL;
     }
 
-    ///Cas où la propriété n'appartient à aucun joueur
+    ///************************************************CAS 1: où la propriété n'appartient à aucun joueur************************************************
     if (p->proprio != player[0]->numeroJoueur && p->proprio != player[1]->numeroJoueur && p->proprio != player[2]->numeroJoueur && p->proprio != player[3]->numeroJoueur){
         printf("\n%cIA : %s",0x10,p->anecdote);
-        printf("\n%cIA : Voici un r%ccapitulatif capitaine...",0x10,0x82);
+
+        //affichage des données de la propriété
+        printf("\n%cIA : Voici un r%capitulatif capitaine...",0x10,0x82);
         printf("\n\n                                                        ");
         Color(0,p->couleur);
         printf("%c PLAN%cTE %s %c",0x02,0xD4,p->nom,0x02);
         Color(15,0);
-        printf("\n                          Prix d'achat : %d",p->prix); //affichage des données de la propriété
+        printf("\n                          Prix d'achat : %d",p->prix);
         printf("\n                          Prix loyer sans sonde spatiale  : %d",p->loyer);
         printf("\n                              Prix loyer avec 1 sonde spatiale : %d",p->loyer1);
         printf("\n                              Prix loyer avec 2 sondes spatiales : %d",p->loyer2);
@@ -40,10 +43,10 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
 
         printf("\n                          Prix d'une sonde spatiale : %d",p->prixMaison);
         printf("\n                          Prix d'une station spatiale : %d",p->prixMaison);
-        printf("\n                          Prix hypoth%cquaire : %d",0x82,p->p_hypo);
+        printf("\n                          Prix hypoth%ccaire : %d",0x82,p->p_hypo);
 
         Color(3,0);
-        printf("\nIA : La planete est libre d'achat, souhaitez-vous l'acheter ?\n ");
+        printf("\nIA : La plan%cte est libre d'achat, souhaitez-vous l'acheter ?\n ", 0x8A);
         printf("                                  ");
         Color(10,0);
         printf("1.OUI");
@@ -54,44 +57,46 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         int answer;
         scanf("%d",&answer);
         while( answer != 1 && answer != 2){ //blindage du choix du joueur
-            printf("IA : Saisie incorrect\n");
+            printf("IA : Saisie incorrecte\n");
             fflush(stdin);
             scanf("%d",&answer);
         }
         Color(3,0);
 
-        ///si je joueur veut acheter la propriété ET possède assez d'argent
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~si le joueur veut acheter la propriété ET possède assez d'argent~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         if ( answer == 1 && player[tourjoueur]->argent >= p->prix){
             p->proprio = player[tourjoueur]->numeroJoueur; //on ajoute le nom du joueur à la propriété
             strcat(player[tourjoueur]->proprietes,p->nom); //on ajoute la propriété au joueur
             strcat(player[tourjoueur]->proprietes,",");
             player[tourjoueur]->famillec[p->couleurF] += 1;
-            verfiwin(player , tourjoueur , nombreJoueur); //on verifie si le joueur a assez de proriété pour gagner
+            verfiwin(player , tourjoueur , nombreJoueur); //on verifie si le joueur a assez de proriétés pour gagner
 
             player[tourjoueur]->argent -= p->prix; //on retire l'argent de l'achat
-            printf("IA : BRAVO %s! Vous avez aquis une nouvelle planete ...\n",player[tourjoueur]->prenomJoueur);
+            printf("IA : BRAVO %s! Vous avez acquis une nouvelle plan%cte ...\n",player[tourjoueur]->prenomJoueur, 0x8A);
             Color(player[tourjoueur]->couleur, 0);
             printf("%s, Porte Monnaie : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
 
 
         }
 
-        ///si le joueur veut acheter la propriété MAIS ne possède pas d'argent
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~si le joueur veut acheter la propriété MAIS ne possède pas d'argent~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if(player[tourjoueur]->argent< p->prix){
-            printf("IA : Vous n'avez pas assez d'argent pour acheter cette planete !");
+            printf("IA : Vous n'avez pas assez d'argent pour acheter cette plan%cte !",0x8A );
         }
 
-        ///si le joueur ne veut pas acheter la propriété
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~si le joueur ne veut pas acheter la propriété~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else {
             printf("IA : Fin de tour ...");
         }
 
     }
 
-    ///CAS où la propriété appartient au joueur et que la propriété n'est pas hypothéquée
+
+
+    ///************************************************CAS 2: où la propriété appartient au joueur et que la propriété n'est pas hypothéquée************************************************
     else if(player[p->proprio - 1]->prenomJoueur == player[tourjoueur]->prenomJoueur && p->etatHypo == 0){
         Color(15,0);
-        printf("\n                          Prix hypoth%cquaire : %d",0x82,p->p_hypo);
+        printf("\n                          Prix hypoth%ccaire : %d",0x82,p->p_hypo);
         printf("\n                          Nombre de sondes spatiales : %d",p->maison);
         printf("\n                          Nombre de stations spatiales : %d",p->hotel);
         printf("\n                          Prix d'une sonde spatiale : %d",p->prixMaison);
@@ -120,21 +125,21 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         scanf("%d", &choix);
         Color(3,0);
         while( choix != 1 && choix != 2){ //blindage
-            printf("IA : Saisie incorrect\n");
+            printf("IA : Saisie incorrecte\n");
             fflush(stdin);
             scanf("%d",&choix);
         }
 
-        ///Si le joueur veut acheter une maison ET possède assez d'argent ET s'il reste des maisons
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si le joueur veut acheter une maison ET possède assez d'argent ET s'il reste des maisons~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         if(choix == 1 && player[tourjoueur]->argent >= p->prixMaison && *maisonMax >= 0){
-            printf("Vous avez achete une sonde spatiale, felicitations !\n");
+            printf("Vous avez achet%c une sonde spatiale, f%clicitations !\n", 0x82,0x82);
             player[tourjoueur]->argent -= p->prixMaison; //on déduit le prix d'une maison au joueur
             p->maison += 1; //on ajoute une maison à la propriété
             *maisonMax -= 1; //on enlève une maison aux maisons totales (32)
 
-            ///Si la propriété possède 4 maisons ET s'il reste des hôtels, on demande au joueur s'il veut acheter un hôtel
+            ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si la propriété possède 4 maisons ET s'il reste des hôtels, on demande au joueur s'il veut acheter un hôtel~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             if (p->maison == 4 && *hotelMax >=0){
-                printf("Vous possedez 4 sondes spatiales. Voulez-vous les remplacer par une station spatiale ?\n ");
+                printf("Vous poss%cdez 4 sondes spatiales. Voulez-vous les remplacer par une station spatiale ?\n ", 0x82);
                 printf("                                  ");
                 Color(10,0);
                 printf("1.OUI");
@@ -145,25 +150,25 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 int choix2;
                 scanf("%d", &choix2);
                 while( choix != 1 && choix != 2){ //blindage
-                    printf("IA : Saisie incorrect\n");
+                    printf("IA : Saisie incorrecte\n");
                     fflush(stdin);
                     scanf("%d",&choix);
                 }
 
-                ///le joueur possède assez d'argent et veut acheter un hôtel
+                ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Si le joueur possède assez d'argent et veut acheter un hôtel~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 if(choix2 == 1 && player[tourjoueur]->argent >= p->prixMaison){
                     p->maison = 0; //on enlève les 4 maisons à la propriété
                     p->hotel = 1;   //on ajoute un hôtel à la propriété
                     *hotelMax -=1; //on enlève un hôtel au nombre d'hôtel maximum (12)
                     *maisonMax += 4; //on rajoute les 4 maisons au nombre de maisons maximum (32)
                     Color(3,0);
-                    printf("Vous avez achete une station spatiale, felicitations !");
+                    printf("Vous avez achet%c une station spatiale, f%clicitations !", 0x82,0x82);
                     player[tourjoueur]->argent -= p->prixMaison; //on déduit le prix d'une maison au joueur
                     printf("%d", player[tourjoueur]->argent);
 
                 }
 
-                ///Le joueur ne veut pas acheter d'hôtel, on lui demande s'il veut en vendre.
+                ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sinon si le joueur ne veut pas acheter d'hôtel, on lui demande s'il veut en vendre~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 else if (choix2 == 2 && p->hotel > 0){
                     int choixVente2;
                     int nombreDeHotel;
@@ -179,18 +184,18 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                     scanf("%d", &choixVente2);
                     Color(3,0);
                     while( choixVente2 != 1 && choixVente2 != 2){ //blindage
-                        printf("IA : Saisie incorrect\n");
+                        printf("IA : Saisie incorrecte\n");
                         fflush(stdin);
                         scanf("%d",&choixVente2);
                     }
 
-                    ///le joueur veut vendre un hôtel
+                    ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~si le joueur veut vendre un hôtel~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                     if (choixVente2 == 1){
-                        printf("Vous possedez %d stations.\n", p->hotel);
+                        printf("Vous poss%cdez %d station(s).\n", 0x82, p->hotel);
                         printf("Combien de stations voulez-vous vendre ?\n");
                         scanf("%d", &nombreDeHotel);
                         while(nombreDeHotel > p->hotel ){ //blindage
-                            printf("IA : Saisie incorrect !\n");
+                            printf("IA : Saisie incorrecte !\n");
                         }
                         *hotelMax += nombreDeHotel; //on rajoute un hôtel au nombre d'hôtel maximum
                         p->hotel -= nombreDeHotel; //on enlève un hôtel à la propriété
@@ -199,11 +204,11 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                         }
 
                     }
-                    printf("IA : Vente reussie !\n");
+                    printf("IA : Vente r%cussie !\n", 0x82);
 
                 }
 
-                ///Si le joueur veut acheter un hôtel mais n'a pas assez d'argents
+                ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si le joueur veut acheter un hôtel mais n'a pas assez d'argents~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 else if(player[tourjoueur]->argent < p->prixMaison){
                     printf("\nIA : Vous n'avez pas assez d'argent pour acheter une station spatiale");
                 }
@@ -211,7 +216,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             }
         }
 
-        ///Si le joueur ne veut pas acheter de maisons ET la propriété possède des maisons, on lui demande s'il veut en vendre
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si le joueur ne veut pas acheter de maisons ET la propriété possède des maisons, on lui demande s'il veut en vendre~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (choix == 2 && p->maison > 0 && p->etatHypo == 0){
                 int choixVente;
                 int nombreDeMaison;
@@ -226,18 +231,18 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 scanf("%d", &choixVente);
                 Color(3,0);
                 while( choixVente != 1 && choixVente != 2){ //blindage
-                    printf("IA : Saisie incorrect\n");
+                    printf("IA : Saisie incorrecte\n");
                     fflush(stdin);
                     scanf("%d",&choixVente);
                 }
 
-                ///Le joueur veut vendre
+                ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ si le joueur veut vendre~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 if (choixVente == 1){
-                    printf("Vous possedez %d sondes.\n", p->maison);
+                    printf("Vous poss%cdez %d sonde(s).\n",0x82, p->maison);
                     printf("Combien de maison voulez-vous vendre ?\n");
                     scanf("%d", &nombreDeMaison);
                     while(nombreDeMaison > p->maison ){ //blindage
-                        printf("IA : Saisie incorrect !\n");
+                        printf("IA : Saisie incorrecte !\n");
                         fflush(stdin);
                         scanf("%d", &nombreDeMaison);
                     }
@@ -246,17 +251,17 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                     for (int m = 0; m<nombreDeMaison; m++){ //on retire le prix d'une maison au joueur, n fois (n étant le nombre de maisons vendues)
                         player[tourjoueur]->argent += p->prixMaison;
                     }
-                    printf("IA : Vente reussie !\n");
+                    printf("IA : Vente r%cussie !\n", 0x82);
 
                 }
         }
 
 
-        ///Le joueur ne veut pas acheter de maisons ET ne possède aucune maisons ET aucun hôtel ET la propriété n'est pas hypothéquée
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sinon si le joueur ne veut pas acheter de maisons ET ne possède aucune maison ET aucun hôtel ET la propriété n'est pas hypothéquée~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if(choix == 2 && p->maison == 0 && p->hotel == 0 && p->etatHypo == 0){
                     int choixHypo;
                     Color(player[tourjoueur]->couleur,0);
-                    printf("Souhaitez-vous hypothequer votre propriete ?\n");
+                    printf("Souhaitez-vous hypoth%cquer votre propri%ct%c ?\n", 0x82,0x82,0x82);
                     printf("                                  ");
                     Color(10,0);
                     printf("1.OUI");
@@ -267,12 +272,12 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                     scanf("%d", &choixHypo);
                     Color(3,0);
                     while( choixHypo!= 1 && choixHypo != 2){ //blindage
-                        printf("IA : Saisie incorrect\n");
+                        printf("IA : Saisie incorrecte\n");
                         fflush(stdin);
                         scanf("%d",&choixHypo);
                     }
 
-                    ///Le joueur veut hypothéquer
+                    ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Si le joueur veut hypothéquer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                     if (choixHypo == 1){
                         Color(player[tourjoueur]->couleur, 0);
                         printf("Vous recevez %d !\n", p->p_hypo);
@@ -285,11 +290,11 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
 
     }
 
-    ///Si la propriété est hypothéquée
+     ///************************************************CAS 3: àù la propriété est hypothéquée************************************************
     else if (player[p->proprio - 1]->prenomJoueur == player[tourjoueur]->prenomJoueur && p->etatHypo == 1){
             int choixLeverHypo;
             Color(player[tourjoueur]->couleur,0);
-            printf("\n%s, voulez-vous levez l'hypotheque ?\n", player[tourjoueur]->prenomJoueur);
+            printf("\n%s, voulez-vous lever l'hypoth%cque ?\n", player[tourjoueur]->prenomJoueur, 0x8A);
             printf("                                  ");
             Color(10,0);
             printf("1.OUI");
@@ -300,16 +305,16 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             scanf("%d", &choixLeverHypo);
             Color(3,0);
             while( choixLeverHypo!= 1 && choixLeverHypo != 2){ //blindage
-                printf("IA : Saisie incorrect\n");
+                printf("IA : Saisie incorrecte\n");
                 fflush(stdin);
                 scanf("%d", &choixLeverHypo);
             }
 
-            ///le joueur veut lever l'hypothèque
+            ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~si le joueur veut lever l'hypothèque~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             if(choixLeverHypo == 1){
                 int prixADeduire= (p->p_hypo)*0.1; //il doit payer 10% de l'hypothèque
                 prixADeduire += p->p_hypo;
-                printf("Vous payer %d \n", prixADeduire);
+                printf("Vous payez %d \n", prixADeduire);
                 player[tourjoueur]->argent -= prixADeduire; //le joueur est déduit
                 Color(player[tourjoueur]->couleur,0);
                 printf("Porte-monnaie : %d\n", player[tourjoueur]->argent);
@@ -324,7 +329,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
 
 
 
-    ///CAS où le joueur ne possède pas la propriété mais et déjà possédé par un joueur
+    ///************************************************CAS 4: où le joueur ne possède pas la propriété mais est déjà possédée par un joueur************************************************
     else {
         Color(15,0);
         printf("\n                          Nombre de sondes spatiales : %d",p->maison);
@@ -339,18 +344,18 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
 
         printf("                                  ");
         Color(3,0);
-        printf("\nIA : La planete appartient a ");
+        printf("\nIA : La plan%cte appartient a ", 0x8A);
         Color(player[p->proprio - 1]->couleur,0);
         printf("%s",player[p->proprio - 1]->prenomJoueur);
         Color(3,0);
         printf("... Vous devez lui payer son loyer !");
 
-        ///Si le propriétaire possède toutes les propriétés d'une même couleur, le joueur paye double loyer
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si le propriétaire possède toutes les propriétés d'une même couleur, le joueur paye double loyer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
             printf("\nIA: ");
             Color(player[p->proprio - 1]->couleurJoueur,0);
             printf("%s",player[p->proprio - 1]->prenomJoueur);
-            printf(" possede cette famille d'astre ! Le loyer est donc double !");
+            printf(" poss%cde cette famille d'astre ! Le loyer est donc double !", 0x8A );
             Color(player[tourjoueur]->couleur,0);
             printf("\n%s",player[tourjoueur]->prenomJoueur);
             Color(3,0);
@@ -360,7 +365,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             Color(3,0);
         }
 
-        ///Si le loyer est "simple"
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si le loyer est "simple"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else {
         Color(player[tourjoueur]->couleur,0);
         printf("\n%s",player[tourjoueur]->prenomJoueur);
@@ -371,17 +376,17 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         Color(3,0);
         }
 
-        ///Si la propriété ne possède aucune maison / aucun hôtel ET possède assez d'argent pour payer
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si la propriété ne possède aucune maison / aucun hôtel ET possède assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         if(p->maison == 0 && p->hotel == 0 && player[tourjoueur]->argent >= p->loyer){
 
-            ///Si loyer double
+            ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si loyer double~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
             player[tourjoueur]->argent -= (p->loyer)*2; //le joueur payer le loyer 2 fois
             player[p->proprio - 1]->argent += (p->loyer)*2; //le propriétaire gagne 2 fois le loyer
             printf(" %d euros...",(p->loyer)*2);
             }
 
-            ///Si loyer simple
+            ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si loyer simple~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             else {
             player[tourjoueur]->argent -= p->loyer; //on déduit le prix du loyer au joueur
             player[p->proprio - 1]->argent += p->loyer; //le propriétaire gagner l'argent du loyer
@@ -389,7 +394,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             }
         }
 
-        ///Si la propriété ne possède une maison ET possède assez d'argent pour payer
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sinon si la propriété ne possède une maison ET possède assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (p->maison == 1 && player[tourjoueur]->argent >= p->loyer1){
             if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
                 player[tourjoueur]->argent -= (p->loyer1)*2;
@@ -402,7 +407,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             printf(" %d euros...",p->loyer1);
             }
         }
-        ///Si la propriété ne possède 2 maisons ET possède assez d'argent pour payer
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si la propriété ne possède 2 maisons ET possède assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (p->maison == 2 && player[tourjoueur]->argent >= p->loyer2){
             if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
                 player[tourjoueur]->argent -= (p->loyer2)*2;
@@ -415,7 +420,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 printf(" %d euros...",p->loyer2);
             }
         }
-        ///Si la propriété ne possède 3 maisons ET possède assez d'argent pour payer
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sinon si la propriété ne possède 3 maisons ET possède assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (p->maison == 3 && player[tourjoueur]->argent >= p->loyer3){
             if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
                 player[tourjoueur]->argent -= (p->loyer3)*2;
@@ -428,7 +433,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 printf(" %d euros...",p->loyer3);
             }
         }
-        ///Si la propriété ne possède 4 maisons ET possède assez d'argent pour payer
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sinon si la propriété ne possède 4 maisons ET possède assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if(p->maison == 4 && player[tourjoueur]->argent >= p->loyer4){
             if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
                 player[tourjoueur]->argent -= (p->loyer4)*2;
@@ -441,7 +446,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 printf(" %d euros...",p->loyer4);
             }
         }
-        ///Si la propriété ne possède un hôtel ET possède assez d'argent pour payer
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sinon si la propriété ne possède un hôtel ET possède assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if(p->hotel == 1 && player[tourjoueur]->argent >= p->loyerHotel){
             if (player[p->proprio - 1]->famillec[p->couleurF] == 2){
                 player[tourjoueur]->argent -= (p->loyerHotel)*2;
@@ -455,7 +460,7 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             }
         }
 
-        ///Si le joueur ne possède pas assez d'argent pour payer
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sinon si le joueur ne possède pas assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (p->maison == 0 && p->hotel == 0 && player[tourjoueur]->argent <= p->loyer) {
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
@@ -595,7 +600,12 @@ void arrivplan (planete* p,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
     }
 }
 
-///AFFICHAGE DE L'ARRIVEE SUR LES ETOILES
+
+///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+///-----------------------------------------------------------PROCEDURE D'ARRIVEE SUR LES GALAXIES-----------------------------------------------------------
 void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_,int nombreJoueur){
     Color(3,0);
     printf("\n\n%cIA : Nous sommes arriv%cs sur une nouvelle galaxie : ...%s !",0x10,0x82,g->nom);
@@ -607,13 +617,15 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         }
         result = NULL;
     }
+
+    ///************************************************CAS 1: où la galaxie appartient à un joueur************************************************
     if (g->proprio != player[tourjoueur]->numeroJoueur && g->proprio != 5){
         Color(15,0);
-        printf("\n                          Nombre de galaxie possede par %s : %d",player[g->proprio - 1]->prenomJoueur, player[g->proprio-1]->nbDeGare);
+        printf("\n                          Nombre de galaxies poss%cd%ces par %s : %d",0x82,0x82,player[g->proprio - 1]->prenomJoueur, player[g->proprio-1]->nbDeGare);
         printf("\n                          Prix loyer avec 1 galaxie : %d",g->loyer);
-        printf("\n                              Prix loyer avec 2 galaxie : %d",g->loyer1);
-        printf("\n                              Prix loyer avec 3 galaxie : %d",g->loyer2);
-        printf("\n                              Prix loyer avec 4 galaxie : %d",g->loyer3);
+        printf("\n                              Prix loyer avec 2 galaxies : %d",g->loyer1);
+        printf("\n                              Prix loyer avec 3 galaxies : %d",g->loyer2);
+        printf("\n                              Prix loyer avec 4 galaxies : %d",g->loyer3);
         Color(3,0);
         printf("\nIA : La galaxie appartient a ");
         Color(player[g->proprio - 1]->couleur,0);
@@ -628,27 +640,35 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         printf("%s",player[g->proprio - 1]->prenomJoueur);
         Color(3,0);
 
-
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~si le joueur possède 1 seule gare~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         if(player[g->proprio - 1]->nbDeGare == 1 && player[tourjoueur]->argent >= g->loyer){
             player[tourjoueur]->argent -= g->loyer;
             player[g->proprio - 1]->argent += g->loyer;
             printf(" %d euros...",g->loyer);
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sinon si le joueur possède 2 gares~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (player[g->proprio - 1]->nbDeGare == 2 && player[tourjoueur]->argent >= g->loyer1){
             player[tourjoueur]->argent -= g->loyer1;
             player[g->proprio - 1]->argent += g->loyer1;
             printf(" %d euros...",g->loyer1);
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sinon si le joueur possède 3 gares ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (player[g->proprio - 1]->nbDeGare == 3 && player[tourjoueur]->argent >= g->loyer2){
             player[tourjoueur]->argent -= g->loyer2;
             player[g->proprio - 1]->argent += g->loyer2;
             printf(" %d euros...",g->loyer2);
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sinon si le joueur possède 4 gares~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (player[g->proprio - 1]->nbDeGare == 4 && player[tourjoueur]->argent >= g->loyer3){
             player[tourjoueur]->argent -= g->loyer3;
             player[g->proprio - 1]->argent += g->loyer3;
             printf(" %d euros...",g->loyer3);
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sinon si le joueur qui doit payer le loyer ne possède pas assez d'argent dans le cas d'1 gare~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (player[g->proprio - 1]->nbDeGare == 1 && player[tourjoueur]->argent <= g->loyer) {
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
@@ -657,6 +677,8 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             player[tourjoueur]->argent -= g->loyer;
             player[g->proprio - 1] ->argent -= g->loyer;
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sinon si le joueur qui doit payer le loyer ne possède pas assez d'argent dans le cas de 2 gares~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (player[g->proprio - 1]->nbDeGare == 2 && player[tourjoueur]->argent <= g->loyer1){
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
@@ -665,6 +687,8 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             player[tourjoueur]->argent -= g->loyer1;
             player[g->proprio - 1] ->argent += g->loyer1;
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sinon si le joueur qui doit payer le loyer ne possède pas assez d'argent dans le cas de 3 gares~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if(player[g->proprio - 1]->nbDeGare == 3 && player[tourjoueur]->argent <= g->loyer2){
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
@@ -673,6 +697,8 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             player[tourjoueur]->argent -= g->loyer2;
             player[g->proprio - 1] ->argent += g->loyer2;
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sinon si le joueur qui doit payer le loyer ne possède pas assez d'argent dans le cas de 4 gares~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (player[g->proprio - 1]->nbDeGare == 4 && player[tourjoueur]->argent <= g->loyer3){
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
@@ -689,6 +715,8 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         printf("%s, Porte Monnaire : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
 
     }
+
+    ///************************************************CAS 2: où la galaxie n'appartient à aucun joueur************************************************
     else if( g->proprio != player[0]->numeroJoueur && g->proprio != player[1]->numeroJoueur && g->proprio != player[2]->numeroJoueur && g->proprio != player[3]->numeroJoueur ){
         printf("\n%cIA : %s",0x10,g->anecdote);
         printf("\n%cIA : Voici un r%capitulatif capitaine...",0x10,0x82);
@@ -699,10 +727,10 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         Color(15,0);
         printf("\n                          Prix d'achat : %d",g->prix);
         printf("\n                          Prix loyer avec 1 galaxie  : %d",g->loyer);
-        printf("\n                              Prix loyer avec 2 galaxie : %d",g->loyer1);
-        printf("\n                              Prix loyer avec 3 galaxie : %d",g->loyer2);
-        printf("\n                              Prix loyer avec 4 galaxie : %d",g->loyer3);
-        printf("\n                          Prix hypoth%cquaire : %d",0x82,g->p_hypo);
+        printf("\n                              Prix loyer avec 2 galaxies : %d",g->loyer1);
+        printf("\n                              Prix loyer avec 3 galaxies : %d",g->loyer2);
+        printf("\n                              Prix loyer avec 4 galaxies : %d",g->loyer3);
+        printf("\n                          Prix hypoth%ccaire : %d",0x82,g->p_hypo);
         Color(3,0);
         printf("\nIA : La galaxie est libre d'achat, souhaitez-vous l'acheter ?\n ");
         printf("                      ");
@@ -715,11 +743,13 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         int answer;
         scanf("%d",&answer);
         while( answer != 1 && answer != 2){
-            printf("IA : Saisie incorrect\n");
+            printf("IA : Saisie incorrecte\n");
             fflush(stdin);
             scanf("%d",&answer);
         }
         Color(3,0);
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~si le joueur veut acheter la gare~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         if ( answer == 1 && player[tourjoueur]->argent >= g->prix){
             g->proprio = player[tourjoueur]->numeroJoueur;
             strcat(player[tourjoueur]->proprietes,g->nom);
@@ -727,14 +757,15 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             player[tourjoueur]->argent -= g->prix;
             player[tourjoueur]->famillec[g->couleurF] += 1;
             verfiwin(player , tourjoueur , nombreJoueur);
-            printf("IA : BRAVO %s! Vous avez aquis une nouvelle galaxie ...",player[tourjoueur]->prenomJoueur);
-            player[tourjoueur]->nbDeGare += 1; //pour les gares, nous n'avons de maisons. Donc on compte les nombres de gares poss�des;
+            printf("IA : BRAVO %s! Vous avez acquis une nouvelle galaxie ...",player[tourjoueur]->prenomJoueur);
+            player[tourjoueur]->nbDeGare += 1; //pour les gares, nous n'avons de maisons. Donc on compte les nombres de gares possédées;
             Color(player[tourjoueur]->couleur, 0);
             printf("%s, Porte Monnaie : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
 
 
 
         }
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sinon si le joueur ne peut pas acheter la gare car il n'a pas assez d'argent~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if(player[tourjoueur]->argent < g->prix){
             printf("\nIA : Vous n'avez pas assez d'argent pour acheter cette galaxie !");
         }
@@ -744,12 +775,12 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
     }
     else{
         Color(15,0);
-        printf("\n                          Nombre de galaxie possede par %s : %d",player[g->proprio - 1]->prenomJoueur, player[g->proprio-1]->nbDeGare);
-        printf("\n                          Prix hypoth%cquaire : %d",0x82,g->p_hypo);
+        printf("\n                          Nombre de galaxies poss%cd%ces par %s : %d",0x82,0x82,player[g->proprio - 1]->prenomJoueur, player[g->proprio-1]->nbDeGare);
+        printf("\n                          Prix hypoth%caire : %d",0x82,g->p_hypo);
         printf("\n                          Prix loyer avec 1 galaxie : %d",g->loyer);
-        printf("\n                              Prix loyer avec 2 galaxie : %d",g->loyer1);
-        printf("\n                              Prix loyer avec 3 galaxie : %d",g->loyer2);
-        printf("\n                              Prix loyer avec 4 galaxie : %d",g->loyer3);
+        printf("\n                              Prix loyer avec 2 galaxies : %d",g->loyer1);
+        printf("\n                              Prix loyer avec 3 galaxies : %d",g->loyer2);
+        printf("\n                              Prix loyer avec 4 galaxies : %d",g->loyer3);
         Color(3,0);
         printf("\nIA : La galaxie appartient a ");
         Color(player[g->proprio - 1]->couleur,0);
@@ -761,7 +792,7 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         if(g->etatHypo == 1){
             int choixLeverHypo;
             Color(player[tourjoueur]->couleur,0);
-            printf("\n%s, voulez-vous levez l'hypotheque ?\n", player[tourjoueur]->prenomJoueur);
+            printf("\n%s, voulez-vous levez l'hypoth%cque ?\n", player[tourjoueur]->prenomJoueur,0x8A);
             printf("                                  ");
             Color(10,0);
             printf("1.OUI");
@@ -772,14 +803,14 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             scanf("%d", &choixLeverHypo);
             Color(3,0);
             while( choixLeverHypo!= 1 && choixLeverHypo != 2){
-                printf("IA : Saisie incorrect\n");
+                printf("IA : Saisie incorrecte\n");
                 fflush(stdin);
                 scanf("%d", &choixLeverHypo);
             }
             if(choixLeverHypo == 1){
                 int prixADeduire= (g->p_hypo)*0.1;
                 prixADeduire += g->p_hypo;
-                printf("IA : Vous payer %d \n", prixADeduire);
+                printf("IA : Vous payez %d \n", prixADeduire);
                 player[tourjoueur]->argent -= prixADeduire;
                 Color(player[tourjoueur]->couleur,0);
                 printf("Porte-monnaie : %d\n", player[tourjoueur]->argent);
@@ -792,11 +823,15 @@ void arrivgalax(galaxie* g,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
     }
 }
 
+///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+///-----------------------------------------------------------PROCEDURE D'ARRIVEE SUR LES SATELITTES-----------------------------------------------------------
 void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,planete terre_,planete mars_,planete jupiter_,planete saturne_,planete pluton_,planete neptune_,planete venus_,planete uranus_,planete mercure_,planete soleil_,satellite lune_,satellite phobos_,satellite ganymede_,satellite callisto_,satellite io_,satellite titan_,galaxie voieLactee_,galaxie andromede_,galaxie tetard_,galaxie nuageDeMagellan_, int *maisonMax, int *hotelMax,int nombreJoueur)
 {
     Color(3,0);
     s->proprio = 5;
-    printf("\n\n%cIA : Nous sommes arriv%cs sur un nouveaux satellite ...  %s !",0x10,0x82,s->nom);
+    printf("\n\n%cIA : Nous sommes arriv%cs sur un nouveau satellite ...  %s !",0x10,0x82,s->nom);
     for (int i =0 ; i<4 ; i++){
         char * result = strstr(player[i]->proprietes, s->nom);
         if (result != NULL){
@@ -805,9 +840,12 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         result = NULL;
     }
 
+     ///************************************************CAS 1: où la propriété appartient au joueur ************************************************
     if(player[s->proprio - 1]->prenomJoueur == player[tourjoueur]->prenomJoueur && s->etatHypo == 0){
+
+        //affichage des données de la propriété
         Color(15,0);
-        printf("\n                          Prix hypoth%cquaire : %d",0x82,s->p_hypo);
+        printf("\n                          Prix hypoth%ccaire : %d",0x82,s->p_hypo);
         printf("\n                          Nombre de sondes spatiales : %d",s->maison);
         printf("\n                          Nombre de stations spatiales : %d",s->hotel);
         printf("\n                          Prix d'une sonde spatiale : %d",s->prixMaison);
@@ -835,19 +873,21 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         int choix;
         scanf("%d", &choix);
         Color(3,0);
-        while( choix != 1 && choix != 2){
-            printf("IA : Saisie incorrect\n");
+        while( choix != 1 && choix != 2){ //blindage
+            printf("IA : Saisie incorrecte\n");
             fflush(stdin);
             scanf("%d",&choix);
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si le joueur veut acheter une maison ET possède assez d'argent ET s'il reste des maisons~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         if(choix == 1 && player[tourjoueur]->argent >= s->prixMaison && *maisonMax >= 0){
-            printf("Vous avez achete une sonde spatiale, felicitations !");
+            printf("Vous avez achet%c une sonde spatiale, f%clicitations !", 0x82, 0x82);
             player[tourjoueur]->argent -= s->prixMaison;
             s->maison += 1;
             *maisonMax -= 1;
 
 
-            //placement des hotels
+            ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si la propriété possède 4 maisons ET s'il reste des hôtels, on demande au joueur s'il veut acheter un hôtel~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             if (s->maison == 4 && *hotelMax >= 0){
                 printf("Vous possedez 4 maisons. Voulez-vous les remplacer par une station spatiale ?\n ");
                 printf("                                  ");
@@ -859,22 +899,26 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 Color(15,0);
                 int choix2;
                 scanf("%d", &choix2);
-                while( choix != 1 && choix != 2){
-                    printf("IA : Saisie incorrect\n");
+                while( choix != 1 && choix != 2){ //blindage
+                    printf("IA : Saisie incorrecte\n");
                     getchar();
                     scanf("%d",&choix);
                 }
+
+                ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Si le joueur possède assez d'argent et veut acheter un hôtel~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 if(choix2 == 1 && player[tourjoueur]->argent >= s->prixMaison){
                     s->maison = 0;
                     s->hotel = 1;
                     *hotelMax -= 1;
                     *maisonMax += 4;
                     Color(3,0);
-                    printf("Vous avez achete une station spatiale, felicitations !");
+                    printf("Vous avez achet%c une station spatiale, f%clicitations !", 0x82, 0x82);
                     player[tourjoueur]->argent -= s->prixMaison;
 
 
                 }
+
+                ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sinon si le joueur ne veut pas acheter d'hôtel, on lui demande s'il veut en vendre~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 else if (choix2 == 2 && s->hotel > 0){
                     int choixVente2;
                     int nombreDeHotel;
@@ -888,34 +932,39 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                     Color(15,0);
                     scanf("%d", &choixVente2);
                     Color(3,0);
-                    while( choixVente2 != 1 && choixVente2 != 2){
+                    while( choixVente2 != 1 && choixVente2 != 2){ //blindage
                         printf("IA : Saisie incorrect\n");
                         fflush(stdin);
                         scanf("%d",&choixVente2);
                     }
+
+                     ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~si le joueur veut vendre un hôtel~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                     if (choixVente2 == 1){
-                        printf("Vous possedez %d stations.\n", s->hotel);
+                        printf("Vous poss%cdez %d stations.\n",0x82, s->hotel);
                         printf("Combien de stations voulez-vous vendre ?\n");
                         scanf("%d", &nombreDeHotel);
-                        while(nombreDeHotel > s->hotel ){
+                        while(nombreDeHotel > s->hotel ){ //blindage
                             printf("IA : Saisie incorrect !\n");
                         }
-                        *hotelMax += nombreDeHotel;
-                        s->hotel -= nombreDeHotel;
-                        for (int m = 0; m<nombreDeHotel; m++){
+                        *hotelMax += nombreDeHotel; //on rajoute un hôtel au nombre d'hôtel maximum
+                        s->hotel -= nombreDeHotel; //on enlève un hôtel à la propriété
+                        for (int m = 0; m<nombreDeHotel; m++){ //on retire le prix d'une maison, n fois (n étant le nombre d'hôtel que le joueur veut vendre)
                             player[tourjoueur]->argent += s->prixMaison;
                         }
 
                     }
-                    printf("IA : Vente reussie !\n");
+                    printf("IA : Vente r%cussie !\n", 0x82);
                 }
 
+                 ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sinon si le joueur veut acheter un hôtel mais n'a pas assez d'argent~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 else if(player[tourjoueur]->argent < s->prixMaison){
                     printf("\nIA : Vous n'avez pas assez d'argent pour acheter une station spataile !");
                 }
 
             }
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sinon si le joueur ne veut pas acheter de maisons ET la propriété possède des maisons, on lui demande s'il veut en vendre~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (choix == 2 && s->maison > 0){
                 int choixVente;
                 int nombreDeMaison;
@@ -929,35 +978,38 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 Color(15,0);
                 scanf("%d", &choixVente);
                 Color(3,0);
-                while( choixVente != 1 && choixVente != 2){
+                while( choixVente != 1 && choixVente != 2){ //blindage
                     printf("IA : Saisie incorrect\n");
                     fflush(stdin);
                     scanf("%d",&choixVente);
                 }
+                ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ si le joueur veut vendre~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 if (choixVente == 1){
-                    printf("Vous possedez %d sondes.\n", s->maison);
-                    printf("Combien de maison voulez-vous vendre ?\n");
+                    printf("Vous poss%cdez %d sondes.\n",0x82, s->maison);
+                    printf("Combien de maisons voulez-vous vendre ?\n");
                     scanf("%d", &nombreDeMaison);
                     while(nombreDeMaison > s->maison ){
-                        printf("IA : Saisie incorrect !\n");
+                        printf("IA : Saisie incorrecte !\n");
                         fflush(stdin);
                         scanf("%d", &nombreDeMaison);
                     }
-                    *maisonMax += nombreDeMaison;
-                    s->maison -= nombreDeMaison;
-                    for (int m = 0; m<nombreDeMaison; m++){
+                    *maisonMax += nombreDeMaison; //on rajoute le nombre de maisons vendues au nombre de maisons maximum
+                    s->maison -= nombreDeMaison; //on retire le nombre de maisons vendues à la propriété
+                    for (int m = 0; m<nombreDeMaison; m++){ //on retire le prix d'une maison au joueur, n fois (n étant le nombre de maisons vendues)
                         player[tourjoueur]->argent += s->prixMaison;
                     }
-                    printf("IA : Vente reussie !\n");
+                    printf("IA : Vente r%cussie !\n", 0x82);
 
                 }
 
         }
     }
+
+    ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Si la propriété est hypothéquée~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     else if (player[s->proprio - 1]->prenomJoueur == player[tourjoueur]->prenomJoueur && s->etatHypo == 1){
             int choixLeverHypo;
             Color(player[tourjoueur]->couleur,0);
-            printf("\n%s, voulez-vous levez l'hypotheque ?\n", player[tourjoueur]->prenomJoueur);
+            printf("\n%s, voulez-vous lever l'hypoth%cque ?\n", player[tourjoueur]->prenomJoueur, 0x8A);
             printf("                                  ");
             Color(10,0);
             printf("1.OUI");
@@ -967,15 +1019,17 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             Color(15,0);
             scanf("%d", &choixLeverHypo);
             Color(3,0);
-            while( choixLeverHypo!= 1 && choixLeverHypo != 2){
-                printf("IA : Saisie incorrect\n");
+            while( choixLeverHypo!= 1 && choixLeverHypo != 2){ //blindage
+                printf("IA : Saisie incorrecte\n");
                 fflush(stdin);
                 scanf("%d", &choixLeverHypo);
             }
+
+            ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~si le joueur veut lever l'hypothèque~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             if(choixLeverHypo == 1){
                 int prixADeduire= (s->p_hypo)*0.1;
                 prixADeduire += s->p_hypo;
-                printf("IA : Vous payer %d \n", prixADeduire);
+                printf("IA : Vous payez %d \n", prixADeduire);
                 player[tourjoueur]->argent -= prixADeduire;
                 Color(player[tourjoueur]->couleur,0);
                 printf("Porte-monnaie : %d\n", player[tourjoueur]->argent);
@@ -989,6 +1043,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         }
 
 
+    ///************************************************CAS 2: où le joueur ne possède pas la propriété mais est déjà possédé par un joueur************************************************
     else if (s->proprio == player[0]->numeroJoueur || s->proprio == player[1]->numeroJoueur || s->proprio == player[2]->numeroJoueur || s->proprio == player[3]->numeroJoueur){
         Color(15,0);
         printf("\n                          Nombre de sondes spatiales : %d",s->maison);
@@ -1006,11 +1061,13 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         printf("%s",player[s->proprio - 1]->prenomJoueur);
         Color(3,0);
         printf("... Vous devez lui payer son loyer !");
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si le propriétaire possède toutes les propriétés d'une même couleur, le joueur paye double loyer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
             printf("\nIA: ");
             Color(player[s->proprio - 1]->couleurJoueur,0);
             printf("%s",player[s->proprio - 1]->prenomJoueur);
-            printf(" possede cette famille d'astre ! Le loyer est donc double !");
+            printf(" poss%cde cette famille d'astres ! Le loyer est donc double !", 0x8A);
             Color(player[tourjoueur]->couleur,0);
             printf("\n%s",player[tourjoueur]->prenomJoueur);
             Color(3,0);
@@ -1019,6 +1076,8 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             printf("%s",player[s->proprio - 1]->prenomJoueur);
             Color(3,0);
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si le loyer est "simple"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else {
         Color(player[tourjoueur]->couleur,0);
         printf("\n%s",player[tourjoueur]->prenomJoueur);
@@ -1029,18 +1088,24 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         }
         Color(3,0);
 
+         ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si la propriété ne possède aucune maison / aucun hôtel ET possède assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         if(s->maison == 0 && s->hotel == 0 && player[tourjoueur]->argent >= s->loyer){
+
+            ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si loyer double~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
-                player[tourjoueur]->argent -= s->loyer *2;
-                player[s->proprio - 1]->argent += s->loyer *2;
+                player[tourjoueur]->argent -= s->loyer *2;//le joueur payer le loyer 2 fois
+                player[s->proprio - 1]->argent += s->loyer *2;//le propriétaire gagne 2 fois le loyer
                 printf(" %d euros...",s->loyer *2);
             }
+            ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Si loyer simple~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             else{
-                player[tourjoueur]->argent -= s->loyer;
-                player[s->proprio - 1]->argent += s->loyer;
+                player[tourjoueur]->argent -= s->loyer; //on déduit le prix du loyer au joueur
+                player[s->proprio - 1]->argent += s->loyer;//le propriétaire gagner l'argent du loyer
                 printf(" %d euros...",s->loyer);
             }
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sinon si la propriété ne possède une maison ET possède assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (s->maison == 1 && player[tourjoueur]->argent >= s->loyer1){
             if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
                 player[tourjoueur]->argent -= s->loyer1 *2;
@@ -1053,6 +1118,8 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 printf(" %d euros...",s->loyer1);
             }
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sinon si la propriété ne possède 2 maisons ET possède assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (s->maison == 2 && player[tourjoueur]->argent >= s->loyer2){
             if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
                 player[tourjoueur]->argent -= s->loyer2 *2;
@@ -1065,6 +1132,8 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 printf(" %d euros...",s->loyer2);
             }
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sinon si la propriété ne possède 3 maisons ET possède assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (s->maison == 3 && player[tourjoueur]->argent >= s->loyer3){
             if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
                 player[tourjoueur]->argent -= s->loyer3 *2;
@@ -1077,6 +1146,8 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
                 printf(" %d euros...",s->loyer3);
             }
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sinon si la propriété ne possède 4 maisons ET possède assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if(s->maison == 4 && player[tourjoueur]->argent >= s->loyer4){
             if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
                 player[tourjoueur]->argent -= s->loyer4 *2;
@@ -1090,6 +1161,8 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             }
 
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sinon si la propriété ne possède un hôtel ET possède assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if(s->hotel == 1 && player[tourjoueur]->argent >= s->loyerHotel){
             if (player[s->proprio - 1]->famillec[s->couleurF] == 2){
                 player[tourjoueur]->argent -= s->loyerHotel *2;
@@ -1103,6 +1176,8 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
             }
 
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sinon si le joueur ne possède pas assez d'argent pour payer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if (s->maison == 0 && s->hotel == 0 && player[tourjoueur]->argent <= s->loyer) {
             Color(player[tourjoueur]->couleur, 0);
             printf("\nIA : %s, vous n'avez pas assez d'argent pour payer le loyer !\n", player[tourjoueur]->prenomJoueur);
@@ -1238,9 +1313,12 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
 
     }
 
+   ///************************************************CAS 3: où la propriété n'appartient à aucun joueur************************************************
     else{
         Color(3,0);
         printf("\n%cIA : %s",0x10,s->anecdote);
+
+        //affichage des données de la propriété
         printf("\n%cIA : Voici un r%ccapitulatif capitaine...",0x10,0x82);
         printf("\n\n                                                        ");
         Color(0,s->couleur);
@@ -1257,7 +1335,7 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
 
         printf("\n                          Prix d'une sonde spatiale : %d",s->prixMaison);
         printf("\n                          Prix d'une station spatiale : %d",s->prixMaison);
-        printf("\n                          Prix hypoth%cquaire : %d",0x82,s->p_hypo);
+        printf("\n                          Prix hypoth%ccaire : %d",0x82,s->p_hypo);
         Color(3,0);
         printf("\nIA : Le satellite est libre d'achat, souhaitez-vous l'acheter ?\n ");
         printf("                      ");
@@ -1269,27 +1347,33 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
         Color(15,0);
         int answer;
         scanf("%d",&answer);
-        while( answer != 1 && answer != 2){
-            printf("IA : Saisie incorrect\n");
+        while( answer != 1 && answer != 2){ //blindage
+            printf("IA : Saisie incorrecte\n");
             fflush(stdin);
             scanf("%d",&answer);
         }
         Color(3,0);
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~si le joueur veut acheter la propriété ET possède assez d'argent~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         if ( answer == 1 && player[tourjoueur]->argent >= s->prix){
-            s->proprio = player[tourjoueur]->numeroJoueur;
-            strcat(player[tourjoueur]->proprietes,s->nom);
+            s->proprio = player[tourjoueur]->numeroJoueur; //on ajoute le nom du joueur à la propriété
+            strcat(player[tourjoueur]->proprietes,s->nom);  //on ajoute la propriété au joueur
             strcat(player[tourjoueur]->proprietes,",");
-            player[tourjoueur]->argent -= s->prix;
+            player[tourjoueur]->argent -= s->prix; //on retire l'argent de l'achat
             player[tourjoueur]->famillec[s->couleurF] += 1;
-            verfiwin(player , tourjoueur , nombreJoueur);
+            verfiwin(player , tourjoueur , nombreJoueur);  //on verifie si le joueur a assez de proriétés pour gagner
             printf("IA : BRAVO %s! Vous avez aquis un nouveau satellite ...",player[tourjoueur]->prenomJoueur);
             Color(player[tourjoueur]->couleur, 0);
             printf("%s, Porte Monnaie : %d\n", player[tourjoueur]->prenomJoueur, player[tourjoueur]->argent);
 
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~si le joueur veut acheter la propriété MAIS ne possède pas d'argent~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else if(player[tourjoueur]->argent < s->prix){
             printf("\nIA : Vous n'avez pas assez d'argent pour acheter ce satellite ! ");
         }
+
+        ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~si le joueur ne veut pas acheter la propriété~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         else {
             printf("IA : Fin de tour ...");
         }
@@ -1297,7 +1381,10 @@ void arrivsat(satellite* s,t_joueur player[NbJoueurMax][TAILLE],int tourjoueur,p
 }
 
 
-///PROCEDURES DES PLANETES
+///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+///-----------------------------------------------------------PROCEDURES DES PLANETES ET DES SATELITTES-----------------------------------------------------------
 void lune(satellite* lune)
 {
     lune->proprio = 5;
@@ -1721,6 +1808,9 @@ void soleil (planete* soleil){
     soleil->couleurF = 8;
 
 }
+
+///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 char *str_replace (const char *txt, const char *Avant, const char *Apres)
 {
   const char *pos;
