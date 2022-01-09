@@ -410,7 +410,7 @@ while(choix != 0)
         tourJoueur+=1;
     }*/
 
-    deplacement = 5;
+
     switch(deplacement)
     {
         case 1:
